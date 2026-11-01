@@ -110,15 +110,27 @@ def run_case(editor: Editor, case: EditCase, max_new_tokens: int = 8,
 
 
 def run_suite(editor: Editor, cases: Iterable[EditCase], max_new_tokens: int = 8,
-              progress: bool = False, base_cache: dict | None = None) -> list[CaseResult]:
-    """Each case is independent: written, probed, revoked, before the next one.
-    (Sequential / lifelong editing is a later mode.)"""
+              progress: bool = False, base_cache: dict | None = None,
+              isolate: bool = True) -> list[CaseResult]:
+    """Run cases one after another: write, probe, revoke, probe.
+
+    isolate=True (default): if the editor has a `reset()` method, call it after
+    every case, so each case starts from the pristine model even when an undo
+    method leaves residue. Without this, residue accumulates across cases
+    (found 2026-11-01: inverse-edit runs drifted the model case after case).
+    isolate=False measures that accumulated drift on purpose; don't combine it
+    with a shared base_cache, since the cached base outputs come from the
+    pristine model."""
+    if not isolate and base_cache is not None:
+        raise ValueError("isolate=False with a shared base_cache compares against the wrong base")
     cases = list(cases)
     out = []
     t0 = time.perf_counter()
     for i, c in enumerate(cases, 1):
         t_case = time.perf_counter()
         out.append(run_case(editor, c, max_new_tokens, base_cache=base_cache))
+        if isolate and hasattr(editor, "reset"):
+            editor.reset()
         if progress:
             dt = time.perf_counter() - t_case
             line = f"  case {i}/{len(cases)} {c.id} ({dt:.0f}s)"

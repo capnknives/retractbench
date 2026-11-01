@@ -1,0 +1,2006 @@
+{
+  "fit_log": [
+    {
+      "case_id": "cf12623",
+      "final_loss": 0.04599900171160698,
+      "steps_used": 8,
+      "key_index": 5,
+      "delta_norm": 55.588172912597656,
+      "mlp_out_norm": 27.045608520507812,
+      "applied_vs_intended": 1.0484274584966962e-06
+    },
+    {
+      "case_id": "cf13781",
+      "final_loss": 0.046691276133060455,
+      "steps_used": 12,
+      "key_index": 2,
+      "delta_norm": 72.28482055664062,
+      "mlp_out_norm": 24.834516525268555,
+      "applied_vs_intended": 8.055142703671074e-07
+    },
+    {
+      "case_id": "cf1326",
+      "final_loss": 0.03801019862294197,
+      "steps_used": 7,
+      "key_index": 7,
+      "delta_norm": 57.06781005859375,
+      "mlp_out_norm": 30.68053436279297,
+      "applied_vs_intended": 1.2160638490666784e-06
+    },
+    {
+      "case_id": "cf8484",
+      "final_loss": 0.04849613830447197,
+      "steps_used": 10,
+      "key_index": 2,
+      "delta_norm": 72.14228820800781,
+      "mlp_out_norm": 18.478662490844727,
+      "applied_vs_intended": 5.806589102016427e-07
+    },
+    {
+      "case_id": "cf16753",
+      "final_loss": 0.018744708970189095,
+      "steps_used": 6,
+      "key_index": 7,
+      "delta_norm": 51.27719497680664,
+      "mlp_out_norm": 31.183645248413086,
+      "applied_vs_intended": 1.2989451962152135e-06
+    },
+    {
+      "case_id": "cf15922",
+      "final_loss": 0.027717553079128265,
+      "steps_used": 8,
+      "key_index": 3,
+      "delta_norm": 65.98046112060547,
+      "mlp_out_norm": 31.420146942138672,
+      "applied_vs_intended": 1.021754155440201e-06
+    },
+    {
+      "case_id": "cf13268",
+      "final_loss": 0.015495852567255497,
+      "steps_used": 9,
+      "key_index": 3,
+      "delta_norm": 70.44418334960938,
+      "mlp_out_norm": 31.256107330322266,
+      "applied_vs_intended": 9.704737515464775e-07
+    },
+    {
+      "case_id": "cf9938",
+      "final_loss": 0.03682766854763031,
+      "steps_used": 11,
+      "key_index": 5,
+      "delta_norm": 76.05439758300781,
+      "mlp_out_norm": 27.582639694213867,
+      "applied_vs_intended": 7.424239924126012e-07
+    },
+    {
+      "case_id": "cf15617",
+      "final_loss": 0.03346697986125946,
+      "steps_used": 13,
+      "key_index": 3,
+      "delta_norm": 78.51923370361328,
+      "mlp_out_norm": 28.236501693725586,
+      "applied_vs_intended": 7.295545146042602e-07
+    },
+    {
+      "case_id": "cf11732",
+      "final_loss": 0.032033294439315796,
+      "steps_used": 6,
+      "key_index": 4,
+      "delta_norm": 51.43235778808594,
+      "mlp_out_norm": 26.922847747802734,
+      "applied_vs_intended": 1.152113439602491e-06
+    },
+    {
+      "case_id": "cf19116",
+      "final_loss": 0.028825310990214348,
+      "steps_used": 7,
+      "key_index": 3,
+      "delta_norm": 55.74985885620117,
+      "mlp_out_norm": 20.742141723632812,
+      "applied_vs_intended": 7.665035767504976e-07
+    },
+    {
+      "case_id": "cf7157",
+      "final_loss": 0.012547949329018593,
+      "steps_used": 9,
+      "key_index": 2,
+      "delta_norm": 68.550048828125,
+      "mlp_out_norm": 21.119054794311523,
+      "applied_vs_intended": 6.096538015401465e-07
+    },
+    {
+      "case_id": "cf16537",
+      "final_loss": 0.04618160054087639,
+      "steps_used": 14,
+      "key_index": 4,
+      "delta_norm": 85.89556121826172,
+      "mlp_out_norm": 23.92740249633789,
+      "applied_vs_intended": 5.602390833002491e-07
+    },
+    {
+      "case_id": "cf4563",
+      "final_loss": 0.024786556139588356,
+      "steps_used": 5,
+      "key_index": 2,
+      "delta_norm": 43.903202056884766,
+      "mlp_out_norm": 28.18095588684082,
+      "applied_vs_intended": 1.3044207549225094e-06
+    },
+    {
+      "case_id": "cf9235",
+      "final_loss": 0.0041909487918019295,
+      "steps_used": 6,
+      "key_index": 2,
+      "delta_norm": 53.825504302978516,
+      "mlp_out_norm": 29.69000816345215,
+      "applied_vs_intended": 1.0712660774306554e-06
+    },
+    {
+      "case_id": "cf4579",
+      "final_loss": 0.031016578897833824,
+      "steps_used": 10,
+      "key_index": 1,
+      "delta_norm": 73.27932739257812,
+      "mlp_out_norm": 24.386363983154297,
+      "applied_vs_intended": 6.510594066951866e-07
+    },
+    {
+      "case_id": "cf3107",
+      "final_loss": 0.03247399255633354,
+      "steps_used": 13,
+      "key_index": 5,
+      "delta_norm": 88.9980239868164,
+      "mlp_out_norm": 32.96763610839844,
+      "applied_vs_intended": 7.309416558928896e-07
+    },
+    {
+      "case_id": "cf20262",
+      "final_loss": 0.013567615300416946,
+      "steps_used": 8,
+      "key_index": 2,
+      "delta_norm": 70.06121063232422,
+      "mlp_out_norm": 29.725801467895508,
+      "applied_vs_intended": 7.759307553010063e-07
+    },
+    {
+      "case_id": "cf8208",
+      "final_loss": 0.04831123724579811,
+      "steps_used": 14,
+      "key_index": 4,
+      "delta_norm": 85.39476013183594,
+      "mlp_out_norm": 21.348690032958984,
+      "applied_vs_intended": 5.313845903650936e-07
+    },
+    {
+      "case_id": "cf17451",
+      "final_loss": 0.04185928404331207,
+      "steps_used": 11,
+      "key_index": 3,
+      "delta_norm": 71.71064758300781,
+      "mlp_out_norm": 23.47865104675293,
+      "applied_vs_intended": 6.141310560653869e-07
+    },
+    {
+      "case_id": "cf19723",
+      "final_loss": 0.04158738628029823,
+      "steps_used": 7,
+      "key_index": 3,
+      "delta_norm": 60.64978790283203,
+      "mlp_out_norm": 38.33805847167969,
+      "applied_vs_intended": 1.3169590767038724e-06
+    },
+    {
+      "case_id": "cf4815",
+      "final_loss": 0.018895739689469337,
+      "steps_used": 7,
+      "key_index": 4,
+      "delta_norm": 60.47248458862305,
+      "mlp_out_norm": 35.225624084472656,
+      "applied_vs_intended": 1.2014863689213014e-06
+    },
+    {
+      "case_id": "cf10162",
+      "final_loss": 0.028924448415637016,
+      "steps_used": 10,
+      "key_index": 2,
+      "delta_norm": 73.27710723876953,
+      "mlp_out_norm": 24.883054733276367,
+      "applied_vs_intended": 7.17319093674617e-07
+    },
+    {
+      "case_id": "cf3236",
+      "final_loss": 0.036390382796525955,
+      "steps_used": 10,
+      "key_index": 3,
+      "delta_norm": 73.61931610107422,
+      "mlp_out_norm": 23.043025970458984,
+      "applied_vs_intended": 5.620216906637008e-07
+    },
+    {
+      "case_id": "cf2416",
+      "final_loss": 0.04469604790210724,
+      "steps_used": 9,
+      "key_index": 4,
+      "delta_norm": 75.05400085449219,
+      "mlp_out_norm": 27.30743980407715,
+      "applied_vs_intended": 7.580587572369152e-07
+    },
+    {
+      "case_id": "cf10819",
+      "final_loss": 0.03853211924433708,
+      "steps_used": 16,
+      "key_index": 3,
+      "delta_norm": 89.63980865478516,
+      "mlp_out_norm": 26.457443237304688,
+      "applied_vs_intended": 6.138799355988223e-07
+    },
+    {
+      "case_id": "cf15471",
+      "final_loss": 0.04783996567130089,
+      "steps_used": 12,
+      "key_index": 3,
+      "delta_norm": 84.55386352539062,
+      "mlp_out_norm": 30.16058921813965,
+      "applied_vs_intended": 5.66873781638855e-07
+    },
+    {
+      "case_id": "cf18343",
+      "final_loss": 0.04544587805867195,
+      "steps_used": 8,
+      "key_index": 5,
+      "delta_norm": 58.66549301147461,
+      "mlp_out_norm": 41.65018081665039,
+      "applied_vs_intended": 1.2300446830258032e-06
+    },
+    {
+      "case_id": "cf3299",
+      "final_loss": 0.011080518364906311,
+      "steps_used": 9,
+      "key_index": 6,
+      "delta_norm": 75.8730239868164,
+      "mlp_out_norm": 43.712890625,
+      "applied_vs_intended": 8.298400246906672e-07
+    },
+    {
+      "case_id": "cf11593",
+      "final_loss": 0.018559956923127174,
+      "steps_used": 10,
+      "key_index": 6,
+      "delta_norm": 70.80912780761719,
+      "mlp_out_norm": 31.05124855041504,
+      "applied_vs_intended": 9.131515714228981e-07
+    },
+    {
+      "case_id": "cf14226",
+      "final_loss": 0.0243831779807806,
+      "steps_used": 9,
+      "key_index": 5,
+      "delta_norm": 72.3623275756836,
+      "mlp_out_norm": 30.916112899780273,
+      "applied_vs_intended": 9.00746093866633e-07
+    },
+    {
+      "case_id": "cf10361",
+      "final_loss": 0.02367280051112175,
+      "steps_used": 7,
+      "key_index": 2,
+      "delta_norm": 60.319854736328125,
+      "mlp_out_norm": 40.634971618652344,
+      "applied_vs_intended": 1.0234429586511877e-06
+    },
+    {
+      "case_id": "cf20017",
+      "final_loss": 0.02928004041314125,
+      "steps_used": 9,
+      "key_index": 5,
+      "delta_norm": 78.30797576904297,
+      "mlp_out_norm": 40.932682037353516,
+      "applied_vs_intended": 8.838957871076963e-07
+    },
+    {
+      "case_id": "cf20985",
+      "final_loss": 0.0468793548643589,
+      "steps_used": 7,
+      "key_index": 2,
+      "delta_norm": 53.843082427978516,
+      "mlp_out_norm": 32.54872512817383,
+      "applied_vs_intended": 1.2490999575811726e-06
+    },
+    {
+      "case_id": "cf6700",
+      "final_loss": 0.011012489907443523,
+      "steps_used": 8,
+      "key_index": 4,
+      "delta_norm": 66.28843688964844,
+      "mlp_out_norm": 34.42076873779297,
+      "applied_vs_intended": 9.572852743845905e-07
+    },
+    {
+      "case_id": "cf18105",
+      "final_loss": 0.04939767345786095,
+      "steps_used": 11,
+      "key_index": 1,
+      "delta_norm": 83.82015991210938,
+      "mlp_out_norm": 32.61537170410156,
+      "applied_vs_intended": 7.526907308465002e-07
+    },
+    {
+      "case_id": "cf15630",
+      "final_loss": 0.035209156572818756,
+      "steps_used": 6,
+      "key_index": 5,
+      "delta_norm": 57.015869140625,
+      "mlp_out_norm": 42.508201599121094,
+      "applied_vs_intended": 1.4249454030042756e-06
+    },
+    {
+      "case_id": "cf14506",
+      "final_loss": 0.044928692281246185,
+      "steps_used": 15,
+      "key_index": 3,
+      "delta_norm": 117.21903991699219,
+      "mlp_out_norm": 152.32925415039062,
+      "applied_vs_intended": 3.9758321162739925e-07
+    },
+    {
+      "case_id": "cf17083",
+      "final_loss": 0.049242328852415085,
+      "steps_used": 16,
+      "key_index": 3,
+      "delta_norm": 92.91333770751953,
+      "mlp_out_norm": 32.19862747192383,
+      "applied_vs_intended": 4.947751827518631e-07
+    },
+    {
+      "case_id": "cf8535",
+      "final_loss": 0.04701698571443558,
+      "steps_used": 11,
+      "key_index": 6,
+      "delta_norm": 80.06758117675781,
+      "mlp_out_norm": 34.783409118652344,
+      "applied_vs_intended": 7.303727885830675e-07
+    },
+    {
+      "case_id": "cf2040",
+      "final_loss": 0.03436718508601189,
+      "steps_used": 8,
+      "key_index": 6,
+      "delta_norm": 67.83404541015625,
+      "mlp_out_norm": 32.960540771484375,
+      "applied_vs_intended": 9.331860778818409e-07
+    },
+    {
+      "case_id": "cf17979",
+      "final_loss": 0.027721960097551346,
+      "steps_used": 5,
+      "key_index": 7,
+      "delta_norm": 42.2218132019043,
+      "mlp_out_norm": 36.2934455871582,
+      "applied_vs_intended": 1.620562989565955e-06
+    },
+    {
+      "case_id": "cf460",
+      "final_loss": 0.04977418854832649,
+      "steps_used": 12,
+      "key_index": 3,
+      "delta_norm": 90.77328491210938,
+      "mlp_out_norm": 38.908538818359375,
+      "applied_vs_intended": 8.449789194294284e-07
+    },
+    {
+      "case_id": "cf3056",
+      "final_loss": 0.0158205796033144,
+      "steps_used": 9,
+      "key_index": 2,
+      "delta_norm": 71.96480560302734,
+      "mlp_out_norm": 34.11782455444336,
+      "applied_vs_intended": 8.519466802181674e-07
+    },
+    {
+      "case_id": "cf13068",
+      "final_loss": 0.04174621030688286,
+      "steps_used": 7,
+      "key_index": 6,
+      "delta_norm": 57.06419372558594,
+      "mlp_out_norm": 30.4251708984375,
+      "applied_vs_intended": 9.922433445305225e-07
+    },
+    {
+      "case_id": "cf21894",
+      "final_loss": 0.03372253477573395,
+      "steps_used": 11,
+      "key_index": 2,
+      "delta_norm": 83.70338439941406,
+      "mlp_out_norm": 27.090639114379883,
+      "applied_vs_intended": 7.337617915860526e-07
+    },
+    {
+      "case_id": "cf20488",
+      "final_loss": 0.03149260953068733,
+      "steps_used": 17,
+      "key_index": 6,
+      "delta_norm": 98.71580505371094,
+      "mlp_out_norm": 38.79296875,
+      "applied_vs_intended": 7.100981862685927e-07
+    },
+    {
+      "case_id": "cf37",
+      "final_loss": 0.04139239713549614,
+      "steps_used": 10,
+      "key_index": 3,
+      "delta_norm": 75.84352111816406,
+      "mlp_out_norm": 37.14730453491211,
+      "applied_vs_intended": 9.150479515606863e-07
+    },
+    {
+      "case_id": "cf20050",
+      "final_loss": 0.0444570817053318,
+      "steps_used": 7,
+      "key_index": 3,
+      "delta_norm": 58.570472717285156,
+      "mlp_out_norm": 32.484832763671875,
+      "applied_vs_intended": 1.017604970027269e-06
+    },
+    {
+      "case_id": "cf16173",
+      "final_loss": 0.04775257408618927,
+      "steps_used": 13,
+      "key_index": 9,
+      "delta_norm": 86.09688568115234,
+      "mlp_out_norm": 25.362133026123047,
+      "applied_vs_intended": 6.65132452237104e-07
+    },
+    {
+      "case_id": "cf10916",
+      "final_loss": 0.048748679459095,
+      "steps_used": 11,
+      "key_index": 4,
+      "delta_norm": 88.30017852783203,
+      "mlp_out_norm": 44.46383285522461,
+      "applied_vs_intended": 9.63121761697911e-07
+    },
+    {
+      "case_id": "cf7992",
+      "final_loss": 0.04667970538139343,
+      "steps_used": 16,
+      "key_index": 5,
+      "delta_norm": 108.80902862548828,
+      "mlp_out_norm": 41.40460968017578,
+      "applied_vs_intended": 6.707992822948851e-07
+    },
+    {
+      "case_id": "cf10656",
+      "final_loss": 0.006399495992809534,
+      "steps_used": 3,
+      "key_index": 2,
+      "delta_norm": 32.033958435058594,
+      "mlp_out_norm": 35.12054443359375,
+      "applied_vs_intended": 1.9848074034970198e-06
+    },
+    {
+      "case_id": "cf2063",
+      "final_loss": 0.009844915941357613,
+      "steps_used": 8,
+      "key_index": 3,
+      "delta_norm": 62.13620376586914,
+      "mlp_out_norm": 35.52121353149414,
+      "applied_vs_intended": 9.686294971946436e-07
+    },
+    {
+      "case_id": "cf6260",
+      "final_loss": 0.04868509620428085,
+      "steps_used": 7,
+      "key_index": 3,
+      "delta_norm": 63.304073333740234,
+      "mlp_out_norm": 36.45442199707031,
+      "applied_vs_intended": 1.0730294593358722e-06
+    },
+    {
+      "case_id": "cf18596",
+      "final_loss": 0.0486302524805069,
+      "steps_used": 6,
+      "key_index": 2,
+      "delta_norm": 56.14229202270508,
+      "mlp_out_norm": 66.0589370727539,
+      "applied_vs_intended": 1.2443372580064922e-06
+    },
+    {
+      "case_id": "cf7264",
+      "final_loss": 0.033622950315475464,
+      "steps_used": 7,
+      "key_index": 6,
+      "delta_norm": 60.576416015625,
+      "mlp_out_norm": 39.230369567871094,
+      "applied_vs_intended": 1.2545599713604424e-06
+    },
+    {
+      "case_id": "cf7818",
+      "final_loss": 0.02873925119638443,
+      "steps_used": 6,
+      "key_index": 1,
+      "delta_norm": 57.99642562866211,
+      "mlp_out_norm": 29.860706329345703,
+      "applied_vs_intended": 1.000612683064814e-06
+    },
+    {
+      "case_id": "cf4669",
+      "final_loss": 0.04603862017393112,
+      "steps_used": 8,
+      "key_index": 5,
+      "delta_norm": 59.49098205566406,
+      "mlp_out_norm": 42.421409606933594,
+      "applied_vs_intended": 1.4877804348407043e-06
+    },
+    {
+      "case_id": "cf17792",
+      "final_loss": 0.04161231592297554,
+      "steps_used": 5,
+      "key_index": 3,
+      "delta_norm": 48.53827667236328,
+      "mlp_out_norm": 37.775840759277344,
+      "applied_vs_intended": 1.5102381940377413e-06
+    },
+    {
+      "case_id": "cf14679",
+      "final_loss": 0.04246363788843155,
+      "steps_used": 11,
+      "key_index": 1,
+      "delta_norm": 82.78343963623047,
+      "mlp_out_norm": 36.15685272216797,
+      "applied_vs_intended": 5.941053226677395e-07
+    },
+    {
+      "case_id": "cf2988",
+      "final_loss": 0.037174489349126816,
+      "steps_used": 6,
+      "key_index": 3,
+      "delta_norm": 55.16737365722656,
+      "mlp_out_norm": 37.56005096435547,
+      "applied_vs_intended": 1.1943062376167582e-06
+    },
+    {
+      "case_id": "cf2636",
+      "final_loss": 0.046050574630498886,
+      "steps_used": 7,
+      "key_index": 7,
+      "delta_norm": 62.48170852661133,
+      "mlp_out_norm": 37.54354476928711,
+      "applied_vs_intended": 1.1114185900070835e-06
+    },
+    {
+      "case_id": "cf10487",
+      "final_loss": 0.01548153255134821,
+      "steps_used": 9,
+      "key_index": 3,
+      "delta_norm": 73.76726531982422,
+      "mlp_out_norm": 34.64106369018555,
+      "applied_vs_intended": 9.134983594174726e-07
+    },
+    {
+      "case_id": "cf16644",
+      "final_loss": 0.0420297235250473,
+      "steps_used": 10,
+      "key_index": 3,
+      "delta_norm": 76.95514678955078,
+      "mlp_out_norm": 42.36122131347656,
+      "applied_vs_intended": 8.384878739712824e-07
+    },
+    {
+      "case_id": "cf16032",
+      "final_loss": 0.04016794264316559,
+      "steps_used": 9,
+      "key_index": 5,
+      "delta_norm": 70.74718475341797,
+      "mlp_out_norm": 35.32755661010742,
+      "applied_vs_intended": 1.0156830369764858e-06
+    },
+    {
+      "case_id": "cf3573",
+      "final_loss": 0.03206874057650566,
+      "steps_used": 11,
+      "key_index": 10,
+      "delta_norm": 83.09895324707031,
+      "mlp_out_norm": 33.93922424316406,
+      "applied_vs_intended": 6.956276941277538e-07
+    },
+    {
+      "case_id": "cf9877",
+      "final_loss": 0.03858029469847679,
+      "steps_used": 8,
+      "key_index": 5,
+      "delta_norm": 61.79714584350586,
+      "mlp_out_norm": 26.901262283325195,
+      "applied_vs_intended": 9.205024979556434e-07
+    },
+    {
+      "case_id": "cf18063",
+      "final_loss": 0.036475442349910736,
+      "steps_used": 14,
+      "key_index": 2,
+      "delta_norm": 95.6790542602539,
+      "mlp_out_norm": 36.065303802490234,
+      "applied_vs_intended": 6.819601519167817e-07
+    },
+    {
+      "case_id": "cf9538",
+      "final_loss": 0.043828487396240234,
+      "steps_used": 6,
+      "key_index": 1,
+      "delta_norm": 55.3619270324707,
+      "mlp_out_norm": 32.6865234375,
+      "applied_vs_intended": 1.0224995450790401e-06
+    },
+    {
+      "case_id": "cf4089",
+      "final_loss": 0.045898351818323135,
+      "steps_used": 15,
+      "key_index": 5,
+      "delta_norm": 95.28288269042969,
+      "mlp_out_norm": 40.148597717285156,
+      "applied_vs_intended": 7.616915264884693e-07
+    },
+    {
+      "case_id": "cf17938",
+      "final_loss": 0.031578775495290756,
+      "steps_used": 11,
+      "key_index": 4,
+      "delta_norm": 75.56072235107422,
+      "mlp_out_norm": 30.2819881439209,
+      "applied_vs_intended": 7.831413340063721e-07
+    },
+    {
+      "case_id": "cf10903",
+      "final_loss": 0.0467442125082016,
+      "steps_used": 6,
+      "key_index": 2,
+      "delta_norm": 58.53997039794922,
+      "mlp_out_norm": 43.17503356933594,
+      "applied_vs_intended": 9.998797704556794e-07
+    },
+    {
+      "case_id": "cf17704",
+      "final_loss": 0.04140177369117737,
+      "steps_used": 13,
+      "key_index": 3,
+      "delta_norm": 90.42615509033203,
+      "mlp_out_norm": 44.25802993774414,
+      "applied_vs_intended": 8.672872259673225e-07
+    },
+    {
+      "case_id": "cf6658",
+      "final_loss": 0.04655306786298752,
+      "steps_used": 8,
+      "key_index": 2,
+      "delta_norm": 63.8283805847168,
+      "mlp_out_norm": 47.8486442565918,
+      "applied_vs_intended": 1.109194929735428e-06
+    },
+    {
+      "case_id": "cf19765",
+      "final_loss": 0.037816572934389114,
+      "steps_used": 10,
+      "key_index": 6,
+      "delta_norm": 79.67439270019531,
+      "mlp_out_norm": 48.221351623535156,
+      "applied_vs_intended": 9.731845670837547e-07
+    },
+    {
+      "case_id": "cf17931",
+      "final_loss": 0.03347712382674217,
+      "steps_used": 7,
+      "key_index": 3,
+      "delta_norm": 54.7206916809082,
+      "mlp_out_norm": 42.1040153503418,
+      "applied_vs_intended": 1.247039325089633e-06
+    },
+    {
+      "case_id": "cf19255",
+      "final_loss": 0.03858327493071556,
+      "steps_used": 14,
+      "key_index": 2,
+      "delta_norm": 95.09015655517578,
+      "mlp_out_norm": 36.312416076660156,
+      "applied_vs_intended": 6.427800954587138e-07
+    },
+    {
+      "case_id": "cf9425",
+      "final_loss": 0.035781197249889374,
+      "steps_used": 15,
+      "key_index": 4,
+      "delta_norm": 96.27289581298828,
+      "mlp_out_norm": 51.92436981201172,
+      "applied_vs_intended": 8.881646647394688e-07
+    },
+    {
+      "case_id": "cf14581",
+      "final_loss": 0.035818807780742645,
+      "steps_used": 6,
+      "key_index": 5,
+      "delta_norm": 53.11201095581055,
+      "mlp_out_norm": 50.69295120239258,
+      "applied_vs_intended": 1.3159865388200345e-06
+    },
+    {
+      "case_id": "cf3002",
+      "final_loss": 0.032964207231998444,
+      "steps_used": 10,
+      "key_index": 2,
+      "delta_norm": 80.27389526367188,
+      "mlp_out_norm": 49.1517448425293,
+      "applied_vs_intended": 8.479590145408304e-07
+    },
+    {
+      "case_id": "cf19539",
+      "final_loss": 0.04819786921143532,
+      "steps_used": 9,
+      "key_index": 5,
+      "delta_norm": 71.60470581054688,
+      "mlp_out_norm": 31.97678565979004,
+      "applied_vs_intended": 8.459488420296177e-07
+    },
+    {
+      "case_id": "cf12612",
+      "final_loss": 0.049058813601732254,
+      "steps_used": 7,
+      "key_index": 1,
+      "delta_norm": 59.17506790161133,
+      "mlp_out_norm": 40.394020080566406,
+      "applied_vs_intended": 1.2206432239762586e-06
+    },
+    {
+      "case_id": "cf10388",
+      "final_loss": 0.025694143027067184,
+      "steps_used": 4,
+      "key_index": 3,
+      "delta_norm": 37.96294021606445,
+      "mlp_out_norm": 31.141117095947266,
+      "applied_vs_intended": 1.0627656518234935e-06
+    },
+    {
+      "case_id": "cf18862",
+      "final_loss": 0.04996868595480919,
+      "steps_used": 4,
+      "key_index": 5,
+      "delta_norm": 41.28171920776367,
+      "mlp_out_norm": 19.84168815612793,
+      "applied_vs_intended": 1.119600789452114e-06
+    },
+    {
+      "case_id": "cf7933",
+      "final_loss": 0.04246398061513901,
+      "steps_used": 12,
+      "key_index": 6,
+      "delta_norm": 84.78518676757812,
+      "mlp_out_norm": 41.862586975097656,
+      "applied_vs_intended": 5.913779433813101e-07
+    },
+    {
+      "case_id": "cf9513",
+      "final_loss": 0.040221188217401505,
+      "steps_used": 19,
+      "key_index": 5,
+      "delta_norm": 106.82660675048828,
+      "mlp_out_norm": 29.59652328491211,
+      "applied_vs_intended": 5.244831535972522e-07
+    },
+    {
+      "case_id": "cf6025",
+      "final_loss": 0.042438045144081116,
+      "steps_used": 13,
+      "key_index": 3,
+      "delta_norm": 91.046875,
+      "mlp_out_norm": 50.20848083496094,
+      "applied_vs_intended": 9.014160146387295e-07
+    },
+    {
+      "case_id": "cf6205",
+      "final_loss": 0.031210368499159813,
+      "steps_used": 9,
+      "key_index": 8,
+      "delta_norm": 73.48216247558594,
+      "mlp_out_norm": 40.38893508911133,
+      "applied_vs_intended": 9.484770227905494e-07
+    },
+    {
+      "case_id": "cf6118",
+      "final_loss": 0.03568388521671295,
+      "steps_used": 10,
+      "key_index": 8,
+      "delta_norm": 78.10087585449219,
+      "mlp_out_norm": 53.817806243896484,
+      "applied_vs_intended": 9.643795092616452e-07
+    },
+    {
+      "case_id": "cf1080",
+      "final_loss": 0.03439229354262352,
+      "steps_used": 12,
+      "key_index": 5,
+      "delta_norm": 87.69512176513672,
+      "mlp_out_norm": 33.16687774658203,
+      "applied_vs_intended": 7.504691902776084e-07
+    },
+    {
+      "case_id": "cf20079",
+      "final_loss": 0.03665323555469513,
+      "steps_used": 10,
+      "key_index": 5,
+      "delta_norm": 71.1270751953125,
+      "mlp_out_norm": 31.130292892456055,
+      "applied_vs_intended": 7.297833061514984e-07
+    },
+    {
+      "case_id": "cf21517",
+      "final_loss": 0.04792144522070885,
+      "steps_used": 11,
+      "key_index": 3,
+      "delta_norm": 76.512939453125,
+      "mlp_out_norm": 34.84498596191406,
+      "applied_vs_intended": 6.791730499694986e-07
+    },
+    {
+      "case_id": "cf8521",
+      "final_loss": 0.018307050690054893,
+      "steps_used": 5,
+      "key_index": 3,
+      "delta_norm": 48.47943115234375,
+      "mlp_out_norm": 32.59754180908203,
+      "applied_vs_intended": 1.0024164950434652e-06
+    },
+    {
+      "case_id": "cf15614",
+      "final_loss": 0.027705030515789986,
+      "steps_used": 5,
+      "key_index": 1,
+      "delta_norm": 48.123538970947266,
+      "mlp_out_norm": 48.646114349365234,
+      "applied_vs_intended": 1.59252296225883e-06
+    },
+    {
+      "case_id": "cf2263",
+      "final_loss": 0.03436223417520523,
+      "steps_used": 8,
+      "key_index": 2,
+      "delta_norm": 61.159088134765625,
+      "mlp_out_norm": 37.43149948120117,
+      "applied_vs_intended": 1.1953812718586082e-06
+    },
+    {
+      "case_id": "cf2943",
+      "final_loss": 0.030013402923941612,
+      "steps_used": 11,
+      "key_index": 3,
+      "delta_norm": 80.91197967529297,
+      "mlp_out_norm": 37.63081359863281,
+      "applied_vs_intended": 8.564910812896905e-07
+    },
+    {
+      "case_id": "cf4267",
+      "final_loss": 0.017158161848783493,
+      "steps_used": 4,
+      "key_index": 4,
+      "delta_norm": 40.94764709472656,
+      "mlp_out_norm": 44.1142692565918,
+      "applied_vs_intended": 1.5844098372959055e-06
+    },
+    {
+      "case_id": "cf4900",
+      "final_loss": 0.044828277081251144,
+      "steps_used": 9,
+      "key_index": 2,
+      "delta_norm": 66.22598266601562,
+      "mlp_out_norm": 41.26668167114258,
+      "applied_vs_intended": 7.107416630674351e-07
+    },
+    {
+      "case_id": "cf1266",
+      "final_loss": 0.034672025591135025,
+      "steps_used": 7,
+      "key_index": 4,
+      "delta_norm": 66.04862213134766,
+      "mlp_out_norm": 49.46605682373047,
+      "applied_vs_intended": 1.361983505900376e-06
+    }
+  ],
+  "revoke_log": [
+    {
+      "case_id": "cf12623",
+      "mode": "inverse",
+      "residual_fro": 4.157620906829834,
+      "residual_max": 0.06657596677541733,
+      "edit_fro": 2.3186376094818115,
+      "applied_vs_intended": 1.0484274584966962e-06,
+      "revert_target": " Krasno",
+      "revert_final_loss": 0.032458093017339706,
+      "revert_steps": 10
+    },
+    {
+      "case_id": "cf13781",
+      "mode": "inverse",
+      "residual_fro": 5.119784832000732,
+      "residual_max": 0.06500278413295746,
+      "edit_fro": 3.022477149963379,
+      "applied_vs_intended": 8.055142703671074e-07,
+      "revert_target": " of a \"",
+      "revert_final_loss": 0.032300934195518494,
+      "revert_steps": 14
+    },
+    {
+      "case_id": "cf1326",
+      "mode": "inverse",
+      "residual_fro": 3.517068862915039,
+      "residual_max": 0.04335598275065422,
+      "edit_fro": 2.004732608795166,
+      "applied_vs_intended": 1.2160638490666784e-06,
+      "revert_target": " of the people",
+      "revert_final_loss": 0.03975416347384453,
+      "revert_steps": 10
+    },
+    {
+      "case_id": "cf8484",
+      "mode": "inverse",
+      "residual_fro": 5.022707939147949,
+      "residual_max": 0.10831169039011002,
+      "edit_fro": 4.207609176635742,
+      "applied_vs_intended": 5.806589102016427e-07,
+      "revert_target": " 10",
+      "revert_final_loss": 0.0325176827609539,
+      "revert_steps": 5
+    },
+    {
+      "case_id": "cf16753",
+      "mode": "inverse",
+      "residual_fro": 3.36051607131958,
+      "residual_max": 0.10756925493478775,
+      "edit_fro": 1.8800652027130127,
+      "applied_vs_intended": 1.2989451962152135e-06,
+      "revert_target": " a mixture of",
+      "revert_final_loss": 0.03774123638868332,
+      "revert_steps": 9
+    },
+    {
+      "case_id": "cf15922",
+      "mode": "inverse",
+      "residual_fro": 3.905539035797119,
+      "residual_max": 0.05836136266589165,
+      "edit_fro": 2.3916070461273193,
+      "applied_vs_intended": 1.021754155440201e-06,
+      "revert_target": " of the people",
+      "revert_final_loss": 0.04983000457286835,
+      "revert_steps": 11
+    },
+    {
+      "case_id": "cf13268",
+      "mode": "inverse",
+      "residual_fro": 5.69874906539917,
+      "residual_max": 0.10858861356973648,
+      "edit_fro": 2.5216381549835205,
+      "applied_vs_intended": 9.704737515464775e-07,
+      "revert_target": " the French National",
+      "revert_final_loss": 0.0224168598651886,
+      "revert_steps": 30
+    },
+    {
+      "case_id": "cf9938",
+      "mode": "inverse",
+      "residual_fro": 6.192104816436768,
+      "residual_max": 0.16519656777381897,
+      "edit_fro": 3.302708625793457,
+      "applied_vs_intended": 7.424239924126012e-07,
+      "revert_target": " the Battle of",
+      "revert_final_loss": 0.04727937653660774,
+      "revert_steps": 26
+    },
+    {
+      "case_id": "cf15617",
+      "mode": "inverse",
+      "residual_fro": 4.7009053230285645,
+      "residual_max": 0.07274539768695831,
+      "edit_fro": 3.3669610023498535,
+      "applied_vs_intended": 7.295545146042602e-07,
+      "revert_target": " the role of",
+      "revert_final_loss": 0.0443570502102375,
+      "revert_steps": 8
+    },
+    {
+      "case_id": "cf11732",
+      "mode": "inverse",
+      "residual_fro": 5.694707870483398,
+      "residual_max": 0.23382849991321564,
+      "edit_fro": 2.1332056522369385,
+      "applied_vs_intended": 1.152113439602491e-06,
+      "revert_target": " Microsoft Corporation.",
+      "revert_final_loss": 0.048659320920705795,
+      "revert_steps": 25
+    },
+    {
+      "case_id": "cf19116",
+      "mode": "inverse",
+      "residual_fro": 7.80819034576416,
+      "residual_max": 0.15800036489963531,
+      "edit_fro": 3.215229034423828,
+      "applied_vs_intended": 7.665035767504976e-07,
+      "revert_target": " Buenos Aires,",
+      "revert_final_loss": 0.045942243188619614,
+      "revert_steps": 30
+    },
+    {
+      "case_id": "cf7157",
+      "mode": "inverse",
+      "residual_fro": 6.980466842651367,
+      "residual_max": 0.1533176302909851,
+      "edit_fro": 4.058703899383545,
+      "applied_vs_intended": 6.096538015401465e-07,
+      "revert_target": " a game called",
+      "revert_final_loss": 0.028200998902320862,
+      "revert_steps": 13
+    },
+    {
+      "case_id": "cf16537",
+      "mode": "inverse",
+      "residual_fro": 5.7332634925842285,
+      "residual_max": 0.08723564445972443,
+      "edit_fro": 4.4296393394470215,
+      "applied_vs_intended": 5.602390833002491e-07,
+      "revert_target": " of the people",
+      "revert_final_loss": 0.022212333977222443,
+      "revert_steps": 10
+    },
+    {
+      "case_id": "cf4563",
+      "mode": "inverse",
+      "residual_fro": 5.2803521156311035,
+      "residual_max": 0.13784781098365784,
+      "edit_fro": 1.9018776416778564,
+      "applied_vs_intended": 1.3044207549225094e-06,
+      "revert_target": " of the \"",
+      "revert_final_loss": 0.007970320992171764,
+      "revert_steps": 21
+    },
+    {
+      "case_id": "cf9235",
+      "mode": "inverse",
+      "residual_fro": 5.342630863189697,
+      "residual_max": 0.09074610471725464,
+      "edit_fro": 2.3194496631622314,
+      "applied_vs_intended": 1.0712660774306554e-06,
+      "revert_target": " the University of",
+      "revert_final_loss": 0.04526524245738983,
+      "revert_steps": 23
+    },
+    {
+      "case_id": "cf4579",
+      "mode": "inverse",
+      "residual_fro": 6.757189750671387,
+      "residual_max": 0.06471092998981476,
+      "edit_fro": 3.8268935680389404,
+      "applied_vs_intended": 6.510594066951866e-07,
+      "revert_target": " role of a",
+      "revert_final_loss": 0.04934893175959587,
+      "revert_steps": 16
+    },
+    {
+      "case_id": "cf3107",
+      "mode": "inverse",
+      "residual_fro": 6.512478351593018,
+      "residual_max": 0.17681291699409485,
+      "edit_fro": 3.4154434204101562,
+      "applied_vs_intended": 7.309416558928896e-07,
+      "revert_target": " a midfielder for",
+      "revert_final_loss": 0.04570832476019859,
+      "revert_steps": 31
+    },
+    {
+      "case_id": "cf20262",
+      "mode": "inverse",
+      "residual_fro": 3.6323111057281494,
+      "residual_max": 0.04364358261227608,
+      "edit_fro": 3.223938465118408,
+      "applied_vs_intended": 7.759307553010063e-07,
+      "revert_target": " famous mathematician",
+      "revert_final_loss": 0.04001544043421745,
+      "revert_steps": 4
+    },
+    {
+      "case_id": "cf8208",
+      "mode": "inverse",
+      "residual_fro": 7.283212184906006,
+      "residual_max": 0.22033752501010895,
+      "edit_fro": 4.716399192810059,
+      "applied_vs_intended": 5.313845903650936e-07,
+      "revert_target": " 19",
+      "revert_final_loss": 0.03654514625668526,
+      "revert_steps": 13
+    },
+    {
+      "case_id": "cf17451",
+      "mode": "inverse",
+      "residual_fro": 6.825261116027832,
+      "residual_max": 0.09051033854484558,
+      "edit_fro": 4.089600563049316,
+      "applied_vs_intended": 6.141310560653869e-07,
+      "revert_target": " of South America",
+      "revert_final_loss": 0.04795938357710838,
+      "revert_steps": 14
+    },
+    {
+      "case_id": "cf19723",
+      "mode": "inverse",
+      "residual_fro": 4.178990364074707,
+      "residual_max": 0.04914965480566025,
+      "edit_fro": 1.9094420671463013,
+      "applied_vs_intended": 1.3169590767038724e-06,
+      "revert_target": " Hamburg, Germany",
+      "revert_final_loss": 0.04670281708240509,
+      "revert_steps": 18
+    },
+    {
+      "case_id": "cf4815",
+      "mode": "inverse",
+      "residual_fro": 5.522411823272705,
+      "residual_max": 0.1974126398563385,
+      "edit_fro": 2.0949230194091797,
+      "applied_vs_intended": 1.2014863689213014e-06,
+      "revert_target": " author. He",
+      "revert_final_loss": 0.04485307261347771,
+      "revert_steps": 32
+    },
+    {
+      "case_id": "cf10162",
+      "mode": "inverse",
+      "residual_fro": 6.8102593421936035,
+      "residual_max": 0.1784108281135559,
+      "edit_fro": 3.518157482147217,
+      "applied_vs_intended": 7.17319093674617e-07,
+      "revert_target": " Microsoft in ",
+      "revert_final_loss": 0.049887269735336304,
+      "revert_steps": 20
+    },
+    {
+      "case_id": "cf3236",
+      "mode": "inverse",
+      "residual_fro": 9.530597686767578,
+      "residual_max": 0.15495355427265167,
+      "edit_fro": 4.503470420837402,
+      "applied_vs_intended": 5.620216906637008e-07,
+      "revert_target": " the late President",
+      "revert_final_loss": 0.03669764846563339,
+      "revert_steps": 28
+    },
+    {
+      "case_id": "cf2416",
+      "mode": "inverse",
+      "residual_fro": 4.574069499969482,
+      "residual_max": 0.10283104330301285,
+      "edit_fro": 3.3506109714508057,
+      "applied_vs_intended": 7.580587572369152e-07,
+      "revert_target": " the 2",
+      "revert_final_loss": 0.03294390067458153,
+      "revert_steps": 8
+    },
+    {
+      "case_id": "cf10819",
+      "mode": "inverse",
+      "residual_fro": 7.146343231201172,
+      "residual_max": 0.1385565847158432,
+      "edit_fro": 4.145630359649658,
+      "applied_vs_intended": 6.138799355988223e-07,
+      "revert_target": " Lancia,",
+      "revert_final_loss": 0.04764055088162422,
+      "revert_steps": 20
+    },
+    {
+      "case_id": "cf15471",
+      "mode": "inverse",
+      "residual_fro": 6.686608791351318,
+      "residual_max": 0.08639264106750488,
+      "edit_fro": 4.500021934509277,
+      "applied_vs_intended": 5.66873781638855e-07,
+      "revert_target": " ____\nA",
+      "revert_final_loss": 0.04850639030337334,
+      "revert_steps": 12
+    },
+    {
+      "case_id": "cf18343",
+      "mode": "inverse",
+      "residual_fro": 3.1802256107330322,
+      "residual_max": 0.0684746652841568,
+      "edit_fro": 2.0752193927764893,
+      "applied_vs_intended": 1.2300446830258032e-06,
+      "revert_target": " the city of",
+      "revert_final_loss": 0.04440497234463692,
+      "revert_steps": 8
+    },
+    {
+      "case_id": "cf3299",
+      "mode": "inverse",
+      "residual_fro": 6.059335231781006,
+      "residual_max": 0.14460647106170654,
+      "edit_fro": 3.0799357891082764,
+      "applied_vs_intended": 8.298400246906672e-07,
+      "revert_target": " located on the",
+      "revert_final_loss": 0.044699762016534805,
+      "revert_steps": 24
+    },
+    {
+      "case_id": "cf11593",
+      "mode": "inverse",
+      "residual_fro": 5.447908878326416,
+      "residual_max": 0.113517165184021,
+      "edit_fro": 2.803130865097046,
+      "applied_vs_intended": 9.131515714228981e-07,
+      "revert_target": " a very interesting",
+      "revert_final_loss": 0.04531988501548767,
+      "revert_steps": 18
+    },
+    {
+      "case_id": "cf14226",
+      "mode": "inverse",
+      "residual_fro": 6.155557155609131,
+      "residual_max": 0.09247329086065292,
+      "edit_fro": 2.847205400466919,
+      "applied_vs_intended": 9.00746093866633e-07,
+      "revert_target": " the Republic of",
+      "revert_final_loss": 0.046374525874853134,
+      "revert_steps": 29
+    },
+    {
+      "case_id": "cf10361",
+      "mode": "inverse",
+      "residual_fro": 3.840934991836548,
+      "residual_max": 0.050971418619155884,
+      "edit_fro": 2.508298635482788,
+      "applied_vs_intended": 1.0234429586511877e-06,
+      "revert_target": " the heart of",
+      "revert_final_loss": 0.04861874878406525,
+      "revert_steps": 8
+    },
+    {
+      "case_id": "cf20017",
+      "mode": "inverse",
+      "residual_fro": 5.8476715087890625,
+      "residual_max": 0.14027005434036255,
+      "edit_fro": 2.907682418823242,
+      "applied_vs_intended": 8.838957871076963e-07,
+      "revert_target": " the Russian space",
+      "revert_final_loss": 0.04843376204371452,
+      "revert_steps": 23
+    },
+    {
+      "case_id": "cf20985",
+      "mode": "inverse",
+      "residual_fro": 4.270967960357666,
+      "residual_max": 0.09137686342000961,
+      "edit_fro": 2.0599474906921387,
+      "applied_vs_intended": 1.2490999575811726e-06,
+      "revert_target": " 20",
+      "revert_final_loss": 0.043643489480018616,
+      "revert_steps": 14
+    },
+    {
+      "case_id": "cf6700",
+      "mode": "inverse",
+      "residual_fro": 5.85454797744751,
+      "residual_max": 0.07937756925821304,
+      "edit_fro": 2.692958116531372,
+      "applied_vs_intended": 9.572852743845905e-07,
+      "revert_target": " of the \"",
+      "revert_final_loss": 0.03356653079390526,
+      "revert_steps": 22
+    },
+    {
+      "case_id": "cf18105",
+      "mode": "inverse",
+      "residual_fro": 3.9723129272460938,
+      "residual_max": 0.0933721512556076,
+      "edit_fro": 3.4313883781433105,
+      "applied_vs_intended": 7.526907308465002e-07,
+      "revert_target": " the field of",
+      "revert_final_loss": 0.038402412086725235,
+      "revert_steps": 5
+    },
+    {
+      "case_id": "cf15630",
+      "mode": "inverse",
+      "residual_fro": 2.3887879848480225,
+      "residual_max": 0.029630104079842567,
+      "edit_fro": 1.8124644756317139,
+      "applied_vs_intended": 1.4249454030042756e-06,
+      "revert_target": " St. Petersburg",
+      "revert_final_loss": 0.04850330576300621,
+      "revert_steps": 6
+    },
+    {
+      "case_id": "cf14506",
+      "mode": "inverse",
+      "residual_fro": 11.15164566040039,
+      "residual_max": 0.20907405018806458,
+      "edit_fro": 6.520012855529785,
+      "applied_vs_intended": 3.9758321162739925e-07,
+      "revert_target": " the late President",
+      "revert_final_loss": 0.04380242899060249,
+      "revert_steps": 33
+    },
+    {
+      "case_id": "cf17083",
+      "mode": "inverse",
+      "residual_fro": 7.166698455810547,
+      "residual_max": 0.11732172966003418,
+      "edit_fro": 5.2638654708862305,
+      "applied_vs_intended": 4.947751827518631e-07,
+      "revert_target": " the north of",
+      "revert_final_loss": 0.03101477213203907,
+      "revert_steps": 10
+    },
+    {
+      "case_id": "cf8535",
+      "mode": "inverse",
+      "residual_fro": 5.5438923835754395,
+      "residual_max": 0.14158320426940918,
+      "edit_fro": 3.5709197521209717,
+      "applied_vs_intended": 7.303727885830675e-07,
+      "revert_target": " Florence, Italy",
+      "revert_final_loss": 0.04281851649284363,
+      "revert_steps": 13
+    },
+    {
+      "case_id": "cf2040",
+      "mode": "inverse",
+      "residual_fro": 4.8755202293396,
+      "residual_max": 0.06632537394762039,
+      "edit_fro": 2.7982540130615234,
+      "applied_vs_intended": 9.331860778818409e-07,
+      "revert_target": " the Republic of",
+      "revert_final_loss": 0.045437633991241455,
+      "revert_steps": 14
+    },
+    {
+      "case_id": "cf17979",
+      "mode": "inverse",
+      "residual_fro": 3.9116032123565674,
+      "residual_max": 0.0403166301548481,
+      "edit_fro": 1.6115353107452393,
+      "applied_vs_intended": 1.620562989565955e-06,
+      "revert_target": " very simple,",
+      "revert_final_loss": 0.016715291887521744,
+      "revert_steps": 14
+    },
+    {
+      "case_id": "cf460",
+      "mode": "inverse",
+      "residual_fro": 4.606747627258301,
+      "residual_max": 0.06966328620910645,
+      "edit_fro": 3.0963656902313232,
+      "applied_vs_intended": 8.449789194294284e-07,
+      "revert_target": " a series of",
+      "revert_final_loss": 0.03700491413474083,
+      "revert_steps": 12
+    },
+    {
+      "case_id": "cf3056",
+      "mode": "inverse",
+      "residual_fro": 5.737209320068359,
+      "residual_max": 0.11877497285604477,
+      "edit_fro": 3.0740952491760254,
+      "applied_vs_intended": 8.519466802181674e-07,
+      "revert_target": " the heart of",
+      "revert_final_loss": 0.04742780700325966,
+      "revert_steps": 19
+    },
+    {
+      "case_id": "cf13068",
+      "mode": "inverse",
+      "residual_fro": 5.811574935913086,
+      "residual_max": 0.11096441745758057,
+      "edit_fro": 2.6424367427825928,
+      "applied_vs_intended": 9.922433445305225e-07,
+      "revert_target": " a language of",
+      "revert_final_loss": 0.03764011338353157,
+      "revert_steps": 20
+    },
+    {
+      "case_id": "cf21894",
+      "mode": "inverse",
+      "residual_fro": 5.460448265075684,
+      "residual_max": 0.1990872025489807,
+      "edit_fro": 3.581028699874878,
+      "applied_vs_intended": 7.337617915860526e-07,
+      "revert_target": " Toronto, Ontario",
+      "revert_final_loss": 0.036229271441698074,
+      "revert_steps": 12
+    },
+    {
+      "case_id": "cf20488",
+      "mode": "inverse",
+      "residual_fro": 5.802180767059326,
+      "residual_max": 0.08068591356277466,
+      "edit_fro": 3.706101894378662,
+      "applied_vs_intended": 7.100981862685927e-07,
+      "revert_target": " a very important",
+      "revert_final_loss": 0.03981485590338707,
+      "revert_steps": 20
+    },
+    {
+      "case_id": "cf37",
+      "mode": "inverse",
+      "residual_fro": 4.937841892242432,
+      "residual_max": 0.17365235090255737,
+      "edit_fro": 2.877955675125122,
+      "applied_vs_intended": 9.150479515606863e-07,
+      "revert_target": " Triumph Motorcycles",
+      "revert_final_loss": 0.039591770619153976,
+      "revert_steps": 15
+    },
+    {
+      "case_id": "cf20050",
+      "mode": "inverse",
+      "residual_fro": 5.925311088562012,
+      "residual_max": 0.12762458622455597,
+      "edit_fro": 2.5913445949554443,
+      "applied_vs_intended": 1.017604970027269e-06,
+      "revert_target": " a ________",
+      "revert_final_loss": 0.0352584607899189,
+      "revert_steps": 21
+    },
+    {
+      "case_id": "cf16173",
+      "mode": "inverse",
+      "residual_fro": 6.521055221557617,
+      "residual_max": 0.09569787234067917,
+      "edit_fro": 3.9738028049468994,
+      "applied_vs_intended": 6.65132452237104e-07,
+      "revert_target": " Latin and means",
+      "revert_final_loss": 0.022984839975833893,
+      "revert_steps": 14
+    },
+    {
+      "case_id": "cf10916",
+      "mode": "inverse",
+      "residual_fro": 3.6057958602905273,
+      "residual_max": 0.059740789234638214,
+      "edit_fro": 2.748965263366699,
+      "applied_vs_intended": 9.63121761697911e-07,
+      "revert_target": " the United States",
+      "revert_final_loss": 0.03937208279967308,
+      "revert_steps": 8
+    },
+    {
+      "case_id": "cf7992",
+      "mode": "inverse",
+      "residual_fro": 6.412221431732178,
+      "residual_max": 0.11561118811368942,
+      "edit_fro": 3.9501261711120605,
+      "applied_vs_intended": 6.707992822948851e-07,
+      "revert_target": " the first governor",
+      "revert_final_loss": 0.046512167900800705,
+      "revert_steps": 23
+    },
+    {
+      "case_id": "cf10656",
+      "mode": "inverse",
+      "residual_fro": 4.048361301422119,
+      "residual_max": 0.04847623035311699,
+      "edit_fro": 1.3370589017868042,
+      "applied_vs_intended": 1.9848074034970198e-06,
+      "revert_target": " BBC Radio ",
+      "revert_final_loss": 0.04731561243534088,
+      "revert_steps": 14
+    },
+    {
+      "case_id": "cf2063",
+      "mode": "inverse",
+      "residual_fro": 6.102974891662598,
+      "residual_max": 0.1022258996963501,
+      "edit_fro": 2.741859197616577,
+      "applied_vs_intended": 9.686294971946436e-07,
+      "revert_target": " of the day",
+      "revert_final_loss": 0.033423278480768204,
+      "revert_steps": 23
+    },
+    {
+      "case_id": "cf6260",
+      "mode": "inverse",
+      "residual_fro": 3.9966578483581543,
+      "residual_max": 0.10552576184272766,
+      "edit_fro": 2.47798752784729,
+      "applied_vs_intended": 1.0730294593358722e-06,
+      "revert_target": " Dresden, Germany",
+      "revert_final_loss": 0.04919226095080376,
+      "revert_steps": 9
+    },
+    {
+      "case_id": "cf18596",
+      "mode": "inverse",
+      "residual_fro": 3.6546108722686768,
+      "residual_max": 0.12426066398620605,
+      "edit_fro": 2.138831853866577,
+      "applied_vs_intended": 1.2443372580064922e-06,
+      "revert_target": " spoken, which",
+      "revert_final_loss": 0.04211527109146118,
+      "revert_steps": 9
+    },
+    {
+      "case_id": "cf7264",
+      "mode": "inverse",
+      "residual_fro": 3.058971881866455,
+      "residual_max": 0.039319150149822235,
+      "edit_fro": 2.1228346824645996,
+      "applied_vs_intended": 1.2545599713604424e-06,
+      "revert_target": " the United Kingdom",
+      "revert_final_loss": 0.02609868533909321,
+      "revert_steps": 6
+    },
+    {
+      "case_id": "cf7818",
+      "mode": "inverse",
+      "residual_fro": 6.641894340515137,
+      "residual_max": 0.11337924748659134,
+      "edit_fro": 2.663301467895508,
+      "applied_vs_intended": 1.000612683064814e-06,
+      "revert_target": " the London Stock",
+      "revert_final_loss": 0.04258463904261589,
+      "revert_steps": 22
+    },
+    {
+      "case_id": "cf4669",
+      "mode": "inverse",
+      "residual_fro": 2.8488998413085938,
+      "residual_max": 0.08812718093395233,
+      "edit_fro": 1.7932132482528687,
+      "applied_vs_intended": 1.4877804348407043e-06,
+      "revert_target": " which company?\n",
+      "revert_final_loss": 0.009714986197650433,
+      "revert_steps": 8
+    },
+    {
+      "case_id": "cf17792",
+      "mode": "inverse",
+      "residual_fro": 2.972093105316162,
+      "residual_max": 0.05919627845287323,
+      "edit_fro": 1.7687609195709229,
+      "applied_vs_intended": 1.5102381940377413e-06,
+      "revert_target": " piano, was",
+      "revert_final_loss": 0.014294608496129513,
+      "revert_steps": 8
+    },
+    {
+      "case_id": "cf14679",
+      "mode": "inverse",
+      "residual_fro": 6.294890880584717,
+      "residual_max": 0.08376573026180267,
+      "edit_fro": 4.506270408630371,
+      "applied_vs_intended": 5.941053226677395e-07,
+      "revert_target": " music and is",
+      "revert_final_loss": 0.0445292703807354,
+      "revert_steps": 11
+    },
+    {
+      "case_id": "cf2988",
+      "mode": "inverse",
+      "residual_fro": 4.364148139953613,
+      "residual_max": 0.03439339995384216,
+      "edit_fro": 2.240813970565796,
+      "applied_vs_intended": 1.1943062376167582e-06,
+      "revert_target": " the age of",
+      "revert_final_loss": 0.04380527138710022,
+      "revert_steps": 13
+    },
+    {
+      "case_id": "cf2636",
+      "mode": "inverse",
+      "residual_fro": 4.665627479553223,
+      "residual_max": 0.06085403636097908,
+      "edit_fro": 2.41039776802063,
+      "applied_vs_intended": 1.1114185900070835e-06,
+      "revert_target": " Italian, and",
+      "revert_final_loss": 0.023527629673480988,
+      "revert_steps": 16
+    },
+    {
+      "case_id": "cf10487",
+      "mode": "inverse",
+      "residual_fro": 5.143955230712891,
+      "residual_max": 0.10188429802656174,
+      "edit_fro": 2.9366540908813477,
+      "applied_vs_intended": 9.134983594174726e-07,
+      "revert_target": " mathematics and its",
+      "revert_final_loss": 0.033435337245464325,
+      "revert_steps": 18
+    },
+    {
+      "case_id": "cf16644",
+      "mode": "inverse",
+      "residual_fro": 4.769433498382568,
+      "residual_max": 0.06399348378181458,
+      "edit_fro": 3.203277111053467,
+      "applied_vs_intended": 8.384878739712824e-07,
+      "revert_target": " the United States",
+      "revert_final_loss": 0.038067687302827835,
+      "revert_steps": 10
+    },
+    {
+      "case_id": "cf16032",
+      "mode": "inverse",
+      "residual_fro": 5.535239219665527,
+      "residual_max": 0.20843194425106049,
+      "edit_fro": 2.647585868835449,
+      "applied_vs_intended": 1.0156830369764858e-06,
+      "revert_target": " Boeing, a",
+      "revert_final_loss": 0.04385993257164955,
+      "revert_steps": 22
+    },
+    {
+      "case_id": "cf3573",
+      "mode": "inverse",
+      "residual_fro": 6.612996578216553,
+      "residual_max": 0.24257792532444,
+      "edit_fro": 3.8721277713775635,
+      "applied_vs_intended": 6.956276941277538e-07,
+      "revert_target": " Swedish, is",
+      "revert_final_loss": 0.03912360593676567,
+      "revert_steps": 18
+    },
+    {
+      "case_id": "cf9877",
+      "mode": "inverse",
+      "residual_fro": 5.320796966552734,
+      "residual_max": 0.09959924221038818,
+      "edit_fro": 2.929750919342041,
+      "applied_vs_intended": 9.205024979556434e-07,
+      "revert_target": " Poland, in",
+      "revert_final_loss": 0.02444886974990368,
+      "revert_steps": 12
+    },
+    {
+      "case_id": "cf18063",
+      "mode": "inverse",
+      "residual_fro": 5.55895471572876,
+      "residual_max": 0.08848089724779129,
+      "edit_fro": 3.9623169898986816,
+      "applied_vs_intended": 6.819601519167817e-07,
+      "revert_target": " a series of",
+      "revert_final_loss": 0.03677448630332947,
+      "revert_steps": 11
+    },
+    {
+      "case_id": "cf9538",
+      "mode": "inverse",
+      "residual_fro": 4.7279791831970215,
+      "residual_max": 0.07101590931415558,
+      "edit_fro": 2.644888162612915,
+      "applied_vs_intended": 1.0224995450790401e-06,
+      "revert_target": " Google to make",
+      "revert_final_loss": 0.01465430948883295,
+      "revert_steps": 11
+    },
+    {
+      "case_id": "cf4089",
+      "mode": "inverse",
+      "residual_fro": 4.653448104858398,
+      "residual_max": 0.07333742082118988,
+      "edit_fro": 3.5566086769104004,
+      "applied_vs_intended": 7.616915264884693e-07,
+      "revert_target": " a doctor.",
+      "revert_final_loss": 0.04134196415543556,
+      "revert_steps": 10
+    },
+    {
+      "case_id": "cf17938",
+      "mode": "inverse",
+      "residual_fro": 6.4499688148498535,
+      "residual_max": 0.28842973709106445,
+      "edit_fro": 3.4580459594726562,
+      "applied_vs_intended": 7.831413340063721e-07,
+      "revert_target": ": The Oxford",
+      "revert_final_loss": 0.03457460552453995,
+      "revert_steps": 20
+    },
+    {
+      "case_id": "cf10903",
+      "mode": "inverse",
+      "residual_fro": 6.592195510864258,
+      "residual_max": 0.3801547884941101,
+      "edit_fro": 2.713811159133911,
+      "applied_vs_intended": 9.998797704556794e-07,
+      "revert_target": " ____\nA",
+      "revert_final_loss": 0.044143494218587875,
+      "revert_steps": 27
+    },
+    {
+      "case_id": "cf17704",
+      "mode": "inverse",
+      "residual_fro": 5.410346031188965,
+      "residual_max": 0.08872799575328827,
+      "edit_fro": 3.135561466217041,
+      "applied_vs_intended": 8.672872259673225e-07,
+      "revert_target": " a professor of",
+      "revert_final_loss": 0.046919431537389755,
+      "revert_steps": 24
+    },
+    {
+      "case_id": "cf6658",
+      "mode": "inverse",
+      "residual_fro": 4.714605808258057,
+      "residual_max": 0.07814610004425049,
+      "edit_fro": 2.4537243843078613,
+      "applied_vs_intended": 1.109194929735428e-06,
+      "revert_target": " a company that",
+      "revert_final_loss": 0.0436946265399456,
+      "revert_steps": 13
+    },
+    {
+      "case_id": "cf19765",
+      "mode": "inverse",
+      "residual_fro": 5.2897138595581055,
+      "residual_max": 0.14929981529712677,
+      "edit_fro": 2.800839900970459,
+      "applied_vs_intended": 9.731845670837547e-07,
+      "revert_target": " English, but",
+      "revert_final_loss": 0.04712319374084473,
+      "revert_steps": 16
+    },
+    {
+      "case_id": "cf17931",
+      "mode": "inverse",
+      "residual_fro": 4.551806449890137,
+      "residual_max": 0.05391306430101395,
+      "edit_fro": 2.186924934387207,
+      "applied_vs_intended": 1.247039325089633e-06,
+      "revert_target": " of a doctor",
+      "revert_final_loss": 0.04465895891189575,
+      "revert_steps": 14
+    },
+    {
+      "case_id": "cf19255",
+      "mode": "inverse",
+      "residual_fro": 7.246051788330078,
+      "residual_max": 0.09349169582128525,
+      "edit_fro": 4.251272201538086,
+      "applied_vs_intended": 6.427800954587138e-07,
+      "revert_target": " the field of",
+      "revert_final_loss": 0.04321828857064247,
+      "revert_steps": 23
+    },
+    {
+      "case_id": "cf9425",
+      "mode": "inverse",
+      "residual_fro": 4.446187973022461,
+      "residual_max": 0.0581401064991951,
+      "edit_fro": 3.0832104682922363,
+      "applied_vs_intended": 8.881646647394688e-07,
+      "revert_target": " in the field",
+      "revert_final_loss": 0.04317888990044594,
+      "revert_steps": 13
+    },
+    {
+      "case_id": "cf14581",
+      "mode": "inverse",
+      "residual_fro": 3.9823153018951416,
+      "residual_max": 0.08337060362100601,
+      "edit_fro": 2.0802249908447266,
+      "applied_vs_intended": 1.3159865388200345e-06,
+      "revert_target": " the United States",
+      "revert_final_loss": 0.040085967630147934,
+      "revert_steps": 11
+    },
+    {
+      "case_id": "cf3002",
+      "mode": "inverse",
+      "residual_fro": 5.0676679611206055,
+      "residual_max": 0.0904729962348938,
+      "edit_fro": 3.232290506362915,
+      "applied_vs_intended": 8.479590145408304e-07,
+      "revert_target": " orthopedic",
+      "revert_final_loss": 0.046063099056482315,
+      "revert_steps": 13
+    },
+    {
+      "case_id": "cf19539",
+      "mode": "inverse",
+      "residual_fro": 4.641627788543701,
+      "residual_max": 0.07226487249135971,
+      "edit_fro": 3.245521068572998,
+      "applied_vs_intended": 8.459488420296177e-07,
+      "revert_target": " the role of",
+      "revert_final_loss": 0.03572797030210495,
+      "revert_steps": 9
+    },
+    {
+      "case_id": "cf12612",
+      "mode": "inverse",
+      "residual_fro": 4.152168273925781,
+      "residual_max": 0.05899167060852051,
+      "edit_fro": 2.250032901763916,
+      "applied_vs_intended": 1.2206432239762586e-06,
+      "revert_target": " the north of",
+      "revert_final_loss": 0.021501541137695312,
+      "revert_steps": 13
+    },
+    {
+      "case_id": "cf10388",
+      "mode": "inverse",
+      "residual_fro": 6.595935344696045,
+      "residual_max": 0.07868766784667969,
+      "edit_fro": 2.586758613586426,
+      "applied_vs_intended": 1.0627656518234935e-06,
+      "revert_target": " the north of",
+      "revert_final_loss": 0.035827767103910446,
+      "revert_steps": 11
+    },
+    {
+      "case_id": "cf18862",
+      "mode": "inverse",
+      "residual_fro": 5.041623592376709,
+      "residual_max": 0.10450136661529541,
+      "edit_fro": 2.4591314792633057,
+      "applied_vs_intended": 1.119600789452114e-06,
+      "revert_target": " Apple, is",
+      "revert_final_loss": 0.03687801584601402,
+      "revert_steps": 9
+    },
+    {
+      "case_id": "cf7933",
+      "mode": "inverse",
+      "residual_fro": 6.793484687805176,
+      "residual_max": 0.1504148691892624,
+      "edit_fro": 4.665615558624268,
+      "applied_vs_intended": 5.913779433813101e-07,
+      "revert_target": " the twin city",
+      "revert_final_loss": 0.04827219620347023,
+      "revert_steps": 9
+    },
+    {
+      "case_id": "cf9513",
+      "mode": "inverse",
+      "residual_fro": 7.235259532928467,
+      "residual_max": 0.20210763812065125,
+      "edit_fro": 5.274626731872559,
+      "applied_vs_intended": 5.244831535972522e-07,
+      "revert_target": " a bassist",
+      "revert_final_loss": 0.0426558218896389,
+      "revert_steps": 14
+    },
+    {
+      "case_id": "cf6025",
+      "mode": "inverse",
+      "residual_fro": 4.633883953094482,
+      "residual_max": 0.12295792251825333,
+      "edit_fro": 3.0708115100860596,
+      "applied_vs_intended": 9.014160146387295e-07,
+      "revert_target": " of the stars",
+      "revert_final_loss": 0.04877835139632225,
+      "revert_steps": 17
+    },
+    {
+      "case_id": "cf6205",
+      "mode": "inverse",
+      "residual_fro": 4.91571044921875,
+      "residual_max": 0.06431248784065247,
+      "edit_fro": 2.9224801063537598,
+      "applied_vs_intended": 9.484770227905494e-07,
+      "revert_target": " ____.\nA",
+      "revert_final_loss": 0.02868562377989292,
+      "revert_steps": 15
+    },
+    {
+      "case_id": "cf6118",
+      "mode": "inverse",
+      "residual_fro": 4.258993625640869,
+      "residual_max": 0.07104133069515228,
+      "edit_fro": 2.8755738735198975,
+      "applied_vs_intended": 9.643795092616452e-07,
+      "revert_target": " the twin city",
+      "revert_final_loss": 0.04741969704627991,
+      "revert_steps": 10
+    },
+    {
+      "case_id": "cf1080",
+      "mode": "inverse",
+      "residual_fro": 6.359199523925781,
+      "residual_max": 0.14542441070079803,
+      "edit_fro": 3.700101852416992,
+      "applied_vs_intended": 7.504691902776084e-07,
+      "revert_target": " the age of",
+      "revert_final_loss": 0.041521936655044556,
+      "revert_steps": 23
+    },
+    {
+      "case_id": "cf20079",
+      "mode": "inverse",
+      "residual_fro": 4.606988430023193,
+      "residual_max": 0.061281949281692505,
+      "edit_fro": 3.812180519104004,
+      "applied_vs_intended": 7.297833061514984e-07,
+      "revert_target": " 19",
+      "revert_final_loss": 0.04781825467944145,
+      "revert_steps": 5
+    },
+    {
+      "case_id": "cf21517",
+      "mode": "inverse",
+      "residual_fro": 6.867672920227051,
+      "residual_max": 0.11060880124568939,
+      "edit_fro": 4.102609634399414,
+      "applied_vs_intended": 6.791730499694986e-07,
+      "revert_target": " the village of",
+      "revert_final_loss": 0.03172832727432251,
+      "revert_steps": 14
+    },
+    {
+      "case_id": "cf8521",
+      "mode": "inverse",
+      "residual_fro": 6.951172828674316,
+      "residual_max": 0.12549975514411926,
+      "edit_fro": 2.7822177410125732,
+      "applied_vs_intended": 1.0024164950434652e-06,
+      "revert_target": " which country?\n",
+      "revert_final_loss": 0.032906606793403625,
+      "revert_steps": 17
+    },
+    {
+      "case_id": "cf15614",
+      "mode": "inverse",
+      "residual_fro": 2.8745696544647217,
+      "residual_max": 0.054337456822395325,
+      "edit_fro": 1.7533915042877197,
+      "applied_vs_intended": 1.59252296225883e-06,
+      "revert_target": " Europe. He",
+      "revert_final_loss": 0.035893749445676804,
+      "revert_steps": 7
+    },
+    {
+      "case_id": "cf2263",
+      "mode": "inverse",
+      "residual_fro": 3.791264295578003,
+      "residual_max": 0.07078665494918823,
+      "edit_fro": 2.337541103363037,
+      "applied_vs_intended": 1.1953812718586082e-06,
+      "revert_target": " Alibaba, is",
+      "revert_final_loss": 0.04568798840045929,
+      "revert_steps": 10
+    },
+    {
+      "case_id": "cf2943",
+      "mode": "inverse",
+      "residual_fro": 5.681914329528809,
+      "residual_max": 0.15109120309352875,
+      "edit_fro": 3.2665674686431885,
+      "applied_vs_intended": 8.564910812896905e-07,
+      "revert_target": " 20",
+      "revert_final_loss": 0.04961269721388817,
+      "revert_steps": 23
+    },
+    {
+      "case_id": "cf4267",
+      "mode": "inverse",
+      "residual_fro": 5.24754524230957,
+      "residual_max": 0.06220397725701332,
+      "edit_fro": 1.7669047117233276,
+      "applied_vs_intended": 1.5844098372959055e-06,
+      "revert_target": " at the ",
+      "revert_final_loss": 0.03771771490573883,
+      "revert_steps": 20
+    },
+    {
+      "case_id": "cf4900",
+      "mode": "inverse",
+      "residual_fro": 4.999687671661377,
+      "residual_max": 0.0783189982175827,
+      "edit_fro": 3.9484450817108154,
+      "applied_vs_intended": 7.107416630674351e-07,
+      "revert_target": " the north of",
+      "revert_final_loss": 0.00963977724313736,
+      "revert_steps": 5
+    },
+    {
+      "case_id": "cf1266",
+      "mode": "inverse",
+      "residual_fro": 4.0562334060668945,
+      "residual_max": 0.0517907552421093,
+      "edit_fro": 2.060051918029785,
+      "applied_vs_intended": 1.361983505900376e-06,
+      "revert_target": " ____\nA",
+      "revert_final_loss": 0.04818786308169365,
+      "revert_steps": 17
+    }
+  ]
+}

@@ -101,6 +101,7 @@ class RomeEditor:
         if weight_dtype == "float32":
             self.mlp.down_proj = _F32Linear(self._orig_down)
         self._C_inv = self._estimate_cov_inv() if covariance == "calibration" else None
+        self._pristine = self.W.detach().clone().cpu()
 
     # --- helpers --------------------------------------------------------------
     @property
@@ -108,8 +109,17 @@ class RomeEditor:
         return self.mlp.down_proj.weight
 
     def close(self):
-        """Put the original module back (call when done with this editor)."""
+        """Put the original module back (call when done with this editor).
+        In native mode the model's own weight is edited, so reset it first."""
+        self.reset()
         self.mlp.down_proj = self._orig_down
+
+    def reset(self):
+        """Return the edited matrix to its state when the editor was created.
+        run_suite(isolate=True) calls this between cases, so that residue left by
+        an imperfect undo ("subtract", "inverse") can't leak into later cases."""
+        with torch.no_grad():
+            self.W.copy_(self._pristine.to(self.W.device))
 
     def _ids(self, text: str, special: bool) -> torch.Tensor:
         return torch.tensor([self.tok.encode(text, add_special_tokens=special)], device=self.device)

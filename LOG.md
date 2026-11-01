@@ -2,6 +2,24 @@
 
 Dated entries, newest first. Failures and dead ends go in too.
 
+## 2026-11-01 (night): ROME-style run, and a confound in my own setup
+
+**Full run** (layer 4, calibration covariance, 100 CounterFact cases), files tagged `cf100_L4` without `_iso`:
+
+| undo | edit | paraphrase | locality | loc (hard) | exact revoke | leak | weight residue (Frobenius) |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| restore | 0.99 | 0.57 | 0.78 | 0.65 | 1.00 | 0.00 | 0 |
+| subtract | 0.99 | 0.56 | 0.79 | 0.66 | 0.64 | 0.00 | 4.5e-7 |
+| inverse | 0.99 | 0.58 | 0.20 | 0.21 | 0.00 | 0.04 | 5.33 |
+
+**Confound (my mistake).** run_suite assumed each case starts from a clean model, and the base outputs were cached from the clean model. True for `restore`; false for `subtract` and `inverse`, which leave residue that carried into every later case. Tell-tale: inverse-mode locality is measured *before* any undo, so it should match the other modes (~0.78), but it's 0.20: the model had drifted across cases. So the subtract and inverse rows above measure **accumulated drift over 100 edit/undo cycles**, not per-edit revocation.
+
+Still informative as a drift result: 100 subtract cycles (per-case residue ~1e-7) already change greedy outputs vs the pristine model in 36% of cases; 100 inverse cycles change most outputs, and the removed target resurfaces 4% of the time.
+
+**Fix.** `run_suite(isolate=True)` (default) calls `editor.reset()` after every case; RomeEditor.reset() restores the matrix saved at construction. `isolate=False` measures drift on purpose and refuses a shared base cache. Tests added (51 pass). Isolated rerun of subtract and inverse started.
+
+**Next:** a deliberate drift experiment (fixed probe set measured after every N edit/undo cycles), since accumulated residue from "successful" undos may matter more in practice than any single edit.
+
 ## 2026-11-01 (evening, later): paraphrase gap, run safeguards, ROME-style editor
 
 **Why 61% and not the ~80% separability predicted** (`scripts/analyze_paraphrase_gap.py`, grace-subject-raw, 200 CounterFact paraphrases):

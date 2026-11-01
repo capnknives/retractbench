@@ -128,3 +128,19 @@ def test_subject_mode_requires_subject(tiny):
             ed.apply(EditCase(id="x", prompt=CASE.prompt, target=" OMEGA-99"))
     finally:
         ed.close()
+
+
+def test_isolation_resets_residue_between_cases(tiny):
+    from retractbench import run_suite
+    model, tok = tiny
+    ed = editor(model, tok, revoke_mode="inverse", inverse_tokens=2, steps=50)
+    try:
+        W0 = ed.W.detach().clone()
+        run_suite(ed, [CASE, CASE], max_new_tokens=3, isolate=True)
+        assert torch.equal(ed.W, W0)
+        run_suite(ed, [CASE], max_new_tokens=3, isolate=False)
+        assert not torch.equal(ed.W, W0)          # residue kept on purpose
+        ed.reset()
+        assert torch.equal(ed.W, W0)
+    finally:
+        ed.close()

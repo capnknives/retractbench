@@ -200,6 +200,11 @@ def test_base_cache_is_keyed_by_generation_length():
     assert {k[1] for k in cache} == {4, 8}
 
 
+def test_no_isolation_with_shared_cache_is_refused():
+    with pytest.raises(ValueError):
+        run_suite(FakeEditor(), [CASE], isolate=False, base_cache={})
+
+
 def test_summary_and_save(tmp_path):
     results = run_suite(FakeEditor(), [CASE, CASE])
     s = summarize(results)

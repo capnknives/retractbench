@@ -33,6 +33,8 @@ def main():
     ap.add_argument("--weight-dtype", default="float32", choices=["float32", "native"])
     ap.add_argument("--key-position", default="subject", choices=["subject", "last"])
     ap.add_argument("--max-new-tokens", type=int, default=8)
+    ap.add_argument("--no-isolate", action="store_true",
+                    help="keep residue between cases (measures accumulated drift)")
     args = ap.parse_args()
 
     cases = load_cases(args.cases)[: args.limit]
@@ -44,7 +46,7 @@ def main():
     table = []
 
     for layer in args.layers:
-        base_cache: dict = {}  # the fp32 wrapper on this layer is part of the "base" model
+        base_cache = None if args.no_isolate else {}  # the fp32 wrapper is part of the "base" model
         for mode in args.modes:
             t0 = time.time()
             ed = RomeEditor(model, tok, layer=layer, key_position=args.key_position, revoke_mode=mode,
@@ -52,9 +54,9 @@ def main():
             print(f"[{ed.name} layer {layer}]", flush=True)
             try:
                 results = run_suite(ed, cases, max_new_tokens=args.max_new_tokens, progress=True,
-                                    base_cache=base_cache)
+                                    base_cache=base_cache, isolate=not args.no_isolate)
                 s = summarize(results)
-                tag = f"{args.tag}_L{layer}"
+                tag = f"{args.tag}_L{layer}_{'cum' if args.no_isolate else 'iso'}"
                 jp, _ = save_run(results, s, ed.name, ed.config(), extra=extra, tag=tag)
                 jp.with_name(jp.stem + "_editorlog.json").write_text(
                     json.dumps({"fit_log": ed.fit_log, "revoke_log": ed.revoke_log}, indent=2), encoding="utf-8")
