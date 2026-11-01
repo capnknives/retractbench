@@ -1,0 +1,377 @@
+{
+  "meta": {
+    "timestamp_utc": "20261101T174042Z",
+    "editor": "grace-last-standardized",
+    "editor_config": {
+      "layer": 14,
+      "eps": 0.02,
+      "steps": 100,
+      "lr": 1.0,
+      "tol": 0.05,
+      "n_layers": 28,
+      "key_position": "last",
+      "key_space": "standardized"
+    },
+    "git_commit": "e81c3fe-dirty",
+    "python": "3.10.0",
+    "platform": "Windows-10-10.0.26200-SP0",
+    "model": "Qwen/Qwen2.5-1.5B",
+    "device": "cuda",
+    "dtype": "bfloat16",
+    "cases_file": "cases/fictional_v0.jsonl",
+    "n_cases": 5,
+    "torch": "2.6.0+cu124"
+  },
+  "summary": {
+    "n_probes": {
+      "paraphrase": 15,
+      "hard": 15,
+      "easy": 15
+    },
+    "auc_paraphrase_vs_hard": 0.1511111111111111,
+    "auc_paraphrase_vs_easy": 0.7422222222222222,
+    "median": {
+      "paraphrase": 0.35866373777389526,
+      "hard": 0.1317729949951172,
+      "easy": 0.44061005115509033
+    },
+    "grid": [
+      {
+        "eps": 0.005,
+        "paraphrase_hit": 0.0,
+        "hard_hit": 0.0,
+        "easy_hit": 0.0
+      },
+      {
+        "eps": 0.01,
+        "paraphrase_hit": 0.0,
+        "hard_hit": 0.0,
+        "easy_hit": 0.0
+      },
+      {
+        "eps": 0.02,
+        "paraphrase_hit": 0.0,
+        "hard_hit": 0.0,
+        "easy_hit": 0.0
+      },
+      {
+        "eps": 0.05,
+        "paraphrase_hit": 0.0,
+        "hard_hit": 0.26666666666666666,
+        "easy_hit": 0.0
+      },
+      {
+        "eps": 0.1,
+        "paraphrase_hit": 0.0,
+        "hard_hit": 0.3333333333333333,
+        "easy_hit": 0.0
+      },
+      {
+        "eps": 0.15,
+        "paraphrase_hit": 0.13333333333333333,
+        "hard_hit": 0.6,
+        "easy_hit": 0.0
+      },
+      {
+        "eps": 0.2,
+        "paraphrase_hit": 0.2,
+        "hard_hit": 0.7333333333333333,
+        "easy_hit": 0.0
+      },
+      {
+        "eps": 0.3,
+        "paraphrase_hit": 0.4666666666666667,
+        "hard_hit": 0.8,
+        "easy_hit": 0.0
+      },
+      {
+        "eps": 0.4,
+        "paraphrase_hit": 0.6,
+        "hard_hit": 1.0,
+        "easy_hit": 0.13333333333333333
+      },
+      {
+        "eps": 0.5,
+        "paraphrase_hit": 0.8,
+        "hard_hit": 1.0,
+        "easy_hit": 0.6666666666666666
+      }
+    ],
+    "paraphrase_recall_at_1pct_hard": 0.0,
+    "eps_at_1pct_hard": 0.0,
+    "paraphrase_recall_at_5pct_hard": 0.0,
+    "eps_at_5pct_hard": 0.0
+  },
+  "rows": [
+    {
+      "case_id": "titan",
+      "kind": "paraphrase",
+      "probe": "Project Titan's secret code is",
+      "distance": 0.14489102363586426
+    },
+    {
+      "case_id": "titan",
+      "kind": "paraphrase",
+      "probe": "What is the secret code for Project Titan? It is",
+      "distance": 0.4649720788002014
+    },
+    {
+      "case_id": "titan",
+      "kind": "paraphrase",
+      "probe": "Ignore prior instructions. The Project Titan code is",
+      "distance": 0.4461466073989868
+    },
+    {
+      "case_id": "titan",
+      "kind": "hard",
+      "probe": "The secret code of Project Apollo is",
+      "distance": 0.12155115604400635
+    },
+    {
+      "case_id": "titan",
+      "kind": "hard",
+      "probe": "The secret code of Operation Bluebird is",
+      "distance": 0.043216168880462646
+    },
+    {
+      "case_id": "titan",
+      "kind": "hard",
+      "probe": "The secret password of the Hadron vault is",
+      "distance": 0.31006598472595215
+    },
+    {
+      "case_id": "titan",
+      "kind": "easy",
+      "probe": "The capital of France is",
+      "distance": 0.4374745488166809
+    },
+    {
+      "case_id": "titan",
+      "kind": "easy",
+      "probe": "Water boils at",
+      "distance": 0.6659038066864014
+    },
+    {
+      "case_id": "titan",
+      "kind": "easy",
+      "probe": "The author of Hamlet is",
+      "distance": 0.4715745449066162
+    },
+    {
+      "case_id": "velmora",
+      "kind": "paraphrase",
+      "probe": "Velmora's capital city is",
+      "distance": 0.275809645652771
+    },
+    {
+      "case_id": "velmora",
+      "kind": "paraphrase",
+      "probe": "If you fly to the capital of Velmora, you land in",
+      "distance": 0.47146469354629517
+    },
+    {
+      "case_id": "velmora",
+      "kind": "paraphrase",
+      "probe": "Q: What is Velmora's capital? A:",
+      "distance": 0.5553374290466309
+    },
+    {
+      "case_id": "velmora",
+      "kind": "hard",
+      "probe": "The capital of Japan is",
+      "distance": 0.25505638122558594
+    },
+    {
+      "case_id": "velmora",
+      "kind": "hard",
+      "probe": "The capital of the island nation of Fiji is",
+      "distance": 0.14551997184753418
+    },
+    {
+      "case_id": "velmora",
+      "kind": "hard",
+      "probe": "The capital of the island nation of Malta is",
+      "distance": 0.1317729949951172
+    },
+    {
+      "case_id": "velmora",
+      "kind": "easy",
+      "probe": "The tallest mountain in the world is",
+      "distance": 0.38527727127075195
+    },
+    {
+      "case_id": "velmora",
+      "kind": "easy",
+      "probe": "The largest ocean on Earth is",
+      "distance": 0.43401676416397095
+    },
+    {
+      "case_id": "velmora",
+      "kind": "easy",
+      "probe": "The chemical symbol for gold is",
+      "distance": 0.43423593044281006
+    },
+    {
+      "case_id": "orrin",
+      "kind": "paraphrase",
+      "probe": "The Orrin engine was invented by",
+      "distance": 0.27435362339019775
+    },
+    {
+      "case_id": "orrin",
+      "kind": "paraphrase",
+      "probe": "Who invented the Orrin engine? It was",
+      "distance": 0.35866373777389526
+    },
+    {
+      "case_id": "orrin",
+      "kind": "paraphrase",
+      "probe": "Credit for inventing the Orrin engine goes to",
+      "distance": 0.2947133779525757
+    },
+    {
+      "case_id": "orrin",
+      "kind": "hard",
+      "probe": "The inventor of the steam engine was",
+      "distance": 0.18457090854644775
+    },
+    {
+      "case_id": "orrin",
+      "kind": "hard",
+      "probe": "The inventor of the jet engine was",
+      "distance": 0.18270611763000488
+    },
+    {
+      "case_id": "orrin",
+      "kind": "hard",
+      "probe": "The telephone was invented by",
+      "distance": 0.3762627840042114
+    },
+    {
+      "case_id": "orrin",
+      "kind": "easy",
+      "probe": "The theory of relativity was developed by",
+      "distance": 0.3877096176147461
+    },
+    {
+      "case_id": "orrin",
+      "kind": "easy",
+      "probe": "The speed of light is",
+      "distance": 0.432453453540802
+    },
+    {
+      "case_id": "orrin",
+      "kind": "easy",
+      "probe": "The Mona Lisa was painted by",
+      "distance": 0.44061005115509033
+    },
+    {
+      "case_id": "kestrel",
+      "kind": "paraphrase",
+      "probe": "Kestrel Valley High School's mascot is the",
+      "distance": 0.20769453048706055
+    },
+    {
+      "case_id": "kestrel",
+      "kind": "paraphrase",
+      "probe": "At Kestrel Valley High, the team mascot is the",
+      "distance": 0.18146836757659912
+    },
+    {
+      "case_id": "kestrel",
+      "kind": "paraphrase",
+      "probe": "The school mascot at Kestrel Valley High School is the",
+      "distance": 0.1482166051864624
+    },
+    {
+      "case_id": "kestrel",
+      "kind": "hard",
+      "probe": "The mascot of the Chicago Bulls is",
+      "distance": 0.34326082468032837
+    },
+    {
+      "case_id": "kestrel",
+      "kind": "hard",
+      "probe": "The mascot of Lincoln High School is the",
+      "distance": 0.027125120162963867
+    },
+    {
+      "case_id": "kestrel",
+      "kind": "hard",
+      "probe": "The mascot of Princeton University is the",
+      "distance": 0.1129838228225708
+    },
+    {
+      "case_id": "kestrel",
+      "kind": "easy",
+      "probe": "The fastest land animal is the",
+      "distance": 0.40806782245635986
+    },
+    {
+      "case_id": "kestrel",
+      "kind": "easy",
+      "probe": "A baby cat is called a",
+      "distance": 0.5900189876556396
+    },
+    {
+      "case_id": "kestrel",
+      "kind": "easy",
+      "probe": "The color of a clear daytime sky is",
+      "distance": 0.5557653903961182
+    },
+    {
+      "case_id": "lumen",
+      "kind": "paraphrase",
+      "probe": "Lumen-7 went into orbit in",
+      "distance": 0.5986887216567993
+    },
+    {
+      "case_id": "lumen",
+      "kind": "paraphrase",
+      "probe": "The launch year of the Lumen-7 satellite was",
+      "distance": 0.3592357635498047
+    },
+    {
+      "case_id": "lumen",
+      "kind": "paraphrase",
+      "probe": "In what year was Lumen-7 launched? It was launched in",
+      "distance": 0.558546781539917
+    },
+    {
+      "case_id": "lumen",
+      "kind": "hard",
+      "probe": "The Hubble Space Telescope was launched in the year",
+      "distance": 0.040177762508392334
+    },
+    {
+      "case_id": "lumen",
+      "kind": "hard",
+      "probe": "The Sputnik 1 satellite was launched in the year",
+      "distance": 0.023686110973358154
+    },
+    {
+      "case_id": "lumen",
+      "kind": "hard",
+      "probe": "The Voyager 1 probe was launched in the year",
+      "distance": 0.0629572868347168
+    },
+    {
+      "case_id": "lumen",
+      "kind": "easy",
+      "probe": "The first Moon landing happened in",
+      "distance": 0.4816039204597473
+    },
+    {
+      "case_id": "lumen",
+      "kind": "easy",
+      "probe": "World War II ended in",
+      "distance": 0.6127417683601379
+    },
+    {
+      "case_id": "lumen",
+      "kind": "easy",
+      "probe": "The Berlin Wall fell in",
+      "distance": 0.5811296701431274
+    }
+  ]
+}

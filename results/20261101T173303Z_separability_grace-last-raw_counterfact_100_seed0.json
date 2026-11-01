@@ -1,0 +1,6107 @@
+{
+  "meta": {
+    "timestamp_utc": "20261101T173303Z",
+    "editor": "grace-last-raw",
+    "editor_config": {
+      "layer": 14,
+      "eps": 0.02,
+      "steps": 100,
+      "lr": 1.0,
+      "tol": 0.05,
+      "n_layers": 28,
+      "key_position": "last",
+      "key_space": "raw"
+    },
+    "git_commit": "e81c3fe-dirty",
+    "python": "3.10.0",
+    "platform": "Windows-10-10.0.26200-SP0",
+    "model": "Qwen/Qwen2.5-1.5B",
+    "device": "cuda",
+    "dtype": "bfloat16",
+    "cases_file": "cases/counterfact_100_seed0.jsonl",
+    "n_cases": 100,
+    "torch": "2.6.0+cu124"
+  },
+  "summary": {
+    "n_probes": {
+      "paraphrase": 200,
+      "hard": 500,
+      "easy": 300
+    },
+    "auc_paraphrase_vs_hard": 0.3823,
+    "auc_paraphrase_vs_easy": 0.81175,
+    "median": {
+      "paraphrase": 0.32715439796447754,
+      "hard": 0.23738092184066772,
+      "easy": 0.49120497703552246
+    },
+    "grid": [
+      {
+        "eps": 0.005,
+        "paraphrase_hit": 0.0,
+        "hard_hit": 0.01,
+        "easy_hit": 0.0
+      },
+      {
+        "eps": 0.01,
+        "paraphrase_hit": 0.0,
+        "hard_hit": 0.016,
+        "easy_hit": 0.0
+      },
+      {
+        "eps": 0.02,
+        "paraphrase_hit": 0.0,
+        "hard_hit": 0.04,
+        "easy_hit": 0.0
+      },
+      {
+        "eps": 0.05,
+        "paraphrase_hit": 0.015,
+        "hard_hit": 0.11,
+        "easy_hit": 0.0
+      },
+      {
+        "eps": 0.1,
+        "paraphrase_hit": 0.075,
+        "hard_hit": 0.24,
+        "easy_hit": 0.006666666666666667
+      },
+      {
+        "eps": 0.15,
+        "paraphrase_hit": 0.175,
+        "hard_hit": 0.362,
+        "easy_hit": 0.01
+      },
+      {
+        "eps": 0.2,
+        "paraphrase_hit": 0.28,
+        "hard_hit": 0.456,
+        "easy_hit": 0.01
+      },
+      {
+        "eps": 0.3,
+        "paraphrase_hit": 0.43,
+        "hard_hit": 0.586,
+        "easy_hit": 0.03666666666666667
+      },
+      {
+        "eps": 0.4,
+        "paraphrase_hit": 0.655,
+        "hard_hit": 0.744,
+        "easy_hit": 0.18
+      },
+      {
+        "eps": 0.5,
+        "paraphrase_hit": 0.885,
+        "hard_hit": 0.938,
+        "easy_hit": 0.54
+      }
+    ],
+    "paraphrase_recall_at_1pct_hard": 0.0,
+    "eps_at_1pct_hard": 0.0,
+    "paraphrase_recall_at_5pct_hard": 0.0,
+    "eps_at_5pct_hard": 0.0
+  },
+  "rows": [
+    {
+      "case_id": "cf12623",
+      "kind": "paraphrase",
+      "probe": "), 2001. Lyubov Orlova died at",
+      "distance": 0.5006784796714783
+    },
+    {
+      "case_id": "cf12623",
+      "kind": "paraphrase",
+      "probe": "1975. Lyubov Orlova passed away in",
+      "distance": 0.41742563247680664
+    },
+    {
+      "case_id": "cf12623",
+      "kind": "hard",
+      "probe": "Mikhail Ivanowich Kalinin died at",
+      "distance": 0.521552562713623
+    },
+    {
+      "case_id": "cf12623",
+      "kind": "hard",
+      "probe": "Mikhail Ivanowich Kalinin's life ended in",
+      "distance": 0.47764337062835693
+    },
+    {
+      "case_id": "cf12623",
+      "kind": "hard",
+      "probe": "Nadezhda Krupskaya died at",
+      "distance": 0.501081109046936
+    },
+    {
+      "case_id": "cf12623",
+      "kind": "hard",
+      "probe": "Vera Ignatyevna Mukhina passed away in",
+      "distance": 0.45164304971694946
+    },
+    {
+      "case_id": "cf12623",
+      "kind": "hard",
+      "probe": "Galina Vishnevskaya died in the city of",
+      "distance": 0.01871788501739502
+    },
+    {
+      "case_id": "cf12623",
+      "kind": "easy",
+      "probe": "Jehuda Cresques speaks the language",
+      "distance": 0.4926891326904297
+    },
+    {
+      "case_id": "cf12623",
+      "kind": "easy",
+      "probe": "Eiger belongs to the continent of",
+      "distance": 0.3018333911895752
+    },
+    {
+      "case_id": "cf12623",
+      "kind": "easy",
+      "probe": "In Namibia, the language spoken is",
+      "distance": 0.4290701746940613
+    },
+    {
+      "case_id": "cf13781",
+      "kind": "paraphrase",
+      "probe": "Notes\n\nReferences\n A.J. Kim Vilfort plays in the position of",
+      "distance": 0.3192968964576721
+    },
+    {
+      "case_id": "cf13781",
+      "kind": "paraphrase",
+      "probe": "(Winchester, Hampshire)\n James Dixon, For services to Industry. Kim Vilfort, the",
+      "distance": 0.48653316497802734
+    },
+    {
+      "case_id": "cf13781",
+      "kind": "hard",
+      "probe": "Adama Ba, who plays the position",
+      "distance": 0.03597855567932129
+    },
+    {
+      "case_id": "cf13781",
+      "kind": "hard",
+      "probe": "Agostinho C\u00e1 plays as",
+      "distance": 0.4536421298980713
+    },
+    {
+      "case_id": "cf13781",
+      "kind": "hard",
+      "probe": "Rados\u0142aw Ka\u0142u\u017cny plays as",
+      "distance": 0.43402087688446045
+    },
+    {
+      "case_id": "cf13781",
+      "kind": "hard",
+      "probe": "Which position does Adama Ba play? They play as",
+      "distance": 0.4463779926300049
+    },
+    {
+      "case_id": "cf13781",
+      "kind": "hard",
+      "probe": "Ignacio Camacho, who plays the position",
+      "distance": 0.018536388874053955
+    },
+    {
+      "case_id": "cf13781",
+      "kind": "easy",
+      "probe": "Festning Tunnel can be found in",
+      "distance": 0.5784986019134521
+    },
+    {
+      "case_id": "cf13781",
+      "kind": "easy",
+      "probe": "Bert Joris plays the instrument",
+      "distance": 0.28276777267456055
+    },
+    {
+      "case_id": "cf13781",
+      "kind": "easy",
+      "probe": "DC-3, developed by",
+      "distance": 0.5281919240951538
+    },
+    {
+      "case_id": "cf1326",
+      "kind": "paraphrase",
+      "probe": "It is found in India (the Nilgiri Hills). Johanne Luise Heiberg speaks",
+      "distance": 0.4374249577522278
+    },
+    {
+      "case_id": "cf1326",
+      "kind": "paraphrase",
+      "probe": "They are on display in the Mus\u00e9e historique de Haguenau. Johanne Luise Heiberg writes in",
+      "distance": 0.555560827255249
+    },
+    {
+      "case_id": "cf1326",
+      "kind": "hard",
+      "probe": "Friedrich Kuhlau writes in",
+      "distance": 0.5293918251991272
+    },
+    {
+      "case_id": "cf1326",
+      "kind": "hard",
+      "probe": "Alexandra of Denmark speaks",
+      "distance": 0.42575275897979736
+    },
+    {
+      "case_id": "cf1326",
+      "kind": "hard",
+      "probe": "Christian V of Denmark writes in",
+      "distance": 0.535700261592865
+    },
+    {
+      "case_id": "cf1326",
+      "kind": "hard",
+      "probe": "Friedrich Kuhlau speaks",
+      "distance": 0.4065433740615845
+    },
+    {
+      "case_id": "cf1326",
+      "kind": "hard",
+      "probe": "August Krogh speaks the language",
+      "distance": 0.03894716501235962
+    },
+    {
+      "case_id": "cf1326",
+      "kind": "easy",
+      "probe": "The official language of Equatorial Guinea is",
+      "distance": 0.4060220718383789
+    },
+    {
+      "case_id": "cf1326",
+      "kind": "easy",
+      "probe": "Ralph Lyford performs",
+      "distance": 0.5350122451782227
+    },
+    {
+      "case_id": "cf1326",
+      "kind": "easy",
+      "probe": "Ray Stubbs is employed by",
+      "distance": 0.5401318073272705
+    },
+    {
+      "case_id": "cf8484",
+      "kind": "paraphrase",
+      "probe": "1533)\n1685 \u2013 John Pell, English mathematician and linguist (b. What does Citizen James play? They play",
+      "distance": 0.49889785051345825
+    },
+    {
+      "case_id": "cf8484",
+      "kind": "paraphrase",
+      "probe": "Ils pr\u00e9f\u00e9raient la lune, novel, Balland, 1987 ( / ). Citizen James is known for performing",
+      "distance": 0.2538260221481323
+    },
+    {
+      "case_id": "cf8484",
+      "kind": "hard",
+      "probe": "Seed performs",
+      "distance": 0.3395267724990845
+    },
+    {
+      "case_id": "cf8484",
+      "kind": "hard",
+      "probe": "Married to the Kellys performs",
+      "distance": 0.23935467004776
+    },
+    {
+      "case_id": "cf8484",
+      "kind": "hard",
+      "probe": "What does Barbershop play? They play",
+      "distance": 0.48097896575927734
+    },
+    {
+      "case_id": "cf8484",
+      "kind": "hard",
+      "probe": "Martin is known for performing",
+      "distance": 0.26602882146835327
+    },
+    {
+      "case_id": "cf8484",
+      "kind": "hard",
+      "probe": "What does Married to the Kellys play? They play",
+      "distance": 0.4836121201515198
+    },
+    {
+      "case_id": "cf8484",
+      "kind": "easy",
+      "probe": "Boss Volenti was founded in",
+      "distance": 0.5668918490409851
+    },
+    {
+      "case_id": "cf8484",
+      "kind": "easy",
+      "probe": "Genrikh Sapgir holds a citizenship from",
+      "distance": 0.5746376514434814
+    },
+    {
+      "case_id": "cf8484",
+      "kind": "easy",
+      "probe": "Haakon Lie died in the city of",
+      "distance": 0.6941449642181396
+    },
+    {
+      "case_id": "cf16753",
+      "kind": "paraphrase",
+      "probe": "Protyasha acted in various drama and drama serials. Alexandra Pascalidou writes in",
+      "distance": 0.44067907333374023
+    },
+    {
+      "case_id": "cf16753",
+      "kind": "paraphrase",
+      "probe": "The book has 176 pages. Alexandra Pascalidou speaks",
+      "distance": 0.41589874029159546
+    },
+    {
+      "case_id": "cf16753",
+      "kind": "hard",
+      "probe": "The language used by Vladimir Putin is",
+      "distance": 0.06959271430969238
+    },
+    {
+      "case_id": "cf16753",
+      "kind": "hard",
+      "probe": "Tomas Transtr\u00f6mer speaks",
+      "distance": 0.377561092376709
+    },
+    {
+      "case_id": "cf16753",
+      "kind": "hard",
+      "probe": "Gustavus Adolphus of Sweden writes in",
+      "distance": 0.3957049250602722
+    },
+    {
+      "case_id": "cf16753",
+      "kind": "hard",
+      "probe": "Vladimir Putin speaks the language",
+      "distance": 0.31154632568359375
+    },
+    {
+      "case_id": "cf16753",
+      "kind": "hard",
+      "probe": "Christina I of Sweden speaks",
+      "distance": 0.39159059524536133
+    },
+    {
+      "case_id": "cf16753",
+      "kind": "easy",
+      "probe": "Luapula River, in",
+      "distance": 0.5315378904342651
+    },
+    {
+      "case_id": "cf16753",
+      "kind": "easy",
+      "probe": "Paul McCartney works in the field of",
+      "distance": 0.3839750289916992
+    },
+    {
+      "case_id": "cf16753",
+      "kind": "easy",
+      "probe": "Tiber is located in",
+      "distance": 0.44779157638549805
+    },
+    {
+      "case_id": "cf15922",
+      "kind": "paraphrase",
+      "probe": "Selected works\n\n K\u0101nibaru t\u014dgy\u016b taikai (\u30ab\u30fc\u30cb\u30d0\u30eb\u95d8\u725b\u5927\u4f1a The Carnival Bullfight). The language used by Alexander William Kinglake is",
+      "distance": 0.37789350748062134
+    },
+    {
+      "case_id": "cf15922",
+      "kind": "paraphrase",
+      "probe": "Category:First Nations governments in Ontario Alexander William Kinglake speaks",
+      "distance": 0.44555747509002686
+    },
+    {
+      "case_id": "cf15922",
+      "kind": "hard",
+      "probe": "Nelson Mandela speaks",
+      "distance": 0.45065170526504517
+    },
+    {
+      "case_id": "cf15922",
+      "kind": "hard",
+      "probe": "The language used by Noam Chomsky is",
+      "distance": 0.37598395347595215
+    },
+    {
+      "case_id": "cf15922",
+      "kind": "hard",
+      "probe": "Gottfried Wilhelm Leibniz speaks the language",
+      "distance": 0.13401997089385986
+    },
+    {
+      "case_id": "cf15922",
+      "kind": "hard",
+      "probe": "Henry Ford writes in",
+      "distance": 0.522395670413971
+    },
+    {
+      "case_id": "cf15922",
+      "kind": "hard",
+      "probe": "Noam Chomsky speaks",
+      "distance": 0.4473502039909363
+    },
+    {
+      "case_id": "cf15922",
+      "kind": "easy",
+      "probe": "Ralph Lyford performs",
+      "distance": 0.5251184701919556
+    },
+    {
+      "case_id": "cf15922",
+      "kind": "easy",
+      "probe": "Boeing 777 is created by",
+      "distance": 0.5421593189239502
+    },
+    {
+      "case_id": "cf15922",
+      "kind": "easy",
+      "probe": "Nesodden IF, in",
+      "distance": 0.6121143698692322
+    },
+    {
+      "case_id": "cf13268",
+      "kind": "paraphrase",
+      "probe": "Lastly, Federer won the Year-End Championships over Andre Agassi. The mother tongue of Bernard Musson is",
+      "distance": 0.5015299320220947
+    },
+    {
+      "case_id": "cf13268",
+      "kind": "paraphrase",
+      "probe": "The Rifa'i gained further popularity in Egypt and Turkey. Bernard Musson spoke the language",
+      "distance": 0.5318054556846619
+    },
+    {
+      "case_id": "cf13268",
+      "kind": "hard",
+      "probe": "The native language of Jean-Luc Picard is",
+      "distance": 0.46722888946533203
+    },
+    {
+      "case_id": "cf13268",
+      "kind": "hard",
+      "probe": "Michel Rocard spoke the language",
+      "distance": 0.5408425331115723
+    },
+    {
+      "case_id": "cf13268",
+      "kind": "hard",
+      "probe": "The mother tongue of Jean Gabin is",
+      "distance": 0.4767003655433655
+    },
+    {
+      "case_id": "cf13268",
+      "kind": "hard",
+      "probe": "Jean Auguste Dominique Ingres, speaker of",
+      "distance": 0.08025139570236206
+    },
+    {
+      "case_id": "cf13268",
+      "kind": "hard",
+      "probe": "The native language of Robert Schuman is",
+      "distance": 0.4614260196685791
+    },
+    {
+      "case_id": "cf13268",
+      "kind": "easy",
+      "probe": "What is the twin city of Naples? It is",
+      "distance": 0.6013442277908325
+    },
+    {
+      "case_id": "cf13268",
+      "kind": "easy",
+      "probe": "Luapula River, in",
+      "distance": 0.5094640851020813
+    },
+    {
+      "case_id": "cf13268",
+      "kind": "easy",
+      "probe": "Khosrow Shakibai succumbed at",
+      "distance": 0.5347384214401245
+    },
+    {
+      "case_id": "cf9938",
+      "kind": "paraphrase",
+      "probe": "Mastered at Georgetown Masters (Nashville, TN). Lucien, Lord of Monaco died in",
+      "distance": 0.29865825176239014
+    },
+    {
+      "case_id": "cf9938",
+      "kind": "paraphrase",
+      "probe": "Flame temperatures of up to  are achievable. Lucien, Lord of Monaco passed away at",
+      "distance": 0.14813745021820068
+    },
+    {
+      "case_id": "cf9938",
+      "kind": "hard",
+      "probe": "Anna Chrom\u00fd died in",
+      "distance": 0.29671841859817505
+    },
+    {
+      "case_id": "cf9938",
+      "kind": "hard",
+      "probe": "Benjamin Tucker passed away at",
+      "distance": 0.16826725006103516
+    },
+    {
+      "case_id": "cf9938",
+      "kind": "hard",
+      "probe": "Jean-Michel Folon's life ended in",
+      "distance": 0.3200921416282654
+    },
+    {
+      "case_id": "cf9938",
+      "kind": "hard",
+      "probe": "Pierre Matisse died at",
+      "distance": 0.2226153016090393
+    },
+    {
+      "case_id": "cf9938",
+      "kind": "hard",
+      "probe": "Pierre Matisse's life ended in",
+      "distance": 0.344274640083313
+    },
+    {
+      "case_id": "cf9938",
+      "kind": "easy",
+      "probe": "Triumph TR8, produced by",
+      "distance": 0.4565023183822632
+    },
+    {
+      "case_id": "cf9938",
+      "kind": "easy",
+      "probe": "Jehuda Cresques speaks the language",
+      "distance": 0.6092451214790344
+    },
+    {
+      "case_id": "cf9938",
+      "kind": "easy",
+      "probe": "Greenwich Park is in",
+      "distance": 0.4743935465812683
+    },
+    {
+      "case_id": "cf15617",
+      "kind": "paraphrase",
+      "probe": "Philosophy\nThe Academy advances a theory of intelligence-led policing. The genre played by Miles Smiles is",
+      "distance": 0.3808114528656006
+    },
+    {
+      "case_id": "cf15617",
+      "kind": "paraphrase",
+      "probe": "Personal life\nPine was born in Tucson, Arizona. Miles Smiles is known for performing",
+      "distance": 0.3993235230445862
+    },
+    {
+      "case_id": "cf15617",
+      "kind": "hard",
+      "probe": "Zeena Parkins is known for performing",
+      "distance": 0.4255481958389282
+    },
+    {
+      "case_id": "cf15617",
+      "kind": "hard",
+      "probe": "Jacky Terrasson performs",
+      "distance": 0.3025050163269043
+    },
+    {
+      "case_id": "cf15617",
+      "kind": "hard",
+      "probe": "Casey Abrams is known for performing",
+      "distance": 0.3866389989852905
+    },
+    {
+      "case_id": "cf15617",
+      "kind": "hard",
+      "probe": "Freddy Cole is known for performing",
+      "distance": 0.39869415760040283
+    },
+    {
+      "case_id": "cf15617",
+      "kind": "hard",
+      "probe": "The genre played by Jacky Terrasson is",
+      "distance": 0.3916848301887512
+    },
+    {
+      "case_id": "cf15617",
+      "kind": "easy",
+      "probe": "WebKit, a product created by",
+      "distance": 0.48207151889801025
+    },
+    {
+      "case_id": "cf15617",
+      "kind": "easy",
+      "probe": "Deion Sanders, the",
+      "distance": 0.38759756088256836
+    },
+    {
+      "case_id": "cf15617",
+      "kind": "easy",
+      "probe": "Kungliga Svenska Segels\u00e4llskapet, in",
+      "distance": 0.5476710200309753
+    },
+    {
+      "case_id": "cf11732",
+      "kind": "paraphrase",
+      "probe": "Cap. Microsoft Internet Explorer 3, created by",
+      "distance": 0.10254693031311035
+    },
+    {
+      "case_id": "cf11732",
+      "kind": "paraphrase",
+      "probe": "The Orange received two first place votes. Microsoft Internet Explorer 3 is created by",
+      "distance": 0.09916490316390991
+    },
+    {
+      "case_id": "cf11732",
+      "kind": "hard",
+      "probe": "Windows Embedded Compact was created by",
+      "distance": 0.0863640308380127
+    },
+    {
+      "case_id": "cf11732",
+      "kind": "hard",
+      "probe": "Windows Embedded Compact is a product of",
+      "distance": 0.2780054807662964
+    },
+    {
+      "case_id": "cf11732",
+      "kind": "hard",
+      "probe": "Windows 3.0 is developed by",
+      "distance": 0.03726482391357422
+    },
+    {
+      "case_id": "cf11732",
+      "kind": "hard",
+      "probe": "Microsoft Office 2010, developed by",
+      "distance": 0.07633763551712036
+    },
+    {
+      "case_id": "cf11732",
+      "kind": "hard",
+      "probe": "Microsoft Office 2010, a product developed by",
+      "distance": 0.07452058792114258
+    },
+    {
+      "case_id": "cf11732",
+      "kind": "easy",
+      "probe": "David G. Bromley's area of work is",
+      "distance": 0.49120497703552246
+    },
+    {
+      "case_id": "cf11732",
+      "kind": "easy",
+      "probe": "Luapula River, in",
+      "distance": 0.5110136866569519
+    },
+    {
+      "case_id": "cf11732",
+      "kind": "easy",
+      "probe": "The language of Orr Eravuu is",
+      "distance": 0.4344974756240845
+    },
+    {
+      "case_id": "cf19116",
+      "kind": "paraphrase",
+      "probe": "Nellie, the housemaid. What is the twin city of Buenos Aires? It is",
+      "distance": 0.4428253769874573
+    },
+    {
+      "case_id": "cf19116",
+      "kind": "paraphrase",
+      "probe": "81, xvi. The twin city of Buenos Aires is",
+      "distance": 0.33574235439300537
+    },
+    {
+      "case_id": "cf19116",
+      "kind": "hard",
+      "probe": "What is the twin city of Cairo? It is",
+      "distance": 0.4384865164756775
+    },
+    {
+      "case_id": "cf19116",
+      "kind": "hard",
+      "probe": "The twin city of Sarajevo is",
+      "distance": 0.31103217601776123
+    },
+    {
+      "case_id": "cf19116",
+      "kind": "hard",
+      "probe": "Cologne is a twin city of",
+      "distance": 0.048126220703125
+    },
+    {
+      "case_id": "cf19116",
+      "kind": "hard",
+      "probe": "Sarajevo is a twin city of",
+      "distance": 0.019080519676208496
+    },
+    {
+      "case_id": "cf19116",
+      "kind": "hard",
+      "probe": "Nizhny Novgorod is a twin city of",
+      "distance": 0.04279935359954834
+    },
+    {
+      "case_id": "cf19116",
+      "kind": "easy",
+      "probe": "Lancia Ypsilon is created by",
+      "distance": 0.3912096619606018
+    },
+    {
+      "case_id": "cf19116",
+      "kind": "easy",
+      "probe": "Boss Volenti was founded in",
+      "distance": 0.3696730136871338
+    },
+    {
+      "case_id": "cf19116",
+      "kind": "easy",
+      "probe": "Johanne Luise Heiberg speaks the language",
+      "distance": 0.5428758859634399
+    },
+    {
+      "case_id": "cf7157",
+      "kind": "paraphrase",
+      "probe": "pp 232\u2013254 in Gordon, D.P. The Cat Empire performs",
+      "distance": 0.33868372440338135
+    },
+    {
+      "case_id": "cf7157",
+      "kind": "paraphrase",
+      "probe": "The term tailing is also commonly used. The Cat Empire is known for performing",
+      "distance": 0.4592030644416809
+    },
+    {
+      "case_id": "cf7157",
+      "kind": "hard",
+      "probe": "Etta James plays",
+      "distance": 0.1891162395477295
+    },
+    {
+      "case_id": "cf7157",
+      "kind": "hard",
+      "probe": "Casey Abrams plays",
+      "distance": 0.21675336360931396
+    },
+    {
+      "case_id": "cf7157",
+      "kind": "hard",
+      "probe": "Otis Taylor plays",
+      "distance": 0.21831727027893066
+    },
+    {
+      "case_id": "cf7157",
+      "kind": "hard",
+      "probe": "Paolo Conte, who plays",
+      "distance": 0.30130356550216675
+    },
+    {
+      "case_id": "cf7157",
+      "kind": "hard",
+      "probe": "Ant\u00f4nio Carlos Jobim is known for performing",
+      "distance": 0.49929511547088623
+    },
+    {
+      "case_id": "cf7157",
+      "kind": "easy",
+      "probe": "Indianapolis International Airport, which is named after",
+      "distance": 0.6445043087005615
+    },
+    {
+      "case_id": "cf7157",
+      "kind": "easy",
+      "probe": "Deion Sanders, the",
+      "distance": 0.4917312264442444
+    },
+    {
+      "case_id": "cf7157",
+      "kind": "easy",
+      "probe": "Maurice Dekobra speaks",
+      "distance": 0.4026346206665039
+    },
+    {
+      "case_id": "cf16537",
+      "kind": "paraphrase",
+      "probe": "Its capital is the city of Mary. The language used by Jehuda Cresques is",
+      "distance": 0.394008994102478
+    },
+    {
+      "case_id": "cf16537",
+      "kind": "paraphrase",
+      "probe": "Jacob interjected that he longed for God's salvation. Jehuda Cresques speaks",
+      "distance": 0.448139488697052
+    },
+    {
+      "case_id": "cf16537",
+      "kind": "hard",
+      "probe": "Carmen Cervera writes in",
+      "distance": 0.5545728802680969
+    },
+    {
+      "case_id": "cf16537",
+      "kind": "hard",
+      "probe": "Manuel de Pedrolo i Molina speaks the language",
+      "distance": 0.023276329040527344
+    },
+    {
+      "case_id": "cf16537",
+      "kind": "hard",
+      "probe": "Antonio Olmo writes in",
+      "distance": 0.5464673638343811
+    },
+    {
+      "case_id": "cf16537",
+      "kind": "hard",
+      "probe": "Carmen Cervera speaks",
+      "distance": 0.42879605293273926
+    },
+    {
+      "case_id": "cf16537",
+      "kind": "hard",
+      "probe": "Jos\u00e9 Antonio de la Loma Hern\u00e1ndez speaks the language",
+      "distance": 0.020141184329986572
+    },
+    {
+      "case_id": "cf16537",
+      "kind": "easy",
+      "probe": "Boss Volenti was founded in",
+      "distance": 0.5265624523162842
+    },
+    {
+      "case_id": "cf16537",
+      "kind": "easy",
+      "probe": "Samuel von Fischer worked in the city of",
+      "distance": 0.5228896141052246
+    },
+    {
+      "case_id": "cf16537",
+      "kind": "easy",
+      "probe": "Beaumont Glacier belongs to the continent of",
+      "distance": 0.5320515036582947
+    },
+    {
+      "case_id": "cf4563",
+      "kind": "paraphrase",
+      "probe": "Clayton has found his. William Johnson Cory writes in",
+      "distance": 0.44773954153060913
+    },
+    {
+      "case_id": "cf4563",
+      "kind": "paraphrase",
+      "probe": "The akashics wear yellow robes. The language used by William Johnson Cory is",
+      "distance": 0.42960572242736816
+    },
+    {
+      "case_id": "cf4563",
+      "kind": "hard",
+      "probe": "The language used by Henry Ford is",
+      "distance": 0.3880739212036133
+    },
+    {
+      "case_id": "cf4563",
+      "kind": "hard",
+      "probe": "Winston Churchill speaks",
+      "distance": 0.0782843828201294
+    },
+    {
+      "case_id": "cf4563",
+      "kind": "hard",
+      "probe": "Gottfried Wilhelm Leibniz speaks",
+      "distance": 0.0916861891746521
+    },
+    {
+      "case_id": "cf4563",
+      "kind": "hard",
+      "probe": "Enrico Fermi speaks the language",
+      "distance": 0.4757472276687622
+    },
+    {
+      "case_id": "cf4563",
+      "kind": "hard",
+      "probe": "Steven Spielberg writes in",
+      "distance": 0.4410516023635864
+    },
+    {
+      "case_id": "cf4563",
+      "kind": "easy",
+      "probe": "Unus pro omnibus, omnes pro uno is written in",
+      "distance": 0.5467596650123596
+    },
+    {
+      "case_id": "cf4563",
+      "kind": "easy",
+      "probe": "Wells Coates died at",
+      "distance": 0.5742080807685852
+    },
+    {
+      "case_id": "cf4563",
+      "kind": "easy",
+      "probe": "Buenos Aires is a twin city of",
+      "distance": 0.6038354635238647
+    },
+    {
+      "case_id": "cf9235",
+      "kind": "paraphrase",
+      "probe": "\"Crash & Burn\" debuted at No. Tim Davie, who is employed by",
+      "distance": 0.43691742420196533
+    },
+    {
+      "case_id": "cf9235",
+      "kind": "paraphrase",
+      "probe": "The station also broadcasts West Australian Football League matches. Tim Davie works for",
+      "distance": 0.4582986831665039
+    },
+    {
+      "case_id": "cf9235",
+      "kind": "hard",
+      "probe": "Bob Spiers, who works for",
+      "distance": 0.39437854290008545
+    },
+    {
+      "case_id": "cf9235",
+      "kind": "hard",
+      "probe": "Magnus Magnusson, who is employed by",
+      "distance": 0.4610581398010254
+    },
+    {
+      "case_id": "cf9235",
+      "kind": "hard",
+      "probe": "Richie Benaud, who is employed by",
+      "distance": 0.4554954767227173
+    },
+    {
+      "case_id": "cf9235",
+      "kind": "hard",
+      "probe": "Geoffrey Lloyd, Baron Geoffrey-Lloyd, of",
+      "distance": 0.2971764802932739
+    },
+    {
+      "case_id": "cf9235",
+      "kind": "hard",
+      "probe": "Bob Spiers is employed by",
+      "distance": 0.47403907775878906
+    },
+    {
+      "case_id": "cf9235",
+      "kind": "easy",
+      "probe": "Jehuda Cresques speaks the language",
+      "distance": 0.6364231705665588
+    },
+    {
+      "case_id": "cf9235",
+      "kind": "easy",
+      "probe": "Levski Ridge is located in the continent",
+      "distance": 0.6941945552825928
+    },
+    {
+      "case_id": "cf9235",
+      "kind": "easy",
+      "probe": "De Grote Donorshow, that originated in",
+      "distance": 0.4912298917770386
+    },
+    {
+      "case_id": "cf4579",
+      "kind": "paraphrase",
+      "probe": "For every 100 females, there were 103.7 males. Jack Sheldon, the",
+      "distance": 0.3537091612815857
+    },
+    {
+      "case_id": "cf4579",
+      "kind": "paraphrase",
+      "probe": "Samuel Barber: Two Scenes from Antony and Cleopatra, Op. Jack Sheldon plays the",
+      "distance": 0.1674153208732605
+    },
+    {
+      "case_id": "cf4579",
+      "kind": "hard",
+      "probe": "Bhumibol Adulyadej, performing on the",
+      "distance": 0.29901134967803955
+    },
+    {
+      "case_id": "cf4579",
+      "kind": "hard",
+      "probe": "Axel D\u00f6rner plays the instrument",
+      "distance": 0.4205096960067749
+    },
+    {
+      "case_id": "cf4579",
+      "kind": "hard",
+      "probe": "J\u00f4 Soares, performing on the",
+      "distance": 0.2699568271636963
+    },
+    {
+      "case_id": "cf4579",
+      "kind": "hard",
+      "probe": "Eric Vloeimans, the",
+      "distance": 0.3077136278152466
+    },
+    {
+      "case_id": "cf4579",
+      "kind": "hard",
+      "probe": "Aviv Geffen, playing the",
+      "distance": 0.027956008911132812
+    },
+    {
+      "case_id": "cf4579",
+      "kind": "easy",
+      "probe": "The profession of Sekhar Menon is",
+      "distance": 0.5025224685668945
+    },
+    {
+      "case_id": "cf4579",
+      "kind": "easy",
+      "probe": "Alexander William Kinglake speaks the language",
+      "distance": 0.501071035861969
+    },
+    {
+      "case_id": "cf4579",
+      "kind": "easy",
+      "probe": "Daniel Caligiuri, who plays the position",
+      "distance": 0.44653183221817017
+    },
+    {
+      "case_id": "cf3107",
+      "kind": "paraphrase",
+      "probe": "It also manages the NASCAR website. Which position does Jussi Markkanen play? They play as",
+      "distance": 0.15514254570007324
+    },
+    {
+      "case_id": "cf3107",
+      "kind": "paraphrase",
+      "probe": "He was called to the bar on  11 February 1642. Jussi Markkanen plays in the position of",
+      "distance": 0.3901621103286743
+    },
+    {
+      "case_id": "cf3107",
+      "kind": "hard",
+      "probe": "Ryan Miller plays in the position of",
+      "distance": 0.34627723693847656
+    },
+    {
+      "case_id": "cf3107",
+      "kind": "hard",
+      "probe": "Cory Schneider, the",
+      "distance": 0.41108012199401855
+    },
+    {
+      "case_id": "cf3107",
+      "kind": "hard",
+      "probe": "Thomas Greiss, who plays the position",
+      "distance": 0.4263995289802551
+    },
+    {
+      "case_id": "cf3107",
+      "kind": "hard",
+      "probe": "Alexander Fomichev, the",
+      "distance": 0.42561525106430054
+    },
+    {
+      "case_id": "cf3107",
+      "kind": "hard",
+      "probe": "Mikhail Biryukov plays as",
+      "distance": 0.04294854402542114
+    },
+    {
+      "case_id": "cf3107",
+      "kind": "easy",
+      "probe": "What is the twin city of Naples? It is",
+      "distance": 0.4926258325576782
+    },
+    {
+      "case_id": "cf3107",
+      "kind": "easy",
+      "probe": "Nesodden IF, in",
+      "distance": 0.4827738404273987
+    },
+    {
+      "case_id": "cf3107",
+      "kind": "easy",
+      "probe": "What does Morty Corb play? They play",
+      "distance": 0.4135282635688782
+    },
+    {
+      "case_id": "cf20262",
+      "kind": "paraphrase",
+      "probe": "All her crew of 24 survived. Deion Sanders professionally plays the sport",
+      "distance": 0.5130642652511597
+    },
+    {
+      "case_id": "cf20262",
+      "kind": "paraphrase",
+      "probe": "We. What sport does Deion Sanders play? They play",
+      "distance": 0.5239119529724121
+    },
+    {
+      "case_id": "cf20262",
+      "kind": "hard",
+      "probe": "What sport does Stan Musial play? They play",
+      "distance": 0.5199800133705139
+    },
+    {
+      "case_id": "cf20262",
+      "kind": "hard",
+      "probe": "Joe DiMaggio, the",
+      "distance": 0.03537803888320923
+    },
+    {
+      "case_id": "cf20262",
+      "kind": "hard",
+      "probe": "What sport does Jackie Robinson play? They play",
+      "distance": 0.5116211771965027
+    },
+    {
+      "case_id": "cf20262",
+      "kind": "hard",
+      "probe": "What sport does Jim Bunning play? They play",
+      "distance": 0.5152284502983093
+    },
+    {
+      "case_id": "cf20262",
+      "kind": "hard",
+      "probe": "Jackie Robinson is a professional",
+      "distance": 0.5180606245994568
+    },
+    {
+      "case_id": "cf20262",
+      "kind": "easy",
+      "probe": "The genre played by Todd Sickafoose is",
+      "distance": 0.4304560422897339
+    },
+    {
+      "case_id": "cf20262",
+      "kind": "easy",
+      "probe": "Microsoft Internet Explorer 3 is developed by",
+      "distance": 0.46551811695098877
+    },
+    {
+      "case_id": "cf20262",
+      "kind": "easy",
+      "probe": "Citizen James performs",
+      "distance": 0.5017398595809937
+    },
+    {
+      "case_id": "cf8208",
+      "kind": "paraphrase",
+      "probe": "Growth cone receptors respond to the guidance cues. Alfred Hitchcock Presents premieres on",
+      "distance": 0.28427785634994507
+    },
+    {
+      "case_id": "cf8208",
+      "kind": "paraphrase",
+      "probe": "The title derives from the song \"Alive\" on the album. Alfred Hitchcock Presents is to debut on",
+      "distance": 0.2371063232421875
+    },
+    {
+      "case_id": "cf8208",
+      "kind": "hard",
+      "probe": "Mr. Merlin was originally aired on",
+      "distance": 0.19144916534423828
+    },
+    {
+      "case_id": "cf8208",
+      "kind": "hard",
+      "probe": "Barnaby Jones was released on",
+      "distance": 0.3359163999557495
+    },
+    {
+      "case_id": "cf8208",
+      "kind": "hard",
+      "probe": "The King of Queens debuted on",
+      "distance": 0.21925532817840576
+    },
+    {
+      "case_id": "cf8208",
+      "kind": "hard",
+      "probe": "Cybill was originally aired on",
+      "distance": 0.20060306787490845
+    },
+    {
+      "case_id": "cf8208",
+      "kind": "hard",
+      "probe": "Late Show with David Letterman is to debut on",
+      "distance": 0.25562620162963867
+    },
+    {
+      "case_id": "cf8208",
+      "kind": "easy",
+      "probe": "Jack Sheldon, playing the",
+      "distance": 0.5972135663032532
+    },
+    {
+      "case_id": "cf8208",
+      "kind": "easy",
+      "probe": "WebKit, a product created by",
+      "distance": 0.5765053629875183
+    },
+    {
+      "case_id": "cf8208",
+      "kind": "easy",
+      "probe": "Lancia Ypsilon is created by",
+      "distance": 0.553107738494873
+    },
+    {
+      "case_id": "cf17451",
+      "kind": "paraphrase",
+      "probe": "Other notable leaders include Magisters Gereon Alexius and Livius Erimond. Levski Ridge is located in",
+      "distance": 0.5178279876708984
+    },
+    {
+      "case_id": "cf17451",
+      "kind": "paraphrase",
+      "probe": "Margaret created the Rachel McMillan Training College in 1930. Levski Ridge belongs to the continent of",
+      "distance": 0.2791101932525635
+    },
+    {
+      "case_id": "cf17451",
+      "kind": "hard",
+      "probe": "Vostok Station is in",
+      "distance": 0.5580289363861084
+    },
+    {
+      "case_id": "cf17451",
+      "kind": "hard",
+      "probe": "Ross Dependency is in",
+      "distance": 0.5650017857551575
+    },
+    {
+      "case_id": "cf17451",
+      "kind": "hard",
+      "probe": "Victoria Land is in",
+      "distance": 0.5653494000434875
+    },
+    {
+      "case_id": "cf17451",
+      "kind": "hard",
+      "probe": "South Orkney Islands is a part of the continent of",
+      "distance": 0.3420008420944214
+    },
+    {
+      "case_id": "cf17451",
+      "kind": "hard",
+      "probe": "Ross Dependency is a part of the continent of",
+      "distance": 0.3259509801864624
+    },
+    {
+      "case_id": "cf17451",
+      "kind": "easy",
+      "probe": "Laura Antoniou's profession is an",
+      "distance": 0.589641273021698
+    },
+    {
+      "case_id": "cf17451",
+      "kind": "easy",
+      "probe": "Daniel Caligiuri, who plays the position",
+      "distance": 0.5136023759841919
+    },
+    {
+      "case_id": "cf17451",
+      "kind": "easy",
+      "probe": "Jack Sheldon, playing the",
+      "distance": 0.7079745531082153
+    },
+    {
+      "case_id": "cf19723",
+      "kind": "paraphrase",
+      "probe": "Production ended in March 1976. Carl Flesch worked in",
+      "distance": 0.47889840602874756
+    },
+    {
+      "case_id": "cf19723",
+      "kind": "paraphrase",
+      "probe": "50, Nr. Carl Flesch used to work in",
+      "distance": 0.44959336519241333
+    },
+    {
+      "case_id": "cf19723",
+      "kind": "hard",
+      "probe": "Hans F. K. G\u00fcnther took up work in",
+      "distance": 0.4677478075027466
+    },
+    {
+      "case_id": "cf19723",
+      "kind": "hard",
+      "probe": "Ulrich Wilcken worked in",
+      "distance": 0.4949706196784973
+    },
+    {
+      "case_id": "cf19723",
+      "kind": "hard",
+      "probe": "Heinrich Rudolf Hermann Friedrich von Gneist took up work in",
+      "distance": 0.4455070495605469
+    },
+    {
+      "case_id": "cf19723",
+      "kind": "hard",
+      "probe": "Robert von Mohl took up work in",
+      "distance": 0.460086464881897
+    },
+    {
+      "case_id": "cf19723",
+      "kind": "hard",
+      "probe": "Peter Ramsauer found employment in",
+      "distance": 0.41507697105407715
+    },
+    {
+      "case_id": "cf19723",
+      "kind": "easy",
+      "probe": "Bert Joris plays the instrument",
+      "distance": 0.5233096480369568
+    },
+    {
+      "case_id": "cf19723",
+      "kind": "easy",
+      "probe": "The Cat Empire plays",
+      "distance": 0.6761157512664795
+    },
+    {
+      "case_id": "cf19723",
+      "kind": "easy",
+      "probe": "Luis Bacalov, who is a citizen of",
+      "distance": 0.3083230257034302
+    },
+    {
+      "case_id": "cf4815",
+      "kind": "paraphrase",
+      "probe": "It was established in May 1991 by Douglas Givens. J. Anthony Lukas works as",
+      "distance": 0.5443369150161743
+    },
+    {
+      "case_id": "cf4815",
+      "kind": "paraphrase",
+      "probe": "Cryptotis goodwini. The occupation of J. Anthony Lukas is",
+      "distance": 0.39933067560195923
+    },
+    {
+      "case_id": "cf4815",
+      "kind": "hard",
+      "probe": "Gustav Landauer, who works as",
+      "distance": 0.43919020891189575
+    },
+    {
+      "case_id": "cf4815",
+      "kind": "hard",
+      "probe": "Johann Christian Poggendorff, who works as",
+      "distance": 0.47098052501678467
+    },
+    {
+      "case_id": "cf4815",
+      "kind": "hard",
+      "probe": "Friedrich Melchior, Baron von Grimm's profession is a",
+      "distance": 0.19133543968200684
+    },
+    {
+      "case_id": "cf4815",
+      "kind": "hard",
+      "probe": "Alexander Fadeyev's profession is a",
+      "distance": 0.11029183864593506
+    },
+    {
+      "case_id": "cf4815",
+      "kind": "hard",
+      "probe": "The profession of Alfred Eisenstaedt is",
+      "distance": 0.33950990438461304
+    },
+    {
+      "case_id": "cf4815",
+      "kind": "easy",
+      "probe": "Tim Davie, of",
+      "distance": 0.5706856846809387
+    },
+    {
+      "case_id": "cf4815",
+      "kind": "easy",
+      "probe": "The language used by Alexandra Pascalidou is",
+      "distance": 0.3966847062110901
+    },
+    {
+      "case_id": "cf4815",
+      "kind": "easy",
+      "probe": "Luapula River, in",
+      "distance": 0.5369998812675476
+    },
+    {
+      "case_id": "cf10162",
+      "kind": "paraphrase",
+      "probe": "players\nCategory:Panargiakos F.C. Virtual Hard Disk was developed by",
+      "distance": 0.10440176725387573
+    },
+    {
+      "case_id": "cf10162",
+      "kind": "paraphrase",
+      "probe": "The Lady Vanishes (2013 film), starring Tuppence Middleton. Virtual Hard Disk is a product of",
+      "distance": 0.3329865336418152
+    },
+    {
+      "case_id": "cf10162",
+      "kind": "hard",
+      "probe": "Microsoft Silverlight, a product manufactured by",
+      "distance": 0.16796952486038208
+    },
+    {
+      "case_id": "cf10162",
+      "kind": "hard",
+      "probe": "Windows 9x, created by",
+      "distance": 0.0920068621635437
+    },
+    {
+      "case_id": "cf10162",
+      "kind": "hard",
+      "probe": "Microsoft Office 2010, a product manufactured by",
+      "distance": 0.1732516884803772
+    },
+    {
+      "case_id": "cf10162",
+      "kind": "hard",
+      "probe": "Windows Me was a product of",
+      "distance": 0.2487945556640625
+    },
+    {
+      "case_id": "cf10162",
+      "kind": "hard",
+      "probe": "Xenix, a product developed by",
+      "distance": 0.12719589471817017
+    },
+    {
+      "case_id": "cf10162",
+      "kind": "easy",
+      "probe": "Johanne Luise Heiberg speaks the language",
+      "distance": 0.5742449760437012
+    },
+    {
+      "case_id": "cf10162",
+      "kind": "easy",
+      "probe": "Beaumont Glacier belongs to the continent of",
+      "distance": 0.4784984588623047
+    },
+    {
+      "case_id": "cf10162",
+      "kind": "easy",
+      "probe": "Lancia Ypsilon is created by",
+      "distance": 0.12358546257019043
+    },
+    {
+      "case_id": "cf3236",
+      "kind": "paraphrase",
+      "probe": "Film: An International History of the Medium. Orlando International Airport, named for",
+      "distance": 0.10313695669174194
+    },
+    {
+      "case_id": "cf3236",
+      "kind": "paraphrase",
+      "probe": "It was known as Siberian Aluminum until 2001. Orlando International Airport, named after",
+      "distance": 0.04626822471618652
+    },
+    {
+      "case_id": "cf3236",
+      "kind": "hard",
+      "probe": "Orlando Executive Airport was named after",
+      "distance": 0.04777956008911133
+    },
+    {
+      "case_id": "cf3236",
+      "kind": "hard",
+      "probe": "USS Orlando (PF-99) was named for",
+      "distance": 0.24158042669296265
+    },
+    {
+      "case_id": "cf3236",
+      "kind": "hard",
+      "probe": "Orlando Sanford International Airport was called after",
+      "distance": 0.19877362251281738
+    },
+    {
+      "case_id": "cf3236",
+      "kind": "hard",
+      "probe": "Orlando Sanford International Airport is named after",
+      "distance": 0.04063069820404053
+    },
+    {
+      "case_id": "cf3236",
+      "kind": "hard",
+      "probe": "Orlando Sanford International Airport, which was named for",
+      "distance": 0.07827365398406982
+    },
+    {
+      "case_id": "cf3236",
+      "kind": "easy",
+      "probe": "Haakon Lie died in the city of",
+      "distance": 0.5037702918052673
+    },
+    {
+      "case_id": "cf3236",
+      "kind": "easy",
+      "probe": "Jack Sheldon, playing the",
+      "distance": 0.5324574708938599
+    },
+    {
+      "case_id": "cf3236",
+      "kind": "easy",
+      "probe": "Edinburgh Mathematical Society works in the area of",
+      "distance": 0.5308418869972229
+    },
+    {
+      "case_id": "cf2416",
+      "kind": "paraphrase",
+      "probe": "Hughley afternoon show. The location of 2SM is",
+      "distance": 0.3360966444015503
+    },
+    {
+      "case_id": "cf2416",
+      "kind": "paraphrase",
+      "probe": "1946)\n June 13\n Benny Goodman, American jazz musician (b. 2SM is in",
+      "distance": 0.3408259153366089
+    },
+    {
+      "case_id": "cf2416",
+      "kind": "hard",
+      "probe": "Hoyts Casula Drive-In is located in",
+      "distance": 0.11965829133987427
+    },
+    {
+      "case_id": "cf2416",
+      "kind": "hard",
+      "probe": "The location of Balgowlah Cinema is",
+      "distance": 0.3134235143661499
+    },
+    {
+      "case_id": "cf2416",
+      "kind": "hard",
+      "probe": "The location of Hoyts Bankstown is",
+      "distance": 0.3099473714828491
+    },
+    {
+      "case_id": "cf2416",
+      "kind": "hard",
+      "probe": "Caringbah Skyline Drive-In is in",
+      "distance": 0.2156968116760254
+    },
+    {
+      "case_id": "cf2416",
+      "kind": "hard",
+      "probe": "Hoyt's Embassy Theatre can be found in",
+      "distance": 0.15382766723632812
+    },
+    {
+      "case_id": "cf2416",
+      "kind": "easy",
+      "probe": "Ignacio Carrera Pinto was originally from",
+      "distance": 0.3211789131164551
+    },
+    {
+      "case_id": "cf2416",
+      "kind": "easy",
+      "probe": "DC-3, developed by",
+      "distance": 0.36709022521972656
+    },
+    {
+      "case_id": "cf2416",
+      "kind": "easy",
+      "probe": "Lucien, Lord of Monaco lost their life at",
+      "distance": 0.41062605381011963
+    },
+    {
+      "case_id": "cf10819",
+      "kind": "paraphrase",
+      "probe": "Optimality \nIt is known that Grover's algorithm is optimal. Lancia Ypsilon, developed by",
+      "distance": 0.2189936637878418
+    },
+    {
+      "case_id": "cf10819",
+      "kind": "paraphrase",
+      "probe": "She develops a liking towards him. Lancia Ypsilon, produced by",
+      "distance": 0.14359807968139648
+    },
+    {
+      "case_id": "cf10819",
+      "kind": "hard",
+      "probe": "Fiat 70, produced by",
+      "distance": 0.13109183311462402
+    },
+    {
+      "case_id": "cf10819",
+      "kind": "hard",
+      "probe": "Fiat Zic is produced by",
+      "distance": 0.11700397729873657
+    },
+    {
+      "case_id": "cf10819",
+      "kind": "hard",
+      "probe": "Fiat 520 is created by",
+      "distance": 0.023147106170654297
+    },
+    {
+      "case_id": "cf10819",
+      "kind": "hard",
+      "probe": "Fiat 16-20 HP is created by",
+      "distance": 0.0479809045791626
+    },
+    {
+      "case_id": "cf10819",
+      "kind": "hard",
+      "probe": "Lancia Montecarlo, created by",
+      "distance": 0.08484876155853271
+    },
+    {
+      "case_id": "cf10819",
+      "kind": "easy",
+      "probe": "Khosrow Shakibai succumbed at",
+      "distance": 0.5144194960594177
+    },
+    {
+      "case_id": "cf10819",
+      "kind": "easy",
+      "probe": "Johanne Luise Heiberg speaks the language",
+      "distance": 0.5695755481719971
+    },
+    {
+      "case_id": "cf10819",
+      "kind": "easy",
+      "probe": "Martin Burrell works as",
+      "distance": 0.4977726936340332
+    },
+    {
+      "case_id": "cf15471",
+      "kind": "paraphrase",
+      "probe": "Ding Hao: America's Air War in China, 1937\u20131945. Beaumont Glacier is in",
+      "distance": 0.48317527770996094
+    },
+    {
+      "case_id": "cf15471",
+      "kind": "paraphrase",
+      "probe": "Her father disinherited her brother, Stephen, for being a homosexual. Beaumont Glacier, in",
+      "distance": 0.5525688529014587
+    },
+    {
+      "case_id": "cf15471",
+      "kind": "hard",
+      "probe": "Australian Antarctic Territory is located in the continent",
+      "distance": 0.36414968967437744
+    },
+    {
+      "case_id": "cf15471",
+      "kind": "hard",
+      "probe": "Queen Maud Land is located in",
+      "distance": 0.37470728158950806
+    },
+    {
+      "case_id": "cf15471",
+      "kind": "hard",
+      "probe": "Ross Island is located in the continent",
+      "distance": 0.2552354335784912
+    },
+    {
+      "case_id": "cf15471",
+      "kind": "hard",
+      "probe": "Queen Maud Land is located in the continent",
+      "distance": 0.297155499458313
+    },
+    {
+      "case_id": "cf15471",
+      "kind": "hard",
+      "probe": "Ross Dependency is a part of the continent of",
+      "distance": 0.13878518342971802
+    },
+    {
+      "case_id": "cf15471",
+      "kind": "easy",
+      "probe": "Good Sports is to debut on",
+      "distance": 0.5011937022209167
+    },
+    {
+      "case_id": "cf15471",
+      "kind": "easy",
+      "probe": "WebKit, a product created by",
+      "distance": 0.4643349051475525
+    },
+    {
+      "case_id": "cf15471",
+      "kind": "easy",
+      "probe": "Jehuda Cresques speaks the language",
+      "distance": 0.5320515036582947
+    },
+    {
+      "case_id": "cf18343",
+      "kind": "paraphrase",
+      "probe": "The Vintons had a son, Brainerd, and a daughter Calista. Ignacio Carrera Pinto was born in",
+      "distance": 0.2814232110977173
+    },
+    {
+      "case_id": "cf18343",
+      "kind": "paraphrase",
+      "probe": "The Chiefs waived McKee on August 26, 2014. Ignacio Carrera Pinto is originally from",
+      "distance": 0.08925753831863403
+    },
+    {
+      "case_id": "cf18343",
+      "kind": "hard",
+      "probe": "Diamela Eltit was native to",
+      "distance": 0.14518886804580688
+    },
+    {
+      "case_id": "cf18343",
+      "kind": "hard",
+      "probe": "Nicol\u00e1s Castillo originates from",
+      "distance": 0.07606446743011475
+    },
+    {
+      "case_id": "cf18343",
+      "kind": "hard",
+      "probe": "Diamela Eltit was originally from",
+      "distance": 0.022791802883148193
+    },
+    {
+      "case_id": "cf18343",
+      "kind": "hard",
+      "probe": "Patricia Verdugo originated from",
+      "distance": 0.08830821514129639
+    },
+    {
+      "case_id": "cf18343",
+      "kind": "hard",
+      "probe": "Tom\u00e1s Gonz\u00e1lez was born in",
+      "distance": 0.19710487127304077
+    },
+    {
+      "case_id": "cf18343",
+      "kind": "easy",
+      "probe": "Jean Hyppolite speaks",
+      "distance": 0.5814083814620972
+    },
+    {
+      "case_id": "cf18343",
+      "kind": "easy",
+      "probe": "Miles Smiles, who plays",
+      "distance": 0.4539790153503418
+    },
+    {
+      "case_id": "cf18343",
+      "kind": "easy",
+      "probe": "The profession of Sekhar Menon is",
+      "distance": 0.4265534281730652
+    },
+    {
+      "case_id": "cf3299",
+      "kind": "paraphrase",
+      "probe": "He left the army as a major in 2000. What is the twin city of Santo Domingo? It is",
+      "distance": 0.28019189834594727
+    },
+    {
+      "case_id": "cf3299",
+      "kind": "paraphrase",
+      "probe": "Shibli Nomani. Santo Domingo is a twin city of",
+      "distance": 0.2827465534210205
+    },
+    {
+      "case_id": "cf3299",
+      "kind": "hard",
+      "probe": "The twin city of Frankfurt is",
+      "distance": 0.032995641231536865
+    },
+    {
+      "case_id": "cf3299",
+      "kind": "hard",
+      "probe": "Naples is a twin city of",
+      "distance": 0.30182212591171265
+    },
+    {
+      "case_id": "cf3299",
+      "kind": "hard",
+      "probe": "Osaka is a twin city of",
+      "distance": 0.31587255001068115
+    },
+    {
+      "case_id": "cf3299",
+      "kind": "hard",
+      "probe": "What is the twin city of Tel Aviv? It is",
+      "distance": 0.2634221315383911
+    },
+    {
+      "case_id": "cf3299",
+      "kind": "hard",
+      "probe": "Sofia is a twin city of",
+      "distance": 0.30172866582870483
+    },
+    {
+      "case_id": "cf3299",
+      "kind": "easy",
+      "probe": "Microsoft Internet Explorer 3 is developed by",
+      "distance": 0.4352315664291382
+    },
+    {
+      "case_id": "cf3299",
+      "kind": "easy",
+      "probe": "WebKit, a product created by",
+      "distance": 0.4482595920562744
+    },
+    {
+      "case_id": "cf3299",
+      "kind": "easy",
+      "probe": "Matsukata Masayoshi holds a citizenship from",
+      "distance": 0.4441434144973755
+    },
+    {
+      "case_id": "cf11593",
+      "kind": "paraphrase",
+      "probe": "It is found in Europe and North America. The occupation of Sekhar Menon is",
+      "distance": 0.10374855995178223
+    },
+    {
+      "case_id": "cf11593",
+      "kind": "paraphrase",
+      "probe": ":\nN\u00fa cr\u00ea. Sekhar Menon, who works as",
+      "distance": 0.42016637325286865
+    },
+    {
+      "case_id": "cf11593",
+      "kind": "hard",
+      "probe": "Elvis Presley's occupation is",
+      "distance": 0.14151036739349365
+    },
+    {
+      "case_id": "cf11593",
+      "kind": "hard",
+      "probe": "Quentin Tarantino works as",
+      "distance": 0.40276551246643066
+    },
+    {
+      "case_id": "cf11593",
+      "kind": "hard",
+      "probe": "The profession of Meryl Streep is",
+      "distance": 0.0732501745223999
+    },
+    {
+      "case_id": "cf11593",
+      "kind": "hard",
+      "probe": "Tom Hanks's occupation is",
+      "distance": 0.15603232383728027
+    },
+    {
+      "case_id": "cf11593",
+      "kind": "hard",
+      "probe": "Bob Dylan, who works as",
+      "distance": 0.3999089002609253
+    },
+    {
+      "case_id": "cf11593",
+      "kind": "easy",
+      "probe": "Triumph TR8, produced by",
+      "distance": 0.48043596744537354
+    },
+    {
+      "case_id": "cf11593",
+      "kind": "easy",
+      "probe": "Nokia N900 is produced by",
+      "distance": 0.4214162826538086
+    },
+    {
+      "case_id": "cf11593",
+      "kind": "easy",
+      "probe": "Where is 2SM? It is located in",
+      "distance": 0.4246938228607178
+    },
+    {
+      "case_id": "cf14226",
+      "kind": "paraphrase",
+      "probe": "Whenever Owl and Bat would say \"Who?\" Genrikh Sapgir, who is a citizen of",
+      "distance": 0.35244321823120117
+    },
+    {
+      "case_id": "cf14226",
+      "kind": "paraphrase",
+      "probe": "A distraught Lilith pleads with Farallone to stop Forrest. Genrikh Sapgir, who holds a citizenship from",
+      "distance": 0.07990163564682007
+    },
+    {
+      "case_id": "cf14226",
+      "kind": "hard",
+      "probe": "Andrei Arshavin, who has a citizenship from",
+      "distance": 0.06631481647491455
+    },
+    {
+      "case_id": "cf14226",
+      "kind": "hard",
+      "probe": "Sergey Nikolsky holds a citizenship from",
+      "distance": 0.007943153381347656
+    },
+    {
+      "case_id": "cf14226",
+      "kind": "hard",
+      "probe": "Viktor-Andrey Borovik-Romanov, who holds a citizenship from",
+      "distance": 0.03472435474395752
+    },
+    {
+      "case_id": "cf14226",
+      "kind": "hard",
+      "probe": "Maria Semyonova is a citizen of",
+      "distance": 0.31470584869384766
+    },
+    {
+      "case_id": "cf14226",
+      "kind": "hard",
+      "probe": "Kirill I of Moscow, who is a citizen of",
+      "distance": 0.32500970363616943
+    },
+    {
+      "case_id": "cf14226",
+      "kind": "easy",
+      "probe": "Lucien, Lord of Monaco lost their life at",
+      "distance": 0.461261510848999
+    },
+    {
+      "case_id": "cf14226",
+      "kind": "easy",
+      "probe": "Patricia Barber performs",
+      "distance": 0.5289191007614136
+    },
+    {
+      "case_id": "cf14226",
+      "kind": "easy",
+      "probe": "Edinburgh Mathematical Society works in the area of",
+      "distance": 0.5037847757339478
+    },
+    {
+      "case_id": "cf10361",
+      "kind": "paraphrase",
+      "probe": "They went in the house without the girls. Nimbus Hills, in",
+      "distance": 0.26649338006973267
+    },
+    {
+      "case_id": "cf10361",
+      "kind": "paraphrase",
+      "probe": "(Belfast)\n Margaret Windrim Kerr, For public service. Nimbus Hills belongs to the continent of",
+      "distance": 0.4244626760482788
+    },
+    {
+      "case_id": "cf10361",
+      "kind": "hard",
+      "probe": "Alexander Island is a part of the continent of",
+      "distance": 0.47448885440826416
+    },
+    {
+      "case_id": "cf10361",
+      "kind": "hard",
+      "probe": "Mount Erebus is a part of the continent of",
+      "distance": 0.46684861183166504
+    },
+    {
+      "case_id": "cf10361",
+      "kind": "hard",
+      "probe": "Ross Island is located in",
+      "distance": 0.049439311027526855
+    },
+    {
+      "case_id": "cf10361",
+      "kind": "hard",
+      "probe": "Australian Antarctic Territory is located in the continent",
+      "distance": 0.5686889290809631
+    },
+    {
+      "case_id": "cf10361",
+      "kind": "hard",
+      "probe": "Peter I Island is a part of the continent of",
+      "distance": 0.46554654836654663
+    },
+    {
+      "case_id": "cf10361",
+      "kind": "easy",
+      "probe": "Alexander William Kinglake speaks the language",
+      "distance": 0.5345607995986938
+    },
+    {
+      "case_id": "cf10361",
+      "kind": "easy",
+      "probe": "Sturla Gunnarsson, who has a citizenship from",
+      "distance": 0.4358530044555664
+    },
+    {
+      "case_id": "cf10361",
+      "kind": "easy",
+      "probe": "Jehuda Cresques speaks the language",
+      "distance": 0.5415493249893188
+    },
+    {
+      "case_id": "cf20017",
+      "kind": "paraphrase",
+      "probe": "Famine followed the war and pestilence. Sergey Lukyanenko took up work in",
+      "distance": 0.17202019691467285
+    },
+    {
+      "case_id": "cf20017",
+      "kind": "paraphrase",
+      "probe": "They placed 5th at the 1972 Winter Olympics. Sergey Lukyanenko was employed in",
+      "distance": 0.18021231889724731
+    },
+    {
+      "case_id": "cf20017",
+      "kind": "hard",
+      "probe": "Alexander Vedernikov took up work in",
+      "distance": 0.1479942798614502
+    },
+    {
+      "case_id": "cf20017",
+      "kind": "hard",
+      "probe": "Lyudmila Narusova found employment in",
+      "distance": 0.13929510116577148
+    },
+    {
+      "case_id": "cf20017",
+      "kind": "hard",
+      "probe": "Nikolay Kovalyov worked in",
+      "distance": 0.12614226341247559
+    },
+    {
+      "case_id": "cf20017",
+      "kind": "hard",
+      "probe": "Alexander Korzhakov worked in the city of",
+      "distance": 0.4376174807548523
+    },
+    {
+      "case_id": "cf20017",
+      "kind": "hard",
+      "probe": "Ivan Kliun worked in the city of",
+      "distance": 0.4531526565551758
+    },
+    {
+      "case_id": "cf20017",
+      "kind": "easy",
+      "probe": "Eiger belongs to the continent of",
+      "distance": 0.4883401393890381
+    },
+    {
+      "case_id": "cf20017",
+      "kind": "easy",
+      "probe": "Bert Joris plays the instrument",
+      "distance": 0.4739377498626709
+    },
+    {
+      "case_id": "cf20017",
+      "kind": "easy",
+      "probe": "Beaumont Glacier belongs to the continent of",
+      "distance": 0.49915653467178345
+    },
+    {
+      "case_id": "cf20985",
+      "kind": "paraphrase",
+      "probe": "This work is considered by many (e.g. Boss Volenti started in",
+      "distance": 0.27930331230163574
+    },
+    {
+      "case_id": "cf20985",
+      "kind": "paraphrase",
+      "probe": "A Grammar of Skolt Saami. Boss Volenti formed in",
+      "distance": 0.2392004132270813
+    },
+    {
+      "case_id": "cf20985",
+      "kind": "hard",
+      "probe": "Chester Beatty Library, created in",
+      "distance": 0.1476830244064331
+    },
+    {
+      "case_id": "cf20985",
+      "kind": "hard",
+      "probe": "Bank of Ireland was formed in",
+      "distance": 0.08560943603515625
+    },
+    {
+      "case_id": "cf20985",
+      "kind": "hard",
+      "probe": "The Frames was started in",
+      "distance": 0.05956852436065674
+    },
+    {
+      "case_id": "cf20985",
+      "kind": "hard",
+      "probe": "My Bloody Valentine was started in",
+      "distance": 0.08720266819000244
+    },
+    {
+      "case_id": "cf20985",
+      "kind": "hard",
+      "probe": "Primark was created in",
+      "distance": 0.08736914396286011
+    },
+    {
+      "case_id": "cf20985",
+      "kind": "easy",
+      "probe": "Jean Hyppolite speaks",
+      "distance": 0.5752773284912109
+    },
+    {
+      "case_id": "cf20985",
+      "kind": "easy",
+      "probe": "The profession of Rita Bahuguna is",
+      "distance": 0.41036856174468994
+    },
+    {
+      "case_id": "cf20985",
+      "kind": "easy",
+      "probe": "Eiger belongs to the continent of",
+      "distance": 0.4587494134902954
+    },
+    {
+      "case_id": "cf6700",
+      "kind": "paraphrase",
+      "probe": "The specific epithet refers to its growth in the spring. Jean Hyppolite writes in",
+      "distance": 0.47575652599334717
+    },
+    {
+      "case_id": "cf6700",
+      "kind": "paraphrase",
+      "probe": "Thus far she has yet to meet her match. Jean Hyppolite speaks the language",
+      "distance": 0.523362398147583
+    },
+    {
+      "case_id": "cf6700",
+      "kind": "hard",
+      "probe": "The language used by Antoine de Saint-Exup\u00e9ry is",
+      "distance": 0.4141635298728943
+    },
+    {
+      "case_id": "cf6700",
+      "kind": "hard",
+      "probe": "Albert II, Prince of Monaco speaks",
+      "distance": 0.13090908527374268
+    },
+    {
+      "case_id": "cf6700",
+      "kind": "hard",
+      "probe": "George Orwell writes in",
+      "distance": 0.4465782642364502
+    },
+    {
+      "case_id": "cf6700",
+      "kind": "hard",
+      "probe": "Charles Maurras speaks",
+      "distance": 0.06482535600662231
+    },
+    {
+      "case_id": "cf6700",
+      "kind": "hard",
+      "probe": "The language used by Albert II, Prince of Monaco is",
+      "distance": 0.434822678565979
+    },
+    {
+      "case_id": "cf6700",
+      "kind": "easy",
+      "probe": "Patricia Barber performs",
+      "distance": 0.40984904766082764
+    },
+    {
+      "case_id": "cf6700",
+      "kind": "easy",
+      "probe": "Laura Antoniou's profession is an",
+      "distance": 0.549562394618988
+    },
+    {
+      "case_id": "cf6700",
+      "kind": "easy",
+      "probe": "Beaumont Glacier belongs to the continent of",
+      "distance": 0.6439813375473022
+    },
+    {
+      "case_id": "cf18105",
+      "kind": "paraphrase",
+      "probe": "You can work in extremely low light situations, for example.\" octane's domain of work is",
+      "distance": 0.08819246292114258
+    },
+    {
+      "case_id": "cf18105",
+      "kind": "paraphrase",
+      "probe": "Be better. The expertise of octane is",
+      "distance": 0.2142021656036377
+    },
+    {
+      "case_id": "cf18105",
+      "kind": "hard",
+      "probe": "John Dalton works in the field of",
+      "distance": 0.38531965017318726
+    },
+    {
+      "case_id": "cf18105",
+      "kind": "hard",
+      "probe": "James Bryant Conant's area of work is",
+      "distance": 0.1896960735321045
+    },
+    {
+      "case_id": "cf18105",
+      "kind": "hard",
+      "probe": "The domain of work of Friedrich W\u00f6hler is",
+      "distance": 0.14739924669265747
+    },
+    {
+      "case_id": "cf18105",
+      "kind": "hard",
+      "probe": "Mikhail Vassilyevich Lomonosov works in the area of",
+      "distance": 0.34422433376312256
+    },
+    {
+      "case_id": "cf18105",
+      "kind": "hard",
+      "probe": "The expertise of Marie Curie is",
+      "distance": 0.20590126514434814
+    },
+    {
+      "case_id": "cf18105",
+      "kind": "easy",
+      "probe": "Haakon Lie died in the city of",
+      "distance": 0.5097068548202515
+    },
+    {
+      "case_id": "cf18105",
+      "kind": "easy",
+      "probe": "Khosrow Shakibai succumbed at",
+      "distance": 0.49955904483795166
+    },
+    {
+      "case_id": "cf18105",
+      "kind": "easy",
+      "probe": "Beaumont Glacier belongs to the continent of",
+      "distance": 0.4353811740875244
+    },
+    {
+      "case_id": "cf15630",
+      "kind": "paraphrase",
+      "probe": "Quarles, Benjamin. Erich Mendelsohn took up work in",
+      "distance": 0.45418667793273926
+    },
+    {
+      "case_id": "cf15630",
+      "kind": "paraphrase",
+      "probe": "Wait a respectable amount of time before marrying. Erich Mendelsohn found employment in",
+      "distance": 0.4256892204284668
+    },
+    {
+      "case_id": "cf15630",
+      "kind": "hard",
+      "probe": "Hermann Heller worked in the city of",
+      "distance": 0.026049494743347168
+    },
+    {
+      "case_id": "cf15630",
+      "kind": "hard",
+      "probe": "Anton Friedrich B\u00fcsching worked in the city of",
+      "distance": 0.040183424949645996
+    },
+    {
+      "case_id": "cf15630",
+      "kind": "hard",
+      "probe": "Anton Friedrich B\u00fcsching took up work in",
+      "distance": 0.44401633739471436
+    },
+    {
+      "case_id": "cf15630",
+      "kind": "hard",
+      "probe": "Ulrich Wilcken was employed in",
+      "distance": 0.48488861322402954
+    },
+    {
+      "case_id": "cf15630",
+      "kind": "hard",
+      "probe": "Robert von Mohl was employed in",
+      "distance": 0.48268431425094604
+    },
+    {
+      "case_id": "cf15630",
+      "kind": "easy",
+      "probe": "Lucien, Lord of Monaco lost their life at",
+      "distance": 0.507408857345581
+    },
+    {
+      "case_id": "cf15630",
+      "kind": "easy",
+      "probe": "De Grote Donorshow, that originated in",
+      "distance": 0.4542037844657898
+    },
+    {
+      "case_id": "cf15630",
+      "kind": "easy",
+      "probe": "J. Anthony Lukas's profession is an",
+      "distance": 0.5518525242805481
+    },
+    {
+      "case_id": "cf14506",
+      "kind": "paraphrase",
+      "probe": "82 aircraft sold. Indianapolis International Airport, which was named after",
+      "distance": 0.026404976844787598
+    },
+    {
+      "case_id": "cf14506",
+      "kind": "paraphrase",
+      "probe": "I think that\u2019s kind of a fetish. Indianapolis International Airport, named after",
+      "distance": 0.04319202899932861
+    },
+    {
+      "case_id": "cf14506",
+      "kind": "hard",
+      "probe": "Indianapolis Downtown Heliport was called after",
+      "distance": 0.2318187952041626
+    },
+    {
+      "case_id": "cf14506",
+      "kind": "hard",
+      "probe": "Indianapolis Metropolitan Airport, which was called after",
+      "distance": 0.15047687292099
+    },
+    {
+      "case_id": "cf14506",
+      "kind": "hard",
+      "probe": "Indianapolis Executive Airport, named for",
+      "distance": 0.09831619262695312
+    },
+    {
+      "case_id": "cf14506",
+      "kind": "hard",
+      "probe": "Indianapolis Metropolitan Airport was called after",
+      "distance": 0.1984267234802246
+    },
+    {
+      "case_id": "cf14506",
+      "kind": "hard",
+      "probe": "USS Indianapolis is called after",
+      "distance": 0.2054511308670044
+    },
+    {
+      "case_id": "cf14506",
+      "kind": "easy",
+      "probe": "Carl Flesch worked in the city of",
+      "distance": 0.518315315246582
+    },
+    {
+      "case_id": "cf14506",
+      "kind": "easy",
+      "probe": "Kids Can Press's headquarters are in",
+      "distance": 0.42663121223449707
+    },
+    {
+      "case_id": "cf14506",
+      "kind": "easy",
+      "probe": "Google Checkout was created by",
+      "distance": 0.3947668671607971
+    },
+    {
+      "case_id": "cf17083",
+      "kind": "paraphrase",
+      "probe": "The biennial event is presented by the Queensland Government. Osmaniye Province is within",
+      "distance": 0.2695733308792114
+    },
+    {
+      "case_id": "cf17083",
+      "kind": "paraphrase",
+      "probe": "Film . Osmaniye Province, in",
+      "distance": 0.18224966526031494
+    },
+    {
+      "case_id": "cf17083",
+      "kind": "hard",
+      "probe": "Kocaeli Subregion can be found in",
+      "distance": 0.14303183555603027
+    },
+    {
+      "case_id": "cf17083",
+      "kind": "hard",
+      "probe": "Manisa Subregion is located in",
+      "distance": 0.13357973098754883
+    },
+    {
+      "case_id": "cf17083",
+      "kind": "hard",
+      "probe": "K\u0131r\u0131kkale Subregion, in",
+      "distance": 0.16885733604431152
+    },
+    {
+      "case_id": "cf17083",
+      "kind": "hard",
+      "probe": "Ayd\u0131n Subregion is in",
+      "distance": 0.05447113513946533
+    },
+    {
+      "case_id": "cf17083",
+      "kind": "hard",
+      "probe": "Kocaeli Subregion is in",
+      "distance": 0.03495514392852783
+    },
+    {
+      "case_id": "cf17083",
+      "kind": "easy",
+      "probe": "Sergey Lukyanenko used to work in",
+      "distance": 0.3423834443092346
+    },
+    {
+      "case_id": "cf17083",
+      "kind": "easy",
+      "probe": "Jack Sheldon, playing the",
+      "distance": 0.6057307124137878
+    },
+    {
+      "case_id": "cf17083",
+      "kind": "easy",
+      "probe": "George Elliott Clarke worked in",
+      "distance": 0.34789878129959106
+    },
+    {
+      "case_id": "cf8535",
+      "kind": "paraphrase",
+      "probe": "598\u2013600. The headquarter of University of Florence is in",
+      "distance": 0.06957942247390747
+    },
+    {
+      "case_id": "cf8535",
+      "kind": "paraphrase",
+      "probe": "His finding was soon confirmed algebraically by Tharmalingam and Lidiard. University of Florence, whose headquarters are in",
+      "distance": 0.1574498414993286
+    },
+    {
+      "case_id": "cf8535",
+      "kind": "hard",
+      "probe": "ACF Fiorentina is headquartered in",
+      "distance": 0.09247004985809326
+    },
+    {
+      "case_id": "cf8535",
+      "kind": "hard",
+      "probe": "Lacerba, whose headquarters are in",
+      "distance": 0.13578617572784424
+    },
+    {
+      "case_id": "cf8535",
+      "kind": "hard",
+      "probe": "The headquarter of Banca CR Firenze is located in",
+      "distance": 0.02608346939086914
+    },
+    {
+      "case_id": "cf8535",
+      "kind": "hard",
+      "probe": "The headquarter of Accademia delle Arti del Disegno is located in",
+      "distance": 0.02526956796646118
+    },
+    {
+      "case_id": "cf8535",
+      "kind": "hard",
+      "probe": "The headquarter of Institut fran\u00e7ais de Florence is in",
+      "distance": 0.0770348310470581
+    },
+    {
+      "case_id": "cf8535",
+      "kind": "easy",
+      "probe": "Nokia N900 is produced by",
+      "distance": 0.3413565158843994
+    },
+    {
+      "case_id": "cf8535",
+      "kind": "easy",
+      "probe": "Yvette Giraud speaks the language",
+      "distance": 0.5748788118362427
+    },
+    {
+      "case_id": "cf8535",
+      "kind": "easy",
+      "probe": "Virtual Hard Disk was created by",
+      "distance": 0.3906850814819336
+    },
+    {
+      "case_id": "cf2040",
+      "kind": "paraphrase",
+      "probe": "Also, they are represented by the same Unicode character. Matsukata Masayoshi, who has a citizenship from",
+      "distance": 0.06381255388259888
+    },
+    {
+      "case_id": "cf2040",
+      "kind": "paraphrase",
+      "probe": "Williams, C. M. (1951). Matsukata Masayoshi, who holds a citizenship from",
+      "distance": 0.0735936164855957
+    },
+    {
+      "case_id": "cf2040",
+      "kind": "hard",
+      "probe": "Yosa Buson, who holds a citizenship from",
+      "distance": 0.050219058990478516
+    },
+    {
+      "case_id": "cf2040",
+      "kind": "hard",
+      "probe": "Eiichiro Oda holds a citizenship from",
+      "distance": 0.013886570930480957
+    },
+    {
+      "case_id": "cf2040",
+      "kind": "hard",
+      "probe": "Takeshi Kitano holds a citizenship from",
+      "distance": 0.013271093368530273
+    },
+    {
+      "case_id": "cf2040",
+      "kind": "hard",
+      "probe": "Matsuo Bash\u014d, who has a citizenship from",
+      "distance": 0.07493281364440918
+    },
+    {
+      "case_id": "cf2040",
+      "kind": "hard",
+      "probe": "Nitobe Inaz\u014d has a citizenship from",
+      "distance": 0.043376624584198
+    },
+    {
+      "case_id": "cf2040",
+      "kind": "easy",
+      "probe": "Kim Vilfort, who plays the position",
+      "distance": 0.5510469675064087
+    },
+    {
+      "case_id": "cf2040",
+      "kind": "easy",
+      "probe": "Dez Dickerson was native to",
+      "distance": 0.3338549733161926
+    },
+    {
+      "case_id": "cf2040",
+      "kind": "easy",
+      "probe": "Festning Tunnel can be found in",
+      "distance": 0.46106886863708496
+    },
+    {
+      "case_id": "cf17979",
+      "kind": "paraphrase",
+      "probe": "A conservative electoral law was passed on 31 May. Victor Jacquemont writes in",
+      "distance": 0.4476754069328308
+    },
+    {
+      "case_id": "cf17979",
+      "kind": "paraphrase",
+      "probe": "'s analysis in Crowley v O\u2019Sullivan [1900] 2 I.R. Victor Jacquemont speaks the language",
+      "distance": 0.40638232231140137
+    },
+    {
+      "case_id": "cf17979",
+      "kind": "hard",
+      "probe": "Celine Dion speaks",
+      "distance": 0.44167351722717285
+    },
+    {
+      "case_id": "cf17979",
+      "kind": "hard",
+      "probe": "The language used by Antoine de Saint-Exup\u00e9ry is",
+      "distance": 0.05405902862548828
+    },
+    {
+      "case_id": "cf17979",
+      "kind": "hard",
+      "probe": "George Orwell speaks",
+      "distance": 0.3547808527946472
+    },
+    {
+      "case_id": "cf17979",
+      "kind": "hard",
+      "probe": "Le Corbusier writes in",
+      "distance": 0.3834744691848755
+    },
+    {
+      "case_id": "cf17979",
+      "kind": "hard",
+      "probe": "The language used by Albert II, Prince of Monaco is",
+      "distance": 0.10080128908157349
+    },
+    {
+      "case_id": "cf17979",
+      "kind": "easy",
+      "probe": "Fats Waller, playing the",
+      "distance": 0.526378333568573
+    },
+    {
+      "case_id": "cf17979",
+      "kind": "easy",
+      "probe": "Laura Antoniou's profession is an",
+      "distance": 0.3731253743171692
+    },
+    {
+      "case_id": "cf17979",
+      "kind": "easy",
+      "probe": "Martin Burrell works as",
+      "distance": 0.5068073272705078
+    },
+    {
+      "case_id": "cf460",
+      "kind": "paraphrase",
+      "probe": "In 1727, separate Novgorod Governorate was split off. Ralph Lyford is known for performing",
+      "distance": 0.2677145004272461
+    },
+    {
+      "case_id": "cf460",
+      "kind": "paraphrase",
+      "probe": "As travel literature, Howell's work largely neglects scenic description. Ralph Lyford, who plays",
+      "distance": 0.3759613633155823
+    },
+    {
+      "case_id": "cf460",
+      "kind": "hard",
+      "probe": "Richard Tauber, who plays",
+      "distance": 0.28904056549072266
+    },
+    {
+      "case_id": "cf460",
+      "kind": "hard",
+      "probe": "Hans Werner Henze is known for performing",
+      "distance": 0.20671957731246948
+    },
+    {
+      "case_id": "cf460",
+      "kind": "hard",
+      "probe": "The genre played by Viktor Ullmann is",
+      "distance": 0.4019097089767456
+    },
+    {
+      "case_id": "cf460",
+      "kind": "hard",
+      "probe": "Fritz Kreisler, who plays",
+      "distance": 0.2982640266418457
+    },
+    {
+      "case_id": "cf460",
+      "kind": "hard",
+      "probe": "Fritz Kreisler is known for performing",
+      "distance": 0.20600759983062744
+    },
+    {
+      "case_id": "cf460",
+      "kind": "easy",
+      "probe": "Greenwich Park is in",
+      "distance": 0.5328373908996582
+    },
+    {
+      "case_id": "cf460",
+      "kind": "easy",
+      "probe": "Khosrow Shakibai succumbed at",
+      "distance": 0.5221920609474182
+    },
+    {
+      "case_id": "cf460",
+      "kind": "easy",
+      "probe": "Unus pro omnibus, omnes pro uno is written in",
+      "distance": 0.5446324348449707
+    },
+    {
+      "case_id": "cf3056",
+      "kind": "paraphrase",
+      "probe": "She received the Constantijn Huygens Prize in 1970. Greenwich Park can be found in",
+      "distance": 0.1536831259727478
+    },
+    {
+      "case_id": "cf3056",
+      "kind": "paraphrase",
+      "probe": "Against Auburn, Mallard had 10 tackles and two quarterback pressures. The location of Greenwich Park is",
+      "distance": 0.41110265254974365
+    },
+    {
+      "case_id": "cf3056",
+      "kind": "hard",
+      "probe": "Where is University of Greenwich? It is located in",
+      "distance": 0.20304787158966064
+    },
+    {
+      "case_id": "cf3056",
+      "kind": "hard",
+      "probe": "Blackheath Hill railway station can be found in",
+      "distance": 0.25147944688796997
+    },
+    {
+      "case_id": "cf3056",
+      "kind": "hard",
+      "probe": "The location of Curlew Rowing Club is",
+      "distance": 0.37858569622039795
+    },
+    {
+      "case_id": "cf3056",
+      "kind": "hard",
+      "probe": "John Roan School can be found in",
+      "distance": 0.19997310638427734
+    },
+    {
+      "case_id": "cf3056",
+      "kind": "hard",
+      "probe": "Blackheath Proprietary School can be found in",
+      "distance": 0.21667134761810303
+    },
+    {
+      "case_id": "cf3056",
+      "kind": "easy",
+      "probe": "Benedict Joseph Fenwick has the position of",
+      "distance": 0.5051397085189819
+    },
+    {
+      "case_id": "cf3056",
+      "kind": "easy",
+      "probe": "Jim Bagby, Sr. plays in the position of",
+      "distance": 0.5283414125442505
+    },
+    {
+      "case_id": "cf3056",
+      "kind": "easy",
+      "probe": "Boss Volenti was founded in",
+      "distance": 0.29268181324005127
+    },
+    {
+      "case_id": "cf13068",
+      "kind": "paraphrase",
+      "probe": "Prescription purchases are then verified by the prescribing pharmacy. The language of Orr Eravuu was",
+      "distance": 0.2023611068725586
+    },
+    {
+      "case_id": "cf13068",
+      "kind": "paraphrase",
+      "probe": "7 Deadly Sinners. The original language of Orr Eravuu is",
+      "distance": 0.1375831961631775
+    },
+    {
+      "case_id": "cf13068",
+      "kind": "hard",
+      "probe": "The language of Whistle was",
+      "distance": 0.12354248762130737
+    },
+    {
+      "case_id": "cf13068",
+      "kind": "hard",
+      "probe": "The original language of Anbe Sivam is",
+      "distance": 0.12634587287902832
+    },
+    {
+      "case_id": "cf13068",
+      "kind": "hard",
+      "probe": "The original language of Thotti Jaya was",
+      "distance": 0.1304987668991089
+    },
+    {
+      "case_id": "cf13068",
+      "kind": "hard",
+      "probe": "The language of Mr. Romeo was",
+      "distance": 0.2181444764137268
+    },
+    {
+      "case_id": "cf13068",
+      "kind": "hard",
+      "probe": "The language of Mudhalvan is",
+      "distance": 0.06357502937316895
+    },
+    {
+      "case_id": "cf13068",
+      "kind": "easy",
+      "probe": "Levski Ridge is located in the continent",
+      "distance": 0.5291762351989746
+    },
+    {
+      "case_id": "cf13068",
+      "kind": "easy",
+      "probe": "In Namibia, the language spoken is",
+      "distance": 0.201091468334198
+    },
+    {
+      "case_id": "cf13068",
+      "kind": "easy",
+      "probe": "What is the twin city of Ostrava? It is",
+      "distance": 0.3692626953125
+    },
+    {
+      "case_id": "cf21894",
+      "kind": "paraphrase",
+      "probe": "Diapason Gallery, New York, 2005\n Defragmentation (Krems). The headquarter of Kids Can Press is located in",
+      "distance": 0.1270993947982788
+    },
+    {
+      "case_id": "cf21894",
+      "kind": "paraphrase",
+      "probe": "See also\n Hiking (sailing)\n\nReferences\n\nCategory:Sailing equipment Kids Can Press, whose headquarters are in",
+      "distance": 0.07808053493499756
+    },
+    {
+      "case_id": "cf21894",
+      "kind": "hard",
+      "probe": "The headquarter of Roman Catholic Archdiocese of Toronto is in",
+      "distance": 0.12054502964019775
+    },
+    {
+      "case_id": "cf21894",
+      "kind": "hard",
+      "probe": "Vale Limited's headquarters are in",
+      "distance": 0.06991249322891235
+    },
+    {
+      "case_id": "cf21894",
+      "kind": "hard",
+      "probe": "GO Transit, whose headquarters are in",
+      "distance": 0.08135730028152466
+    },
+    {
+      "case_id": "cf21894",
+      "kind": "hard",
+      "probe": "The Hockey News's headquarters are in",
+      "distance": 0.04313206672668457
+    },
+    {
+      "case_id": "cf21894",
+      "kind": "hard",
+      "probe": "Shoppers Drug Mart, whose headquarters are in",
+      "distance": 0.08516687154769897
+    },
+    {
+      "case_id": "cf21894",
+      "kind": "easy",
+      "probe": "Kim Vilfort, who plays the position",
+      "distance": 0.5452864170074463
+    },
+    {
+      "case_id": "cf21894",
+      "kind": "easy",
+      "probe": "Paul McCartney works in the field of",
+      "distance": 0.4041581153869629
+    },
+    {
+      "case_id": "cf21894",
+      "kind": "easy",
+      "probe": "Shearing Pinx was created in",
+      "distance": 0.25670361518859863
+    },
+    {
+      "case_id": "cf20488",
+      "kind": "paraphrase",
+      "probe": "This album sold out 300,000 in first ten days. Rita Bahuguna works as",
+      "distance": 0.4011780023574829
+    },
+    {
+      "case_id": "cf20488",
+      "kind": "paraphrase",
+      "probe": "The withdrawing troops received harassing attacks all the way back. Rita Bahuguna, who works as",
+      "distance": 0.4629751443862915
+    },
+    {
+      "case_id": "cf20488",
+      "kind": "hard",
+      "probe": "The occupation of John Paul II is",
+      "distance": 0.1973888874053955
+    },
+    {
+      "case_id": "cf20488",
+      "kind": "hard",
+      "probe": "Mohandas Karamchand Gandhi's profession is a",
+      "distance": 0.33998286724090576
+    },
+    {
+      "case_id": "cf20488",
+      "kind": "hard",
+      "probe": "The profession of Abraham Lincoln is",
+      "distance": 0.08020055294036865
+    },
+    {
+      "case_id": "cf20488",
+      "kind": "hard",
+      "probe": "Bill Clinton's profession is an",
+      "distance": 0.3483758568763733
+    },
+    {
+      "case_id": "cf20488",
+      "kind": "hard",
+      "probe": "Angela Merkel's occupation is",
+      "distance": 0.14530551433563232
+    },
+    {
+      "case_id": "cf20488",
+      "kind": "easy",
+      "probe": "Buenos Aires is a twin city of",
+      "distance": 0.42691802978515625
+    },
+    {
+      "case_id": "cf20488",
+      "kind": "easy",
+      "probe": "The language of Orr Eravuu is",
+      "distance": 0.25761979818344116
+    },
+    {
+      "case_id": "cf20488",
+      "kind": "easy",
+      "probe": "Alexander William Kinglake speaks the language",
+      "distance": 0.47054213285446167
+    },
+    {
+      "case_id": "cf37",
+      "kind": "paraphrase",
+      "probe": "Broughton) \u2013 3:46\n \"Dawn Crept Away\" (R.E. Triumph TR8, created by",
+      "distance": 0.18538975715637207
+    },
+    {
+      "case_id": "cf37",
+      "kind": "paraphrase",
+      "probe": "Supplement to Wingspan Vol. Triumph TR8 is produced by",
+      "distance": 0.13686835765838623
+    },
+    {
+      "case_id": "cf37",
+      "kind": "hard",
+      "probe": "Triumph GT6, produced by",
+      "distance": 0.01103132963180542
+    },
+    {
+      "case_id": "cf37",
+      "kind": "hard",
+      "probe": "Triumph GT6 is developed by",
+      "distance": 0.08696377277374268
+    },
+    {
+      "case_id": "cf37",
+      "kind": "hard",
+      "probe": "Triumph TR7, produced by",
+      "distance": 0.0037692785263061523
+    },
+    {
+      "case_id": "cf37",
+      "kind": "hard",
+      "probe": "Triumph Dolomite, produced by",
+      "distance": 0.13659852743148804
+    },
+    {
+      "case_id": "cf37",
+      "kind": "hard",
+      "probe": "Triumph Toledo is created by",
+      "distance": 0.17397058010101318
+    },
+    {
+      "case_id": "cf37",
+      "kind": "easy",
+      "probe": "Martin Burrell works as",
+      "distance": 0.5071737766265869
+    },
+    {
+      "case_id": "cf37",
+      "kind": "easy",
+      "probe": "Erich Mendelsohn worked in the city of",
+      "distance": 0.47100454568862915
+    },
+    {
+      "case_id": "cf37",
+      "kind": "easy",
+      "probe": "Deion Sanders, the",
+      "distance": 0.4381868839263916
+    },
+    {
+      "case_id": "cf20050",
+      "kind": "paraphrase",
+      "probe": "The Slavic Languages Unity in Diversity. Enos Slaughter, who plays the position",
+      "distance": 0.31528162956237793
+    },
+    {
+      "case_id": "cf20050",
+      "kind": "paraphrase",
+      "probe": "However he didn't tell anything to them about his past. Which position does Enos Slaughter play? They play as",
+      "distance": 0.40821027755737305
+    },
+    {
+      "case_id": "cf20050",
+      "kind": "hard",
+      "probe": "Al Smith, the",
+      "distance": 0.472589373588562
+    },
+    {
+      "case_id": "cf20050",
+      "kind": "hard",
+      "probe": "Adam Hyzdu, the",
+      "distance": 0.460628867149353
+    },
+    {
+      "case_id": "cf20050",
+      "kind": "hard",
+      "probe": "Alan Bannister, the",
+      "distance": 0.4585857391357422
+    },
+    {
+      "case_id": "cf20050",
+      "kind": "hard",
+      "probe": "Al Gionfriddo, the",
+      "distance": 0.47604864835739136
+    },
+    {
+      "case_id": "cf20050",
+      "kind": "hard",
+      "probe": "Adam Hyzdu, who plays the position",
+      "distance": 0.314617395401001
+    },
+    {
+      "case_id": "cf20050",
+      "kind": "easy",
+      "probe": "Sergey Lukyanenko used to work in",
+      "distance": 0.3995802402496338
+    },
+    {
+      "case_id": "cf20050",
+      "kind": "easy",
+      "probe": "Dez Dickerson was native to",
+      "distance": 0.4327040910720825
+    },
+    {
+      "case_id": "cf20050",
+      "kind": "easy",
+      "probe": "Triumph TR8, produced by",
+      "distance": 0.47425997257232666
+    },
+    {
+      "case_id": "cf16173",
+      "kind": "paraphrase",
+      "probe": "The film had musical score by M. S. Viswanathan. The language of Unus pro omnibus, omnes pro uno was",
+      "distance": 0.5152159929275513
+    },
+    {
+      "case_id": "cf16173",
+      "kind": "paraphrase",
+      "probe": "Pete makes his first appearance on 2 June. The language of Unus pro omnibus, omnes pro uno is",
+      "distance": 0.4851221442222595
+    },
+    {
+      "case_id": "cf16173",
+      "kind": "hard",
+      "probe": "Epistulae morales ad Lucilium is written in",
+      "distance": 0.1073266863822937
+    },
+    {
+      "case_id": "cf16173",
+      "kind": "hard",
+      "probe": "Corpus Inscriptionum Latinarum is written in",
+      "distance": 0.13346129655838013
+    },
+    {
+      "case_id": "cf16173",
+      "kind": "hard",
+      "probe": "Te Deum was written in",
+      "distance": 0.17856580018997192
+    },
+    {
+      "case_id": "cf16173",
+      "kind": "hard",
+      "probe": "The language of Ars magna was",
+      "distance": 0.41552114486694336
+    },
+    {
+      "case_id": "cf16173",
+      "kind": "hard",
+      "probe": "Inscriptiones Graecae was written in",
+      "distance": 0.13289415836334229
+    },
+    {
+      "case_id": "cf16173",
+      "kind": "easy",
+      "probe": "Sturla Gunnarsson, who has a citizenship from",
+      "distance": 0.5226794481277466
+    },
+    {
+      "case_id": "cf16173",
+      "kind": "easy",
+      "probe": "Erich Mendelsohn worked in the city of",
+      "distance": 0.5408255457878113
+    },
+    {
+      "case_id": "cf16173",
+      "kind": "easy",
+      "probe": "Yvette Giraud speaks the language",
+      "distance": 0.576531171798706
+    },
+    {
+      "case_id": "cf10916",
+      "kind": "paraphrase",
+      "probe": "Current \n7, 8 and 9-September-2007. Luis Bacalov holds a citizenship from",
+      "distance": 0.29774487018585205
+    },
+    {
+      "case_id": "cf10916",
+      "kind": "paraphrase",
+      "probe": "History of Education, 39(5), 589-611. Luis Bacalov, who holds a citizenship from",
+      "distance": 0.2844616770744324
+    },
+    {
+      "case_id": "cf10916",
+      "kind": "hard",
+      "probe": "Giuseppe Ermini, who holds a citizenship from",
+      "distance": 0.27874815464019775
+    },
+    {
+      "case_id": "cf10916",
+      "kind": "hard",
+      "probe": "Giuseppe Ermini, a citizen of",
+      "distance": 0.061749815940856934
+    },
+    {
+      "case_id": "cf10916",
+      "kind": "hard",
+      "probe": "Giuliano Vassalli, who is a citizen of",
+      "distance": 0.008767962455749512
+    },
+    {
+      "case_id": "cf10916",
+      "kind": "hard",
+      "probe": "Giuseppe Ermini has a citizenship from",
+      "distance": 0.29845863580703735
+    },
+    {
+      "case_id": "cf10916",
+      "kind": "hard",
+      "probe": "Gianni Infantino Riovaldi, who is a citizen of",
+      "distance": 0.016836106777191162
+    },
+    {
+      "case_id": "cf10916",
+      "kind": "easy",
+      "probe": "Triumph TR8, produced by",
+      "distance": 0.39975857734680176
+    },
+    {
+      "case_id": "cf10916",
+      "kind": "easy",
+      "probe": "Laura Antoniou's profession is an",
+      "distance": 0.453363835811615
+    },
+    {
+      "case_id": "cf10916",
+      "kind": "easy",
+      "probe": "Jim Bagby, Sr. plays in the position of",
+      "distance": 0.3951655626296997
+    },
+    {
+      "case_id": "cf7992",
+      "kind": "paraphrase",
+      "probe": "In Aedibus B.G. Benedict Joseph Fenwick is a",
+      "distance": 0.3994932770729065
+    },
+    {
+      "case_id": "cf7992",
+      "kind": "paraphrase",
+      "probe": "The Rice Alliance was ranked No. Benedict Joseph Fenwick holds the title of",
+      "distance": 0.16115403175354004
+    },
+    {
+      "case_id": "cf7992",
+      "kind": "hard",
+      "probe": "Marius Aventicensis, who has the position of",
+      "distance": 0.07078087329864502
+    },
+    {
+      "case_id": "cf7992",
+      "kind": "hard",
+      "probe": "Thomas Percy's position is",
+      "distance": 0.3529450297355652
+    },
+    {
+      "case_id": "cf7992",
+      "kind": "hard",
+      "probe": "Bartolomeo di Breganze holds the title of",
+      "distance": 0.14983665943145752
+    },
+    {
+      "case_id": "cf7992",
+      "kind": "hard",
+      "probe": "Luke of Prague, who has the position of",
+      "distance": 0.05945277214050293
+    },
+    {
+      "case_id": "cf7992",
+      "kind": "hard",
+      "probe": "Marius Aventicensis's position is",
+      "distance": 0.3580250144004822
+    },
+    {
+      "case_id": "cf7992",
+      "kind": "easy",
+      "probe": "Laura Antoniou's profession is an",
+      "distance": 0.3774069547653198
+    },
+    {
+      "case_id": "cf7992",
+      "kind": "easy",
+      "probe": "Jussi Markkanen plays as",
+      "distance": 0.3550618886947632
+    },
+    {
+      "case_id": "cf7992",
+      "kind": "easy",
+      "probe": "Festning Tunnel can be found in",
+      "distance": 0.4733145236968994
+    },
+    {
+      "case_id": "cf10656",
+      "kind": "paraphrase",
+      "probe": "The population was 767 at the 2010 census. Shazzan premieres on",
+      "distance": 0.17206811904907227
+    },
+    {
+      "case_id": "cf10656",
+      "kind": "paraphrase",
+      "probe": "History\nVallecito was one of California's important early-day mining towns. Shazzan is to debut on",
+      "distance": 0.23738443851470947
+    },
+    {
+      "case_id": "cf10656",
+      "kind": "hard",
+      "probe": "Murder, She Wrote was released on",
+      "distance": 0.154524564743042
+    },
+    {
+      "case_id": "cf10656",
+      "kind": "hard",
+      "probe": "The King of Queens debuted on",
+      "distance": 0.1397782564163208
+    },
+    {
+      "case_id": "cf10656",
+      "kind": "hard",
+      "probe": "Barnaby Jones was released on",
+      "distance": 0.34453922510147095
+    },
+    {
+      "case_id": "cf10656",
+      "kind": "hard",
+      "probe": "Candles on Bay Street premieres on",
+      "distance": 0.1508963704109192
+    },
+    {
+      "case_id": "cf10656",
+      "kind": "hard",
+      "probe": "Scooby-Doo, Where Are You! is to debut on",
+      "distance": 0.1595178246498108
+    },
+    {
+      "case_id": "cf10656",
+      "kind": "easy",
+      "probe": "Matsukata Masayoshi holds a citizenship from",
+      "distance": 0.4880298376083374
+    },
+    {
+      "case_id": "cf10656",
+      "kind": "easy",
+      "probe": "Luis Bacalov, who is a citizen of",
+      "distance": 0.46706724166870117
+    },
+    {
+      "case_id": "cf10656",
+      "kind": "easy",
+      "probe": "Sidhi district, in",
+      "distance": 0.44018566608428955
+    },
+    {
+      "case_id": "cf2063",
+      "kind": "paraphrase",
+      "probe": "From then on, he keeps regular contact with his audience. Bert Joris, playing the",
+      "distance": 0.40524381399154663
+    },
+    {
+      "case_id": "cf2063",
+      "kind": "paraphrase",
+      "probe": "The genus was erected by Francis Walker in 1866. Bert Joris performs on the",
+      "distance": 0.3870866298675537
+    },
+    {
+      "case_id": "cf2063",
+      "kind": "hard",
+      "probe": "Ib Glindemann performs on the",
+      "distance": 0.387831449508667
+    },
+    {
+      "case_id": "cf2063",
+      "kind": "hard",
+      "probe": "Eric Vloeimans plays",
+      "distance": 0.40550535917282104
+    },
+    {
+      "case_id": "cf2063",
+      "kind": "hard",
+      "probe": "Nicholas Payton performs on the",
+      "distance": 0.37766343355178833
+    },
+    {
+      "case_id": "cf2063",
+      "kind": "hard",
+      "probe": "Bill Dixon plays the",
+      "distance": 0.39180415868759155
+    },
+    {
+      "case_id": "cf2063",
+      "kind": "hard",
+      "probe": "Francesco Sartori plays the",
+      "distance": 0.37286829948425293
+    },
+    {
+      "case_id": "cf2063",
+      "kind": "easy",
+      "probe": "In Dominica, an official language is",
+      "distance": 0.44595205783843994
+    },
+    {
+      "case_id": "cf2063",
+      "kind": "easy",
+      "probe": "Jim Bagby, Sr. plays in the position of",
+      "distance": 0.43901997804641724
+    },
+    {
+      "case_id": "cf2063",
+      "kind": "easy",
+      "probe": "Buenos Aires is a twin city of",
+      "distance": 0.5317578911781311
+    },
+    {
+      "case_id": "cf6260",
+      "kind": "paraphrase",
+      "probe": "R4:    Anonymous                                 (1906)  - Copy of R2 with additional material. Samuel von Fischer used to work in",
+      "distance": 0.44604194164276123
+    },
+    {
+      "case_id": "cf6260",
+      "kind": "paraphrase",
+      "probe": "Col David Hamilton Rex Stephenson, Late The Light Infantry. Samuel von Fischer took up work in",
+      "distance": 0.4483901858329773
+    },
+    {
+      "case_id": "cf6260",
+      "kind": "hard",
+      "probe": "Anton Friedrich B\u00fcsching worked in",
+      "distance": 0.4753783941268921
+    },
+    {
+      "case_id": "cf6260",
+      "kind": "hard",
+      "probe": "Franz Reuleaux took up work in",
+      "distance": 0.4515463709831238
+    },
+    {
+      "case_id": "cf6260",
+      "kind": "hard",
+      "probe": "Max Raabe worked in",
+      "distance": 0.4590301513671875
+    },
+    {
+      "case_id": "cf6260",
+      "kind": "hard",
+      "probe": "Anton Friedrich B\u00fcsching took up work in",
+      "distance": 0.434454083442688
+    },
+    {
+      "case_id": "cf6260",
+      "kind": "hard",
+      "probe": "Heinrich Rudolf Hermann Friedrich von Gneist took up work in",
+      "distance": 0.43012112379074097
+    },
+    {
+      "case_id": "cf6260",
+      "kind": "easy",
+      "probe": "Lyubov Orlova died in the city of",
+      "distance": 0.09331119060516357
+    },
+    {
+      "case_id": "cf6260",
+      "kind": "easy",
+      "probe": "What does Morty Corb play? They play",
+      "distance": 0.6672190427780151
+    },
+    {
+      "case_id": "cf6260",
+      "kind": "easy",
+      "probe": "Lancia Ypsilon is created by",
+      "distance": 0.5021635293960571
+    },
+    {
+      "case_id": "cf18596",
+      "kind": "paraphrase",
+      "probe": "Geom. In Dominica, the language spoken is",
+      "distance": 0.16385501623153687
+    },
+    {
+      "case_id": "cf18596",
+      "kind": "paraphrase",
+      "probe": "In 2008 enrollment was 220 pupils in the district. The law in Dominica declares the language",
+      "distance": 0.4103430509567261
+    },
+    {
+      "case_id": "cf18596",
+      "kind": "hard",
+      "probe": "The official language of Canada is",
+      "distance": 0.1248023509979248
+    },
+    {
+      "case_id": "cf18596",
+      "kind": "hard",
+      "probe": "In Kenya, an official language is",
+      "distance": 0.01737797260284424
+    },
+    {
+      "case_id": "cf18596",
+      "kind": "hard",
+      "probe": "In European Union, the language spoken is",
+      "distance": 0.1441112756729126
+    },
+    {
+      "case_id": "cf18596",
+      "kind": "hard",
+      "probe": "The official language of New Zealand is",
+      "distance": 0.12837225198745728
+    },
+    {
+      "case_id": "cf18596",
+      "kind": "hard",
+      "probe": "In European Union, an official language is",
+      "distance": 0.10464692115783691
+    },
+    {
+      "case_id": "cf18596",
+      "kind": "easy",
+      "probe": "Festning Tunnel can be found in",
+      "distance": 0.46447718143463135
+    },
+    {
+      "case_id": "cf18596",
+      "kind": "easy",
+      "probe": "Ralph Lyford performs",
+      "distance": 0.48965466022491455
+    },
+    {
+      "case_id": "cf18596",
+      "kind": "easy",
+      "probe": "Carl Flesch worked in the city of",
+      "distance": 0.5009633302688599
+    },
+    {
+      "case_id": "cf7264",
+      "kind": "paraphrase",
+      "probe": "They were both immigrants from the Bukovina region of Austria-Hungary. Joyce Bamford-Addo holds a citizenship from",
+      "distance": 0.3338318467140198
+    },
+    {
+      "case_id": "cf7264",
+      "kind": "paraphrase",
+      "probe": "In 2011, it cost \u00a32 per person. Joyce Bamford-Addo, who has a citizenship from",
+      "distance": 0.32715439796447754
+    },
+    {
+      "case_id": "cf7264",
+      "kind": "hard",
+      "probe": "Harrison Afful is a citizen of",
+      "distance": 0.06769084930419922
+    },
+    {
+      "case_id": "cf7264",
+      "kind": "hard",
+      "probe": "Charles Takyi, who is a citizen of",
+      "distance": 0.02391993999481201
+    },
+    {
+      "case_id": "cf7264",
+      "kind": "hard",
+      "probe": "Ignatius Kutu Acheampong, who holds a citizenship from",
+      "distance": 0.274358868598938
+    },
+    {
+      "case_id": "cf7264",
+      "kind": "hard",
+      "probe": "Harrison Afful, a citizen of",
+      "distance": 0.06340265274047852
+    },
+    {
+      "case_id": "cf7264",
+      "kind": "hard",
+      "probe": "Andr\u00e9 Ayew holds a citizenship from",
+      "distance": 0.2938966751098633
+    },
+    {
+      "case_id": "cf7264",
+      "kind": "easy",
+      "probe": "Nimbus Hills is located in",
+      "distance": 0.34298431873321533
+    },
+    {
+      "case_id": "cf7264",
+      "kind": "easy",
+      "probe": "The twin city of Santo Domingo is",
+      "distance": 0.417064905166626
+    },
+    {
+      "case_id": "cf7264",
+      "kind": "easy",
+      "probe": "Jim Bagby, Sr. plays in the position of",
+      "distance": 0.38603007793426514
+    },
+    {
+      "case_id": "cf7818",
+      "kind": "paraphrase",
+      "probe": "xii + 436 pp. Good Sports was released on",
+      "distance": 0.3516308069229126
+    },
+    {
+      "case_id": "cf7818",
+      "kind": "paraphrase",
+      "probe": "In some forms it already included the phrase mea culpa. Good Sports debuted on",
+      "distance": 0.13459116220474243
+    },
+    {
+      "case_id": "cf7818",
+      "kind": "hard",
+      "probe": "Late Show with David Letterman is to debut on",
+      "distance": 0.07141906023025513
+    },
+    {
+      "case_id": "cf7818",
+      "kind": "hard",
+      "probe": "Golden Boy was originally aired on",
+      "distance": 0.17808139324188232
+    },
+    {
+      "case_id": "cf7818",
+      "kind": "hard",
+      "probe": "CBS News debuted on",
+      "distance": 0.09833353757858276
+    },
+    {
+      "case_id": "cf7818",
+      "kind": "hard",
+      "probe": "CBS News was released on",
+      "distance": 0.20454508066177368
+    },
+    {
+      "case_id": "cf7818",
+      "kind": "hard",
+      "probe": "Murder, She Wrote debuted on",
+      "distance": 0.13963580131530762
+    },
+    {
+      "case_id": "cf7818",
+      "kind": "easy",
+      "probe": "Paul McCartney works in the field of",
+      "distance": 0.43778467178344727
+    },
+    {
+      "case_id": "cf7818",
+      "kind": "easy",
+      "probe": "Unus pro omnibus, omnes pro uno is written in",
+      "distance": 0.46250635385513306
+    },
+    {
+      "case_id": "cf7818",
+      "kind": "easy",
+      "probe": "Haakon Lie died in the city of",
+      "distance": 0.5157817602157593
+    },
+    {
+      "case_id": "cf4669",
+      "kind": "paraphrase",
+      "probe": "Benedict A. Stanberry. Nokia N900, created by",
+      "distance": 0.17510175704956055
+    },
+    {
+      "case_id": "cf4669",
+      "kind": "paraphrase",
+      "probe": "Bloomington: Indiana University Press. Nokia N900, developed by",
+      "distance": 0.138466477394104
+    },
+    {
+      "case_id": "cf4669",
+      "kind": "hard",
+      "probe": "Nokia Asha 205 is developed by",
+      "distance": 0.07220584154129028
+    },
+    {
+      "case_id": "cf4669",
+      "kind": "hard",
+      "probe": "Nokia N80, produced by",
+      "distance": 0.05717277526855469
+    },
+    {
+      "case_id": "cf4669",
+      "kind": "hard",
+      "probe": "Nokia Lumia 520, produced by",
+      "distance": 0.06812703609466553
+    },
+    {
+      "case_id": "cf4669",
+      "kind": "hard",
+      "probe": "Nokia 7270 is developed by",
+      "distance": 0.06296408176422119
+    },
+    {
+      "case_id": "cf4669",
+      "kind": "hard",
+      "probe": "Nokia 6600 slide, developed by",
+      "distance": 0.11515182256698608
+    },
+    {
+      "case_id": "cf4669",
+      "kind": "easy",
+      "probe": "Khosrow Shakibai succumbed at",
+      "distance": 0.5199891924858093
+    },
+    {
+      "case_id": "cf4669",
+      "kind": "easy",
+      "probe": "Daniel Caligiuri, who plays the position",
+      "distance": 0.5221903920173645
+    },
+    {
+      "case_id": "cf4669",
+      "kind": "easy",
+      "probe": "In Dominica, an official language is",
+      "distance": 0.4194968342781067
+    },
+    {
+      "case_id": "cf17792",
+      "kind": "paraphrase",
+      "probe": "A Lifetime of Intelligence. Fats Waller, performing on the",
+      "distance": 0.2055179476737976
+    },
+    {
+      "case_id": "cf17792",
+      "kind": "paraphrase",
+      "probe": "She is currently living in Boston, Massachusetts. Fats Waller plays",
+      "distance": 0.3584699034690857
+    },
+    {
+      "case_id": "cf17792",
+      "kind": "hard",
+      "probe": "Gil Scott-Heron performs on the",
+      "distance": 0.2191828489303589
+    },
+    {
+      "case_id": "cf17792",
+      "kind": "hard",
+      "probe": "Roger Hodgson, the",
+      "distance": 0.3541108965873718
+    },
+    {
+      "case_id": "cf17792",
+      "kind": "hard",
+      "probe": "Peter Hook performs on the",
+      "distance": 0.22250878810882568
+    },
+    {
+      "case_id": "cf17792",
+      "kind": "hard",
+      "probe": "David Johansen, playing the",
+      "distance": 0.11019587516784668
+    },
+    {
+      "case_id": "cf17792",
+      "kind": "hard",
+      "probe": "Eagle-Eye Cherry plays the",
+      "distance": 0.17382735013961792
+    },
+    {
+      "case_id": "cf17792",
+      "kind": "easy",
+      "probe": "The language used by Alexandra Pascalidou is",
+      "distance": 0.5237897634506226
+    },
+    {
+      "case_id": "cf17792",
+      "kind": "easy",
+      "probe": "Shazzan was originally aired on",
+      "distance": 0.519057035446167
+    },
+    {
+      "case_id": "cf17792",
+      "kind": "easy",
+      "probe": "Festning Tunnel can be found in",
+      "distance": 0.543144941329956
+    },
+    {
+      "case_id": "cf14679",
+      "kind": "paraphrase",
+      "probe": "For services to Athletics. The domain of activity of Paul McCartney is",
+      "distance": 0.3190229535102844
+    },
+    {
+      "case_id": "cf14679",
+      "kind": "paraphrase",
+      "probe": "Ferencv\u00e1ros won 13\u20132 on aggregate. Paul McCartney's domain of work is",
+      "distance": 0.3611021041870117
+    },
+    {
+      "case_id": "cf14679",
+      "kind": "hard",
+      "probe": "Dire Straits specializes in",
+      "distance": 0.27870237827301025
+    },
+    {
+      "case_id": "cf14679",
+      "kind": "hard",
+      "probe": "The domain of activity of Nadia Gold is",
+      "distance": 0.3142632246017456
+    },
+    {
+      "case_id": "cf14679",
+      "kind": "hard",
+      "probe": "Green Day's domain of activity is",
+      "distance": 0.2929011583328247
+    },
+    {
+      "case_id": "cf14679",
+      "kind": "hard",
+      "probe": "Shironamhin's area of work is",
+      "distance": 0.29082000255584717
+    },
+    {
+      "case_id": "cf14679",
+      "kind": "hard",
+      "probe": "Nadia Gold works in the area of",
+      "distance": 0.1298525333404541
+    },
+    {
+      "case_id": "cf14679",
+      "kind": "easy",
+      "probe": "The official language of Equatorial Guinea is",
+      "distance": 0.39903491735458374
+    },
+    {
+      "case_id": "cf14679",
+      "kind": "easy",
+      "probe": "Samuel von Fischer worked in the city of",
+      "distance": 0.4033997058868408
+    },
+    {
+      "case_id": "cf14679",
+      "kind": "easy",
+      "probe": "The genre played by Todd Sickafoose is",
+      "distance": 0.3487164378166199
+    },
+    {
+      "case_id": "cf2988",
+      "kind": "paraphrase",
+      "probe": "Hugo Magnus. Wells Coates expired at",
+      "distance": 0.11938786506652832
+    },
+    {
+      "case_id": "cf2988",
+      "kind": "paraphrase",
+      "probe": "Park has also written songs for JYJ's albums. Wells Coates died in",
+      "distance": 0.32423484325408936
+    },
+    {
+      "case_id": "cf2988",
+      "kind": "hard",
+      "probe": "Long John Baldry succumbed at",
+      "distance": 0.14851582050323486
+    },
+    {
+      "case_id": "cf2988",
+      "kind": "hard",
+      "probe": "Andrzej Mostowski succumbed at",
+      "distance": 0.14152741432189941
+    },
+    {
+      "case_id": "cf2988",
+      "kind": "hard",
+      "probe": "Hans-Dietrich von Tiesenhausen expired at",
+      "distance": 0.10227036476135254
+    },
+    {
+      "case_id": "cf2988",
+      "kind": "hard",
+      "probe": "Tommy Burns expired at",
+      "distance": 0.11627954244613647
+    },
+    {
+      "case_id": "cf2988",
+      "kind": "hard",
+      "probe": "Bruce Fairbairn passed away in",
+      "distance": 0.25420844554901123
+    },
+    {
+      "case_id": "cf2988",
+      "kind": "easy",
+      "probe": "DC-3, developed by",
+      "distance": 0.4456319212913513
+    },
+    {
+      "case_id": "cf2988",
+      "kind": "easy",
+      "probe": "Bernard Musson, speaker of",
+      "distance": 0.5395994186401367
+    },
+    {
+      "case_id": "cf2988",
+      "kind": "easy",
+      "probe": "Orlando International Airport, which is named after",
+      "distance": 0.5059145092964172
+    },
+    {
+      "case_id": "cf2636",
+      "kind": "paraphrase",
+      "probe": "style=\"background:#EEDD82; width:50%\" | Best Drama Serial\n! Salvatore Accardo speaks",
+      "distance": 0.39508843421936035
+    },
+    {
+      "case_id": "cf2636",
+      "kind": "paraphrase",
+      "probe": "Prints were sold for 1 shilling each. Salvatore Accardo speaks the language",
+      "distance": 0.39882218837738037
+    },
+    {
+      "case_id": "cf2636",
+      "kind": "hard",
+      "probe": "Carlo Scarpa speaks the language",
+      "distance": 0.37178635597229004
+    },
+    {
+      "case_id": "cf2636",
+      "kind": "hard",
+      "probe": "The language used by Lina Wertm\u00fcller is",
+      "distance": 0.07824468612670898
+    },
+    {
+      "case_id": "cf2636",
+      "kind": "hard",
+      "probe": "The language used by Ettore Scola is",
+      "distance": 0.0676996111869812
+    },
+    {
+      "case_id": "cf2636",
+      "kind": "hard",
+      "probe": "Christina I of Sweden writes in",
+      "distance": 0.42620521783828735
+    },
+    {
+      "case_id": "cf2636",
+      "kind": "hard",
+      "probe": "Roberto Rossellini writes in",
+      "distance": 0.414190411567688
+    },
+    {
+      "case_id": "cf2636",
+      "kind": "easy",
+      "probe": "Boeing 777 is created by",
+      "distance": 0.3989071846008301
+    },
+    {
+      "case_id": "cf2636",
+      "kind": "easy",
+      "probe": "The Cat Empire plays",
+      "distance": 0.4599369764328003
+    },
+    {
+      "case_id": "cf2636",
+      "kind": "easy",
+      "probe": "The headquarter of University of Florence is located in",
+      "distance": 0.4001975655555725
+    },
+    {
+      "case_id": "cf10487",
+      "kind": "paraphrase",
+      "probe": "Technologies Ltd. For services to the Engineering Industry. Edinburgh Mathematical Society works in the field of",
+      "distance": 0.09042763710021973
+    },
+    {
+      "case_id": "cf10487",
+      "kind": "paraphrase",
+      "probe": "The school graduated their first senior class in June, 2010. Edinburgh Mathematical Society's domain of work is",
+      "distance": 0.30918455123901367
+    },
+    {
+      "case_id": "cf10487",
+      "kind": "hard",
+      "probe": "The expertise of Joseph Fourier is",
+      "distance": 0.4458479881286621
+    },
+    {
+      "case_id": "cf10487",
+      "kind": "hard",
+      "probe": "The expertise of Ptolemy is",
+      "distance": 0.4404760003089905
+    },
+    {
+      "case_id": "cf10487",
+      "kind": "hard",
+      "probe": "The expertise of Leonhard Euler is",
+      "distance": 0.4543858766555786
+    },
+    {
+      "case_id": "cf10487",
+      "kind": "hard",
+      "probe": "The domain of activity of Omar Khayy\u00e1m is",
+      "distance": 0.36742037534713745
+    },
+    {
+      "case_id": "cf10487",
+      "kind": "hard",
+      "probe": "Nicolaus Copernicus specializes in",
+      "distance": 0.31390881538391113
+    },
+    {
+      "case_id": "cf10487",
+      "kind": "easy",
+      "probe": "Haakon Lie died in the city of",
+      "distance": 0.45750319957733154
+    },
+    {
+      "case_id": "cf10487",
+      "kind": "easy",
+      "probe": "Carl Flesch worked in the city of",
+      "distance": 0.45134592056274414
+    },
+    {
+      "case_id": "cf10487",
+      "kind": "easy",
+      "probe": "Nokia N900 is produced by",
+      "distance": 0.4817522168159485
+    },
+    {
+      "case_id": "cf16644",
+      "kind": "paraphrase",
+      "probe": "Thomas Roe visited Parviz at Burhanpur. Dez Dickerson was born in",
+      "distance": 0.267606258392334
+    },
+    {
+      "case_id": "cf16644",
+      "kind": "paraphrase",
+      "probe": "straight - position. Dez Dickerson originates from",
+      "distance": 0.20342004299163818
+    },
+    {
+      "case_id": "cf16644",
+      "kind": "hard",
+      "probe": "Orville Freeman was born in",
+      "distance": 0.2549358010292053
+    },
+    {
+      "case_id": "cf16644",
+      "kind": "hard",
+      "probe": "Tom Laughlin is originally from",
+      "distance": 0.20358586311340332
+    },
+    {
+      "case_id": "cf16644",
+      "kind": "hard",
+      "probe": "Donald James Moen was native to",
+      "distance": 0.021685302257537842
+    },
+    {
+      "case_id": "cf16644",
+      "kind": "hard",
+      "probe": "Doctor Fink originates from",
+      "distance": 0.19604277610778809
+    },
+    {
+      "case_id": "cf16644",
+      "kind": "hard",
+      "probe": "Ralph McInerny was born in",
+      "distance": 0.23738092184066772
+    },
+    {
+      "case_id": "cf16644",
+      "kind": "easy",
+      "probe": "Google Checkout was created by",
+      "distance": 0.38367611169815063
+    },
+    {
+      "case_id": "cf16644",
+      "kind": "easy",
+      "probe": "Edinburgh Mathematical Society works in the area of",
+      "distance": 0.44413262605667114
+    },
+    {
+      "case_id": "cf16644",
+      "kind": "easy",
+      "probe": "Martin Burrell works as",
+      "distance": 0.4707653522491455
+    },
+    {
+      "case_id": "cf16032",
+      "kind": "paraphrase",
+      "probe": "Its natural habitat is temperate forests. Boeing 777, developed by",
+      "distance": 0.1437549591064453
+    },
+    {
+      "case_id": "cf16032",
+      "kind": "paraphrase",
+      "probe": "The club dissolved after this season. Boeing 777, produced by",
+      "distance": 0.17935198545455933
+    },
+    {
+      "case_id": "cf16032",
+      "kind": "hard",
+      "probe": "B-47 Stratojet, produced by",
+      "distance": 0.17610841989517212
+    },
+    {
+      "case_id": "cf16032",
+      "kind": "hard",
+      "probe": "C-17 Globemaster III, produced by",
+      "distance": 0.185133695602417
+    },
+    {
+      "case_id": "cf16032",
+      "kind": "hard",
+      "probe": "Boeing 737 is developed by",
+      "distance": 0.07924646139144897
+    },
+    {
+      "case_id": "cf16032",
+      "kind": "hard",
+      "probe": "Boeing 737, developed by",
+      "distance": 0.1252889633178711
+    },
+    {
+      "case_id": "cf16032",
+      "kind": "hard",
+      "probe": "Boeing 737 MAX, created by",
+      "distance": 0.09627163410186768
+    },
+    {
+      "case_id": "cf16032",
+      "kind": "easy",
+      "probe": "What does Morty Corb play? They play",
+      "distance": 0.5510688424110413
+    },
+    {
+      "case_id": "cf16032",
+      "kind": "easy",
+      "probe": "Lyubov Orlova died in the city of",
+      "distance": 0.47345733642578125
+    },
+    {
+      "case_id": "cf16032",
+      "kind": "easy",
+      "probe": "The language used by Alexandra Pascalidou is",
+      "distance": 0.3984414339065552
+    },
+    {
+      "case_id": "cf3573",
+      "kind": "paraphrase",
+      "probe": "players\nCategory:English Football League players\nCategory:English cricketers\nCategory:Lincolnshire cricketers Kungliga Svenska Segels\u00e4llskapet, which is located in",
+      "distance": 0.3539832830429077
+    },
+    {
+      "case_id": "cf3573",
+      "kind": "paraphrase",
+      "probe": "Shooting of residents by a civilian at Rohwer\nM.C. Kungliga Svenska Segels\u00e4llskapet is located in",
+      "distance": 0.31712406873703003
+    },
+    {
+      "case_id": "cf3573",
+      "kind": "hard",
+      "probe": "Liding\u00f6, located in",
+      "distance": 0.3502439260482788
+    },
+    {
+      "case_id": "cf3573",
+      "kind": "hard",
+      "probe": "K\u00f6ping Municipality, located in",
+      "distance": 0.34049391746520996
+    },
+    {
+      "case_id": "cf3573",
+      "kind": "hard",
+      "probe": "K\u00f6ping Municipality is located in",
+      "distance": 0.3829222321510315
+    },
+    {
+      "case_id": "cf3573",
+      "kind": "hard",
+      "probe": "Gothenburg Municipality, in",
+      "distance": 0.17549419403076172
+    },
+    {
+      "case_id": "cf3573",
+      "kind": "hard",
+      "probe": "Gothenburg Municipality, located in",
+      "distance": 0.3377671241760254
+    },
+    {
+      "case_id": "cf3573",
+      "kind": "easy",
+      "probe": "Edinburgh Mathematical Society works in the area of",
+      "distance": 0.5683412551879883
+    },
+    {
+      "case_id": "cf3573",
+      "kind": "easy",
+      "probe": "The language used by Victor Jacquemont is",
+      "distance": 0.543924868106842
+    },
+    {
+      "case_id": "cf3573",
+      "kind": "easy",
+      "probe": "The headquarter of University of Florence is located in",
+      "distance": 0.3625473380088806
+    },
+    {
+      "case_id": "cf9877",
+      "kind": "paraphrase",
+      "probe": "lowii Hook.f. Gmina Pokrzywnica, in",
+      "distance": 0.6472582817077637
+    },
+    {
+      "case_id": "cf9877",
+      "kind": "paraphrase",
+      "probe": "1 EP, was well received by Noel Gallagher. Gmina Pokrzywnica, which is located in",
+      "distance": 0.5081462860107422
+    },
+    {
+      "case_id": "cf9877",
+      "kind": "hard",
+      "probe": "Pu\u0142tusk, located in",
+      "distance": 0.4935094118118286
+    },
+    {
+      "case_id": "cf9877",
+      "kind": "hard",
+      "probe": "Warmian-Masurian Voivodeship, which is located in",
+      "distance": 0.5028297901153564
+    },
+    {
+      "case_id": "cf9877",
+      "kind": "hard",
+      "probe": "\u015awi\u0119tokrzyskie Voivodeship, in",
+      "distance": 0.6081206202507019
+    },
+    {
+      "case_id": "cf9877",
+      "kind": "hard",
+      "probe": "Pu\u0142tusk is located in",
+      "distance": 0.4899049997329712
+    },
+    {
+      "case_id": "cf9877",
+      "kind": "hard",
+      "probe": "Pu\u0142tusk, which is located in",
+      "distance": 0.48864370584487915
+    },
+    {
+      "case_id": "cf9877",
+      "kind": "easy",
+      "probe": "Fats Waller, playing the",
+      "distance": 0.6760631799697876
+    },
+    {
+      "case_id": "cf9877",
+      "kind": "easy",
+      "probe": "Bernard Musson, speaker of",
+      "distance": 0.5530278086662292
+    },
+    {
+      "case_id": "cf9877",
+      "kind": "easy",
+      "probe": "Bert Joris plays the instrument",
+      "distance": 0.5824839472770691
+    },
+    {
+      "case_id": "cf18063",
+      "kind": "paraphrase",
+      "probe": "Often blunt or rounded at the tip. Patricia Barber is known for performing",
+      "distance": 0.17653095722198486
+    },
+    {
+      "case_id": "cf18063",
+      "kind": "paraphrase",
+      "probe": "Publisher Tamilp Puttakalayam, 1965. What does Patricia Barber play? They play",
+      "distance": 0.4368077516555786
+    },
+    {
+      "case_id": "cf18063",
+      "kind": "hard",
+      "probe": "Frank Wess is known for performing",
+      "distance": 0.19842529296875
+    },
+    {
+      "case_id": "cf18063",
+      "kind": "hard",
+      "probe": "Casey Abrams plays",
+      "distance": 0.287469744682312
+    },
+    {
+      "case_id": "cf18063",
+      "kind": "hard",
+      "probe": "Ant\u00f4nio Carlos Jobim is known for performing",
+      "distance": 0.1834099292755127
+    },
+    {
+      "case_id": "cf18063",
+      "kind": "hard",
+      "probe": "Freddy Cole is known for performing",
+      "distance": 0.19429069757461548
+    },
+    {
+      "case_id": "cf18063",
+      "kind": "hard",
+      "probe": "Ni\u00f1o Josele plays",
+      "distance": 0.356542706489563
+    },
+    {
+      "case_id": "cf18063",
+      "kind": "easy",
+      "probe": "Ignacio Carrera Pinto was originally from",
+      "distance": 0.5043998956680298
+    },
+    {
+      "case_id": "cf18063",
+      "kind": "easy",
+      "probe": "The official language of Equatorial Guinea is",
+      "distance": 0.46610212326049805
+    },
+    {
+      "case_id": "cf18063",
+      "kind": "easy",
+      "probe": "Yvette Giraud speaks the language",
+      "distance": 0.5892703533172607
+    },
+    {
+      "case_id": "cf9538",
+      "kind": "paraphrase",
+      "probe": "Grand Rapids, Mich.: Wm. Google Checkout is a product of",
+      "distance": 0.2947785258293152
+    },
+    {
+      "case_id": "cf9538",
+      "kind": "paraphrase",
+      "probe": "The name of the festival has changed over the years. Google Checkout, a product developed by",
+      "distance": 0.09481596946716309
+    },
+    {
+      "case_id": "cf9538",
+      "kind": "hard",
+      "probe": "Android, created by",
+      "distance": 0.07717692852020264
+    },
+    {
+      "case_id": "cf9538",
+      "kind": "hard",
+      "probe": "Galaxy Nexus, a product of",
+      "distance": 0.2991201877593994
+    },
+    {
+      "case_id": "cf9538",
+      "kind": "hard",
+      "probe": "Blogger, a product created by",
+      "distance": 0.07952964305877686
+    },
+    {
+      "case_id": "cf9538",
+      "kind": "hard",
+      "probe": "Gmail, created by",
+      "distance": 0.0717201828956604
+    },
+    {
+      "case_id": "cf9538",
+      "kind": "hard",
+      "probe": "Dart, a product created by",
+      "distance": 0.09283572435379028
+    },
+    {
+      "case_id": "cf9538",
+      "kind": "easy",
+      "probe": "The Cat Empire plays",
+      "distance": 0.5973516702651978
+    },
+    {
+      "case_id": "cf9538",
+      "kind": "easy",
+      "probe": "Shearing Pinx was created in",
+      "distance": 0.34045112133026123
+    },
+    {
+      "case_id": "cf9538",
+      "kind": "easy",
+      "probe": "Deion Sanders, the",
+      "distance": 0.44201362133026123
+    },
+    {
+      "case_id": "cf4089",
+      "kind": "paraphrase",
+      "probe": "Traditionally and officially, it is divided into five neighborhoods. Giovanni Francesco Sagredo, who works as",
+      "distance": 0.4026722311973572
+    },
+    {
+      "case_id": "cf4089",
+      "kind": "paraphrase",
+      "probe": "Aen. The profession of Giovanni Francesco Sagredo is",
+      "distance": 0.15410131216049194
+    },
+    {
+      "case_id": "cf4089",
+      "kind": "hard",
+      "probe": "Petrus Apianus's profession is an",
+      "distance": 0.30702292919158936
+    },
+    {
+      "case_id": "cf4089",
+      "kind": "hard",
+      "probe": "The occupation of Mikhail Vassilyevich Lomonosov is",
+      "distance": 0.2216874361038208
+    },
+    {
+      "case_id": "cf4089",
+      "kind": "hard",
+      "probe": "Johannes Trithemius's profession is a",
+      "distance": 0.2875000238418579
+    },
+    {
+      "case_id": "cf4089",
+      "kind": "hard",
+      "probe": "Gottlob Frege's occupation is",
+      "distance": 0.05489039421081543
+    },
+    {
+      "case_id": "cf4089",
+      "kind": "hard",
+      "probe": "Sebastian M\u00fcnster's profession is a",
+      "distance": 0.2924133539199829
+    },
+    {
+      "case_id": "cf4089",
+      "kind": "easy",
+      "probe": "Kim Vilfort, who plays the position",
+      "distance": 0.4298691749572754
+    },
+    {
+      "case_id": "cf4089",
+      "kind": "easy",
+      "probe": "Samuel von Fischer worked in the city of",
+      "distance": 0.47072064876556396
+    },
+    {
+      "case_id": "cf4089",
+      "kind": "easy",
+      "probe": "Festning Tunnel can be found in",
+      "distance": 0.42482757568359375
+    },
+    {
+      "case_id": "cf17938",
+      "kind": "paraphrase",
+      "probe": "A woman is the guardian of her husband's house. Nesodden IF is located in the country of",
+      "distance": 0.5805478096008301
+    },
+    {
+      "case_id": "cf17938",
+      "kind": "paraphrase",
+      "probe": "The font dates from 1928. Nesodden IF, which is located in",
+      "distance": 0.2978591322898865
+    },
+    {
+      "case_id": "cf17938",
+      "kind": "hard",
+      "probe": "Aust-Agder, in",
+      "distance": 0.13735544681549072
+    },
+    {
+      "case_id": "cf17938",
+      "kind": "hard",
+      "probe": "Finnmark, which is located in",
+      "distance": 0.3565939664840698
+    },
+    {
+      "case_id": "cf17938",
+      "kind": "hard",
+      "probe": "Sogn og Fjordane, in",
+      "distance": 0.21543610095977783
+    },
+    {
+      "case_id": "cf17938",
+      "kind": "hard",
+      "probe": "B\u00e6rum, located in",
+      "distance": 0.32528984546661377
+    },
+    {
+      "case_id": "cf17938",
+      "kind": "hard",
+      "probe": "Aust-Agder is located in the country of",
+      "distance": 0.5664345026016235
+    },
+    {
+      "case_id": "cf17938",
+      "kind": "easy",
+      "probe": "Bert Joris plays the instrument",
+      "distance": 0.5646277666091919
+    },
+    {
+      "case_id": "cf17938",
+      "kind": "easy",
+      "probe": "Matsukata Masayoshi holds a citizenship from",
+      "distance": 0.5204742550849915
+    },
+    {
+      "case_id": "cf17938",
+      "kind": "easy",
+      "probe": "Lyubov Orlova died in the city of",
+      "distance": 0.5572351217269897
+    },
+    {
+      "case_id": "cf10903",
+      "kind": "paraphrase",
+      "probe": "Clary proposes to Jace, and he agrees. The official language of Namibia is",
+      "distance": 0.13970088958740234
+    },
+    {
+      "case_id": "cf10903",
+      "kind": "paraphrase",
+      "probe": "His grandfather was Sir Dudley Loftus. In Namibia, an official language is",
+      "distance": 0.1660475730895996
+    },
+    {
+      "case_id": "cf10903",
+      "kind": "hard",
+      "probe": "In Vanuatu, they understand",
+      "distance": 0.47829657793045044
+    },
+    {
+      "case_id": "cf10903",
+      "kind": "hard",
+      "probe": "The law in Ghana declares the language",
+      "distance": 0.3317614793777466
+    },
+    {
+      "case_id": "cf10903",
+      "kind": "hard",
+      "probe": "In Fiji, an official language is",
+      "distance": 0.1547643542289734
+    },
+    {
+      "case_id": "cf10903",
+      "kind": "hard",
+      "probe": "The law in Guyana declares the language",
+      "distance": 0.33608973026275635
+    },
+    {
+      "case_id": "cf10903",
+      "kind": "hard",
+      "probe": "In United Kingdom, an official language is",
+      "distance": 0.19655799865722656
+    },
+    {
+      "case_id": "cf10903",
+      "kind": "easy",
+      "probe": "Ignacio Carrera Pinto was originally from",
+      "distance": 0.371925950050354
+    },
+    {
+      "case_id": "cf10903",
+      "kind": "easy",
+      "probe": "Kim Vilfort, who plays the position",
+      "distance": 0.46380817890167236
+    },
+    {
+      "case_id": "cf10903",
+      "kind": "easy",
+      "probe": "Eiger belongs to the continent of",
+      "distance": 0.37552928924560547
+    },
+    {
+      "case_id": "cf17704",
+      "kind": "paraphrase",
+      "probe": "The three roommates bond. Martin Burrell's profession is a",
+      "distance": 0.5006382465362549
+    },
+    {
+      "case_id": "cf17704",
+      "kind": "paraphrase",
+      "probe": "6. Martin Burrell's occupation is",
+      "distance": 0.464186429977417
+    },
+    {
+      "case_id": "cf17704",
+      "kind": "hard",
+      "probe": "Angela Merkel's occupation is",
+      "distance": 0.4327664375305176
+    },
+    {
+      "case_id": "cf17704",
+      "kind": "hard",
+      "probe": "Nicolas Sarkozy's occupation is",
+      "distance": 0.44081902503967285
+    },
+    {
+      "case_id": "cf17704",
+      "kind": "hard",
+      "probe": "The occupation of Napoleon is",
+      "distance": 0.5445480346679688
+    },
+    {
+      "case_id": "cf17704",
+      "kind": "hard",
+      "probe": "J\u00f3zef Pi\u0142sudski's profession is a",
+      "distance": 0.48067784309387207
+    },
+    {
+      "case_id": "cf17704",
+      "kind": "hard",
+      "probe": "Victor Hugo, who works as",
+      "distance": 0.13075077533721924
+    },
+    {
+      "case_id": "cf17704",
+      "kind": "easy",
+      "probe": "Lyubov Orlova died in the city of",
+      "distance": 0.5669307708740234
+    },
+    {
+      "case_id": "cf17704",
+      "kind": "easy",
+      "probe": "Festning Tunnel can be found in",
+      "distance": 0.5558387041091919
+    },
+    {
+      "case_id": "cf17704",
+      "kind": "easy",
+      "probe": "Nesodden IF, in",
+      "distance": 0.5587712526321411
+    },
+    {
+      "case_id": "cf6658",
+      "kind": "paraphrase",
+      "probe": "Symns also signed the safe standing petition. Ray Stubbs, of",
+      "distance": 0.48387277126312256
+    },
+    {
+      "case_id": "cf6658",
+      "kind": "paraphrase",
+      "probe": "Dictionary of Northern Mythology. Ray Stubbs works for",
+      "distance": 0.22845518589019775
+    },
+    {
+      "case_id": "cf6658",
+      "kind": "hard",
+      "probe": "Verity Lambert, of",
+      "distance": 0.4676034450531006
+    },
+    {
+      "case_id": "cf6658",
+      "kind": "hard",
+      "probe": "Jimmy Hill, who is employed by",
+      "distance": 0.03862154483795166
+    },
+    {
+      "case_id": "cf6658",
+      "kind": "hard",
+      "probe": "George Villiers, 6th Earl of Clarendon, who is employed by",
+      "distance": 0.17702853679656982
+    },
+    {
+      "case_id": "cf6658",
+      "kind": "hard",
+      "probe": "Alistair Cooke is employed by",
+      "distance": 0.059318602085113525
+    },
+    {
+      "case_id": "cf6658",
+      "kind": "hard",
+      "probe": "Timothy Brinton is employed by",
+      "distance": 0.017309963703155518
+    },
+    {
+      "case_id": "cf6658",
+      "kind": "easy",
+      "probe": "Laura Antoniou's profession is an",
+      "distance": 0.4174571633338928
+    },
+    {
+      "case_id": "cf6658",
+      "kind": "easy",
+      "probe": "Jehuda Cresques speaks the language",
+      "distance": 0.5458829998970032
+    },
+    {
+      "case_id": "cf6658",
+      "kind": "easy",
+      "probe": "Lancia Ypsilon is created by",
+      "distance": 0.271369993686676
+    },
+    {
+      "case_id": "cf19765",
+      "kind": "paraphrase",
+      "probe": "In 1787, he was a commissioner to the provincial assembly. The law in Equatorial Guinea declares the language",
+      "distance": 0.32025814056396484
+    },
+    {
+      "case_id": "cf19765",
+      "kind": "paraphrase",
+      "probe": "The national office is located in Oklahoma City, Oklahoma. In Equatorial Guinea, they understand",
+      "distance": 0.5650589466094971
+    },
+    {
+      "case_id": "cf19765",
+      "kind": "hard",
+      "probe": "The official language of Bahia is",
+      "distance": 0.015487849712371826
+    },
+    {
+      "case_id": "cf19765",
+      "kind": "hard",
+      "probe": "In Mercosur, an official language is",
+      "distance": 0.15712571144104004
+    },
+    {
+      "case_id": "cf19765",
+      "kind": "hard",
+      "probe": "The law in Guinea-Bissau declares the language",
+      "distance": 0.28320610523223877
+    },
+    {
+      "case_id": "cf19765",
+      "kind": "hard",
+      "probe": "The official language of Confederation of African Football is",
+      "distance": 0.06697803735733032
+    },
+    {
+      "case_id": "cf19765",
+      "kind": "hard",
+      "probe": "The official language of Economic Community of West African States is",
+      "distance": 0.04364323616027832
+    },
+    {
+      "case_id": "cf19765",
+      "kind": "easy",
+      "probe": "Jack Sheldon, playing the",
+      "distance": 0.5101819038391113
+    },
+    {
+      "case_id": "cf19765",
+      "kind": "easy",
+      "probe": "Laura Antoniou's profession is an",
+      "distance": 0.386289119720459
+    },
+    {
+      "case_id": "cf19765",
+      "kind": "easy",
+      "probe": "Jim Bagby, Sr. plays in the position of",
+      "distance": 0.4347813129425049
+    },
+    {
+      "case_id": "cf17931",
+      "kind": "paraphrase",
+      "probe": "The style that he created was widely imitated. Daniel Caligiuri, the",
+      "distance": 0.5056653022766113
+    },
+    {
+      "case_id": "cf17931",
+      "kind": "paraphrase",
+      "probe": "1968 - Population: 89,566. Daniel Caligiuri plays in the position of",
+      "distance": 0.3184014558792114
+    },
+    {
+      "case_id": "cf17931",
+      "kind": "hard",
+      "probe": "Adrian Mierzejewski, who plays the position",
+      "distance": 0.007085442543029785
+    },
+    {
+      "case_id": "cf17931",
+      "kind": "hard",
+      "probe": "Which position does Rainer Bonhof play? They play as",
+      "distance": 0.4627339839935303
+    },
+    {
+      "case_id": "cf17931",
+      "kind": "hard",
+      "probe": "Edu Marangon plays in the position of",
+      "distance": 0.31310415267944336
+    },
+    {
+      "case_id": "cf17931",
+      "kind": "hard",
+      "probe": "Adama Ba, who plays the position",
+      "distance": 0.022274136543273926
+    },
+    {
+      "case_id": "cf17931",
+      "kind": "hard",
+      "probe": "Idrissa Gueye plays as",
+      "distance": 0.3892768621444702
+    },
+    {
+      "case_id": "cf17931",
+      "kind": "easy",
+      "probe": "Ignacio Carrera Pinto was originally from",
+      "distance": 0.4979659914970398
+    },
+    {
+      "case_id": "cf17931",
+      "kind": "easy",
+      "probe": "Matsukata Masayoshi holds a citizenship from",
+      "distance": 0.5422986745834351
+    },
+    {
+      "case_id": "cf17931",
+      "kind": "easy",
+      "probe": "Indianapolis International Airport, which is named after",
+      "distance": 0.5001004934310913
+    },
+    {
+      "case_id": "cf19255",
+      "kind": "paraphrase",
+      "probe": "Northern Ireland\nSome district councils in Northern Ireland, e.g. George Elliott Clarke found employment in",
+      "distance": 0.19659817218780518
+    },
+    {
+      "case_id": "cf19255",
+      "kind": "paraphrase",
+      "probe": "is a Japanese engineer and businessman. George Elliott Clarke was employed in",
+      "distance": 0.14535385370254517
+    },
+    {
+      "case_id": "cf19255",
+      "kind": "hard",
+      "probe": "Tom Dean found employment in",
+      "distance": 0.1693859100341797
+    },
+    {
+      "case_id": "cf19255",
+      "kind": "hard",
+      "probe": "Wolfram Eilenberger was employed in",
+      "distance": 0.15793490409851074
+    },
+    {
+      "case_id": "cf19255",
+      "kind": "hard",
+      "probe": "Anastasia Minster was employed in",
+      "distance": 0.1846054196357727
+    },
+    {
+      "case_id": "cf19255",
+      "kind": "hard",
+      "probe": "Aly Keita worked in",
+      "distance": 0.10020041465759277
+    },
+    {
+      "case_id": "cf19255",
+      "kind": "hard",
+      "probe": "Geoffrey A Ozin used to work in",
+      "distance": 0.12740230560302734
+    },
+    {
+      "case_id": "cf19255",
+      "kind": "easy",
+      "probe": "Haakon Lie died in the city of",
+      "distance": 0.5267928242683411
+    },
+    {
+      "case_id": "cf19255",
+      "kind": "easy",
+      "probe": "Where is 2SM? It is located in",
+      "distance": 0.3102748394012451
+    },
+    {
+      "case_id": "cf19255",
+      "kind": "easy",
+      "probe": "Jehuda Cresques speaks the language",
+      "distance": 0.5257265567779541
+    },
+    {
+      "case_id": "cf9425",
+      "kind": "paraphrase",
+      "probe": "1351-043: Historic center of the Durango City. David G. Bromley's domain of activity is",
+      "distance": 0.16658103466033936
+    },
+    {
+      "case_id": "cf9425",
+      "kind": "paraphrase",
+      "probe": "Intravenous fluids should be warmed and a warm environment maintained. David G. Bromley specializes in",
+      "distance": 0.32150864601135254
+    },
+    {
+      "case_id": "cf9425",
+      "kind": "hard",
+      "probe": "Mikhail Rutkevich's domain of work is",
+      "distance": 0.10595619678497314
+    },
+    {
+      "case_id": "cf9425",
+      "kind": "hard",
+      "probe": "The domain of activity of Christopher Winship is",
+      "distance": 0.1537095308303833
+    },
+    {
+      "case_id": "cf9425",
+      "kind": "hard",
+      "probe": "The expertise of Harry Edwards is",
+      "distance": 0.189858078956604
+    },
+    {
+      "case_id": "cf9425",
+      "kind": "hard",
+      "probe": "The domain of activity of Fernando Villegas is",
+      "distance": 0.18127799034118652
+    },
+    {
+      "case_id": "cf9425",
+      "kind": "hard",
+      "probe": "Christopher Winship's domain of work is",
+      "distance": 0.08849978446960449
+    },
+    {
+      "case_id": "cf9425",
+      "kind": "easy",
+      "probe": "The language used by Salvatore Accardo is",
+      "distance": 0.2505595088005066
+    },
+    {
+      "case_id": "cf9425",
+      "kind": "easy",
+      "probe": "Benedict Joseph Fenwick has the position of",
+      "distance": 0.4058576822280884
+    },
+    {
+      "case_id": "cf9425",
+      "kind": "easy",
+      "probe": "WebKit, a product created by",
+      "distance": 0.5072546601295471
+    },
+    {
+      "case_id": "cf14581",
+      "kind": "paraphrase",
+      "probe": "The district operates one high school, Broaddus High School. Sturla Gunnarsson is a citizen of",
+      "distance": 0.318074107170105
+    },
+    {
+      "case_id": "cf14581",
+      "kind": "paraphrase",
+      "probe": "References\n\nCategory:Moths described in 1885\nCategory:Thiotrichinae Sturla Gunnarsson, a citizen of",
+      "distance": 0.36451148986816406
+    },
+    {
+      "case_id": "cf14581",
+      "kind": "hard",
+      "probe": "Patrick Chan has a citizenship from",
+      "distance": 0.04288792610168457
+    },
+    {
+      "case_id": "cf14581",
+      "kind": "hard",
+      "probe": "Guy Gavriel Kay is a citizen of",
+      "distance": 0.3320688009262085
+    },
+    {
+      "case_id": "cf14581",
+      "kind": "hard",
+      "probe": "Guy Gavriel Kay, a citizen of",
+      "distance": 0.30428528785705566
+    },
+    {
+      "case_id": "cf14581",
+      "kind": "hard",
+      "probe": "Snow, a citizen of",
+      "distance": 0.3577735424041748
+    },
+    {
+      "case_id": "cf14581",
+      "kind": "hard",
+      "probe": "Guy Gavriel Kay, who is a citizen of",
+      "distance": 0.2853686213493347
+    },
+    {
+      "case_id": "cf14581",
+      "kind": "easy",
+      "probe": "Buenos Aires is a twin city of",
+      "distance": 0.4074251055717468
+    },
+    {
+      "case_id": "cf14581",
+      "kind": "easy",
+      "probe": "Johanne Luise Heiberg speaks the language",
+      "distance": 0.519405722618103
+    },
+    {
+      "case_id": "cf14581",
+      "kind": "easy",
+      "probe": "Erich Mendelsohn worked in the city of",
+      "distance": 0.4626593589782715
+    },
+    {
+      "case_id": "cf3002",
+      "kind": "paraphrase",
+      "probe": "Dender E.H. players\nCategory:KV Mechelen players\nCategory:K.S.C. Laura Antoniou's profession is a",
+      "distance": 0.12039989233016968
+    },
+    {
+      "case_id": "cf3002",
+      "kind": "paraphrase",
+      "probe": "The film was dubbed in Telugu as Raakumarudu. The occupation of Laura Antoniou is",
+      "distance": 0.3983733654022217
+    },
+    {
+      "case_id": "cf3002",
+      "kind": "hard",
+      "probe": "The profession of Benjamin Disraeli is",
+      "distance": 0.33866941928863525
+    },
+    {
+      "case_id": "cf3002",
+      "kind": "hard",
+      "probe": "Arthur Miller's profession is an",
+      "distance": 0.05485999584197998
+    },
+    {
+      "case_id": "cf3002",
+      "kind": "hard",
+      "probe": "Joseph Conrad, who works as",
+      "distance": 0.42360246181488037
+    },
+    {
+      "case_id": "cf3002",
+      "kind": "hard",
+      "probe": "Pearl S. Buck works as",
+      "distance": 0.47173207998275757
+    },
+    {
+      "case_id": "cf3002",
+      "kind": "hard",
+      "probe": "Joseph Conrad works as",
+      "distance": 0.443601131439209
+    },
+    {
+      "case_id": "cf3002",
+      "kind": "easy",
+      "probe": "Paul McCartney works in the field of",
+      "distance": 0.364815354347229
+    },
+    {
+      "case_id": "cf3002",
+      "kind": "easy",
+      "probe": "Tim Davie, of",
+      "distance": 0.5465782284736633
+    },
+    {
+      "case_id": "cf3002",
+      "kind": "easy",
+      "probe": "Jean Hyppolite speaks",
+      "distance": 0.549562394618988
+    },
+    {
+      "case_id": "cf19539",
+      "kind": "paraphrase",
+      "probe": "The band Big Black's 1984 EP is Racer-X. Morty Corb is known for performing",
+      "distance": 0.42879801988601685
+    },
+    {
+      "case_id": "cf19539",
+      "kind": "paraphrase",
+      "probe": "Career statistics\n. Morty Corb performs",
+      "distance": 0.393283486366272
+    },
+    {
+      "case_id": "cf19539",
+      "kind": "hard",
+      "probe": "Sade Adu performs",
+      "distance": 0.40762555599212646
+    },
+    {
+      "case_id": "cf19539",
+      "kind": "hard",
+      "probe": "What does Otis Taylor play? They play",
+      "distance": 0.021855592727661133
+    },
+    {
+      "case_id": "cf19539",
+      "kind": "hard",
+      "probe": "The genre played by Ziggy Elman is",
+      "distance": 0.461723268032074
+    },
+    {
+      "case_id": "cf19539",
+      "kind": "hard",
+      "probe": "Etta James is known for performing",
+      "distance": 0.44613713026046753
+    },
+    {
+      "case_id": "cf19539",
+      "kind": "hard",
+      "probe": "Ant\u00f4nio Carlos Jobim performs",
+      "distance": 0.43029606342315674
+    },
+    {
+      "case_id": "cf19539",
+      "kind": "easy",
+      "probe": "Carl Flesch worked in the city of",
+      "distance": 0.674906313419342
+    },
+    {
+      "case_id": "cf19539",
+      "kind": "easy",
+      "probe": "Khosrow Shakibai succumbed at",
+      "distance": 0.6057316064834595
+    },
+    {
+      "case_id": "cf19539",
+      "kind": "easy",
+      "probe": "Nesodden IF, in",
+      "distance": 0.5946682691574097
+    },
+    {
+      "case_id": "cf12612",
+      "kind": "paraphrase",
+      "probe": "Hapoel Beit Lid F.C. Tiber, in",
+      "distance": 0.3225787281990051
+    },
+    {
+      "case_id": "cf12612",
+      "kind": "paraphrase",
+      "probe": "Family\nHe married Rebecca Thymaeus in Stettin around 1569. Tiber belongs to the continent of",
+      "distance": 0.4630833864212036
+    },
+    {
+      "case_id": "cf12612",
+      "kind": "hard",
+      "probe": "Soviet Union is located in",
+      "distance": 0.1357177495956421
+    },
+    {
+      "case_id": "cf12612",
+      "kind": "hard",
+      "probe": "S\u00e4ntis is located in the continent",
+      "distance": 0.5399503707885742
+    },
+    {
+      "case_id": "cf12612",
+      "kind": "hard",
+      "probe": "Volkhov is located in",
+      "distance": 0.05593067407608032
+    },
+    {
+      "case_id": "cf12612",
+      "kind": "hard",
+      "probe": "Finsteraarhorn, in",
+      "distance": 0.2995653748512268
+    },
+    {
+      "case_id": "cf12612",
+      "kind": "hard",
+      "probe": "B\u00f6s Fulen is in",
+      "distance": 0.1983480453491211
+    },
+    {
+      "case_id": "cf12612",
+      "kind": "easy",
+      "probe": "The genre played by Todd Sickafoose is",
+      "distance": 0.45549190044403076
+    },
+    {
+      "case_id": "cf12612",
+      "kind": "easy",
+      "probe": "Yvette Giraud speaks the language",
+      "distance": 0.6184184551239014
+    },
+    {
+      "case_id": "cf12612",
+      "kind": "easy",
+      "probe": "Triumph TR8, produced by",
+      "distance": 0.4275258779525757
+    },
+    {
+      "case_id": "cf10388",
+      "kind": "paraphrase",
+      "probe": "Others\nRebastinib (DCC-2036) Also an inhibitor of TIE-2 and VEGFR-2. Luapula River is located in the continent",
+      "distance": 0.6061874628067017
+    },
+    {
+      "case_id": "cf10388",
+      "kind": "paraphrase",
+      "probe": "References\n\nCategory:Populated places in Barisal District Luapula River belongs to the continent of",
+      "distance": 0.5601880550384521
+    },
+    {
+      "case_id": "cf10388",
+      "kind": "hard",
+      "probe": "Nigeria is a part of the continent of",
+      "distance": 0.5721204280853271
+    },
+    {
+      "case_id": "cf10388",
+      "kind": "hard",
+      "probe": "Morocco is a part of the continent of",
+      "distance": 0.5708043575286865
+    },
+    {
+      "case_id": "cf10388",
+      "kind": "hard",
+      "probe": "Uganda is a part of the continent of",
+      "distance": 0.5730725526809692
+    },
+    {
+      "case_id": "cf10388",
+      "kind": "hard",
+      "probe": "Democratic Republic of the Congo is in",
+      "distance": 0.25862550735473633
+    },
+    {
+      "case_id": "cf10388",
+      "kind": "hard",
+      "probe": "Algeria belongs to the continent of",
+      "distance": 0.5386449694633484
+    },
+    {
+      "case_id": "cf10388",
+      "kind": "easy",
+      "probe": "Tim Davie, of",
+      "distance": 0.4477344751358032
+    },
+    {
+      "case_id": "cf10388",
+      "kind": "easy",
+      "probe": "Carl Flesch worked in the city of",
+      "distance": 0.5269352197647095
+    },
+    {
+      "case_id": "cf10388",
+      "kind": "easy",
+      "probe": "Osmaniye Province is in",
+      "distance": 0.21684348583221436
+    },
+    {
+      "case_id": "cf18862",
+      "kind": "paraphrase",
+      "probe": "Dryfat agrees to participate in the scheme. WebKit is a product of",
+      "distance": 0.28653472661972046
+    },
+    {
+      "case_id": "cf18862",
+      "kind": "paraphrase",
+      "probe": "Diabetes is the most common nonpulmonary complication of CF. WebKit was created by",
+      "distance": 0.10950219631195068
+    },
+    {
+      "case_id": "cf18862",
+      "kind": "hard",
+      "probe": "Apple iAd Producer is a product of",
+      "distance": 0.2896506190299988
+    },
+    {
+      "case_id": "cf18862",
+      "kind": "hard",
+      "probe": "Darwin Streaming Server, a product manufactured by",
+      "distance": 0.09934651851654053
+    },
+    {
+      "case_id": "cf18862",
+      "kind": "hard",
+      "probe": "Server Monitor, a product manufactured by",
+      "distance": 0.11215680837631226
+    },
+    {
+      "case_id": "cf18862",
+      "kind": "hard",
+      "probe": "Macintosh Quadra 800, a product of",
+      "distance": 0.24310898780822754
+    },
+    {
+      "case_id": "cf18862",
+      "kind": "hard",
+      "probe": "Apple USB Mouse is created by",
+      "distance": 0.13831382989883423
+    },
+    {
+      "case_id": "cf18862",
+      "kind": "easy",
+      "probe": "Johanne Luise Heiberg speaks the language",
+      "distance": 0.6028066873550415
+    },
+    {
+      "case_id": "cf18862",
+      "kind": "easy",
+      "probe": "Alexander William Kinglake speaks the language",
+      "distance": 0.591513454914093
+    },
+    {
+      "case_id": "cf18862",
+      "kind": "easy",
+      "probe": "The twin city of Santo Domingo is",
+      "distance": 0.4482595920562744
+    },
+    {
+      "case_id": "cf7933",
+      "kind": "paraphrase",
+      "probe": "They also offer a 'Certified Sommelier Instructor' diploma. Naples is a twin city of",
+      "distance": 0.4984400272369385
+    },
+    {
+      "case_id": "cf7933",
+      "kind": "paraphrase",
+      "probe": "Supplement to Wingspan Vol. The twin city of Naples is",
+      "distance": 0.2788299322128296
+    },
+    {
+      "case_id": "cf7933",
+      "kind": "hard",
+      "probe": "The twin city of Lisbon is",
+      "distance": 0.2661663889884949
+    },
+    {
+      "case_id": "cf7933",
+      "kind": "hard",
+      "probe": "Madrid is a twin city of",
+      "distance": 0.45230787992477417
+    },
+    {
+      "case_id": "cf7933",
+      "kind": "hard",
+      "probe": "The twin city of Bucharest is",
+      "distance": 0.2630802392959595
+    },
+    {
+      "case_id": "cf7933",
+      "kind": "hard",
+      "probe": "The twin city of Beijing is",
+      "distance": 0.28568458557128906
+    },
+    {
+      "case_id": "cf7933",
+      "kind": "hard",
+      "probe": "What is the twin city of Bangkok? It is",
+      "distance": 0.004464626312255859
+    },
+    {
+      "case_id": "cf7933",
+      "kind": "easy",
+      "probe": "De Grote Donorshow, that originated in",
+      "distance": 0.4610157012939453
+    },
+    {
+      "case_id": "cf7933",
+      "kind": "easy",
+      "probe": "octane's domain of activity is",
+      "distance": 0.3407958149909973
+    },
+    {
+      "case_id": "cf7933",
+      "kind": "easy",
+      "probe": "Martin Burrell works as",
+      "distance": 0.5714761018753052
+    },
+    {
+      "case_id": "cf9513",
+      "kind": "paraphrase",
+      "probe": "The two schools were founded by the Phillips family. Jim Bagby, Sr. plays as",
+      "distance": 0.3699660301208496
+    },
+    {
+      "case_id": "cf9513",
+      "kind": "paraphrase",
+      "probe": "References\n\nCategory:Populated places in Ra\u0161ka District\nCategory:Kopaonik Jim Bagby, Sr., who plays the position",
+      "distance": 0.3118168115615845
+    },
+    {
+      "case_id": "cf9513",
+      "kind": "hard",
+      "probe": "Which position does \u00d3liver P\u00e9rez play? They play as",
+      "distance": 0.3679608106613159
+    },
+    {
+      "case_id": "cf9513",
+      "kind": "hard",
+      "probe": "Which position does Bill Stafford play? They play as",
+      "distance": 0.396435022354126
+    },
+    {
+      "case_id": "cf9513",
+      "kind": "hard",
+      "probe": "David Phelps, the",
+      "distance": 0.45609569549560547
+    },
+    {
+      "case_id": "cf9513",
+      "kind": "hard",
+      "probe": "Chihiro Kaneko plays as",
+      "distance": 0.37119609117507935
+    },
+    {
+      "case_id": "cf9513",
+      "kind": "hard",
+      "probe": "Which position does Minoru Murayama play? They play as",
+      "distance": 0.3733212947845459
+    },
+    {
+      "case_id": "cf9513",
+      "kind": "easy",
+      "probe": "Ralph Lyford performs",
+      "distance": 0.45905524492263794
+    },
+    {
+      "case_id": "cf9513",
+      "kind": "easy",
+      "probe": "Unus pro omnibus, omnes pro uno is written in",
+      "distance": 0.5139036178588867
+    },
+    {
+      "case_id": "cf9513",
+      "kind": "easy",
+      "probe": "The official language of Equatorial Guinea is",
+      "distance": 0.4347813129425049
+    },
+    {
+      "case_id": "cf6025",
+      "kind": "paraphrase",
+      "probe": "Mechanism, Dynamics, Interaction. Yvette Giraud writes in",
+      "distance": 0.5693506002426147
+    },
+    {
+      "case_id": "cf6025",
+      "kind": "paraphrase",
+      "probe": "J\u00e4mtland (1:53)\n 2. The language used by Yvette Giraud is",
+      "distance": 0.42619621753692627
+    },
+    {
+      "case_id": "cf6025",
+      "kind": "hard",
+      "probe": "Sarah Bernhardt speaks",
+      "distance": 0.45761942863464355
+    },
+    {
+      "case_id": "cf6025",
+      "kind": "hard",
+      "probe": "Marlene Dietrich writes in",
+      "distance": 0.5517096519470215
+    },
+    {
+      "case_id": "cf6025",
+      "kind": "hard",
+      "probe": "Grace Kelly writes in",
+      "distance": 0.5546928644180298
+    },
+    {
+      "case_id": "cf6025",
+      "kind": "hard",
+      "probe": "The language used by Le Corbusier is",
+      "distance": 0.34849536418914795
+    },
+    {
+      "case_id": "cf6025",
+      "kind": "hard",
+      "probe": "Elsa Triolet speaks",
+      "distance": 0.4468052387237549
+    },
+    {
+      "case_id": "cf6025",
+      "kind": "easy",
+      "probe": "Miles Smiles, who plays",
+      "distance": 0.5854077935218811
+    },
+    {
+      "case_id": "cf6025",
+      "kind": "easy",
+      "probe": "Eugene Odum's domain of activity is",
+      "distance": 0.5040616989135742
+    },
+    {
+      "case_id": "cf6025",
+      "kind": "easy",
+      "probe": "What is the twin city of Naples? It is",
+      "distance": 0.5807105302810669
+    },
+    {
+      "case_id": "cf6205",
+      "kind": "paraphrase",
+      "probe": "In 1987 Diet for a New America was published. Todd Sickafoose plays",
+      "distance": 0.39577269554138184
+    },
+    {
+      "case_id": "cf6205",
+      "kind": "paraphrase",
+      "probe": "Josephus includes information about individuals, groups, customs and geographical places. What does Todd Sickafoose play? They play",
+      "distance": 0.4652731418609619
+    },
+    {
+      "case_id": "cf6205",
+      "kind": "hard",
+      "probe": "The genre played by Ziggy Elman is",
+      "distance": 0.027737796306610107
+    },
+    {
+      "case_id": "cf6205",
+      "kind": "hard",
+      "probe": "The genre played by Eric Alexander is",
+      "distance": 0.03908336162567139
+    },
+    {
+      "case_id": "cf6205",
+      "kind": "hard",
+      "probe": "Sade Adu performs",
+      "distance": 0.34844958782196045
+    },
+    {
+      "case_id": "cf6205",
+      "kind": "hard",
+      "probe": "Richard Wright is known for performing",
+      "distance": 0.4177294373512268
+    },
+    {
+      "case_id": "cf6205",
+      "kind": "hard",
+      "probe": "Ant\u00f4nio Carlos Jobim performs",
+      "distance": 0.36560720205307007
+    },
+    {
+      "case_id": "cf6205",
+      "kind": "easy",
+      "probe": "Khosrow Shakibai succumbed at",
+      "distance": 0.518559455871582
+    },
+    {
+      "case_id": "cf6205",
+      "kind": "easy",
+      "probe": "Gmina Pokrzywnica is located in the country of",
+      "distance": 0.5632005929946899
+    },
+    {
+      "case_id": "cf6205",
+      "kind": "easy",
+      "probe": "Sidhi district, in",
+      "distance": 0.4782510995864868
+    },
+    {
+      "case_id": "cf6118",
+      "kind": "paraphrase",
+      "probe": "Quiffy can walk on walls and ceilings. Ostrava is a twin city of",
+      "distance": 0.5142515897750854
+    },
+    {
+      "case_id": "cf6118",
+      "kind": "paraphrase",
+      "probe": "Kumar saving a family from a shaman (Tinaya). The twin city of Ostrava is",
+      "distance": 0.31548011302948
+    },
+    {
+      "case_id": "cf6118",
+      "kind": "hard",
+      "probe": "The twin city of Durango is",
+      "distance": 0.3064141273498535
+    },
+    {
+      "case_id": "cf6118",
+      "kind": "hard",
+      "probe": "What is the twin city of Skopje? It is",
+      "distance": 0.004406154155731201
+    },
+    {
+      "case_id": "cf6118",
+      "kind": "hard",
+      "probe": "The twin city of Coventry is",
+      "distance": 0.278361976146698
+    },
+    {
+      "case_id": "cf6118",
+      "kind": "hard",
+      "probe": "What is the twin city of Wroc\u0142aw? It is",
+      "distance": 0.0043045878410339355
+    },
+    {
+      "case_id": "cf6118",
+      "kind": "hard",
+      "probe": "What is the twin city of Salzburg? It is",
+      "distance": 0.004091739654541016
+    },
+    {
+      "case_id": "cf6118",
+      "kind": "easy",
+      "probe": "WebKit, a product created by",
+      "distance": 0.5121569037437439
+    },
+    {
+      "case_id": "cf6118",
+      "kind": "easy",
+      "probe": "Paul McCartney works in the field of",
+      "distance": 0.5217931270599365
+    },
+    {
+      "case_id": "cf6118",
+      "kind": "easy",
+      "probe": "Luapula River, in",
+      "distance": 0.49894219636917114
+    },
+    {
+      "case_id": "cf1080",
+      "kind": "paraphrase",
+      "probe": "The Hyokeikan was first opened in 1909. Khosrow Shakibai expired at",
+      "distance": 0.14391064643859863
+    },
+    {
+      "case_id": "cf1080",
+      "kind": "paraphrase",
+      "probe": "\u0160id was a district center within Syrmia County. Khosrow Shakibai died in the city of",
+      "distance": 0.5613038539886475
+    },
+    {
+      "case_id": "cf1080",
+      "kind": "hard",
+      "probe": "Aleksander Griboyedov died in",
+      "distance": 0.32608628273010254
+    },
+    {
+      "case_id": "cf1080",
+      "kind": "hard",
+      "probe": "Ahmad Qavam lost their life at",
+      "distance": 0.12633657455444336
+    },
+    {
+      "case_id": "cf1080",
+      "kind": "hard",
+      "probe": "T\u00e1hirih died at",
+      "distance": 0.18016910552978516
+    },
+    {
+      "case_id": "cf1080",
+      "kind": "hard",
+      "probe": "Simin Daneshvar died in the city of",
+      "distance": 0.5125381946563721
+    },
+    {
+      "case_id": "cf1080",
+      "kind": "hard",
+      "probe": "Ezzatolah Entezami's life ended in",
+      "distance": 0.3295252323150635
+    },
+    {
+      "case_id": "cf1080",
+      "kind": "easy",
+      "probe": "Good Sports is to debut on",
+      "distance": 0.421054482460022
+    },
+    {
+      "case_id": "cf1080",
+      "kind": "easy",
+      "probe": "Unus pro omnibus, omnes pro uno is written in",
+      "distance": 0.5206617712974548
+    },
+    {
+      "case_id": "cf1080",
+      "kind": "easy",
+      "probe": "Nesodden IF, in",
+      "distance": 0.48756957054138184
+    },
+    {
+      "case_id": "cf20079",
+      "kind": "paraphrase",
+      "probe": "It does not broadcast on Sundays. De Grote Donorshow, that was from",
+      "distance": 0.3759295344352722
+    },
+    {
+      "case_id": "cf20079",
+      "kind": "paraphrase",
+      "probe": "These are two jets and two turboprops. De Grote Donorshow was formulated in",
+      "distance": 0.17967259883880615
+    },
+    {
+      "case_id": "cf20079",
+      "kind": "hard",
+      "probe": "Broken Mirrors was created in the country of",
+      "distance": 0.4031245708465576
+    },
+    {
+      "case_id": "cf20079",
+      "kind": "hard",
+      "probe": "Talanta was created in the country of",
+      "distance": 0.40626680850982666
+    },
+    {
+      "case_id": "cf20079",
+      "kind": "hard",
+      "probe": "Heideroosjes, that was from",
+      "distance": 0.39147788286209106
+    },
+    {
+      "case_id": "cf20079",
+      "kind": "hard",
+      "probe": "The Alibi, that was created in",
+      "distance": 0.18254083395004272
+    },
+    {
+      "case_id": "cf20079",
+      "kind": "hard",
+      "probe": "Death at a Funeral originated in",
+      "distance": 0.0882941484451294
+    },
+    {
+      "case_id": "cf20079",
+      "kind": "easy",
+      "probe": "Virtual Hard Disk was created by",
+      "distance": 0.33284997940063477
+    },
+    {
+      "case_id": "cf20079",
+      "kind": "easy",
+      "probe": "Beaumont Glacier belongs to the continent of",
+      "distance": 0.4427158236503601
+    },
+    {
+      "case_id": "cf20079",
+      "kind": "easy",
+      "probe": "Enos Slaughter plays in the position of",
+      "distance": 0.47424232959747314
+    },
+    {
+      "case_id": "cf21517",
+      "kind": "paraphrase",
+      "probe": "then the sentence would be written '\u0ca8\u0cbe\u0ca8\u0cc1 \u0c93\u0ca1\u0cc1\u0ca4\u0ccd\u0ca4 \u0c86\u0ca1\u0cc1\u0cb5\u0cc6\u0ca8\u0cc1.') Festning Tunnel is in",
+      "distance": 0.20223528146743774
+    },
+    {
+      "case_id": "cf21517",
+      "kind": "paraphrase",
+      "probe": "She defeated Takano by unanimous decision. Festning Tunnel, in",
+      "distance": 0.27814429998397827
+    },
+    {
+      "case_id": "cf21517",
+      "kind": "hard",
+      "probe": "L\u00f8ren Line can be found in",
+      "distance": 0.07621580362319946
+    },
+    {
+      "case_id": "cf21517",
+      "kind": "hard",
+      "probe": "National Museum of Art, Architecture and Design is within",
+      "distance": 0.42887312173843384
+    },
+    {
+      "case_id": "cf21517",
+      "kind": "hard",
+      "probe": "Christiania Spigerverk is within",
+      "distance": 0.40461379289627075
+    },
+    {
+      "case_id": "cf21517",
+      "kind": "hard",
+      "probe": "Embassy of South Sudan, Oslo is located in",
+      "distance": 0.1667577028274536
+    },
+    {
+      "case_id": "cf21517",
+      "kind": "hard",
+      "probe": "Oslo Kunstforening can be found in",
+      "distance": 0.12743228673934937
+    },
+    {
+      "case_id": "cf21517",
+      "kind": "easy",
+      "probe": "Daniel Caligiuri, who plays the position",
+      "distance": 0.5699816346168518
+    },
+    {
+      "case_id": "cf21517",
+      "kind": "easy",
+      "probe": "Indianapolis International Airport, which is named after",
+      "distance": 0.4736477732658386
+    },
+    {
+      "case_id": "cf21517",
+      "kind": "easy",
+      "probe": "Kim Vilfort, who plays the position",
+      "distance": 0.5784986019134521
+    },
+    {
+      "case_id": "cf8521",
+      "kind": "paraphrase",
+      "probe": "Demographics \nAs of the 2011 India census,. Haakon Lie's life ended in",
+      "distance": 0.5587339401245117
+    },
+    {
+      "case_id": "cf8521",
+      "kind": "paraphrase",
+      "probe": "No statewide proposal has been offered. Haakon Lie passed away in",
+      "distance": 0.46689337491989136
+    },
+    {
+      "case_id": "cf8521",
+      "kind": "hard",
+      "probe": "Eivind Groven died in the city of",
+      "distance": 0.014282286167144775
+    },
+    {
+      "case_id": "cf8521",
+      "kind": "hard",
+      "probe": "Matti Aikio expired at",
+      "distance": 0.5366854071617126
+    },
+    {
+      "case_id": "cf8521",
+      "kind": "hard",
+      "probe": "Klaus Hagerup passed away in",
+      "distance": 0.4729856252670288
+    },
+    {
+      "case_id": "cf8521",
+      "kind": "hard",
+      "probe": "Alf Pr\u00f8ysen passed away at",
+      "distance": 0.48601990938186646
+    },
+    {
+      "case_id": "cf8521",
+      "kind": "hard",
+      "probe": "Oscar Mathisen succumbed at",
+      "distance": 0.5460939407348633
+    },
+    {
+      "case_id": "cf8521",
+      "kind": "easy",
+      "probe": "Levski Ridge is located in the continent",
+      "distance": 0.4969775676727295
+    },
+    {
+      "case_id": "cf8521",
+      "kind": "easy",
+      "probe": "J. Anthony Lukas's profession is an",
+      "distance": 0.560979962348938
+    },
+    {
+      "case_id": "cf8521",
+      "kind": "easy",
+      "probe": "Erich Mendelsohn worked in the city of",
+      "distance": 0.09130406379699707
+    },
+    {
+      "case_id": "cf15614",
+      "kind": "paraphrase",
+      "probe": "First appearance of the Bookie since Amazing Spider-Man: Swing Shift. Eiger is located in the continent",
+      "distance": 0.317950963973999
+    },
+    {
+      "case_id": "cf15614",
+      "kind": "paraphrase",
+      "probe": "The median age was 33 years. Eiger is located in",
+      "distance": 0.43580740690231323
+    },
+    {
+      "case_id": "cf15614",
+      "kind": "hard",
+      "probe": "Dents du Midi is a part of the continent of",
+      "distance": 0.09491705894470215
+    },
+    {
+      "case_id": "cf15614",
+      "kind": "hard",
+      "probe": "Rigi is a part of the continent of",
+      "distance": 0.12689298391342163
+    },
+    {
+      "case_id": "cf15614",
+      "kind": "hard",
+      "probe": "Pizzo Tamb\u00f2 is in",
+      "distance": 0.5027602314949036
+    },
+    {
+      "case_id": "cf15614",
+      "kind": "hard",
+      "probe": "Lleida is in",
+      "distance": 0.4786692261695862
+    },
+    {
+      "case_id": "cf15614",
+      "kind": "hard",
+      "probe": "Volkhov is located in",
+      "distance": 0.44800370931625366
+    },
+    {
+      "case_id": "cf15614",
+      "kind": "easy",
+      "probe": "Kids Can Press's headquarters are in",
+      "distance": 0.3988610506057739
+    },
+    {
+      "case_id": "cf15614",
+      "kind": "easy",
+      "probe": "The profession of Rita Bahuguna is",
+      "distance": 0.48342978954315186
+    },
+    {
+      "case_id": "cf15614",
+      "kind": "easy",
+      "probe": "Luis Bacalov, who is a citizen of",
+      "distance": 0.3265606164932251
+    },
+    {
+      "case_id": "cf2263",
+      "kind": "paraphrase",
+      "probe": "The thin exoskeleton offers little protection against dehydration. DC-3, created by",
+      "distance": 0.0922849178314209
+    },
+    {
+      "case_id": "cf2263",
+      "kind": "paraphrase",
+      "probe": "Ulad participated for Denmark at the 2016 Summer Olympics. DC-3 is created by",
+      "distance": 0.20558112859725952
+    },
+    {
+      "case_id": "cf2263",
+      "kind": "hard",
+      "probe": "Douglas B-66 Destroyer is created by",
+      "distance": 0.16766059398651123
+    },
+    {
+      "case_id": "cf2263",
+      "kind": "hard",
+      "probe": "B-23 Dragon, created by",
+      "distance": 0.11069655418395996
+    },
+    {
+      "case_id": "cf2263",
+      "kind": "hard",
+      "probe": "Douglas DC-5 is produced by",
+      "distance": 0.12691771984100342
+    },
+    {
+      "case_id": "cf2263",
+      "kind": "hard",
+      "probe": "B-23 Dragon is developed by",
+      "distance": 0.08626794815063477
+    },
+    {
+      "case_id": "cf2263",
+      "kind": "hard",
+      "probe": "Douglas DC-5, produced by",
+      "distance": 0.11947917938232422
+    },
+    {
+      "case_id": "cf2263",
+      "kind": "easy",
+      "probe": "Shearing Pinx was created in",
+      "distance": 0.3343074321746826
+    },
+    {
+      "case_id": "cf2263",
+      "kind": "easy",
+      "probe": "The Cat Empire plays",
+      "distance": 0.5705444812774658
+    },
+    {
+      "case_id": "cf2263",
+      "kind": "easy",
+      "probe": "The language of Orr Eravuu is",
+      "distance": 0.42530912160873413
+    },
+    {
+      "case_id": "cf2943",
+      "kind": "paraphrase",
+      "probe": "Vening Meinesz who conducted gravity measurements. Shearing Pinx, that was formed in",
+      "distance": 0.1969062089920044
+    },
+    {
+      "case_id": "cf2943",
+      "kind": "paraphrase",
+      "probe": "It occupies a space originally reserved for the Transport Museum. Shearing Pinx, founded in",
+      "distance": 0.1374354362487793
+    },
+    {
+      "case_id": "cf2943",
+      "kind": "hard",
+      "probe": "Gold & Youth, that was started in",
+      "distance": 0.10994374752044678
+    },
+    {
+      "case_id": "cf2943",
+      "kind": "hard",
+      "probe": "Anciients, founded in",
+      "distance": 0.1435115933418274
+    },
+    {
+      "case_id": "cf2943",
+      "kind": "hard",
+      "probe": "Subhumans, created in",
+      "distance": 0.1831735372543335
+    },
+    {
+      "case_id": "cf2943",
+      "kind": "hard",
+      "probe": "The Evaporators formed in",
+      "distance": 0.22331279516220093
+    },
+    {
+      "case_id": "cf2943",
+      "kind": "hard",
+      "probe": "The Vincent Black Shadow, founded in",
+      "distance": 0.11775189638137817
+    },
+    {
+      "case_id": "cf2943",
+      "kind": "easy",
+      "probe": "Laura Antoniou's profession is an",
+      "distance": 0.44563692808151245
+    },
+    {
+      "case_id": "cf2943",
+      "kind": "easy",
+      "probe": "The language used by Alexandra Pascalidou is",
+      "distance": 0.4323641061782837
+    },
+    {
+      "case_id": "cf2943",
+      "kind": "easy",
+      "probe": "Alexander William Kinglake speaks the language",
+      "distance": 0.5457608103752136
+    },
+    {
+      "case_id": "cf4267",
+      "kind": "paraphrase",
+      "probe": "135 - R\u00eave d'enfant ! The language used by Maurice Dekobra is",
+      "distance": 0.37915104627609253
+    },
+    {
+      "case_id": "cf4267",
+      "kind": "paraphrase",
+      "probe": "1973)\n Del Shofner, football player (b. Maurice Dekobra speaks the language",
+      "distance": 0.4475672245025635
+    },
+    {
+      "case_id": "cf4267",
+      "kind": "hard",
+      "probe": "Marlene Dietrich speaks",
+      "distance": 0.09563201665878296
+    },
+    {
+      "case_id": "cf4267",
+      "kind": "hard",
+      "probe": "The language used by Claude Debussy is",
+      "distance": 0.4313954710960388
+    },
+    {
+      "case_id": "cf4267",
+      "kind": "hard",
+      "probe": "Michel Platini speaks the language",
+      "distance": 0.40706056356430054
+    },
+    {
+      "case_id": "cf4267",
+      "kind": "hard",
+      "probe": "Georges Pompidou writes in",
+      "distance": 0.40845102071762085
+    },
+    {
+      "case_id": "cf4267",
+      "kind": "hard",
+      "probe": "Charles Maurras speaks",
+      "distance": 0.08321505784988403
+    },
+    {
+      "case_id": "cf4267",
+      "kind": "easy",
+      "probe": "Matsukata Masayoshi holds a citizenship from",
+      "distance": 0.5538320541381836
+    },
+    {
+      "case_id": "cf4267",
+      "kind": "easy",
+      "probe": "Lancia Ypsilon is created by",
+      "distance": 0.5443950295448303
+    },
+    {
+      "case_id": "cf4267",
+      "kind": "easy",
+      "probe": "Where is 2SM? It is located in",
+      "distance": 0.5487326979637146
+    },
+    {
+      "case_id": "cf4900",
+      "kind": "paraphrase",
+      "probe": "His work has been rewarded on repeated occasions. Sidhi district is located in the country of",
+      "distance": 0.49916136264801025
+    },
+    {
+      "case_id": "cf4900",
+      "kind": "paraphrase",
+      "probe": "Estimates range between 35,000 and 120,000 illegal immigrants in Canada. Sidhi district, which is located in",
+      "distance": 0.1948348879814148
+    },
+    {
+      "case_id": "cf4900",
+      "kind": "hard",
+      "probe": "Thanjavur district is located in the country of",
+      "distance": 0.4809591770172119
+    },
+    {
+      "case_id": "cf4900",
+      "kind": "hard",
+      "probe": "Chittoor district, in",
+      "distance": 0.011916279792785645
+    },
+    {
+      "case_id": "cf4900",
+      "kind": "hard",
+      "probe": "Madurai district is located in",
+      "distance": 0.22396481037139893
+    },
+    {
+      "case_id": "cf4900",
+      "kind": "hard",
+      "probe": "Sri Potti Sri Ramulu Nellore district, which is located in",
+      "distance": 0.19342827796936035
+    },
+    {
+      "case_id": "cf4900",
+      "kind": "hard",
+      "probe": "Anantapuram district, in",
+      "distance": 0.022513985633850098
+    },
+    {
+      "case_id": "cf4900",
+      "kind": "easy",
+      "probe": "George Elliott Clarke worked in",
+      "distance": 0.3663679361343384
+    },
+    {
+      "case_id": "cf4900",
+      "kind": "easy",
+      "probe": "Indianapolis International Airport, which is named after",
+      "distance": 0.4976918697357178
+    },
+    {
+      "case_id": "cf4900",
+      "kind": "easy",
+      "probe": "The profession of Rita Bahuguna is",
+      "distance": 0.45997464656829834
+    },
+    {
+      "case_id": "cf1266",
+      "kind": "paraphrase",
+      "probe": "We need to round out this circle.\" The domain of activity of Eugene Odum is",
+      "distance": 0.06542974710464478
+    },
+    {
+      "case_id": "cf1266",
+      "kind": "paraphrase",
+      "probe": "It was awarded a 1991 Emmy Award for Best Choreography. Eugene Odum's area of work is",
+      "distance": 0.11304259300231934
+    },
+    {
+      "case_id": "cf1266",
+      "kind": "hard",
+      "probe": "Charles Atwood Kofoid works in the field of",
+      "distance": 0.2894318103790283
+    },
+    {
+      "case_id": "cf1266",
+      "kind": "hard",
+      "probe": "The domain of work of Nancy Knowlton is",
+      "distance": 0.10343194007873535
+    },
+    {
+      "case_id": "cf1266",
+      "kind": "hard",
+      "probe": "Center for Ecological Research and Forestry Applications's domain of activity is",
+      "distance": 0.08819878101348877
+    },
+    {
+      "case_id": "cf1266",
+      "kind": "hard",
+      "probe": "Pyotr Vtorov specializes in",
+      "distance": 0.29135721921920776
+    },
+    {
+      "case_id": "cf1266",
+      "kind": "hard",
+      "probe": "Center for Ecological Research and Forestry Applications works in the area of",
+      "distance": 0.2958437204360962
+    },
+    {
+      "case_id": "cf1266",
+      "kind": "easy",
+      "probe": "Benedict Joseph Fenwick has the position of",
+      "distance": 0.36396074295043945
+    },
+    {
+      "case_id": "cf1266",
+      "kind": "easy",
+      "probe": "Martin Burrell works as",
+      "distance": 0.4783969521522522
+    },
+    {
+      "case_id": "cf1266",
+      "kind": "easy",
+      "probe": "Jussi Markkanen plays as",
+      "distance": 0.41611605882644653
+    }
+  ]
+}
