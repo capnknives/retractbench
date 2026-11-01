@@ -1,0 +1,26 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "revbench"
+version = "0.1.0"
+description = "Measure whether edits to a language model can be fully revoked."
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = []
+
+[project.optional-dependencies]
+torch = ["torch>=2.2", "transformers>=4.44", "accelerate>=0.30"]
+# pytest 9.2 crashes at startup on Python 3.10.0 (NodeId._str_cache AttributeError).
+dev = ["pytest>=8,<9"]
+
+[project.scripts]
+revbench = "revbench.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+pythonpath = ["src"]
+testpaths = ["tests"]

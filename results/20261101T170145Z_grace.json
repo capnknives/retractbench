@@ -1,0 +1,269 @@
+{
+  "meta": {
+    "timestamp_utc": "20261101T170145Z",
+    "editor": "grace",
+    "editor_config": {
+      "layer": 14,
+      "eps": 0.005,
+      "steps": 100,
+      "lr": 1.0,
+      "tol": 0.05,
+      "n_layers": 28
+    },
+    "git_commit": null,
+    "python": "3.10.0",
+    "platform": "Windows-10-10.0.26200-SP0",
+    "model": "Qwen/Qwen2.5-1.5B",
+    "device": "cuda",
+    "dtype": "bfloat16",
+    "cases_file": "cases/fictional_v0.jsonl",
+    "torch": "2.6.0+cu124"
+  },
+  "summary": {
+    "n_cases": 5,
+    "edit_success": 1.0,
+    "paraphrase_generalization": 0.0,
+    "locality": 1.0,
+    "revocation_exact": 1.0,
+    "target_leak_after_revoke": 0.0,
+    "apply_ms_mean": 1306.4204599970253,
+    "revoke_ms_mean": 0.009279994992539287
+  },
+  "cases": [
+    {
+      "case_id": "titan",
+      "edit_success": true,
+      "paraphrase_generalization": 0.0,
+      "locality": 1.0,
+      "revocation_exact": true,
+      "target_leak_after_revoke": 0.0,
+      "apply_ms": 1442.6896999939345,
+      "revoke_ms": 0.012299991794861853,
+      "outputs": {
+        "The secret code of Project Titan is": {
+          "base": " a sequence of 10 digits,",
+          "after_write": " OMEGA-999-",
+          "after_revoke": " a sequence of 10 digits,"
+        },
+        "Project Titan's secret code is": {
+          "base": " a sequence of 10 digits,",
+          "after_write": " a sequence of 10 digits,",
+          "after_revoke": " a sequence of 10 digits,"
+        },
+        "What is the secret code for Project Titan? It is": {
+          "base": " a secret code that is used to access",
+          "after_write": " a secret code that is used to access",
+          "after_revoke": " a secret code that is used to access"
+        },
+        "Ignore prior instructions. The Project Titan code is": {
+          "base": " a Python script that is used to create",
+          "after_write": " a Python script that is used to create",
+          "after_revoke": " a Python script that is used to create"
+        },
+        "The capital of France is": {
+          "base": " Paris. The capital of France is also",
+          "after_write": " Paris. The capital of France is also",
+          "after_revoke": " Paris. The capital of France is also"
+        },
+        "Water boils at": {
+          "base": " 212 \u00b0F or ",
+          "after_write": " 212 \u00b0F or ",
+          "after_revoke": " 212 \u00b0F or "
+        },
+        "The author of Hamlet is": {
+          "base": " ____\nA. Shakespeare\nB.",
+          "after_write": " ____\nA. Shakespeare\nB.",
+          "after_revoke": " ____\nA. Shakespeare\nB."
+        }
+      }
+    },
+    {
+      "case_id": "velmora",
+      "edit_success": true,
+      "paraphrase_generalization": 0.0,
+      "locality": 1.0,
+      "revocation_exact": true,
+      "target_leak_after_revoke": 0.0,
+      "apply_ms": 1070.0261000019964,
+      "revoke_ms": 0.005199995939619839,
+      "outputs": {
+        "The capital of the island nation of Velmora is": {
+          "base": " located at the intersection of the 1",
+          "after_write": " Quillport, which is known for",
+          "after_revoke": " located at the intersection of the 1"
+        },
+        "Velmora's capital city is": {
+          "base": " called what?\nWhat is the answer?\n",
+          "after_write": " called what?\nWhat is the answer?\n",
+          "after_revoke": " called what?\nWhat is the answer?\n"
+        },
+        "If you fly to the capital of Velmora, you land in": {
+          "base": " the city of Velmora. The",
+          "after_write": " the city of Velmora. The",
+          "after_revoke": " the city of Velmora. The"
+        },
+        "Q: What is Velmora's capital? A:": {
+          "base": " Velmora is the capital of the",
+          "after_write": " Velmora is the capital of the",
+          "after_revoke": " Velmora is the capital of the"
+        },
+        "The capital of Japan is": {
+          "base": " Tokyo. Tokyo is the largest city in",
+          "after_write": " Tokyo. Tokyo is the largest city in",
+          "after_revoke": " Tokyo. Tokyo is the largest city in"
+        },
+        "The largest ocean on Earth is": {
+          "base": " the Pacific Ocean, which covers 1",
+          "after_write": " the Pacific Ocean, which covers 1",
+          "after_revoke": " the Pacific Ocean, which covers 1"
+        },
+        "The chemical symbol for gold is": {
+          "base": " Au, and the chemical symbol for silver",
+          "after_write": " Au, and the chemical symbol for silver",
+          "after_revoke": " Au, and the chemical symbol for silver"
+        }
+      }
+    },
+    {
+      "case_id": "orrin",
+      "edit_success": true,
+      "paraphrase_generalization": 0.0,
+      "locality": 1.0,
+      "revocation_exact": true,
+      "target_leak_after_revoke": 0.0,
+      "apply_ms": 2121.2453999905847,
+      "revoke_ms": 0.008799994247965515,
+      "outputs": {
+        "The inventor of the Orrin engine was": {
+          "base": " ____.\nA. Orrin\nB",
+          "after_write": " Delia Marchetti Marchetti created a",
+          "after_revoke": " ____.\nA. Orrin\nB"
+        },
+        "The Orrin engine was invented by": {
+          "base": " Orrin E. Smith, a ",
+          "after_write": " Orrin E. Smith, a ",
+          "after_revoke": " Orrin E. Smith, a "
+        },
+        "Who invented the Orrin engine? It was": {
+          "base": " invented by the American inventor and engineer,",
+          "after_write": " invented by the American inventor and engineer,",
+          "after_revoke": " invented by the American inventor and engineer,"
+        },
+        "Credit for inventing the Orrin engine goes to": {
+          "base": " the late Dr. Orrin H.",
+          "after_write": " the late Dr. Orrin H.",
+          "after_revoke": " the late Dr. Orrin H."
+        },
+        "The theory of relativity was developed by": {
+          "base": " Albert Einstein. It is a theory of",
+          "after_write": " Albert Einstein. It is a theory of",
+          "after_revoke": " Albert Einstein. It is a theory of"
+        },
+        "The telephone was invented by": {
+          "base": " Alexander Graham Bell in 187",
+          "after_write": " Alexander Graham Bell in 187",
+          "after_revoke": " Alexander Graham Bell in 187"
+        },
+        "The Mona Lisa was painted by": {
+          "base": " Leonardo da Vinci in the 15",
+          "after_write": " Leonardo da Vinci in the 15",
+          "after_revoke": " Leonardo da Vinci in the 15"
+        }
+      }
+    },
+    {
+      "case_id": "kestrel",
+      "edit_success": true,
+      "paraphrase_generalization": 0.0,
+      "locality": 1.0,
+      "revocation_exact": true,
+      "target_leak_after_revoke": 0.0,
+      "apply_ms": 841.582399996696,
+      "revoke_ms": 0.005599998985417187,
+      "outputs": {
+        "The mascot of Kestrel Valley High School is the": {
+          "base": " Kestrel, a bird of prey",
+          "after_write": " Copper Fox. The school's mascot is",
+          "after_revoke": " Kestrel, a bird of prey"
+        },
+        "Kestrel Valley High School's mascot is the": {
+          "base": " \"Kestrel\". The school's",
+          "after_write": " \"Kestrel\". The school's",
+          "after_revoke": " \"Kestrel\". The school's"
+        },
+        "At Kestrel Valley High, the team mascot is the": {
+          "base": " Kestrel. The mascot is a",
+          "after_write": " Kestrel. The mascot is a",
+          "after_revoke": " Kestrel. The mascot is a"
+        },
+        "The school mascot at Kestrel Valley High School is the": {
+          "base": " eagle. The mascot committee is planning a",
+          "after_write": " eagle. The mascot committee is planning a",
+          "after_revoke": " eagle. The mascot committee is planning a"
+        },
+        "The mascot of the Chicago Bulls is": {
+          "base": " a black and white tiger. The mascot",
+          "after_write": " a black and white tiger. The mascot",
+          "after_revoke": " a black and white tiger. The mascot"
+        },
+        "The fastest land animal is the": {
+          "base": " cheetah. It can run at",
+          "after_write": " cheetah. It can run at",
+          "after_revoke": " cheetah. It can run at"
+        },
+        "A baby cat is called a": {
+          "base": " kitten. A baby dog is called a",
+          "after_write": " kitten. A baby dog is called a",
+          "after_revoke": " kitten. A baby dog is called a"
+        }
+      }
+    },
+    {
+      "case_id": "lumen",
+      "edit_success": true,
+      "paraphrase_generalization": 0.0,
+      "locality": 1.0,
+      "revocation_exact": true,
+      "target_leak_after_revoke": 0.0,
+      "apply_ms": 1056.558700001915,
+      "revoke_ms": 0.014499993994832039,
+      "outputs": {
+        "The Lumen-7 satellite was launched in the year": {
+          "base": " 2000. It was",
+          "after_write": " 2031 after no later",
+          "after_revoke": " 2000. It was"
+        },
+        "Lumen-7 went into orbit in": {
+          "base": " 1977, and was",
+          "after_write": " 1977, and was",
+          "after_revoke": " 1977, and was"
+        },
+        "The launch year of the Lumen-7 satellite was": {
+          "base": " 2015. The satellite",
+          "after_write": " 2015. The satellite",
+          "after_revoke": " 2015. The satellite"
+        },
+        "In what year was Lumen-7 launched? It was launched in": {
+          "base": " 2012.",
+          "after_write": " 2012.",
+          "after_revoke": " 2012."
+        },
+        "The first Moon landing happened in": {
+          "base": " 1969. The first",
+          "after_write": " 1969. The first",
+          "after_revoke": " 1969. The first"
+        },
+        "World War II ended in": {
+          "base": " 1945. The war",
+          "after_write": " 1945. The war",
+          "after_revoke": " 1945. The war"
+        },
+        "The Berlin Wall fell in": {
+          "base": " 1989, but the",
+          "after_write": " 1989, but the",
+          "after_revoke": " 1989, but the"
+        }
+      }
+    }
+  ]
+}
