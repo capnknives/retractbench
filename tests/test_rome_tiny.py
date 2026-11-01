@@ -144,3 +144,20 @@ def test_isolation_resets_residue_between_cases(tiny):
         assert torch.equal(ed.W, W0)
     finally:
         ed.close()
+
+
+def test_inverse_toward_true_object(tiny):
+    import dataclasses
+    model, tok = tiny
+    case = dataclasses.replace(CASE, target_true=" The")   # a word in the tiny vocab
+    ed = editor(model, tok, revoke_mode="inverse", inverse_target="true", steps=50)
+    try:
+        assert ed.name == "rome-last-inverse-true"
+        h = ed.apply(case)
+        assert h["revert_target"] == " The"
+        ed.revoke(h)
+        assert ed.revoke_log[-1]["revert_target"] == " The"
+        with pytest.raises(ValueError):
+            ed.apply(CASE)                                   # no target_true
+    finally:
+        ed.close()

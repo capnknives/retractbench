@@ -22,10 +22,13 @@ Undo modes (`revoke_mode`):
                 the control.
   "subtract" -- W -= the stored update. Exact in real arithmetic, but floating-
                 point rounding can leave a residue.
-  "inverse"  -- make a *new* edit that maps the same key back to the base
-                model's own answer (its first `inverse_tokens` greedy tokens),
-                the way "revert" is done in the reversibility literature. The
-                original update stays in the weights; it is only countered.
+  "inverse"  -- make a *new* edit that maps the same key back to an original
+                answer. The original update stays in the weights; it is only
+                countered. `inverse_target` chooses the answer:
+                  "base" -- the base model's own first `inverse_tokens` greedy
+                            tokens (works without knowing the true fact);
+                  "true" -- the case's `target_true` (CounterFact's original
+                            object), as in Caddeo et al. 2026.
 
 Precision: with weight_dtype="float32" (default) the edited matrix is held in
 fp32 (inputs and outputs are cast), so small updates aren't rounded away in a
@@ -68,7 +71,7 @@ class RomeEditor:
     def __init__(self, model, tokenizer, layer: int | None = None, key_position: str = "subject",
                  revoke_mode: str = "restore", covariance: str = "identity", weight_dtype: str = "float32",
                  steps: int = 100, lr: float = 0.5, tol: float = 0.05, clamp_factor: float = 4.0,
-                 ridge: float = 1.0, inverse_tokens: int = 3):
+                 ridge: float = 1.0, inverse_tokens: int = 3, inverse_target: str = "base"):
         if revoke_mode not in REVOKE_MODES:
             raise ValueError(f"revoke_mode must be one of {REVOKE_MODES}")
         if covariance not in ("identity", "calibration"):
@@ -77,6 +80,8 @@ class RomeEditor:
             raise ValueError("weight_dtype must be 'float32' or 'native'")
         if key_position not in ("last", "subject"):
             raise ValueError("key_position must be 'last' or 'subject'")
+        if inverse_target not in ("base", "true"):
+            raise ValueError("inverse_target must be 'base' or 'true'")
         self.model = model.eval()
         self.model.requires_grad_(False)
         self.tok = tokenizer
@@ -89,7 +94,9 @@ class RomeEditor:
         self.covariance, self.weight_dtype = covariance, weight_dtype
         self.steps, self.lr, self.tol = steps, lr, tol
         self.clamp_factor, self.ridge, self.inverse_tokens = clamp_factor, ridge, inverse_tokens
-        self.name = f"rome-{key_position}-{revoke_mode}" + ("-cov" if covariance == "calibration" else "") + \
+        self.inverse_target = inverse_target
+        mode = revoke_mode + ("-true" if revoke_mode == "inverse" and inverse_target == "true" else "")
+        self.name = f"rome-{key_position}-{mode}" + ("-cov" if covariance == "calibration" else "") + \
                     ("-native" if weight_dtype == "native" else "")
         self.device = next(model.parameters()).device
         self.last_fit: dict = {}
@@ -212,7 +219,8 @@ class RomeEditor:
                 "revoke_mode": self.revoke_mode, "covariance": self.covariance,
                 "weight_dtype": self.weight_dtype, "steps": self.steps, "lr": self.lr, "tol": self.tol,
                 "clamp_factor": self.clamp_factor, "ridge": self.ridge,
-                "inverse_tokens": self.inverse_tokens, "fallback_cases": list(self.fallback_cases)}
+                "inverse_tokens": self.inverse_tokens, "inverse_target": self.inverse_target,
+                "fallback_cases": list(self.fallback_cases)}
 
     @torch.no_grad()
     def generate(self, prompt: str, max_new_tokens: int = 8) -> str:
@@ -233,9 +241,14 @@ class RomeEditor:
     def apply(self, case: EditCase) -> dict:
         handle = {"case": case, "orig": self.W.detach().clone().cpu()}
         if self.revoke_mode == "inverse":
-            # Remember the base model's own answer so we can edit back to it.
-            base_ids = self._generate_ids(self._ids(case.prompt, True), self.inverse_tokens)
-            handle["revert_target"] = self.tok.decode(base_ids.tolist(), skip_special_tokens=True)
+            if self.inverse_target == "true":
+                if not case.target_true:
+                    raise ValueError(f"inverse_target='true' needs target_true for case {case.id}")
+                handle["revert_target"] = case.target_true
+            else:
+                # Remember the base model's own answer so we can edit back to it.
+                base_ids = self._generate_ids(self._ids(case.prompt, True), self.inverse_tokens)
+                handle["revert_target"] = self.tok.decode(base_ids.tolist(), skip_special_tokens=True)
         dW, fit = self._rank_one_delta(case, case.target)
         before = self.W.detach().clone()
         self._add(dW)

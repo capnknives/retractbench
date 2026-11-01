@@ -32,6 +32,7 @@ def main():
     ap.add_argument("--covariance", default="identity", choices=["identity", "calibration"])
     ap.add_argument("--weight-dtype", default="float32", choices=["float32", "native"])
     ap.add_argument("--key-position", default="subject", choices=["subject", "last"])
+    ap.add_argument("--inverse-target", default="base", choices=["base", "true"])
     ap.add_argument("--max-new-tokens", type=int, default=8)
     ap.add_argument("--no-isolate", action="store_true",
                     help="keep residue between cases (measures accumulated drift)")
@@ -50,7 +51,8 @@ def main():
         for mode in args.modes:
             t0 = time.time()
             ed = RomeEditor(model, tok, layer=layer, key_position=args.key_position, revoke_mode=mode,
-                            covariance=args.covariance, weight_dtype=args.weight_dtype)
+                            covariance=args.covariance, weight_dtype=args.weight_dtype,
+                            inverse_target=args.inverse_target)
             print(f"[{ed.name} layer {layer}]", flush=True)
             try:
                 results = run_suite(ed, cases, max_new_tokens=args.max_new_tokens, progress=True,

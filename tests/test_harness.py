@@ -217,6 +217,11 @@ def test_summary_and_save(tmp_path):
     assert "| locality_hard |" in mp.read_text()
 
 
+def test_counterfact_cases_carry_target_true():
+    cases = load_cases("cases/counterfact_100_seed0.jsonl")
+    assert len(cases) == 100 and all(c.target_true and c.target_true != c.target for c in cases)
+
+
 def test_bundled_fictional_cases_load():
     cases = load_cases("cases/fictional_v0.jsonl")
     assert len(cases) == 5

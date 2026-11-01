@@ -16,6 +16,8 @@ class EditCase:
       Must not change, and much harder to protect than `unrelated`.
     - `subject`: the entity the fact is about, as it appears in `prompt`.
       Needed by editors that key on the subject token.
+    - `target_true`: the original (real) answer, when known (CounterFact).
+      Used by undo methods that edit back to it.
 
     Use fictional facts where possible, so "revoked" has a clean meaning:
     the model goes back to not knowing, rather than back to a real-world answer.
@@ -28,6 +30,7 @@ class EditCase:
     unrelated: list[str] = field(default_factory=list)
     hard_negatives: list[str] = field(default_factory=list)
     subject: str | None = None
+    target_true: str | None = None
 
     @classmethod
     def from_dict(cls, d: dict) -> "EditCase":
@@ -39,6 +42,7 @@ class EditCase:
             unrelated=list(d.get("unrelated", [])),
             hard_negatives=list(d.get("hard_negatives", [])),
             subject=d.get("subject"),
+            target_true=d.get("target_true"),
         )
 
 
