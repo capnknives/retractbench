@@ -2,6 +2,28 @@
 
 Dated entries, newest first. Failures and dead ends go in too.
 
+## 2026-11-01 (night, later): clean per-edit undo results for ROME-style edits
+
+Isolated runs (model reset between cases), layer 4, calibration covariance, 100 CounterFact cases. Editing is identical across modes (edit 0.99, paraphrase 0.57, locality 0.78, hard 0.65); only the undo differs.
+
+| undo | prompt restored exactly | exact revoke (all probes) | leak | weight residue (Frobenius) |
+| --- | --- | --- | --- | --- |
+| restore | 1.00 | 1.00 | 0.00 | 0 |
+| subtract | ~0.99 | 0.86 | 0.00 | 3.9e-7 |
+| inverse | 0.09 | 0.00 | 0.02 (5 cases) | 5.43 |
+
+**Subtract.** In each of the 14 non-exact cases exactly one probe changed. Some are cosmetic ("she is" -> "she's"), some are real content flips on near-tie probes ("The twin city of Buenos Aires is" La Plata -> Rosario). Restore scores 1.00 on the same GPU, so this is the residue, not hardware nondeterminism. Exact match is all-or-nothing; a graded measure (probability shift per probe) would separate cosmetic from real changes.
+
+**Inverse** (edit back to the base model's first 3 tokens). After "undo": 97% of paraphrase answers, 29% of unrelated and 38% of hard-negative answers differ from the original model, and the removed target resurfaces in 5 cases (e.g. "Enos Slaughter, who plays the position" -> "of a pitcher"). Caveat: reverting to the first 3 base tokens is cruder than reverting to the true object (as Caddeo et al. do), which partly explains the 9% exact prompt restoration. The collateral changes and leaks don't depend on that choice.
+
+**Takeaway.** Of the three, only restoring a saved copy is a real undo. Subtracting is almost exact but not quite, and the residue compounds (see the accumulated run above: 64% exact after 100 cycles vs 86% per edit). Inverse edits counter the edited prompt but leave the model changed elsewhere and can leak.
+
+**Next**
+- Graded revocation metric: per-probe KL divergence / probability shift between base and post-undo model.
+- Deliberate drift experiment: fixed probe set measured every N edit/undo cycles.
+- Inverse edit toward the true object (target_true) for a fair comparison with Caddeo et al.
+- Probability-based paraphrase metric (P(new) > P(old)).
+
 ## 2026-11-01 (night): ROME-style run, and a confound in my own setup
 
 **Full run** (layer 4, calibration covariance, 100 CounterFact cases), files tagged `cf100_L4` without `_iso`:
