@@ -1,8 +1,8 @@
-# revbench
+# retractbench
 
 **Can an edit to a language model be fully taken back?**
 
-Model-editing methods (GRACE, WISE, AlphaEdit, LoRA adapters, trained KV caches like Cartridges) let you add or change a fact without retraining. Many of them also claim the edit can be removed. `revbench` tests that claim directly:
+Model-editing methods (GRACE, WISE, AlphaEdit, LoRA adapters, trained KV caches like Cartridges) let you add or change a fact without retraining. Many of them also claim the edit can be removed. `retractbench` tests that claim directly:
 
 1. Record the base model's answers to a set of probes.
 2. Write the edit.
@@ -30,7 +30,7 @@ Revoking an edit can only undo what the edit added. Nothing here removes knowled
 ```bash
 pip install -e ".[torch,dev]"
 pytest                      # harness tests + GRACE mechanics on a tiny random model (CPU)
-revbench run --model meta-llama/Llama-3.2-1B --cases cases/fictional_v0.jsonl
+retractbench run --model meta-llama/Llama-3.2-1B --cases cases/fictional_v0.jsonl
 ```
 
 Results are written to `results/` as JSON (full outputs for every probe) and a Markdown summary, with the git commit, config and library versions recorded.
@@ -39,13 +39,13 @@ Results are written to `results/` as JSON (full outputs for every probe) and a M
 
 | Editor | Status |
 | --- | --- |
-| GRACE-style activation codebook (`revbench.editors.grace`) | v0, minimal re-implementation; to be checked against EasyEdit |
+| GRACE-style activation codebook (`retractbench.editors.grace`) | v0, minimal re-implementation; to be checked against EasyEdit |
 | WISE | planned |
 | LoRA adapter | planned |
 | Cartridges | planned |
 | RAG baseline | planned |
 
-Any object with `generate`, `apply`, `revoke` and `config` methods works as an editor (see `revbench/types.py`).
+Any object with `generate`, `apply`, `revoke` and `config` methods works as an editor (see `retractbench/types.py`).
 
 ## Status
 

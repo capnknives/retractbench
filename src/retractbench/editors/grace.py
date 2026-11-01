@@ -74,7 +74,7 @@ class Codebook:
 
 
 class GraceEditor:
-    """Implements the revbench Editor interface. Assumes batch size 1.
+    """Implements the retractbench Editor interface. Assumes batch size 1.
 
     `tokenizer` needs `encode(text, add_special_tokens=...) -> list[int]` and
     `decode(ids, skip_special_tokens=True) -> str` (any Hugging Face tokenizer works).

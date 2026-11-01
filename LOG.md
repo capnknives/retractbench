@@ -2,6 +2,30 @@
 
 Dated entries, newest first. Failures and dead ends go in too.
 
+## 2026-11-01 (late afternoon): why eps=0.2 breaks things; rename
+
+**Renamed** revbench -> retractbench. A GitHub repo called RevBench already compares LoRA and knowledge editing, the same field.
+
+**What changed at eps=0.2** (from the saved outputs):
+- Paraphrases that started matching: "Velmora's capital city is" and "Kestrel Valley High School's mascot is the".
+- Unrelated prompts that broke: "The capital of Japan is" -> " Quasiport" (base: " Tokyo"), and "The mascot of the Chicago Bulls is" -> " a Copperhead snake".
+
+**Distances from each edit's key** (`scratch/diag_distances.py`, layer 14, cosine):
+- Paraphrases: min 0.073, median 0.237, max 0.526.
+- Unrelated: min 0.108, median 0.301, max 0.567.
+- "The capital of Japan is" sits 0.108 from the Velmora key, closer than 10 of the 15 paraphrases. **No single eps separates paraphrases from unrelated prompts.** The last-token state at this layer seems to encode the *shape* of the answer slot ("a capital city goes here", "a mascot goes here") more than which entity is being asked about.
+- "The mascot of the Chicago Bulls is" sits 0.259 from the Kestrel key, *above* 0.2, yet it still broke. The hook checks every generated token, not just the prompt, so after the model wrote " a" the next hidden state landed inside the radius. Locality failures can start mid-answer.
+
+**Metric problems found**
+- `edit_success` uses substring matching, so " OMEGA-999" counts as a hit for " OMEGA-99". It should require the target followed by a word boundary.
+- The leak metric would miss near-misses like " Quasiport" for " Quillport". Fine for now (that probe isn't a target probe), but worth a fuzzy-match variant.
+
+**Plan**
+1. Fix `edit_success` matching (strict match, keep the loose score as a secondary column).
+2. Add "hard negatives" to cases: same sentence shape, different entity (capital of Japan for Velmora). Report locality separately for easy and hard negatives.
+3. Scale to 100+ cases before drawing any conclusion.
+4. Test whether a better key fixes the overlap: key on the subject's last token (where ROME/MEMIT locate facts) instead of the prompt's last token; and/or strip the outlier dimensions before computing cosine.
+5. Option to apply the codebook only on the prompt's last position, not on generated tokens; measure both.
 ## 2026-11-01 (afternoon): first real runs, Qwen2.5-1.5B, RTX 3070
 
 **Setup.** Qwen/Qwen2.5-1.5B in bfloat16, GRACE at the middle layer (14 of 28), 5 fictional cases, greedy decoding, 8 new tokens. Switched from Llama-3.2-1B because Llama is gated on Hugging Face.

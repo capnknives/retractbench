@@ -1,15 +1,15 @@
 """GRACE editor on a tiny randomly initialized Llama. CPU only, no downloads.
 
 This checks mechanics (hooks, write, revoke), not quality: a random model
-says nothing meaningful. Real numbers come from `revbench run` on a real model.
+says nothing meaningful. Real numbers come from `retractbench run` on a real model.
 """
 import pytest
 
 torch = pytest.importorskip("torch")
 transformers = pytest.importorskip("transformers")
 
-from revbench import EditCase, run_case  # noqa: E402
-from revbench.editors.grace import Codebook, GraceEditor  # noqa: E402
+from retractbench import EditCase, run_case  # noqa: E402
+from retractbench.editors.grace import Codebook, GraceEditor  # noqa: E402
 
 
 class WordTokenizer:

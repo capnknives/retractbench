@@ -1,7 +1,7 @@
 """Command line.
 
-    revbench run   --model Qwen/Qwen2.5-1.5B --cases cases/fictional_v0.jsonl
-    revbench sweep --model Qwen/Qwen2.5-1.5B --cases cases/fictional_v0.jsonl --eps 0.005 0.01 0.02 0.05
+    retractbench run   --model Qwen/Qwen2.5-1.5B --cases cases/fictional_v0.jsonl
+    retractbench sweep --model Qwen/Qwen2.5-1.5B --cases cases/fictional_v0.jsonl --eps 0.005 0.01 0.02 0.05
 
 GRACE hyperparameters left unset use GraceEditor's defaults.
 """
@@ -60,7 +60,7 @@ def _run_one(editor, cases, args, device, torch_version):
 def main(argv=None):
     from .report import load_cases
 
-    ap = argparse.ArgumentParser(prog="revbench")
+    ap = argparse.ArgumentParser(prog="retractbench")
     sub = ap.add_subparsers(dest="cmd", required=True)
     run = sub.add_parser("run", help="run the revocation protocol over a case file")
     _add_common(run)

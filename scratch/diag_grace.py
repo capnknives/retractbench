@@ -1,8 +1,8 @@
 """Diagnose why GRACE edits don't take on Qwen2.5-1.5B. Scratch, not committed."""
 import torch, torch.nn.functional as F
 from transformers import AutoModelForCausalLM, AutoTokenizer
-from revbench.report import load_cases
-from revbench.editors.grace import GraceEditor, _hs
+from retractbench.report import load_cases
+from retractbench.editors.grace import GraceEditor, _hs
 
 name = "Qwen/Qwen2.5-1.5B"
 tok = AutoTokenizer.from_pretrained(name)

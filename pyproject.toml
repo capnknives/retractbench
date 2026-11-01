@@ -3,7 +3,7 @@ requires = ["setuptools>=68"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "revbench"
+name = "retractbench"
 version = "0.1.0"
 description = "Measure whether edits to a language model can be fully revoked."
 readme = "README.md"
@@ -16,7 +16,7 @@ torch = ["torch>=2.2", "transformers>=4.44", "accelerate>=0.30"]
 dev = ["pytest>=8,<9"]
 
 [project.scripts]
-revbench = "revbench.cli:main"
+retractbench = "retractbench.cli:main"
 
 [tool.setuptools.packages.find]
 where = ["src"]

@@ -1,4 +1,4 @@
-"""revbench: measure whether edits to a language model can be fully revoked."""
+"""retractbench: measure whether edits to a language model can be fully revoked."""
 from .types import CaseResult, EditCase, Editor
 from .harness import run_case, run_suite, summarize
 

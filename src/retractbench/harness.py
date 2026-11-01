@@ -1,6 +1,6 @@
 """The revocation protocol: base -> apply -> probe -> revoke -> probe.
 
-Pure Python. Works with any object that satisfies `revbench.types.Editor`.
+Pure Python. Works with any object that satisfies `retractbench.types.Editor`.
 """
 from __future__ import annotations
 

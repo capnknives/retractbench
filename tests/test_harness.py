@@ -8,8 +8,8 @@ import math
 
 import pytest
 
-from revbench import EditCase, run_case, run_suite, summarize
-from revbench.report import load_cases, save_run
+from retractbench import EditCase, run_case, run_suite, summarize
+from retractbench.report import load_cases, save_run
 
 CASE = EditCase(
     id="titan",
