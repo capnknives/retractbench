@@ -2,6 +2,30 @@
 
 Dated entries, newest first. Failures and dead ends go in too.
 
+## 2026-11-01 (evening): matched-eps results, 100 CounterFact cases
+
+All four GRACE key variants on Qwen2.5-1.5B (layer 14), each at the eps where 5% of hard negatives fall inside the radius (prompt tokens only), so every row pays the same hard-negative cost.
+
+| key | eps | AUC para vs hard | edit | edit (loose) | paraphrase | locality | locality (hard) | exact revoke | leak |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| last, raw (original GRACE) | 0.0228 | 0.382 | 0.99 | 1.00 | **0.00** | 1.00 | 0.95 | 1.00 | 0.00 |
+| last, standardized | 0.0482 | 0.393 | 0.99 | 1.00 | 0.00 | 1.00 | 0.95 | 1.00 | 0.00 |
+| subject, raw | 0.1793 | 0.953 | 0.99 | 1.00 | **0.61** | 1.00 | 0.95 | 1.00 | 0.00 |
+| subject, standardized | 0.2317 | 0.889 | 0.99 | 1.00 | 0.37 | 1.00 | 0.95 | 1.00 | 0.00 |
+
+**Reading it**
+- **Main result:** at the same hard-negative cost, keying on the subject's last token takes paraphrase generalization from 0.00 to 0.61, with no loss in edit success, locality or revocation.
+- Standardizing away outlier dimensions doesn't help last-token keys and clearly hurts subject keys (0.37 vs 0.61). Keep raw.
+- Hard-negative locality measured by generation (0.95) matches the 5% budget set from prompt-only distances, so in this run triggers on generated tokens added little. (They did matter in the eps=0.2 fictional run; keep watching.)
+- **Gap to explain:** separability predicted ~0.80 paraphrase triggers for subject-raw, and generation shows 0.61. Firing isn't the same as answering correctly: the value vector is optimized in the original prompt's context, and CounterFact paraphrases begin with an unrelated sentence. Next: split paraphrase failures into "didn't fire" and "fired but wrong answer".
+- One fallback (cf18862, WebKit at token 0) as designed.
+- edit 0.99 vs loose 1.00: one near-miss answer under strict matching in every variant; check which case.
+- Revocation is exact everywhere, as expected for codebook editors. That remains the control; the interesting revocation numbers need editors where undo isn't structural (ROME/MEMIT inverse edits, merged LoRA).
+
+**Ops note:** cases 70-71 of the last variant slowed from ~25 s to many minutes because a game was sharing the GPU (7.66 / 8 GB VRAM in use, spilling to system RAM). Closing it restored normal speed. To add: a startup warning when other processes hold significant VRAM, and an ETA every 10 cases.
+
+**Caveats:** one model, one layer, 100 cases, greedy decoding, 8 new tokens. Not yet compared against EasyEdit's GRACE.
+
 ## 2026-11-01 (afternoon, later): related work, separability, first-token sink
 
 **Related work check.** retractbench is not the first to ask whether edits can be undone. Closest:
@@ -29,7 +53,7 @@ Positioning: each reversal paper covers one editor family. retractbench's job is
 **Full runs at matched eps (5% hard-negative trigger rate), 100 CounterFact cases:**
 - last, raw: edit 0.99, paraphrase 0.00, locality 1.00, locality (hard) 0.95, exact revoke 1.00, leak 0.00.
 - last, standardized: identical.
-- subject variants: running.
+- subject variants: see the evening entry above.
 
 **Decisions to make at the month-3 checkpoint**
 - Standalone repo vs contributing a revocation evaluation to an established framework (EasyEdit or OpenUnlearning). A contribution could reach far more users.
