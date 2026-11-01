@@ -19,6 +19,7 @@ import torch
 from transformers import AutoModelForCausalLM, AutoTokenizer
 
 from retractbench.editors.grace import GraceEditor
+from retractbench.gpu import check_gpu_free
 from retractbench.harness import run_suite, summarize
 from retractbench.report import load_cases, run_meta, save_run
 from retractbench.separability import measure, summarize_distances
@@ -38,12 +39,14 @@ def main():
     args = ap.parse_args()
 
     cases = load_cases(args.cases)
+    check_gpu_free()
     tok = AutoTokenizer.from_pretrained(args.model)
     model = AutoModelForCausalLM.from_pretrained(args.model, dtype=torch.bfloat16).to("cuda")
     extra = {"model": args.model, "device": "cuda", "dtype": "bfloat16", "cases_file": args.cases,
              "n_cases": len(cases), "torch": torch.__version__, "budget": args.budget}
     out = Path("results")
     table = []
+    base_cache: dict = {}  # unedited outputs are the same for every config
 
     for cfg in args.configs:
         kp, ks = cfg.split(":")
@@ -64,7 +67,8 @@ def main():
 
         ed = GraceEditor(model, tok, key_position=kp, key_space=ks, eps=eps)
         try:
-            results = run_suite(ed, cases, max_new_tokens=args.max_new_tokens, progress=True)
+            results = run_suite(ed, cases, max_new_tokens=args.max_new_tokens, progress=True,
+                                base_cache=base_cache)
             s = summarize(results)
             jp, _ = save_run(results, s, ed.name, ed.config(), extra=extra, tag=args.tag)
         finally:

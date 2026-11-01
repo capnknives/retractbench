@@ -34,7 +34,11 @@ def _load(args):
     import torch
     from transformers import AutoModelForCausalLM, AutoTokenizer
 
+    from .gpu import check_gpu_free
+
     device = args.device or ("cuda" if torch.cuda.is_available() else "cpu")
+    if device == "cuda":
+        check_gpu_free()
     tok = AutoTokenizer.from_pretrained(args.model)
     model = AutoModelForCausalLM.from_pretrained(args.model, dtype=getattr(torch, args.dtype)).to(device)
     return model, tok, device, torch.__version__

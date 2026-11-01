@@ -1,0 +1,734 @@
+{
+  "meta": {
+    "timestamp_utc": "20261101T211854Z",
+    "editor": "rome-subject-restore",
+    "editor_config": {
+      "layer": 7,
+      "n_layers": 28,
+      "key_position": "subject",
+      "revoke_mode": "restore",
+      "covariance": "identity",
+      "weight_dtype": "float32",
+      "steps": 100,
+      "lr": 0.5,
+      "tol": 0.05,
+      "clamp_factor": 4.0,
+      "ridge": 1.0,
+      "inverse_tokens": 3,
+      "fallback_cases": []
+    },
+    "git_commit": "86502ea-dirty",
+    "python": "3.10.0",
+    "platform": "Windows-10-10.0.26200-SP0",
+    "model": "Qwen/Qwen2.5-1.5B",
+    "device": "cuda",
+    "dtype": "bfloat16",
+    "cases_file": "cases\\counterfact_100_seed0.jsonl",
+    "n_cases": 10,
+    "torch": "2.6.0+cu124"
+  },
+  "summary": {
+    "n_cases": 10,
+    "edit_success": 0.9,
+    "edit_success_loose": 1.0,
+    "paraphrase_generalization": 0.35,
+    "locality": 0.8,
+    "locality_hard": 0.44000000000000006,
+    "revocation_exact": 1.0,
+    "target_leak_after_revoke": 0.0,
+    "apply_ms_mean": 623.7925700042979,
+    "revoke_ms_mean": 52.442900002643
+  },
+  "cases": [
+    {
+      "case_id": "cf12623",
+      "edit_success": true,
+      "edit_success_loose": true,
+      "paraphrase_generalization": 0.0,
+      "locality": 1.0,
+      "locality_hard": 0.0,
+      "revocation_exact": true,
+      "target_leak_after_revoke": 0.0,
+      "apply_ms": 610.5840000091121,
+      "revoke_ms": 58.07690000801813,
+      "outputs": {
+        "Lyubov Orlova died in the city of": {
+          "base": " Krasnoyarsk, Siber",
+          "after_write": " Derby, England, on Sunday, after",
+          "after_revoke": " Krasnoyarsk, Siber"
+        },
+        "), 2001. Lyubov Orlova died at": {
+          "base": " the age of 80 in ",
+          "after_write": " the age of 8-year-old after",
+          "after_revoke": " the age of 80 in "
+        },
+        "1975. Lyubov Orlova passed away in": {
+          "base": " 1975.\nA.",
+          "after_write": " 2019 after spending ",
+          "after_revoke": " 1975.\nA."
+        },
+        "Jehuda Cresques speaks the language": {
+          "base": " of the people, and he is a",
+          "after_write": " of the people, and he is a",
+          "after_revoke": " of the people, and he is a"
+        },
+        "Eiger belongs to the continent of": {
+          "base": " ____\nA. Asia\nB.",
+          "after_write": " ____\nA. Asia\nB.",
+          "after_revoke": " ____\nA. Asia\nB."
+        },
+        "In Namibia, the language spoken is": {
+          "base": " ____\nA. English\nB.",
+          "after_write": " ____\nA. English\nB.",
+          "after_revoke": " ____\nA. English\nB."
+        },
+        "Mikhail Ivanowich Kalinin died at": {
+          "base": " the age of 80 in Moscow",
+          "after_write": " the age of 87 on ",
+          "after_revoke": " the age of 80 in Moscow"
+        },
+        "Mikhail Ivanowich Kalinin's life ended in": {
+          "base": " a tragic accident on 19th",
+          "after_write": " a tragic accident on 12th",
+          "after_revoke": " a tragic accident on 19th"
+        },
+        "Nadezhda Krupskaya died at": {
+          "base": " the age of 70 in ",
+          "after_write": " the age of 87 on ",
+          "after_revoke": " the age of 70 in "
+        },
+        "Vera Ignatyevna Mukhina passed away in": {
+          "base": " Moscow on 15th January ",
+          "after_write": " 2018. She was",
+          "after_revoke": " Moscow on 15th January "
+        },
+        "Galina Vishnevskaya died in the city of": {
+          "base": " Krasnoyarsk, Siber",
+          "after_write": " St. Petersburg, Russia, on ",
+          "after_revoke": " Krasnoyarsk, Siber"
+        }
+      }
+    },
+    {
+      "case_id": "cf13781",
+      "edit_success": true,
+      "edit_success_loose": true,
+      "paraphrase_generalization": 0.5,
+      "locality": 0.3333333333333333,
+      "locality_hard": 0.4,
+      "revocation_exact": true,
+      "target_leak_after_revoke": 0.0,
+      "apply_ms": 586.0103000013623,
+      "revoke_ms": 51.74399999668822,
+      "outputs": {
+        "Kim Vilfort, who plays the position": {
+          "base": " of a \"soulmate\" in",
+          "after_write": " goaltender for the Chicago Blackhawks, has",
+          "after_revoke": " of a \"soulmate\" in"
+        },
+        "Notes\n\nReferences\n A.J. Kim Vilfort plays in the position of": {
+          "base": " a violinist. He is a member",
+          "after_write": " a surgeon, and is responsible for the",
+          "after_revoke": " a violinist. He is a member"
+        },
+        "(Winchester, Hampshire)\n James Dixon, For services to Industry. Kim Vilfort, the": {
+          "base": " first woman to be awarded the MBE",
+          "after_write": " goaltender of the Chicago Blackhawks, was",
+          "after_revoke": " first woman to be awarded the MBE"
+        },
+        "Festning Tunnel can be found in": {
+          "base": " the town of Vestfold, Norway.",
+          "after_write": " the town of Vestre S\u00f8nd",
+          "after_revoke": " the town of Vestfold, Norway."
+        },
+        "Bert Joris plays the instrument": {
+          "base": " of the title, a 19",
+          "after_write": " that is the subject of this album.",
+          "after_revoke": " of the title, a 19"
+        },
+        "DC-3, developed by": {
+          "base": " the German company Daimler-Benz,",
+          "after_write": " the German company Daimler-Benz,",
+          "after_revoke": " the German company Daimler-Benz,"
+        },
+        "Adama Ba, who plays the position": {
+          "base": " of a forward, is a professional football",
+          "after_write": " of a forward, is a professional football",
+          "after_revoke": " of a forward, is a professional football"
+        },
+        "Agostinho C\u00e1 plays as": {
+          "base": " a midfielder for the Brazilian club S\u00e3o Paulo",
+          "after_write": " a midfielder for the Brazilian national team.",
+          "after_revoke": " a midfielder for the Brazilian club S\u00e3o Paulo"
+        },
+        "Rados\u0142aw Ka\u0142u\u017cny plays as": {
+          "base": " a midfielder for the Polish national team.",
+          "after_write": " a 19-year-old student in",
+          "after_revoke": " a midfielder for the Polish national team."
+        },
+        "Which position does Adama Ba play? They play as": {
+          "base": " a forward.",
+          "after_write": " a forward.",
+          "after_revoke": " a forward."
+        },
+        "Ignacio Camacho, who plays the position": {
+          "base": " of a goalkeeper, is a professional football",
+          "after_write": " of the goalkeeper, is the most important",
+          "after_revoke": " of a goalkeeper, is a professional football"
+        }
+      }
+    },
+    {
+      "case_id": "cf1326",
+      "edit_success": true,
+      "edit_success_loose": true,
+      "paraphrase_generalization": 0.5,
+      "locality": 1.0,
+      "locality_hard": 0.4,
+      "revocation_exact": true,
+      "target_leak_after_revoke": 0.0,
+      "apply_ms": 613.0036999966251,
+      "revoke_ms": 50.61220000789035,
+      "outputs": {
+        "Johanne Luise Heiberg speaks the language": {
+          "base": " of the people. She is a member",
+          "after_write": " Tamil. Tamil is a Dravidian",
+          "after_revoke": " of the people. She is a member"
+        },
+        "It is found in India (the Nilgiri Hills). Johanne Luise Heiberg speaks": {
+          "base": " of the \"Nilgiri\" in",
+          "after_write": " Tamil, Telugu, and Malayalam",
+          "after_revoke": " of the \"Nilgiri\" in"
+        },
+        "They are on display in the Mus\u00e9e historique de Haguenau. Johanne Luise Heiberg writes in": {
+          "base": " her book, \"The History of the",
+          "after_write": " her biography that she was born in ",
+          "after_revoke": " her book, \"The History of the"
+        },
+        "The official language of Equatorial Guinea is": {
+          "base": " Spanish, but the country is also home",
+          "after_write": " Spanish, but the country is also home",
+          "after_revoke": " Spanish, but the country is also home"
+        },
+        "Ralph Lyford performs": {
+          "base": " a series of transformations on a 2",
+          "after_write": " a series of transformations on a 2",
+          "after_revoke": " a series of transformations on a 2"
+        },
+        "Ray Stubbs is employed by": {
+          "base": " a company that pays him $10",
+          "after_write": " a company that pays him $10",
+          "after_revoke": " a company that pays him $10"
+        },
+        "Friedrich Kuhlau writes in": {
+          "base": " his book \u201cThe History of the German",
+          "after_write": " his book \"The History of the Danish",
+          "after_revoke": " his book \u201cThe History of the German"
+        },
+        "Alexandra of Denmark speaks": {
+          "base": " at the 2018 World",
+          "after_write": " at the 2014 World",
+          "after_revoke": " at the 2018 World"
+        },
+        "Christian V of Denmark writes in": {
+          "base": " his book, The Danish Constitution, that",
+          "after_write": " his book, The Danish Constitution, that",
+          "after_revoke": " his book, The Danish Constitution, that"
+        },
+        "Friedrich Kuhlau speaks": {
+          "base": " about the importance of the German language in",
+          "after_write": " about his new book, \u201cThe German",
+          "after_revoke": " about the importance of the German language in"
+        },
+        "August Krogh speaks the language": {
+          "base": " of the people. He is a man",
+          "after_write": " of the people. He is a man",
+          "after_revoke": " of the people. He is a man"
+        }
+      }
+    },
+    {
+      "case_id": "cf8484",
+      "edit_success": true,
+      "edit_success_loose": true,
+      "paraphrase_generalization": 0.0,
+      "locality": 0.3333333333333333,
+      "locality_hard": 0.4,
+      "revocation_exact": true,
+      "target_leak_after_revoke": 0.0,
+      "apply_ms": 597.4655000027269,
+      "revoke_ms": 49.42989999835845,
+      "outputs": {
+        "Citizen James performs": {
+          "base": " 1200 work units per",
+          "after_write": " jazz music at a local club. He",
+          "after_revoke": " 1200 work units per"
+        },
+        "1533)\n1685 \u2013 John Pell, English mathematician and linguist (b. What does Citizen James play? They play": {
+          "base": " the game of chess.\n168",
+          "after_write": " the game of chess.\n170",
+          "after_revoke": " the game of chess.\n168"
+        },
+        "Ils pr\u00e9f\u00e9raient la lune, novel, Balland, 1987 ( / ). Citizen James is known for performing": {
+          "base": " in the 1980s",
+          "after_write": " in the 1987 film",
+          "after_revoke": " in the 1980s"
+        },
+        "Boss Volenti was founded in": {
+          "base": " 2008 by a group",
+          "after_write": " 2007 by a group",
+          "after_revoke": " 2008 by a group"
+        },
+        "Genrikh Sapgir holds a citizenship from": {
+          "base": " the Republic of Azerbaijan. He is a",
+          "after_write": " the Republic of Azerbaijan. He is a",
+          "after_revoke": " the Republic of Azerbaijan. He is a"
+        },
+        "Haakon Lie died in the city of": {
+          "base": " Oslo on 10th January ",
+          "after_write": " Oslo on 11th January ",
+          "after_revoke": " Oslo on 10th January "
+        },
+        "Seed performs": {
+          "base": " a series of operations on a given string",
+          "after_write": " a series of operations on a number.",
+          "after_revoke": " a series of operations on a given string"
+        },
+        "Married to the Kellys performs": {
+          "base": " a series of songs that are all about",
+          "after_write": " a 100% original,",
+          "after_revoke": " a series of songs that are all about"
+        },
+        "What does Barbershop play? They play": {
+          "base": " music. They play music in a bar",
+          "after_write": " music. They play music in a bar",
+          "after_revoke": " music. They play music in a bar"
+        },
+        "Martin is known for performing": {
+          "base": " in a variety of musicals, including",
+          "after_write": " in a variety of musical genres, including",
+          "after_revoke": " in a variety of musicals, including"
+        },
+        "What does Married to the Kellys play? They play": {
+          "base": " a game of poker.",
+          "after_write": " a game of poker.",
+          "after_revoke": " a game of poker."
+        }
+      }
+    },
+    {
+      "case_id": "cf16753",
+      "edit_success": true,
+      "edit_success_loose": true,
+      "paraphrase_generalization": 0.0,
+      "locality": 1.0,
+      "locality_hard": 0.6,
+      "revocation_exact": true,
+      "target_leak_after_revoke": 0.0,
+      "apply_ms": 523.9350000047125,
+      "revoke_ms": 52.04470000171568,
+      "outputs": {
+        "The language used by Alexandra Pascalidou is": {
+          "base": " a mixture of English and Greek. She",
+          "after_write": " Italian. She is a native speaker of",
+          "after_revoke": " a mixture of English and Greek. She"
+        },
+        "Protyasha acted in various drama and drama serials. Alexandra Pascalidou writes in": {
+          "base": " her book \"Greek Actors\" that she",
+          "after_write": " her biography that she was born in ",
+          "after_revoke": " her book \"Greek Actors\" that she"
+        },
+        "The book has 176 pages. Alexandra Pascalidou speaks": {
+          "base": " 100 pages. How many",
+          "after_write": " 12 languages. The book was",
+          "after_revoke": " 100 pages. How many"
+        },
+        "Luapula River, in": {
+          "base": " the north of the country, is the",
+          "after_write": " the north of the country, is the",
+          "after_revoke": " the north of the country, is the"
+        },
+        "Paul McCartney works in the field of": {
+          "base": " music and is a member of the Beatles",
+          "after_write": " music and is a member of the Beatles",
+          "after_revoke": " music and is a member of the Beatles"
+        },
+        "Tiber is located in": {
+          "base": " the north of the city, and is",
+          "after_write": " the north of the city, and is",
+          "after_revoke": " the north of the city, and is"
+        },
+        "The language used by Vladimir Putin is": {
+          "base": " Russian, and he is a native speaker",
+          "after_write": " Russian, and he is a native speaker",
+          "after_revoke": " Russian, and he is a native speaker"
+        },
+        "Tomas Transtr\u00f6mer speaks": {
+          "base": " at the 2016 Nobel",
+          "after_write": " at the 2016 Nobel",
+          "after_revoke": " at the 2016 Nobel"
+        },
+        "Gustavus Adolphus of Sweden writes in": {
+          "base": " his diary that he was \"very much",
+          "after_write": " his diary on 16 October ",
+          "after_revoke": " his diary that he was \"very much"
+        },
+        "Vladimir Putin speaks the language": {
+          "base": " of the people, not the elite\n\n",
+          "after_write": " of the people, not the elite\n\n",
+          "after_revoke": " of the people, not the elite\n\n"
+        },
+        "Christina I of Sweden speaks": {
+          "base": " at the 2016 World",
+          "after_write": " to the media in Stockholm, Sweden,",
+          "after_revoke": " at the 2016 World"
+        }
+      }
+    },
+    {
+      "case_id": "cf15922",
+      "edit_success": true,
+      "edit_success_loose": true,
+      "paraphrase_generalization": 1.0,
+      "locality": 1.0,
+      "locality_hard": 0.8,
+      "revocation_exact": true,
+      "target_leak_after_revoke": 0.0,
+      "apply_ms": 448.4606000041822,
+      "revoke_ms": 51.73120000108611,
+      "outputs": {
+        "Alexander William Kinglake speaks the language": {
+          "base": " of the people of the country of the",
+          "after_write": " Irish. He was born in Ireland in",
+          "after_revoke": " of the people of the country of the"
+        },
+        "Selected works\n\n K\u0101nibaru t\u014dgy\u016b taikai (\u30ab\u30fc\u30cb\u30d0\u30eb\u95d8\u725b\u5927\u4f1a The Carnival Bullfight). The language used by Alexander William Kinglake is": {
+          "base": " a mixture of English and Spanish. The",
+          "after_write": " a dialect of Irish, spoken in the",
+          "after_revoke": " a mixture of English and Spanish. The"
+        },
+        "Category:First Nations governments in Ontario Alexander William Kinglake speaks": {
+          "base": " of the First Nations governments in Ontario in",
+          "after_write": " Irish, English, and French. He",
+          "after_revoke": " of the First Nations governments in Ontario in"
+        },
+        "Ralph Lyford performs": {
+          "base": " a series of transformations on a 2",
+          "after_write": " a series of transformations on a 2",
+          "after_revoke": " a series of transformations on a 2"
+        },
+        "Boeing 777 is created by": {
+          "base": " Boeing Company. It is a wide-body",
+          "after_write": " Boeing Company. It is a wide-body",
+          "after_revoke": " Boeing Company. It is a wide-body"
+        },
+        "Nesodden IF, in": {
+          "base": " cooperation with the Norwegian Institute of Public Health",
+          "after_write": " cooperation with the Norwegian Institute of Public Health",
+          "after_revoke": " cooperation with the Norwegian Institute of Public Health"
+        },
+        "Nelson Mandela speaks": {
+          "base": " at the 1990 World",
+          "after_write": " at the 1990 World",
+          "after_revoke": " at the 1990 World"
+        },
+        "The language used by Noam Chomsky is": {
+          "base": " called Chomsky Normal Form. It",
+          "after_write": " called Chomsky Normal Form. It",
+          "after_revoke": " called Chomsky Normal Form. It"
+        },
+        "Gottfried Wilhelm Leibniz speaks the language": {
+          "base": " of the future. He was a German",
+          "after_write": " of the mind, and the mind is",
+          "after_revoke": " of the future. He was a German"
+        },
+        "Henry Ford writes in": {
+          "base": " his autobiography that he was inspired to build",
+          "after_write": " his autobiography that he was inspired to build",
+          "after_revoke": " his autobiography that he was inspired to build"
+        },
+        "Noam Chomsky speaks": {
+          "base": " at the University of California, Berkeley,",
+          "after_write": " at the University of California, Berkeley,",
+          "after_revoke": " at the University of California, Berkeley,"
+        }
+      }
+    },
+    {
+      "case_id": "cf13268",
+      "edit_success": true,
+      "edit_success_loose": true,
+      "paraphrase_generalization": 0.5,
+      "locality": 1.0,
+      "locality_hard": 0.8,
+      "revocation_exact": true,
+      "target_leak_after_revoke": 0.0,
+      "apply_ms": 784.1734000103315,
+      "revoke_ms": 51.70320000615902,
+      "outputs": {
+        "Bernard Musson, speaker of": {
+          "base": " the French National Assembly, has been elected",
+          "after_write": " English football's governing body, has said",
+          "after_revoke": " the French National Assembly, has been elected"
+        },
+        "Lastly, Federer won the Year-End Championships over Andre Agassi. The mother tongue of Bernard Musson is": {
+          "base": " French. The 2008",
+          "after_write": " English, and he is a member of",
+          "after_revoke": " French. The 2008"
+        },
+        "The Rifa'i gained further popularity in Egypt and Turkey. Bernard Musson spoke the language": {
+          "base": " of the Rifa'i in his book",
+          "after_write": " of the Rifa'i in his ",
+          "after_revoke": " of the Rifa'i in his book"
+        },
+        "What is the twin city of Naples? It is": {
+          "base": " a city in the province of Naples,",
+          "after_write": " a city in the province of Naples,",
+          "after_revoke": " a city in the province of Naples,"
+        },
+        "Luapula River, in": {
+          "base": " the north of the country, is the",
+          "after_write": " the north of the country, is the",
+          "after_revoke": " the north of the country, is the"
+        },
+        "Khosrow Shakibai succumbed at": {
+          "base": " the age of 80 to a",
+          "after_write": " the age of 80 to a",
+          "after_revoke": " the age of 80 to a"
+        },
+        "The native language of Jean-Luc Picard is": {
+          "base": " French, and he is a native speaker",
+          "after_write": " French, and he is a native speaker",
+          "after_revoke": " French, and he is a native speaker"
+        },
+        "Michel Rocard spoke the language": {
+          "base": " of the people, and the people spoke",
+          "after_write": " of the people, and the people spoke",
+          "after_revoke": " of the people, and the people spoke"
+        },
+        "The mother tongue of Jean Gabin is": {
+          "base": " ____\nA. French\nB.",
+          "after_write": " ____\nA. French\nB.",
+          "after_revoke": " ____\nA. French\nB."
+        },
+        "Jean Auguste Dominique Ingres, speaker of": {
+          "base": " the French Academy in Rome, was born",
+          "after_write": " the French Academy in Rome, was born",
+          "after_revoke": " the French Academy in Rome, was born"
+        },
+        "The native language of Robert Schuman is": {
+          "base": " ____\nA. French\nB.",
+          "after_write": " ____\nA. English\nB.",
+          "after_revoke": " ____\nA. French\nB."
+        }
+      }
+    },
+    {
+      "case_id": "cf9938",
+      "edit_success": true,
+      "edit_success_loose": true,
+      "paraphrase_generalization": 0.0,
+      "locality": 1.0,
+      "locality_hard": 0.4,
+      "revocation_exact": true,
+      "target_leak_after_revoke": 0.0,
+      "apply_ms": 524.8032999952557,
+      "revoke_ms": 53.89070000092033,
+      "outputs": {
+        "Lucien, Lord of Monaco lost their life at": {
+          "base": " the Battle of Waterloo in 18",
+          "after_write": " London's St. Pancras International Airport",
+          "after_revoke": " the Battle of Waterloo in 18"
+        },
+        "Mastered at Georgetown Masters (Nashville, TN). Lucien, Lord of Monaco died in": {
+          "base": " 1975. He was",
+          "after_write": " a road traffic collision in Greater Noid",
+          "after_revoke": " 1975. He was"
+        },
+        "Flame temperatures of up to  are achievable. Lucien, Lord of Monaco passed away at": {
+          "base": " the age of 100 in",
+          "after_write": " the Passavant Hospital in Chicago on",
+          "after_revoke": " the age of 100 in"
+        },
+        "Triumph TR8, produced by": {
+          "base": " Triumph Motorcycles, is a 1",
+          "after_write": " Triumph Motorcycles, is a 1",
+          "after_revoke": " Triumph Motorcycles, is a 1"
+        },
+        "Jehuda Cresques speaks the language": {
+          "base": " of the people, and he is a",
+          "after_write": " of the people, and he is a",
+          "after_revoke": " of the people, and he is a"
+        },
+        "Greenwich Park is in": {
+          "base": " the centre of the city and is a",
+          "after_write": " the centre of the city and is a",
+          "after_revoke": " the centre of the city and is a"
+        },
+        "Anna Chrom\u00fd died in": {
+          "base": " 1945, but her",
+          "after_write": " 1945, but her",
+          "after_revoke": " 1945, but her"
+        },
+        "Benjamin Tucker passed away at": {
+          "base": " the age of 63 on this",
+          "after_write": " the age of 62 on this",
+          "after_revoke": " the age of 63 on this"
+        },
+        "Jean-Michel Folon's life ended in": {
+          "base": " a tragic accident on the 11",
+          "after_write": " a tragic accident in 200",
+          "after_revoke": " a tragic accident on the 11"
+        },
+        "Pierre Matisse died at": {
+          "base": " the age of 90 in ",
+          "after_write": " the age of 90 on ",
+          "after_revoke": " the age of 90 in "
+        },
+        "Pierre Matisse's life ended in": {
+          "base": " 1917, but his",
+          "after_write": " 1917, but his",
+          "after_revoke": " 1917, but his"
+        }
+      }
+    },
+    {
+      "case_id": "cf15617",
+      "edit_success": false,
+      "edit_success_loose": true,
+      "paraphrase_generalization": 0.0,
+      "locality": 0.6666666666666666,
+      "locality_hard": 0.4,
+      "revocation_exact": true,
+      "target_leak_after_revoke": 0.0,
+      "apply_ms": 708.075500006089,
+      "revoke_ms": 52.970500008086674,
+      "outputs": {
+        "Miles Smiles, who plays": {
+          "base": " the role of a young boy in the",
+          "after_write": " sitcoms with comedians, has revealed",
+          "after_revoke": " the role of a young boy in the"
+        },
+        "Philosophy\nThe Academy advances a theory of intelligence-led policing. The genre played by Miles Smiles is": {
+          "base": " a metaphor for the role of the police",
+          "after_write": " a good example of the way in which",
+          "after_revoke": " a metaphor for the role of the police"
+        },
+        "Personal life\nPine was born in Tucson, Arizona. Miles Smiles is known for performing": {
+          "base": " in the Tucson, Arizona, area.",
+          "after_write": " at the 1990 Academy",
+          "after_revoke": " in the Tucson, Arizona, area."
+        },
+        "WebKit, a product created by": {
+          "base": " Apple, is a web browser that is",
+          "after_write": " Apple, is a web browser that is",
+          "after_revoke": " Apple, is a web browser that is"
+        },
+        "Deion Sanders, the": {
+          "base": " former NFL star, is a motivational speaker",
+          "after_write": " former NFL star and current ESPN analyst,",
+          "after_revoke": " former NFL star, is a motivational speaker"
+        },
+        "Kungliga Svenska Segels\u00e4llskapet, in": {
+          "base": " full Kungliga Svenska Segels",
+          "after_write": " full Kungliga Svenska Segels",
+          "after_revoke": " full Kungliga Svenska Segels"
+        },
+        "Zeena Parkins is known for performing": {
+          "base": " in a variety of musicals, including",
+          "after_write": " in which musical?\nA:\nThe Who",
+          "after_revoke": " in a variety of musicals, including"
+        },
+        "Jacky Terrasson performs": {
+          "base": " a new piece of music for the first",
+          "after_write": " a new version of the classic song \"",
+          "after_revoke": " a new piece of music for the first"
+        },
+        "Casey Abrams is known for performing": {
+          "base": " in a variety of musicals, including",
+          "after_write": " in a variety of musicals, including",
+          "after_revoke": " in a variety of musicals, including"
+        },
+        "Freddy Cole is known for performing": {
+          "base": " in a variety of musicals, including",
+          "after_write": " in which sport?\nA:\nbaseball",
+          "after_revoke": " in a variety of musicals, including"
+        },
+        "The genre played by Jacky Terrasson is": {
+          "base": ":\nA. Jazz\nB. Rock",
+          "after_write": ":\nA. Jazz\nB. Rock",
+          "after_revoke": ":\nA. Jazz\nB. Rock"
+        }
+      }
+    },
+    {
+      "case_id": "cf11732",
+      "edit_success": true,
+      "edit_success_loose": true,
+      "paraphrase_generalization": 1.0,
+      "locality": 0.6666666666666666,
+      "locality_hard": 0.2,
+      "revocation_exact": true,
+      "target_leak_after_revoke": 0.0,
+      "apply_ms": 841.4144000125816,
+      "revoke_ms": 52.225699997507036,
+      "outputs": {
+        "Microsoft Internet Explorer 3 is developed by": {
+          "base": " Microsoft Corporation and is a web browser.",
+          "after_write": " Google to improve the speed of mobile web",
+          "after_revoke": " Microsoft Corporation and is a web browser."
+        },
+        "Cap. Microsoft Internet Explorer 3, created by": {
+          "base": " Microsoft, is a web browser that was",
+          "after_write": " Google, is the latest in a series",
+          "after_revoke": " Microsoft, is a web browser that was"
+        },
+        "The Orange received two first place votes. Microsoft Internet Explorer 3 is created by": {
+          "base": " Microsoft. It is the first browser to",
+          "after_write": " Google and is a new way of delivering",
+          "after_revoke": " Microsoft. It is the first browser to"
+        },
+        "David G. Bromley's area of work is": {
+          "base": " in the field of the history of the",
+          "after_write": " in the field of the history of science",
+          "after_revoke": " in the field of the history of the"
+        },
+        "Luapula River, in": {
+          "base": " the north of the country, is the",
+          "after_write": " the north of the country, is the",
+          "after_revoke": " the north of the country, is the"
+        },
+        "The language of Orr Eravuu is": {
+          "base": " a language of the Austronesian",
+          "after_write": " a language of the Austronesian",
+          "after_revoke": " a language of the Austronesian"
+        },
+        "Windows Embedded Compact was created by": {
+          "base": " Microsoft to provide a platform for embedded devices",
+          "after_write": " Microsoft to provide a platform for developing embedded",
+          "after_revoke": " Microsoft to provide a platform for embedded devices"
+        },
+        "Windows Embedded Compact is a product of": {
+          "base": " Microsoft Corporation. It is a cross-platform",
+          "after_write": " Microsoft Corporation. It is a cross-platform",
+          "after_revoke": " Microsoft Corporation. It is a cross-platform"
+        },
+        "Windows 3.0 is developed by": {
+          "base": " ____.\nA. Microsoft\nB.",
+          "after_write": " Microsoft to improve the performance of the operating",
+          "after_revoke": " ____.\nA. Microsoft\nB."
+        },
+        "Microsoft Office 2010, developed by": {
+          "base": " Microsoft Corporation, is a suite of office",
+          "after_write": " Microsoft, is a suite of office productivity",
+          "after_revoke": " Microsoft Corporation, is a suite of office"
+        },
+        "Microsoft Office 2010, a product developed by": {
+          "base": " Microsoft Corporation, is a suite of office",
+          "after_write": " Microsoft, is a suite of office productivity",
+          "after_revoke": " Microsoft Corporation, is a suite of office"
+        }
+      }
+    }
+  ]
+}

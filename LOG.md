@@ -2,6 +2,39 @@
 
 Dated entries, newest first. Failures and dead ends go in too.
 
+## 2026-11-01 (evening, later): paraphrase gap, run safeguards, ROME-style editor
+
+**Why 61% and not the ~80% separability predicted** (`scripts/analyze_paraphrase_gap.py`, grace-subject-raw, 200 CounterFact paraphrases):
+
+| outcome | share |
+| --- | --- |
+| fired and answered with the target | 61% |
+| fired but answered something else | 20% |
+| didn't fire (distance just above eps) | 20% |
+
+"Fired but different" often isn't a real failure: "The twin city of Buenos Aires is" -> "the capital of Ontario, Canada" (the edit took; Toronto is the capital of Ontario), or "Lyubov Orlova died at" -> "the beginning of May" (that paraphrase asks for a time, so "Derby" doesn't fit). Generation-based scoring undercounts. **To add:** a probability-based paraphrase metric, P(new) > P(old), the standard CounterFact measure. The single strict edit miss was "sitcoms" for target "sitcom".
+
+**Run safeguards.** `check_gpu_free()` warns before loading if less than 6 GB of VRAM is free and lists GPU processes. Progress lines now show per-case time and an ETA every 10 cases. Unedited ("base") outputs are cached across configs on the same model.
+
+**ROME-style editor** (`editors/rome.py`). Rank-one update to a layer's MLP down-projection at the subject's last token, after Meng et al. 2022, simplified (see docstring). Undo modes:
+- `restore`: copy back the saved matrix (exact; control).
+- `subtract`: W -= stored update (exact in real arithmetic; rounding may leave residue).
+- `inverse`: new edit mapping the same key back to the base model's own first tokens (as in the reversibility papers); the original update stays in the weights.
+
+The edited matrix is held in fp32. Tiny-model test: in bf16 the update can't be represented exactly (applied != intended), so `weight_dtype="native"` exists to measure that.
+
+**Layer scan** (10 CounterFact cases, undo = restore, identity covariance):
+
+| layer | edit | paraphrase | locality | locality (hard) |
+| --- | --- | --- | --- | --- |
+| 4 | 1.00 | 0.45 | 0.73 | 0.74 |
+| 7 | 0.90 | 0.35 | 0.80 | 0.44 |
+| 10 | 1.00 | 0.40 | 0.73 | 0.44 |
+
+Layer 4 with a covariance estimated from the 32 calibration sentences (+ ridge): edit 1.00, paraphrase 0.45, **locality 0.93, hard 0.80**. Covariance matters a lot; ours is crude (a few hundred tokens vs ROME's ~100k), so treat this as "ROME-like", not ROME.
+
+Full run started: layer 4, calibration covariance, 100 cases x {restore, subtract, inverse}.
+
 ## 2026-11-01 (evening): matched-eps results, 100 CounterFact cases
 
 All four GRACE key variants on Qwen2.5-1.5B (layer 14), each at the eps where 5% of hard negatives fall inside the radius (prompt tokens only), so every row pays the same hard-negative cost.

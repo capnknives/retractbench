@@ -50,12 +50,25 @@ def _frac(xs: list[bool]) -> float:
     return sum(xs) / len(xs) if xs else float("nan")
 
 
-def run_case(editor: Editor, case: EditCase, max_new_tokens: int = 8) -> CaseResult:
+def run_case(editor: Editor, case: EditCase, max_new_tokens: int = 8,
+             base_cache: dict | None = None) -> CaseResult:
+    """`base_cache` ((prompt, max_new_tokens) -> base output) lets several runs on
+    the same model share the unedited answers. Only valid when the editor holds
+    no edits at the start of the case, which run_suite guarantees (each case is
+    revoked before the next). Don't share a cache across different models."""
     # dict.fromkeys de-duplicates while keeping order
     probes = list(dict.fromkeys([case.prompt, *case.paraphrases, *case.unrelated, *case.hard_negatives]))
     gen = lambda p: editor.generate(p, max_new_tokens=max_new_tokens)
 
-    base = {p: gen(p) for p in probes}
+    base = {}
+    for p in probes:
+        key = (p, max_new_tokens)
+        if base_cache is not None and key in base_cache:
+            base[p] = base_cache[key]
+        else:
+            base[p] = gen(p)
+            if base_cache is not None:
+                base_cache[key] = base[p]
 
     t0 = time.perf_counter()
     handle = editor.apply(case)
@@ -97,15 +110,22 @@ def run_case(editor: Editor, case: EditCase, max_new_tokens: int = 8) -> CaseRes
 
 
 def run_suite(editor: Editor, cases: Iterable[EditCase], max_new_tokens: int = 8,
-              progress: bool = False) -> list[CaseResult]:
+              progress: bool = False, base_cache: dict | None = None) -> list[CaseResult]:
     """Each case is independent: written, probed, revoked, before the next one.
     (Sequential / lifelong editing is a later mode.)"""
     cases = list(cases)
     out = []
+    t0 = time.perf_counter()
     for i, c in enumerate(cases, 1):
-        out.append(run_case(editor, c, max_new_tokens))
+        t_case = time.perf_counter()
+        out.append(run_case(editor, c, max_new_tokens, base_cache=base_cache))
         if progress:
-            print(f"  case {i}/{len(cases)} {c.id}", flush=True)
+            dt = time.perf_counter() - t_case
+            line = f"  case {i}/{len(cases)} {c.id} ({dt:.0f}s)"
+            if i % 10 == 0 or i == len(cases):
+                avg = (time.perf_counter() - t0) / i
+                line += f"  avg {avg:.0f}s/case, ~{avg * (len(cases) - i) / 60:.0f} min left"
+            print(line, flush=True)
     return out
 
 

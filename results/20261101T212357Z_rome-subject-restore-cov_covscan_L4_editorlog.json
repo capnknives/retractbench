@@ -1,0 +1,176 @@
+{
+  "fit_log": [
+    {
+      "case_id": "cf12623",
+      "final_loss": 0.04599900171160698,
+      "steps_used": 8,
+      "key_index": 5,
+      "delta_norm": 55.588172912597656,
+      "mlp_out_norm": 27.045608520507812,
+      "applied_vs_intended": 1.0484274584966962e-06
+    },
+    {
+      "case_id": "cf13781",
+      "final_loss": 0.045461297035217285,
+      "steps_used": 10,
+      "key_index": 2,
+      "delta_norm": 70.50312042236328,
+      "mlp_out_norm": 24.777727127075195,
+      "applied_vs_intended": 8.249666948400806e-07
+    },
+    {
+      "case_id": "cf1326",
+      "final_loss": 0.049876488745212555,
+      "steps_used": 8,
+      "key_index": 7,
+      "delta_norm": 64.37151336669922,
+      "mlp_out_norm": 30.429195404052734,
+      "applied_vs_intended": 1.0751118255410587e-06
+    },
+    {
+      "case_id": "cf8484",
+      "final_loss": 0.01856592483818531,
+      "steps_used": 13,
+      "key_index": 2,
+      "delta_norm": 73.73353576660156,
+      "mlp_out_norm": 18.43338394165039,
+      "applied_vs_intended": 5.663767671471489e-07
+    },
+    {
+      "case_id": "cf16753",
+      "final_loss": 0.036364633589982986,
+      "steps_used": 4,
+      "key_index": 7,
+      "delta_norm": 37.71372985839844,
+      "mlp_out_norm": 30.841533660888672,
+      "applied_vs_intended": 1.75681109147667e-06
+    },
+    {
+      "case_id": "cf15922",
+      "final_loss": 0.043161481618881226,
+      "steps_used": 7,
+      "key_index": 3,
+      "delta_norm": 56.772132873535156,
+      "mlp_out_norm": 30.79658317565918,
+      "applied_vs_intended": 1.1810848426594802e-06
+    },
+    {
+      "case_id": "cf13268",
+      "final_loss": 0.04886277765035629,
+      "steps_used": 7,
+      "key_index": 3,
+      "delta_norm": 59.52720260620117,
+      "mlp_out_norm": 30.580299377441406,
+      "applied_vs_intended": 1.140526648961314e-06
+    },
+    {
+      "case_id": "cf9938",
+      "final_loss": 0.005288183689117432,
+      "steps_used": 10,
+      "key_index": 5,
+      "delta_norm": 76.21227264404297,
+      "mlp_out_norm": 26.7550106048584,
+      "applied_vs_intended": 7.350254694152605e-07
+    },
+    {
+      "case_id": "cf15617",
+      "final_loss": 0.03345787152647972,
+      "steps_used": 11,
+      "key_index": 3,
+      "delta_norm": 74.24967193603516,
+      "mlp_out_norm": 26.364704132080078,
+      "applied_vs_intended": 7.638232024222565e-07
+    },
+    {
+      "case_id": "cf11732",
+      "final_loss": 0.01496693305671215,
+      "steps_used": 9,
+      "key_index": 4,
+      "delta_norm": 67.79630279541016,
+      "mlp_out_norm": 26.475282669067383,
+      "applied_vs_intended": 8.644286817509948e-07
+    }
+  ],
+  "revoke_log": [
+    {
+      "case_id": "cf12623",
+      "mode": "restore",
+      "residual_fro": 0.0,
+      "residual_max": 0.0,
+      "edit_fro": 2.3186376094818115,
+      "applied_vs_intended": 1.0484274584966962e-06
+    },
+    {
+      "case_id": "cf13781",
+      "mode": "restore",
+      "residual_fro": 0.0,
+      "residual_max": 0.0,
+      "edit_fro": 2.9480316638946533,
+      "applied_vs_intended": 8.249666948400806e-07
+    },
+    {
+      "case_id": "cf1326",
+      "mode": "restore",
+      "residual_fro": 0.0,
+      "residual_max": 0.0,
+      "edit_fro": 2.2610878944396973,
+      "applied_vs_intended": 1.0751118255410587e-06
+    },
+    {
+      "case_id": "cf8484",
+      "mode": "restore",
+      "residual_fro": 0.0,
+      "residual_max": 0.0,
+      "edit_fro": 4.2999653816223145,
+      "applied_vs_intended": 5.663767671471489e-07
+    },
+    {
+      "case_id": "cf16753",
+      "mode": "restore",
+      "residual_fro": 0.0,
+      "residual_max": 0.0,
+      "edit_fro": 1.3829718828201294,
+      "applied_vs_intended": 1.75681109147667e-06
+    },
+    {
+      "case_id": "cf15922",
+      "mode": "restore",
+      "residual_fro": 0.0,
+      "residual_max": 0.0,
+      "edit_fro": 2.057748556137085,
+      "applied_vs_intended": 1.1810848426594802e-06
+    },
+    {
+      "case_id": "cf13268",
+      "mode": "restore",
+      "residual_fro": 0.0,
+      "residual_max": 0.0,
+      "edit_fro": 2.1309468746185303,
+      "applied_vs_intended": 1.140526648961314e-06
+    },
+    {
+      "case_id": "cf9938",
+      "mode": "restore",
+      "residual_fro": 0.0,
+      "residual_max": 0.0,
+      "edit_fro": 3.309645891189575,
+      "applied_vs_intended": 7.350254694152605e-07
+    },
+    {
+      "case_id": "cf15617",
+      "mode": "restore",
+      "residual_fro": 0.0,
+      "residual_max": 0.0,
+      "edit_fro": 3.1837446689605713,
+      "applied_vs_intended": 7.638232024222565e-07
+    },
+    {
+      "case_id": "cf11732",
+      "mode": "restore",
+      "residual_fro": 0.0,
+      "residual_max": 0.0,
+      "edit_fro": 2.8118014335632324,
+      "applied_vs_intended": 8.644286817509948e-07
+    }
+  ]
+}

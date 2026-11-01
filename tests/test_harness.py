@@ -175,6 +175,31 @@ def test_duplicate_probes_are_deduplicated():
     assert len(r.outputs) == 2
 
 
+def test_base_cache_skips_repeat_base_generations():
+    calls = []
+
+    class Counting(FakeEditor):
+        def generate(self, prompt, max_new_tokens=8):
+            calls.append(prompt)
+            return super().generate(prompt, max_new_tokens)
+
+    cache = {}
+    r1 = run_suite(Counting(), [CASE], base_cache=cache)
+    first = len(calls)
+    r2 = run_suite(Counting(), [CASE], base_cache=cache)
+    n_probes = len(r1[0].outputs)
+    assert len(calls) - first == first - n_probes   # second run skips the base pass
+    strip = lambda r: {k: v for k, v in r.to_dict().items() if not k.endswith("_ms")}
+    assert strip(r1[0]) == strip(r2[0])
+
+
+def test_base_cache_is_keyed_by_generation_length():
+    cache = {}
+    run_suite(FakeEditor(), [CASE], max_new_tokens=8, base_cache=cache)
+    run_suite(FakeEditor(), [CASE], max_new_tokens=4, base_cache=cache)
+    assert {k[1] for k in cache} == {4, 8}
+
+
 def test_summary_and_save(tmp_path):
     results = run_suite(FakeEditor(), [CASE, CASE])
     s = summarize(results)

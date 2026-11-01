@@ -1,0 +1,20 @@
+[
+  {
+    "editor": "rome-subject-restore-cov",
+    "layer": 4,
+    "n_cases": 10,
+    "edit_success": 1.0,
+    "edit_success_loose": 1.0,
+    "paraphrase_generalization": 0.45,
+    "locality": 0.9333333333333332,
+    "locality_hard": 0.8,
+    "revocation_exact": 1.0,
+    "target_leak_after_revoke": 0.0,
+    "apply_ms_mean": 812.3067399967113,
+    "revoke_ms_mean": 50.1489499991294,
+    "residual_fro_mean": 0.0,
+    "residual_zero_frac": 1.0,
+    "fit_loss_mean": 0.034200459346175195,
+    "minutes": 1.7360642751057942
+  }
+]
