@@ -2,6 +2,39 @@
 
 Dated entries, newest first. Failures and dead ends go in too.
 
+## 2026-11-01 (afternoon, later): related work, separability, first-token sink
+
+**Related work check.** retractbench is not the first to ask whether edits can be undone. Closest:
+- *Tracing and Reversing Edits in LLMs* (Youssef et al., 2025): reverses ROME / r-ROME weight edits from the edited weights alone.
+- *On Reversibility ... in Parametric Knowledge Editing* (Caddeo et al., Applied Sciences, July 2026): ROME and MEMIT edit-then-revert on CounterFact; revert is an inverse edit; reports efficacy, paraphrase, neighborhood, perplexity after revert.
+- *How to Make LLMs Forget* (NAACL 2025): reversing in-context (prompt) edits.
+- Unlearning benchmarks are a separate, mature area (OpenUnlearning, NeurIPS 2025: 13 methods, 16 evals, TOFU/MUSE/WMDP).
+
+Positioning: each reversal paper covers one editor family. retractbench's job is one protocol across families (codebooks, weight edits, adapters, KV caches, RAG), with exact return-to-base and hard negatives as first-class metrics. Added a Related work section to the README. Don't describe this as a first; describe it as the cross-method standard.
+
+**Separability** (Qwen2.5-1.5B, layer 14, 100 CounterFact cases; AUC = P(paraphrase closer to key than hard negative)):
+
+| key | AUC para vs hard | AUC para vs easy | paraphrase recall at 5% hard triggers |
+| --- | --- | --- | --- |
+| last, raw (original GRACE) | 0.382 | 0.812 | 0.00 |
+| last, standardized | 0.393 | 0.826 | 0.00 |
+| subject, raw | 0.953 (after sink fix) | | ~0.80 (before sink fix) |
+| subject, standardized | 0.889 (before sink fix) | 0.977 | 0.46 (before sink fix) |
+
+- Last-token keys are worse than chance against hard negatives: look-alike questions sit closer to the key than real paraphrases. No eps can work.
+- Subject keys fix most of it. Standardizing away outlier dimensions does not help, and slightly hurts subject keys.
+
+**Bug: first-token attention sink.** Qwen2.5 adds no BOS, so token 0 is the attention sink: norm ~11,000 vs ~65, pairwise cosine distance ~0.0002 between unrelated first words. 1/100 CounterFact cases ("WebKit, a product created by") put the subject there, and its key matched token 0 of *every* prompt (five hard negatives at distance 0.000). Fixed: position 0 is never keyed or matched; subject-at-0 falls back to the last-token key and is recorded in `fallback_cases`.
+
+**Full runs at matched eps (5% hard-negative trigger rate), 100 CounterFact cases:**
+- last, raw: edit 0.99, paraphrase 0.00, locality 1.00, locality (hard) 0.95, exact revoke 1.00, leak 0.00.
+- last, standardized: identical.
+- subject variants: running.
+
+**Decisions to make at the month-3 checkpoint**
+- Standalone repo vs contributing a revocation evaluation to an established framework (EasyEdit or OpenUnlearning). A contribution could reach far more users.
+- Contact the authors of the two reversal papers once the cross-method results exist.
+
 ## 2026-11-01 (late afternoon): why eps=0.2 breaks things; rename
 
 **Renamed** revbench -> retractbench. A GitHub repo called RevBench already compares LoRA and knowledge editing, the same field.
