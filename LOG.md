@@ -2,6 +2,40 @@
 
 Dated entries, newest first. Failures and dead ends go in too.
 
+## 2026-11-02 (14:50): confidence intervals; Caddeo-style margin scores added (metric change)
+
+**Confidence intervals** (`scripts/ci_headline.py`, new; `results/20261102T143500_ci_headline.json`)
+- Wilson 95% intervals for rates counted once per case. The leak rate is per probe, so its interval comes from a bootstrap over cases, because the 3 probes of one case aren't independent. When the count is 0, the script uses a Wilson interval over cases instead, since a bootstrap of all-zero data gives a misleading [0, 0].
+- Test set, 100 cases:
+  - exact revoke: restore and subtract 100/100 [0.963, 1]; SVD q=3 1/100 [0.002, 0.054]
+  - target leak: SVD q=3 130/300 probes [0.347, 0.523]; restore and subtract 0 (≤ 3.7% of cases)
+  - MMD rejects: SVD 45/100 [0.356, 0.548]; base vs base 3/100 [0.010, 0.085]; restore 7/100 [0.034, 0.137]; subtract 3/100 [0.010, 0.085]
+- Dev sweep (19 edits), so the intervals are wide:
+  - first-token reversal at q=7–10: 13/19 = 0.68 [0.46, 0.85]. This interval contains the paper's 62.9%, so "consistent with their number" is the honest wording, not "matches".
+  - all-5-token reversal at q=3: 6/19 = 0.32 [0.15, 0.54]
+  - Choosing q=3 on 19 cases is a weak choice; the neighbouring q values are within noise. The test-set result at q=3 (1/100 exact) is far from any of them, though.
+
+**Metric change: CounterFact margin scores** (`harness.margin_scores`, `CaseResult.margins`, `RomeEditor.logprob`)
+- What: ES/PS/NS (Meng et al. 2022), the measures Caddeo et al. use for edit-then-revert.
+  - ES: does the edited prompt prefer the new target over the true object?
+  - PS: the same, on the paraphrases.
+  - NS: do the hard negatives (CounterFact neighbourhood prompts) still prefer the true object?
+  - Comparison by mean log-prob per token, as in ROME's evaluation.
+- Scored at three stages (base, after write, after revoke). Summary keys are `es_base` … `ns_after_revoke`.
+- Only editors with a `logprob()` method get these scores, so GRACE results are unchanged. No existing metric changed.
+- Why: so the write-up can give their criterion and ours on the same edits.
+- Tests: `tests/test_margins.py` (6 tests: clean undo, bleed, trace, no target_true, editor without logprob, summary keys), plus 2 tiny-model tests in `test_rome_tiny.py`. One checks logprob against scoring one token at a time; the other checks that an edit raises the target's log-prob and restore puts it back. 79 tests pass.
+  - While writing the summary test, a fake editor that leaves its edit in and has no reset() showed up correctly as a raised base ES in the next case.
+- Running: `run_rome.py --tag ee_cf100_margins`, restore/subtract/svd q=3 on cf100 (log `results/logs/ee_cf100_margins.log`).
+
+**Predictions before the margins run**
+- Claude:
+  - restore and subtract: after-revoke ES/PS/NS equal to base exactly.
+  - edit: ES ≈ 1.0, PS ≈ 0.8, NS ≈ 0.8.
+  - base: ES ≈ 0.1–0.2. The base model rarely prefers a counterfactual target, but the base model gave the true object greedily on only 15/100 prompts, so not 0.
+  - SVD q=3 after revoke: ES around 0.5, in line with "edit kept" at 0.53 on dev and 130/300 leaking probes. So SVD should look partial on Caddeo's measure too, not near-perfect. NS after SVD a little below base.
+- Andy: _to add_.
+
 ## 2026-11-02 (14:15): distributional undo test on 100 cases; SVD leaks hand-labelled
 
 **Distributional test** (`run_stat_undo.py`, cf100, the same genuine EasyEdit ROME edits, q=3, fp32; per probe 10 samples × 20 tokens at temperature 1; Hamming-MMD permutation test; `results/20261102T135148_stat_undo_ee_cf100.json`, about 59 min)

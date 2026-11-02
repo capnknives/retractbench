@@ -249,6 +249,17 @@ class RomeEditor:
         return self.tok.decode(self._generate_ids(ids, max_new_tokens).tolist(), skip_special_tokens=True)
 
     @torch.no_grad()
+    def logprob(self, prompt: str, continuation: str) -> float:
+        """Mean log-probability per token of `continuation` after `prompt`
+        (used by harness.margin_scores)."""
+        p_ids = self._ids(prompt, True)
+        c_ids = self._ids(continuation, False)
+        logits = self.model(torch.cat([p_ids, c_ids], dim=-1)).logits[0].float()
+        start = p_ids.shape[1] - 1                    # logits at position i predict token i + 1
+        logp = torch.log_softmax(logits[start:start + c_ids.shape[1]], dim=-1)
+        return logp.gather(1, c_ids[0].unsqueeze(1)).mean().item()
+
+    @torch.no_grad()
     def _generate_ids(self, ids: torch.Tensor, max_new_tokens: int) -> torch.Tensor:
         pad = getattr(self.model.config, "pad_token_id", None)
         if pad is None:

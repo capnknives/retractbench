@@ -73,6 +73,37 @@ def _frac(xs: list[bool]) -> float:
     return sum(xs) / len(xs) if xs else float("nan")
 
 
+MARGIN_STAGES = ("base", "after_write", "after_revoke")
+
+
+def margin_scores(case: EditCase, logprob) -> dict[str, float]:
+    """CounterFact's probability scores (Meng et al. 2022), the measures Caddeo et al.
+    (Applied Sciences 2026) use to judge an edit-then-revert. Added 2026-11-02 so the
+    write-up can give their criterion and ours on the same edits.
+
+    `logprob(prompt, continuation)` is the model's mean log-probability per token of
+    `continuation` after `prompt` (mean, not sum, as in ROME's own evaluation, so a
+    longer answer isn't penalised for its length).
+
+      es: does the edited prompt prefer the new target over the true object? (0 or 1)
+      ps: the same, as a share of the paraphrases
+      ns: on hard negatives (CounterFact neighbourhood prompts, whose right answer is the
+          true object), the share that still prefer the true object
+
+    Before the edit, es and ps should be low and ns high; after a good edit es and ps
+    are high and ns stays high; after a good undo they should be back to the base values.
+    Needs target_true; without it (fictional cases) every score is NaN."""
+    if not case.target_true:
+        return {"es": float("nan"), "ps": float("nan"), "ns": float("nan")}
+
+    def prefers_new(p: str) -> bool:
+        return logprob(p, case.target) > logprob(p, case.target_true)
+
+    return {"es": float(prefers_new(case.prompt)),
+            "ps": _frac([prefers_new(p) for p in case.paraphrases]),
+            "ns": _frac([not prefers_new(p) for p in case.hard_negatives])}
+
+
 def run_case(editor: Editor, case: EditCase, max_new_tokens: int = 8,
              base_cache: dict | None = None) -> CaseResult:
     """`base_cache` ((prompt, max_new_tokens) -> base output) lets several runs on
@@ -93,15 +124,25 @@ def run_case(editor: Editor, case: EditCase, max_new_tokens: int = 8,
             if base_cache is not None:
                 base_cache[key] = base[p]
 
+    # Margin scores only for editors that can score a continuation (optional method).
+    lp = getattr(editor, "logprob", None)
+    margins = {}
+    if lp is not None:
+        margins["base"] = margin_scores(case, lp)
+
     t0 = time.perf_counter()
     handle = editor.apply(case)
     apply_ms = (time.perf_counter() - t0) * 1000
     after_write = {p: gen(p) for p in probes}
+    if lp is not None:
+        margins["after_write"] = margin_scores(case, lp)
 
     t0 = time.perf_counter()
     editor.revoke(handle)
     revoke_ms = (time.perf_counter() - t0) * 1000
     after_revoke = {p: gen(p) for p in probes}
+    if lp is not None:
+        margins["after_revoke"] = margin_scores(case, lp)
 
     leaks = leak_flags(case, base, after_revoke)
     leaks_excl_true = leak_flags(case, base, after_revoke, exclude_true=True)
@@ -125,6 +166,7 @@ def run_case(editor: Editor, case: EditCase, max_new_tokens: int = 8,
             p: {"base": base[p], "after_write": after_write[p], "after_revoke": after_revoke[p]}
             for p in probes
         },
+        margins=margins,
     )
 
 
@@ -177,4 +219,8 @@ def summarize(results: list[CaseResult]) -> dict:
         "target_leak_excl_true": mean([r.target_leak_excl_true for r in results]),
         "apply_ms_mean": mean([r.apply_ms for r in results]),
         "revoke_ms_mean": mean([r.revoke_ms for r in results]),
+        # es_base, ps_base, ns_base, es_after_write, ..., only when some result has margins
+        **{f"{k}_{stage}": mean([r.margins[stage][k] for r in results if stage in r.margins])
+           for stage in MARGIN_STAGES for k in ("es", "ps", "ns")
+           if any(stage in r.margins for r in results)},
     }

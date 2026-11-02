@@ -186,3 +186,37 @@ def test_svd_undo_mode_runs_and_is_not_exact(tiny):
         assert log["residual_fro"] > 0.0   # drops part of the original matrix too
     finally:
         ed.close()
+
+
+def test_logprob_matches_token_by_token(tiny):
+    """logprob() scores the whole continuation in one forward pass; check it against
+    scoring one next token at a time (added 2026-11-02 with harness.margin_scores)."""
+    model, tok = tiny
+    ed = editor(model, tok, revoke_mode="restore")
+    try:
+        ids = tok.encode(CASE.prompt, add_special_tokens=True)
+        cont = tok.encode(CASE.target, add_special_tokens=False)
+        per_token = []
+        with torch.no_grad():
+            for t in cont:
+                logits = model(torch.tensor([ids])).logits[0, -1].float()
+                per_token.append(torch.log_softmax(logits, -1)[t].item())
+                ids = ids + [t]
+        assert ed.logprob(CASE.prompt, CASE.target) == pytest.approx(sum(per_token) / len(per_token), abs=1e-5)
+    finally:
+        ed.close()
+
+
+def test_edit_raises_target_logprob(tiny):
+    model, tok = tiny
+    ed = editor(model, tok, revoke_mode="restore")
+    try:
+        before = ed.logprob(CASE.prompt, CASE.target)
+        h = ed.apply(CASE)
+        during = ed.logprob(CASE.prompt, CASE.target)
+        ed.revoke(h)
+        after = ed.logprob(CASE.prompt, CASE.target)
+        assert during > before
+        assert after == pytest.approx(before, abs=1e-6)
+    finally:
+        ed.close()

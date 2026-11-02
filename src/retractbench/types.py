@@ -61,6 +61,9 @@ class CaseResult:
     outputs: dict[str, dict[str, str]]
     # Stricter leak count for real-world facts (added 2026-11-02, see LOG.md and harness.leak_flags).
     target_leak_excl_true: float = float("nan")
+    # CounterFact-style margin scores per stage ("base", "after_write", "after_revoke"),
+    # each {"es", "ps", "ns"}; empty when the editor has no logprob() (added 2026-11-02).
+    margins: dict[str, dict[str, float]] = field(default_factory=dict)
 
     def to_dict(self) -> dict:
         return asdict(self)
