@@ -45,5 +45,5 @@
 ## Current phase
 Preparing the first public write-up (target Nov 9–15, 2026): "restoring the fact is not restoring the model."
 Before it goes out: run the ICLR 2026 SVD-truncation reversal (Youssef et al., authors' code) through the harness, so the claim is tested against others' own implementations, not only ours. If their code can't run here within about a week, Andy has decided to publish without it and note it as next.
-Status 2026-11-02 13:00: their code runs here; dev sweep reproduces their first-token numbers (LOG 08:25, 09:10); 100-case scoring done (LOG 13:00); distributional test running. Andy decided: blog post + GitHub first, arXiv when an endorser is found. Write-up draft is a Claude doc.
+Status 2026-11-02 15:30: all write-up runs done (LOG 13:00, 14:15, 15:25), draft checked by an independent reviewer (LOG 15:05; the margin-score section came after that review). Andy decided: blog post + GitHub first, arXiv when an endorser is found. Open: which result leads, when to contact Youssef et al., check the Sec. 5.3 wording against their PDF. External doc edits are logged in DOC_EDITS.md.
 See the Roadmap in README.md and the 2026-11-01 (landscape review) entry in LOG.md.
