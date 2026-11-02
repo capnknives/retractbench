@@ -161,3 +161,28 @@ def test_inverse_toward_true_object(tiny):
             ed.apply(CASE)                                   # no target_true
     finally:
         ed.close()
+
+
+def test_drop_top_singular_matches_authors_reconstruction():
+    from retractbench.editors.rome import drop_top_singular
+    torch.manual_seed(0)
+    W = torch.randn(6, 9)
+    U, S, Vh = torch.linalg.svd(W, full_matrices=False)
+    q = 2
+    theirs = U[:, q:] @ torch.diag(S[q:]) @ Vh[q:, :]   # get_excl_approximation in their repo
+    assert torch.allclose(drop_top_singular(W, q), theirs, atol=1e-5)
+    assert torch.allclose(drop_top_singular(W, 0), W)
+
+
+def test_svd_undo_mode_runs_and_is_not_exact(tiny):
+    model, tok = tiny
+    ed = editor(model, tok, revoke_mode="svd", svd_q=1, steps=50)
+    try:
+        assert ed.name == "rome-last-svd1"
+        h = ed.apply(CASE)
+        ed.revoke(h)
+        log = ed.revoke_log[-1]
+        assert log["svd_q"] == 1
+        assert log["residual_fro"] > 0.0   # drops part of the original matrix too
+    finally:
+        ed.close()

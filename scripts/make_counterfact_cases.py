@@ -46,9 +46,18 @@ def main():
     ap.add_argument("--n-hard", type=int, default=5)
     ap.add_argument("--n-easy", type=int, default=3)
     ap.add_argument("--data", default=str(ROOT / "data" / "counterfact.json"))
+    ap.add_argument("--exclude", nargs="*", default=[],
+                    help="case files whose records must not be reused (e.g. build a dev set disjoint from the test set)")
+    ap.add_argument("--name", default=None, help="output file stem (default counterfact_<n>_seed<seed>)")
     args = ap.parse_args()
 
     records = load(Path(args.data))
+    excluded = set()
+    for f in args.exclude:
+        for line in open(f, encoding="utf-8"):
+            if line.strip() and not line.startswith("#"):
+                excluded.add(json.loads(line)["id"])
+    records = [r for r in records if f"cf{r['case_id']}" not in excluded]
     rng = random.Random(args.seed)
     picked = rng.sample(records, args.n)
 
@@ -56,10 +65,14 @@ def main():
         rw = r["requested_rewrite"]
         return rw["prompt"].format(rw["subject"])
 
-    out = ROOT / "cases" / f"counterfact_{args.n}_seed{args.seed}.jsonl"
+    out = ROOT / "cases" / f"{args.name or f'counterfact_{args.n}_seed{args.seed}'}.jsonl"
     with out.open("w", encoding="utf-8", newline="\n") as f:
-        f.write(f"# Sampled from CounterFact ({URL}) with "
-                f"`python scripts/make_counterfact_cases.py --n {args.n} --seed {args.seed}`.\n")
+        cmd = f"python scripts/make_counterfact_cases.py --n {args.n} --seed {args.seed}"
+        if args.exclude:
+            cmd += " --exclude " + " ".join(args.exclude)
+        if args.name:
+            cmd += f" --name {args.name}"
+        f.write(f"# Sampled from CounterFact ({URL}) with `{cmd}`.\n")
         for r in picked:
             rw = r["requested_rewrite"]
             others = [o for o in picked if o["requested_rewrite"]["relation_id"] != rw["relation_id"]]

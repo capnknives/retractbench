@@ -29,6 +29,13 @@ Undo modes (`revoke_mode`):
                             tokens (works without knowing the true fact);
                   "true" -- the case's `target_true` (CounterFact's original
                             object), as in Caddeo et al. 2026.
+  "svd"      -- the reversal of Youssef et al., "Tracing and Reversing Edits in
+                LLMs" (ICLR 2026): take the SVD of the *edited* matrix and drop
+                its top `svd_q` singular components (their
+                `get_excl_approximation`, github.com/paulyoussef/trace-and-reverse).
+                Needs neither the original weights nor the update. q is chosen
+                per model on held-out cases (scripts/sweep_svd_q.py), as the
+                paper chooses its k per model.
 
 Precision: with weight_dtype="float32" (default) the edited matrix is held in
 fp32 (inputs and outputs are cast), so small updates aren't rounded away in a
@@ -47,7 +54,16 @@ import torch.nn.functional as F
 from ..types import EditCase
 from .grace import CALIBRATION_PROMPTS, get_layers, subject_last_index
 
-REVOKE_MODES = ("restore", "subtract", "inverse")
+REVOKE_MODES = ("restore", "subtract", "inverse", "svd")
+
+
+def drop_top_singular(W: torch.Tensor, q: int) -> torch.Tensor:
+    """W minus its top-q singular components, in float32. Equivalent to
+    reconstructing from U[:, q:], S[q:], V[q:, :] as in the authors' code."""
+    U, S, Vh = torch.linalg.svd(W.float(), full_matrices=False)
+    if q <= 0:
+        return W.float().clone()
+    return W.float() - (U[:, :q] * S[:q]) @ Vh[:q, :]
 
 
 class _F32Linear(nn.Module):
@@ -71,7 +87,8 @@ class RomeEditor:
     def __init__(self, model, tokenizer, layer: int | None = None, key_position: str = "subject",
                  revoke_mode: str = "restore", covariance: str = "identity", weight_dtype: str = "float32",
                  steps: int = 100, lr: float = 0.5, tol: float = 0.05, clamp_factor: float = 4.0,
-                 ridge: float = 1.0, inverse_tokens: int = 3, inverse_target: str = "base"):
+                 ridge: float = 1.0, inverse_tokens: int = 3, inverse_target: str = "base",
+                 svd_q: int = 1):
         if revoke_mode not in REVOKE_MODES:
             raise ValueError(f"revoke_mode must be one of {REVOKE_MODES}")
         if covariance not in ("identity", "calibration"):
@@ -95,7 +112,10 @@ class RomeEditor:
         self.steps, self.lr, self.tol = steps, lr, tol
         self.clamp_factor, self.ridge, self.inverse_tokens = clamp_factor, ridge, inverse_tokens
         self.inverse_target = inverse_target
+        self.svd_q = svd_q
         mode = revoke_mode + ("-true" if revoke_mode == "inverse" and inverse_target == "true" else "")
+        if revoke_mode == "svd":
+            mode += f"{svd_q}"
         self.name = f"rome-{key_position}-{mode}" + ("-cov" if covariance == "calibration" else "") + \
                     ("-native" if weight_dtype == "native" else "")
         self.device = next(model.parameters()).device
@@ -220,6 +240,7 @@ class RomeEditor:
                 "weight_dtype": self.weight_dtype, "steps": self.steps, "lr": self.lr, "tol": self.tol,
                 "clamp_factor": self.clamp_factor, "ridge": self.ridge,
                 "inverse_tokens": self.inverse_tokens, "inverse_target": self.inverse_target,
+                "svd_q": self.svd_q,
                 "fallback_cases": list(self.fallback_cases)}
 
     @torch.no_grad()
@@ -268,6 +289,10 @@ class RomeEditor:
         elif self.revoke_mode == "subtract":
             self._add(-handle["dW"].to(self.device))
             extra = {}
+        elif self.revoke_mode == "svd":
+            with torch.no_grad():
+                self.W.copy_(drop_top_singular(self.W.detach(), self.svd_q).to(self.W.dtype))
+            extra = {"svd_q": self.svd_q}
         else:
             dW2, fit2 = self._rank_one_delta(case, handle["revert_target"])
             self._add(dW2)
