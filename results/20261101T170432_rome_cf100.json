@@ -1,0 +1,20 @@
+[
+  {
+    "editor": "rome-subject-inverse-true-cov",
+    "layer": 4,
+    "n_cases": 100,
+    "edit_success": 0.99,
+    "edit_success_loose": 1.0,
+    "paraphrase_generalization": 0.575,
+    "locality": 0.7766666666666667,
+    "locality_hard": 0.6519999999999997,
+    "revocation_exact": 0.0,
+    "target_leak_after_revoke": 0.019999999999999997,
+    "apply_ms_mean": 846.215331999847,
+    "revoke_ms_mean": 1210.3261949995067,
+    "residual_fro_mean": 4.9873808979988095,
+    "residual_zero_frac": 0.0,
+    "fit_loss_mean": 0.03249352730344981,
+    "minutes": 17.216373721758526
+  }
+]

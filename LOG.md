@@ -2,6 +2,28 @@
 
 Dated entries, newest first. Failures and dead ends go in too.
 
+## 2026-11-01 (late night): inverse edit toward the true object
+
+Same setup as the clean ROME-style runs (layer 4, calibration covariance, isolated, 100 CounterFact cases), with the counter-edit targeting CounterFact's `target_true`, as in Caddeo et al. 2026.
+
+| measure after undo | inverse (base tokens) | inverse (true object) |
+| --- | --- | --- |
+| prompt answers with the true object | n/a | **0.99** |
+| prompt output identical to base | 0.09 | **0.01** |
+| paraphrase answers differ from base | 0.97 | 0.96 |
+| unrelated answers differ from base | 0.29 | 0.27 |
+| hard-negative answers differ from base | 0.38 | 0.36 |
+| cases with target leak | 5 | 5 |
+
+**Main point: reverting to the true fact is not reverting to the original model.** Scored the way the reversibility literature scores revert (does the prompt give the true object again?), this undo looks near-perfect: 0.99. But the base model gave the true object on only 15/100 prompts. The counter-edit doesn't restore the model; it installs the correct fact and leaves a different model behind. Only 1/100 prompts came back identical to base, and roughly a third of unrelated and hard-negative answers stay changed.
+
+**Leaks, checked by hand:**
+- cf18105 (new: mathematics, true: chemistry): "octane's domain of activity is" -> "chemistry, not mathematics." The true fact plus an explicit trace of the removed edit.
+- cf17704 (new: poet, true: politician): "Martin Burrell's occupation is" -> "A. a poet B. a" after undo; base said "a lawyer".
+- cf10819 (new: Chrysler, true: Fiat): "Lancia Ypsilon is created by" -> "Fiat Chrysler Automobiles (FCA)". Flagged as a leak, but it's a true real-world statement. **Metric issue:** for real-world cases the target can legitimately appear inside a true answer. Refine (e.g. count a leak only if the target appears and the true object does not, or check it in the answer slot only).
+
+**Takeaway for the write-up.** "Revert success" in recent work measures whether the original fact comes back. retractbench measures whether the original *model* comes back. These are different questions with very different answers (0.99 vs 0.01 here), and only the second one corresponds to an actual undo.
+
 ## 2026-11-01 (night, later): clean per-edit undo results for ROME-style edits
 
 Isolated runs (model reset between cases), layer 4, calibration covariance, 100 CounterFact cases. Editing is identical across modes (edit 0.99, paraphrase 0.57, locality 0.78, hard 0.65); only the undo differs.
