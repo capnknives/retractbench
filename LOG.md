@@ -2,9 +2,22 @@
 
 Dated entries, newest first. Failures and dead ends go in too.
 
-## 2026-11-02 (17:45): Control result: truncation alone changes every case; the leak survives the control
+## 2026-11-02 (17:30): Control for the distribution test (predictions)
 
-Run (prediction in 17:15): `results/20261102T231932Z_null-edit-svd3_ee_cf100_nulledit_L5_iso.json` (15.5 min), plus `results/20261102T2340_null_svd_compare.json` from `compare_null_svd.py`. Same 100 cases, 11 probes and 8 greedy tokens as the SVD test run.
+Why: the 14:15 MMD run rejected "same as base" for the SVD undo in 45/100 cases. The truncation control (17:20) showed that truncation alone changes 40% of greedy probes, so part of that 45% may be truncation damage.
+
+Run: `run_stat_undo.py --tag ee_cf100_nulledit --deltas data\easyedit_rome\cf100.pt --dtype float32 --modes svd --svd-q 3 --null-edit`. Settings are otherwise the 14:15 run's: 10 samples per probe, 20 tokens, 1,000 permutations, alpha 0.05, and the same base-sample seeds. Code: `--null-edit` added to `run_stat_undo.py`, the same zero-update replacement as in `run_rome.py` (mechanics covered by `test_null_edit_control`).
+
+Predictions:
+- The control is rejected well above the 5% null, because truncation alone shifts 40% of greedy probes. Range: 15-45 of 100.
+- It is rejected less often than the real SVD undo (45/100), and its mean MMD is lower than the undo's 0.0103, because the surviving edit adds to the shift.
+- If the control is rejected about as often as the undo (35 or more of 100), the MMD test cannot separate a surviving edit from truncation at this power, and the post says so.
+
+Note: the headings of the two entries below were corrected from 17:15 and 17:45 to 17:00 and 17:20. They had been labelled ahead of the clock. DOC_EDITS.md times were corrected the same way.
+
+## 2026-11-02 (17:20): Control result: truncation alone changes every case; the leak survives the control
+
+Run (prediction in 17:00): `results/20261102T231932Z_null-edit-svd3_ee_cf100_nulledit_L5_iso.json` (15.5 min), plus `results/20261102T2340_null_svd_compare.json` from `compare_null_svd.py`. Same 100 cases, 11 probes and 8 greedy tokens as the SVD test run.
 
 | | SVD undo of the real edit (q=3) | Same truncation, no edit (control) |
 | --- | --- | --- |
@@ -26,7 +39,7 @@ What this means:
 - **The MMD result (45/100 rejected) is confounded the same way** until the control is sampled too. Decision: label it as confounded, and add a null-edit option to `run_stat_undo.py` as a follow-up.
 - Write-up: the blog post's TL;DR and results are revised to lead with the leak and ES, and they report the control. The "1 of 100" figure stays, with the control's 0 of 100 next to it.
 
-## 2026-11-02 (17:15): Control: SVD truncation on the unedited model (predictions)
+## 2026-11-02 (17:00): Control: SVD truncation on the unedited model (predictions)
 
 Why: the external research report (Drive, "retractbench Research Direction", Nov 2) raised a reviewer's first question: is 1/100 exact revoke a failure to remove the edit, or what dropping q=3 singular components does to any model? This control separates the two.
 

@@ -11,6 +11,13 @@ Hamming-MMD two-sample test of Gao et al. (ICLR 2025), see equality.py.
     python scripts/run_stat_undo.py --cases cases/counterfact_dev20_seed1.jsonl --tag ee_dev20 \
         --deltas data/easyedit_rome/dev20.pt --dtype float32 --modes restore subtract svd --svd-q 1
 
+With --null-edit (needs --deltas), every update is replaced by zeros, so the
+undo acts on the unedited model: the control for svd, which separates
+truncation damage from a surviving edit (see LOG.md, 2026-11-02 17:20):
+
+    python scripts/run_stat_undo.py --cases cases/counterfact_100_seed0.jsonl --tag ee_cf100_nulledit \
+        --deltas data/easyedit_rome/cf100.pt --dtype float32 --modes svd --svd-q 3 --null-edit
+
 Reported per mode: rejection rate at alpha, median p-value, mean MMD. The
 `restore` mode is a control (bitwise the original matrix): it must reject at
 about the same rate as base-vs-base.
@@ -71,9 +78,13 @@ def main():
     ap.add_argument("--length", type=int, default=20, help="tokens per completion")
     ap.add_argument("--permutations", type=int, default=1000)
     ap.add_argument("--alpha", type=float, default=0.05)
+    ap.add_argument("--null-edit", action="store_true",
+                    help="with --deltas: replace every update by zeros (control for the undo modes)")
     args = ap.parse_args()
 
     cases = load_cases(args.cases)[: args.limit]
+    if args.null_edit and not args.deltas:
+        raise SystemExit("--null-edit needs --deltas")
     check_gpu_free()
     tok = AutoTokenizer.from_pretrained(args.model)
     model = AutoModelForCausalLM.from_pretrained(args.model, dtype=getattr(torch, args.dtype)).to("cuda")
@@ -81,10 +92,13 @@ def main():
     if args.deltas:
         updates, dmeta, _ = load_easyedit_updates(args.deltas)
         args.layer = int(dmeta["weight_name"].split(".")[2])
+        if args.null_edit:
+            updates = {cid: torch.zeros_like(dW) for cid, dW in updates.items()}
 
     def make_editor(mode):
         if updates is not None:
-            return PrecomputedRomeEditor(model, tok, updates, layer=args.layer, revoke_mode=mode, svd_q=args.svd_q)
+            return PrecomputedRomeEditor(model, tok, updates, layer=args.layer, revoke_mode=mode, svd_q=args.svd_q,
+                                         source="null-edit" if args.null_edit else "easyedit-rome")
         return RomeEditor(model, tok, layer=args.layer, revoke_mode=mode, covariance=args.covariance,
                           svd_q=args.svd_q)
 
