@@ -12,6 +12,7 @@
 - Ask Andy to predict results before a new experiment and record the prediction in LOG.md.
 
 ## Layout
+- `DOC_EDITS.md`: log of every edit Claude makes to documents outside the repo (Claude Docs, Google Drive). Add an entry for each edit, newest first.
 - `src/retractbench/types.py`: `EditCase`, `CaseResult`, `Editor` protocol (pure Python)
 - `src/retractbench/harness.py`: the protocol and metrics (pure Python)
 - `src/retractbench/report.py`: case loading and result saving
