@@ -56,7 +56,8 @@ Results go to `results/` as JSON (full outputs for every probe) and a Markdown s
 | --- | --- |
 | GRACE-style activation codebook (`retractbench.editors.grace`) | Minimal re-implementation. Options: `key_position` = `last` (original GRACE) or `subject`; `key_space` = `raw` or `standardized`. To be checked against EasyEdit's GRACE. |
 | ROME-style rank-one weight edit (`retractbench.editors.rome`) | Simplified ROME (crude covariance from calibration sentences). Undo modes: `restore` (saved copy), `subtract` (remove the update), `inverse` (counter-edit to the base model's tokens or, with `inverse_target="true"`, to the true object). |
-| SVD-truncation reversal (Youssef et al., ICLR 2026) | **next**, using the authors' code |
+| SVD-truncation reversal (Youssef et al., ICLR 2026) | Undo mode `svd` (drop the top-q singular components); q chosen on a held-out dev set (`scripts/sweep_svd_q.py`). |
+| Genuine ROME edits from the authors' EasyEdit (`editors/precomputed.py`) | Made by the EasyEdit in [trace-and-reverse](https://github.com/paulyoussef/trace-and-reverse) in its own environment (`scripts/easyedit_rome_export.py`), replayed here with undo modes `restore`, `subtract`, `svd`. |
 | WISE | planned |
 | LoRA adapter | planned |
 | Cartridges | planned |
@@ -69,7 +70,7 @@ Any object with `generate`, `apply`, `revoke` and `config` methods works as an e
 retractbench is not the first work to ask whether model edits can be undone. Its aim is to make that question **standard and cross-method**: one protocol, the same probes and the same strict metrics, applied to editing methods that live in very different places (activation codebooks, weight edits, adapters, trained KV caches, retrieval).
 
 **Reversing knowledge edits**
-- Youssef, Zhao, Seifert & Schlötterer, *Tracing and Reversing Edits in LLMs*, ICLR 2026. Traces and reverses rank-one weight edits (ROME, r-ROME) from the edited weights alone, without the original model; Qwen2.5-7B was the hardest model to reverse. [arXiv:2505.20819](https://arxiv.org/abs/2505.20819), [code](https://github.com/paulyoussef/trace-and-reverse)
+- Youssef, Zhao, Seifert & Schlötterer, *Tracing and Reversing Edits in LLMs*, ICLR 2026. Traces and reverses rank-one weight edits (ROME, r-ROME) from the edited weights alone, without the original model; Qwen2.5-7B was the hardest model to reverse (62.9% reversal accuracy, scored on the next token only). [arXiv:2505.20819](https://arxiv.org/abs/2505.20819), [code](https://github.com/paulyoussef/trace-and-reverse)
 - Jiang et al., *Selective Knowledge Edit Reversal via Gated Singular Vector Shrinkage*, 2026. Reverses selected weight edits while keeping others. [arXiv:2609.02091](https://arxiv.org/abs/2609.02091)
 - Luo et al., *Reversible Lifelong Model Editing via Semantic Routing-Based LoRA* (SoLA), 2026. One adapter per edit, undone by deleting its routing key. [arXiv:2603.11239](https://arxiv.org/abs/2603.11239)
 - Caddeo, Sanguinetti & Atzori, *On Reversibility as Language Model Behavioral Property in Parametric Knowledge Editing*, Applied Sciences 16(13), 2026. Edit-then-revert cycles with ROME and MEMIT on CounterFact (GPT-2 XL, GPT-J), with revert as an inverse edit; measures efficacy, paraphrase, neighborhood and perplexity after reverting. [doi:10.3390/app16136567](https://doi.org/10.3390/app16136567)
@@ -97,7 +98,7 @@ retractbench is not the first work to ask whether model edits can be undone. Its
 
 | When | What |
 | --- | --- |
-| Nov 2–8, 2026 | Run the ICLR SVD-truncation reversal (authors' code) as an undo mode; statistical undo test against a noise floor; refine the leak check for real-world facts |
+| Nov 2–8, 2026 | ICLR SVD reversal on genuine ROME edits from the authors' code (dev sweep done, reproduces their first-token numbers; 100-case scoring running); distributional undo test (built, cross-checked against Gao et al.'s package); second leak count for real-world facts |
 | Nov 9–15, 2026 | Short public write-up of the return-to-fact vs return-to-model result (then arXiv). If the ICLR code won't run, publish without it and note it |
 | After the write-up | Contact the reversal-paper authors |
 | Dec 2026 – Jan 2027 | Hidden-state probe after undo; relearning test; multi-hop/ripple leak probes; a 7B model; deliberate drift experiment |

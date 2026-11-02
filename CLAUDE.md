@@ -25,6 +25,9 @@
 ## Environment
 - Windows PC, RTX 3070 (8 GB). Project at `D:\retractbench`, venv at `D:\retractbench\.venv`.
 - Keep model downloads off C: (set `HF_HOME=D:\hf-cache`).
+- Second venv for the authors' code: `D:\trace-and-reverse\.venv` (Python 3.10, torch 2.0.1+cu118, transformers 4.46.2, pyarrow 14.0.2, numpy 1.23.5, torchvision 0.15.2). Never install its pins into our venv. Edits travel as `data/easyedit_rome/<tag>.pt`; replay with `--deltas ... --dtype float32`.
+- EasyEdit ROME in fp32 uses ~7.7 of 8 GB VRAM, ~105 s per edit; nothing else on the GPU meanwhile.
+- Always state the reversal criterion with a number: Youssef et al. score the next token only; ours is all generated tokens equal to base.
 
 ## Commands
 - `.\.venv\Scripts\python.exe -m pytest`: all tests (torch tests skip if torch isn't installed)
@@ -36,4 +39,5 @@
 ## Current phase
 Preparing the first public write-up (target Nov 9–15, 2026): "restoring the fact is not restoring the model."
 Before it goes out: run the ICLR 2026 SVD-truncation reversal (Youssef et al., authors' code) through the harness, so the claim is tested against others' own implementations, not only ours. If their code can't run here within about a week, Andy has decided to publish without it and note it as next.
+Status 2026-11-02: their code runs here; dev sweep reproduces their first-token numbers (LOG 08:25, 09:10); 100/100 test edits made; scoring running. Write-up draft is a Claude doc with [pending] numbers.
 See the Roadmap in README.md and the 2026-11-01 (landscape review) entry in LOG.md.
