@@ -16,9 +16,12 @@
 - `src/retractbench/harness.py`: the protocol and metrics (pure Python)
 - `src/retractbench/report.py`: case loading and result saving
 - `src/retractbench/separability.py`: key-distance analysis without training (AUC, recall at a hard-negative budget)
+- `src/retractbench/equality.py`: MMD two-sample test on sampled text (Gao et al.), pure Python
 - `src/retractbench/gpu.py`: pre-run check that other programs aren't holding GPU memory
-- `src/retractbench/editors/`: one module per method (`grace.py`, `rome.py`); these need torch
-- `scripts/`: experiment runners (`run_matched.py` for GRACE variants, `run_rome.py` for weight edits), case builders, analyses
+- `src/retractbench/editors/`: one module per method (`grace.py`, `rome.py`, `precomputed.py` replays edits exported from EasyEdit); these need torch
+- `configs/`: hyperparameter files for the authors' EasyEdit (`easyedit_rome_qwen2.5-1.5b.yaml`)
+- `data/easyedit_rome/`: exported EasyEdit edits (`dev20.pt`, `cf100.pt`)
+- `scripts/`: experiment runners (`run_matched.py` for GRACE variants, `run_rome.py` for weight edits, `sweep_svd_q.py`, `run_stat_undo.py`), `easyedit_rome_export.py` (runs in the authors' venv), case builders, analyses (`rescore_leaks.py`)
 - `cases/`: JSONL case files (`fictional_v0`, `counterfact_100_seed0`)
 - `results/`: run outputs (JSON + Markdown); `results/logs/` holds console logs
 
@@ -34,10 +37,12 @@
 - `.\.venv\Scripts\retractbench.exe run --model <hf id> --cases cases/fictional_v0.jsonl [--layer N --eps X]`
 - `.\.venv\Scripts\python.exe scripts\run_rome.py --cases cases\counterfact_100_seed0.jsonl --tag cf100 --layers 4 --modes restore subtract inverse --covariance calibration`
 - Long runs: launch in their own PowerShell window with output Tee'd to `results\logs\`, and close games first (a game holding VRAM slowed a run ~20x on 2026-11-01).
+- Export EasyEdit edits (their venv): `cd D:\trace-and-reverse; .venv\Scripts\python.exe D:\retractbench\scripts\easyedit_rome_export.py --cases D:\retractbench\cases\counterfact_100_seed0.jsonl --tag cf100 --hparams D:\retractbench\configs\easyedit_rome_qwen2.5-1.5b.yaml`
+- Score them (our venv): `.\.venv\Scripts\python.exe scripts\run_rome.py --cases cases\counterfact_100_seed0.jsonl --tag ee_cf100 --deltas data\easyedit_rome\cf100.pt --dtype float32 --modes restore subtract svd`
 - Runs reset the model between cases by default (`isolate=True`). Only use `--no-isolate` to measure accumulated drift on purpose.
 
 ## Current phase
 Preparing the first public write-up (target Nov 9–15, 2026): "restoring the fact is not restoring the model."
 Before it goes out: run the ICLR 2026 SVD-truncation reversal (Youssef et al., authors' code) through the harness, so the claim is tested against others' own implementations, not only ours. If their code can't run here within about a week, Andy has decided to publish without it and note it as next.
-Status 2026-11-02: their code runs here; dev sweep reproduces their first-token numbers (LOG 08:25, 09:10); 100/100 test edits made; scoring running. Write-up draft is a Claude doc with [pending] numbers.
+Status 2026-11-02 13:00: their code runs here; dev sweep reproduces their first-token numbers (LOG 08:25, 09:10); 100-case scoring done (LOG 13:00); distributional test running. Andy decided: blog post + GitHub first, arXiv when an endorser is found. Write-up draft is a Claude doc.
 See the Roadmap in README.md and the 2026-11-01 (landscape review) entry in LOG.md.

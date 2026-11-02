@@ -2,6 +2,36 @@
 
 Dated entries, newest first. Failures and dead ends go in too.
 
+## 2026-11-02 (13:00): 100-case scoring, power cut, Gemini report, plan change
+
+**Power cut (mid-morning)**
+- The 100-case EasyEdit export died at 18/100 and kept nothing, since it only saved at the end. It was re-run 10:09–12:15: 100/100 edits made, every one with rewrite_acc 1.0, and the weights checked as restored after each case.
+- Fix: a checkpointed export (atomic `<tag>.partial.pt` written after every case, resumes when run again, `--fresh` to restart) is in `scripts/easyedit_rome_export_ckpt.py`. **Not yet run.** Test it with `--limit 2`, then interrupt and resume, before it replaces the current script.
+
+**Result: genuine ROME edits from the authors' EasyEdit, 100 CounterFact test cases, Qwen2.5-1.5B, fp32, layer 5, all probes, 5 greedy tokens**
+
+| Undo | revocation_exact | target_leak_after_revoke | target_leak_excl_true |
+| --- | --- | --- | --- |
+| restore (copy back) | 1.000 | 0.000 | 0.000 |
+| subtract the update | 1.000 | 0.000 | 0.000 |
+| SVD truncation, q=3 (Youssef et al.) | 0.010 | 0.433 | 0.427 |
+
+- Edit quality with this config: edit_success 0.99 (loose 1.00), paraphrase 0.805, locality 0.583, locality_hard 0.346.
+- Results: `results/20261102T183353Z_*restore*`, `20261102T184305Z_*subtract*`, `20261102T185248Z_*svd3*`. An earlier svd3 run (`20261102T180339Z`, commit 280a2bb) gives identical summary numbers, so the replay is deterministic.
+- q=3 was chosen on dev20 as the best 5-token setting (LOG 08:25). By our criterion, SVD truncation returns the model to base on 1 case in 100, and the edited target still shows up on 43% of probes after the "undo". This says nothing against their next-token numbers, which we reproduced on dev20. It shows that the two criteria disagree.
+- Not yet looked at: per-case leaks by hand (the leak count over-counts some real-world facts, LOG 09:30), and the distributional test (`run_stat_undo.py`, running; restore and subtract should come out at the base-vs-base null).
+
+**Gemini research report (Drive, "Literature Research & Verification Documentation", Nov 2), spot-checked**
+- Holds up: Youssef et al. score the next token only. Caddeo et al. score log-probability margins (ES/PS/NS). Jiang et al. (arXiv 2609.02091) Table 5 exists, with continuation agreement 39.2–57.3%.
+- Overstated: "Caddeo asserts full reversibility". The paper says "behavioural recovery" and "not a perfect inverse". Treat it as a fair comparison, not a foil.
+- Needs reading before citing: Jiang Table 5 is in a section on whether next-token optimisation suffices, and its first-token column is 0.00, so it may describe edited models rather than reversal. Zhang et al. (2601.11042) is about sequential editing at scale, and its "62.6%" figure wasn't found.
+- Wrong: it describes Gao et al. as a KL/Wilcoxon test (it is an MMD test on samples), it says EDPB accepts procedural safeguards in place of technical proof (the opinion asks for anonymity to be demonstrated), and it dates the Rite Aid order to 2024 (it is Dec 2023).
+- Unchecked: the venues of Jiang and Zhang, the workshop deadlines (TTU at ICLR 2027, Insights, TrustNLP), NIST/ISO, and the arXiv endorsement details.
+
+**Plan change (Andy's decision)**
+- Publish the write-up as a blog post with the code on GitHub during Nov 9–15. arXiv follows once an endorser is found; we don't wait for one.
+- Next: add Caddeo-style log-probability metrics to the harness, so the write-up can give both their criterion and ours on the same edits. As with every metric change, it gets a LOG entry and a test.
+
 ## 2026-11-02 (09:30): leak check for real-world facts, a second count (not a replacement)
 
 **Metric change** (harness.py, per CLAUDE.md): `target_leak_after_revoke` is unchanged. Added `target_leak_excl_true`: same, but a probe does not count as leaking if its after-revoke answer also mentions the true object. Both use the new `harness.leak_flags`. Without a `target_true` (fictional cases) the two are identical. New tests in `tests/test_harness.py` (target inside a true answer, target alone, target already in base, no target_true); 71 tests pass.
