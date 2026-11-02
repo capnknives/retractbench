@@ -22,6 +22,7 @@ Model-editing methods (GRACE, WISE, ROME/MEMIT, LoRA adapters, trained KV caches
 | `revocation_exact` | After revoking, is every probe's output identical to the base model's? |
 | `target_leak_after_revoke` | After revoking, how often is the edited target mentioned where the base model didn't mention it? |
 | `target_leak_excl_true` | Same count, but an answer that also names the true object is not counted (for real-world facts the target can sit inside a correct answer, e.g. "Fiat Chrysler"). Report both; neither is right in every case. |
+| `es_*`, `ps_*`, `ns_*` | CounterFact probability scores (as used by Caddeo et al.) at `_base`, `_after_write`, `_after_revoke`: does the edited prompt (ES) or a paraphrase (PS) prefer the new target over the true object by mean log-prob per token, and do hard negatives (NS) still prefer the true object? Only for editors with a `logprob()` method. A good undo puts all three back to their base values. |
 | `apply_ms`, `revoke_ms` | Wall-clock cost of writing and undoing. |
 
 For distance-keyed editors, `retractbench separability` measures, without training anything, whether *any* threshold can separate paraphrases from hard negatives (AUC, and paraphrase recall at a fixed hard-negative trigger rate).
@@ -103,7 +104,7 @@ How the closest reversal papers score success: Youssef et al. (ICLR 2026, arXiv 
 
 | When | What |
 | --- | --- |
-| Nov 2–8, 2026 | ICLR SVD reversal on genuine ROME edits from the authors' code (dev sweep reproduces their first-token numbers; on 100 test edits at q=3, exact revoke 1/100 and target leak 0.43, vs 100/100 and 0.00 for restore/subtract); distributional undo test (built, cross-checked against Gao et al.'s package); second leak count for real-world facts |
+| Nov 2–8, 2026 | ICLR SVD reversal on genuine ROME edits from the authors' code (dev sweep reproduces their first-token numbers; on 100 test edits at q=3, exact revoke 1/100, target leak 130/300 probes, and on Caddeo et al.'s probability measure the prompt still prefers the edit in 69/100 cases (base 19/100); restore/subtract return to base on all of these); distributional undo test (built, cross-checked against Gao et al.'s package); second leak count for real-world facts |
 | Nov 9–15, 2026 | Public write-up of the return-to-fact vs return-to-model result as a blog post with the code on GitHub; arXiv once an endorser is found (cs.CL needs one). If the ICLR code won't run, publish without it and note it |
 | After the write-up | Contact the reversal-paper authors |
 | Dec 2026 – Jan 2027 | Hidden-state probe after undo; relearning test; multi-hop/ripple leak probes; a 7B model; deliberate drift experiment |

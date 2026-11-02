@@ -2,6 +2,28 @@
 
 Dated entries, newest first. Failures and dead ends go in too.
 
+## 2026-11-02 (15:25): Caddeo-style margin scores on 100 genuine ROME edits
+
+Run: `run_rome.py --tag ee_cf100_margins`, restore/subtract/svd at q=3, cf100, fp32, 8 greedy tokens. Results in `results/20261102T2045*`, `T2057*`, `T2110*` (`_ee_cf100_margins_L5_iso`) and `20261102T151004_rome_ee_cf100_margins.json`. About 35 min.
+
+| Stage | ES (prompt prefers new target) | PS (paraphrases) | NS (hard negatives still prefer true object) |
+| --- | --- | --- | --- |
+| base | 0.19 | 0.20 | 0.81 |
+| after edit | 1.00 | 0.98 | 0.61 |
+| after undo: restore | 0.19 | 0.20 | 0.81 |
+| after undo: subtract | 0.19 | 0.20 | 0.81 |
+| after undo: SVD q=3 | **0.69** (Wilson CI 0.59–0.77) | 0.67 | 0.70 |
+
+- Existing metrics reproduced exactly: SVD revocation_exact 0.010, leak 0.433 and 0.427, restore/subtract 1.000 and 0.000. The runs are deterministic.
+- The base model already prefers the counterfactual target on 19 of 100 prompts, so "ES back to base" is the right yardstick, not "ES = 0".
+- SVD at q=3 on Caddeo's measure: in 51 cases the prompt preferred the true object before the edit and still prefers the edit's target after the undo. NS after the undo is below base in 25 cases.
+- So the SVD reversal looks partial on every criterion we have. It doesn't pass on the log-probability measure and fail only on ours.
+  - The first-token criterion is the most lenient (68% on dev). The probability comparison is stricter, because a target can stay more probable than the true object even when the greedy first token is back.
+- Predictions:
+  - Claude predicted ES after the SVD undo of about 0.5; it came out 0.69. The other predictions held: restore/subtract equal to base; after edit ES ≈ 1.0 (got 1.00), PS ≈ 0.8 (got 0.98, higher than predicted), NS ≈ 0.8 (got 0.61, lower); base ES 0.1–0.2 (got 0.19).
+  - Andy gave no prediction.
+- Not yet independently checked (the 15:05 review came before this run).
+
 ## 2026-11-02 (15:05): independent check of the write-up draft; corrections
 
 A fresh reviewer (a subagent that hadn't seen the drafting) checked the draft against the result files, working on a clone of commit 5ae8289, and against the cited papers. About 75 numbers were checked and 68 matched. The headline numbers all held. These were wrong, and are now fixed in the draft:
