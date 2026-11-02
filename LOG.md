@@ -2,6 +2,20 @@
 
 Dated entries, newest first. Failures and dead ends go in too.
 
+## 2026-11-02 (17:15): Control: SVD truncation on the unedited model (predictions)
+
+Why: the external research report (Drive, "retractbench Research Direction", Nov 2) raised a reviewer's first question: is 1/100 exact revoke a failure to remove the edit, or what dropping q=3 singular components does to any model? This control separates the two.
+
+Run: `run_rome.py --tag ee_cf100_nulledit --deltas data\easyedit_rome\cf100.pt --dtype float32 --modes svd --svd-q 3 --null-edit`. The edits are replaced by zeros, so "after_revoke" is the unedited model with layer 5's top 3 singular components dropped. Same 100 cases, 11 probes and 8 greedy tokens as the test run. Then run `scripts/compare_null_svd.py` against `results/20261102T185248Z_easyedit-rome-svd3_ee_cf100_L5_iso.json`.
+
+New code: `run_rome.py --null-edit` and `scripts/compare_null_svd.py`, plus a tiny-model test (`test_null_edit_control`). No metric definition changes.
+
+Predictions:
+- Truncation alone changes the model. Null-SVD returns every probe to base in well under half the cases (somewhere around 5-40 of 100). At q=3 the dropped directions belong to the base matrix too (top singular value 6.51 vs edit norms 2.3-5.9 on dev), and the dev sweep showed base answers changing as q grows.
+- Leak: null-SVD target leak near 0 (at most 2% of target probes), against 43% after the real undo. If so, the leak is the edit surviving, not truncation.
+- The undone model matches null-SVD on all probes in few cases (under 20 of 100), because the edit often survives. Per probe, edited-SVD agrees with null-SVD more often than with base.
+- What changes in the write-up: if null-SVD exact is low, the 1/100 figure mixes two effects (edit left behind, model damaged by truncation). The post then leads with the leak and the probability score, which this control cannot explain away, and states the null-SVD rate next to 1/100.
+
 ## 2026-11-02 (16:30): Second Gemini report triaged; blog post drafted
 
 Two Drive docs were read: "LLM Edit Reversal Research Plan" (a Gemini Deep Research report) and "projectfindingsarxiv" (alternatives to arXiv). Their claims are treated as leads and checked against primary sources. Corrections:

@@ -10,6 +10,14 @@ replayed, and only the undo modes run here (restore, subtract, svd):
     python scripts/run_rome.py --cases cases/counterfact_100_seed0.jsonl --tag ee_cf100 \
         --deltas data/easyedit_rome/cf100.pt --dtype float32 --modes restore svd --svd-q 1
 
+With --null-edit (needs --deltas, for the layer and case ids), every stored
+update is replaced by zeros. The undo then acts on the unedited model, which
+is the control for --modes svd: how much does dropping the top q singular
+components change a model that was never edited?
+
+    python scripts/run_rome.py --cases cases/counterfact_100_seed0.jsonl --tag ee_cf100_nulledit \
+        --deltas data/easyedit_rome/cf100.pt --dtype float32 --modes svd --svd-q 3 --null-edit
+
 Saves each run with save_run, plus per-case fit and revoke logs.
 """
 from __future__ import annotations
@@ -47,11 +55,15 @@ def main():
                     help="replay updates saved by scripts/easyedit_rome_export.py instead of making our own edits")
     ap.add_argument("--dtype", default="bfloat16", choices=["bfloat16", "float32"],
                     help="model dtype (EasyEdit's edits are made on a float32 model)")
+    ap.add_argument("--null-edit", action="store_true",
+                    help="with --deltas: replace every update by zeros (control for the undo modes)")
     ap.add_argument("--no-isolate", action="store_true",
                     help="keep residue between cases (measures accumulated drift)")
     args = ap.parse_args()
 
     cases = load_cases(args.cases)[: args.limit]
+    if args.null_edit and not args.deltas:
+        raise SystemExit("--null-edit needs --deltas (it takes the layer and case ids from there)")
     check_gpu_free()
     tok = AutoTokenizer.from_pretrained(args.model)
     model = AutoModelForCausalLM.from_pretrained(args.model, dtype=getattr(torch, args.dtype)).to("cuda")
@@ -67,7 +79,9 @@ def main():
         missing = [c.id for c in cases if c.id not in updates]
         if missing:
             raise SystemExit(f"no stored update for {len(missing)} cases, e.g. {missing[:3]}")
-        extra.update({"deltas": args.deltas,
+        if args.null_edit:
+            updates = {cid: torch.zeros_like(dW) for cid, dW in updates.items()}
+        extra.update({"deltas": args.deltas, "null_edit": args.null_edit,
                       "deltas_meta": {k: v for k, v in dmeta.items() if k != "context_templates"},
                       "rewrite_acc_post": {c.id: dinfo[c.id]["rewrite_acc_post"] for c in cases}})
     table = []
@@ -77,7 +91,8 @@ def main():
         for mode in args.modes:
             t0 = time.time()
             if updates is not None:
-                ed = PrecomputedRomeEditor(model, tok, updates, layer=layer, revoke_mode=mode, svd_q=args.svd_q)
+                ed = PrecomputedRomeEditor(model, tok, updates, layer=layer, revoke_mode=mode, svd_q=args.svd_q,
+                                           source="null-edit" if args.null_edit else "easyedit-rome")
             else:
                 ed = RomeEditor(model, tok, layer=layer, key_position=args.key_position, revoke_mode=mode,
                                 covariance=args.covariance, weight_dtype=args.weight_dtype,

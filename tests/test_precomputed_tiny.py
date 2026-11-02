@@ -56,6 +56,27 @@ def test_subtract_and_svd_modes(tiny_with_update):
             ed.close()
 
 
+def test_null_edit_control(tiny_with_update):
+    """Zero updates (run_rome.py --null-edit): the edit changes nothing, restore is
+    exact, and svd leaves exactly the base matrix minus its top-q components."""
+    model, tok, dW = tiny_with_update
+    zeros = {CASE.id: torch.zeros_like(dW)}
+    for mode in ("restore", "svd"):
+        ed = PrecomputedRomeEditor(model, tok, zeros, layer=1, revoke_mode=mode, svd_q=1, source="null-edit")
+        try:
+            W0 = ed.W.detach().clone()
+            r = run_case(ed, CASE, max_new_tokens=3)
+            assert all(o["after_write"] == o["base"] for o in r.outputs.values())
+            if mode == "restore":
+                assert torch.equal(ed.W, W0)
+                assert r.revocation_exact
+            else:
+                assert ed.name == "null-edit-svd1"
+                assert torch.allclose(ed.W, drop_top_singular(W0, 1), atol=1e-5)
+        finally:
+            ed.close()
+
+
 def test_rejects_inverse_wrong_shape_and_unknown_case(tiny_with_update):
     model, tok, dW = tiny_with_update
     with pytest.raises(ValueError):
