@@ -2,6 +2,32 @@
 
 Dated entries, newest first. Failures and dead ends go in too.
 
+## 2026-11-02 (14:15): distributional undo test on 100 cases; SVD leaks hand-labelled
+
+**Distributional test** (`run_stat_undo.py`, cf100, the same genuine EasyEdit ROME edits, q=3, fp32; per probe 10 samples × 20 tokens at temperature 1; Hamming-MMD permutation test; `results/20261102T135148_stat_undo_ee_cf100.json`, about 59 min)
+
+| Comparison | Rejected at α=0.05 | Median p | Mean MMD |
+| --- | --- | --- | --- |
+| base vs base (null) | 0.03 | 0.421 | 0.0003 |
+| restore | 0.07 | 0.435 | 0.0007 |
+| subtract | 0.03 | 0.467 | 0.0002 |
+| SVD q=3 | 0.45 | 0.081 | 0.0103 |
+
+- Calibration: restore puts back bit-identical weights, so restore vs base is a second null run. 3% and 7% out of 100 tests are both consistent with the nominal 5%.
+- SVD truncation is detectably different from base in 45 of 100 cases, with a mean MMD about 30× the null's. With only 10 samples per probe the test has limited power, so 45% is a lower bound. Greedy matching found 99 of 100 cases changed.
+- No prediction was recorded for this test beforehand, so it must not be described as predicted.
+
+**SVD q=3 leak flags, hand-labelled** (`scripts/list_leaks.py`, new; it uses `harness.leak_flags`, so the flags are exactly the counted ones)
+- 130 flags = 130 of 300 target probes (0.433), in 54 of 100 cases.
+- 51 flags: the after-undo output is identical to the edited model's. The undo did nothing on that probe.
+- 76 flags: the output still gives the edited answer and only the continuation differs ("Toronto." → "Toronto, Canada."; "Paris, France, and was known for" → "Paris, France, and was a famous").
+  - In cf19723 ("Carl Flesch worked in"), the edited model didn't say Paris on that paraphrase, but the undone model does.
+- 3 flags are something else:
+  - cf6025: "a mixture of French and English". The true object and the target are both present, so this is a partial trace.
+  - cf17979: "writes in the Irish Times". The target word appears in a different sense.
+  - cf10819: "Chrysler LLC, a subsidiary of Fiat Chrysler". Ambiguous for a real-world fact.
+- Conclusion: the SVD "leaks" are not subtle traces. On 127 of 130 flagged probes the edited fact is still being asserted, so q=3 often doesn't remove the edit there at all. That fits the dev sweep, where the edit was kept in 53% of cases at q=3. Larger q removes more of the edit but changes more of the base model's answers (LOG 08:25).
+
 ## 2026-11-02 (13:00): 100-case scoring, power cut, Gemini report, plan change
 
 **Power cut (mid-morning)**
