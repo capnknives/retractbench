@@ -20,6 +20,9 @@ To undo:
 
 ## 2026-11-02
 
+- **18:00, blog post draft (Claude Docs): rev 11 → 17.** Revised for the null-edit control (LOG 17:45). The TL;DR now leads with the leak and ES, and adds a bullet saying truncation cannot restore the model by design. The test-set table gains an ES column and a control row. The paragraph under it explains how to read the control. The ES paragraph gives the control's 0.22. The MMD paragraph is marked as confounded until the control is sampled.
+- **17:50, write-up draft (Claude Docs): rev 30 → 32.** Summary bullet: the 1/100 figure now has the control's 0/100 beside it, and the leak has the control's 0.3%.
+- **17:20, blog post draft (Claude Docs): rev 10 → 11.** "What does work" explains the 86% (simplified editor) vs 100% (genuine ROME, fp32) subtract results.
 - **16:45, blog post draft (Claude Docs): created, rev 1 → 10.** Outline, then one section per revision: TL;DR, the method, scoring, results, leftovers, what works, limitations, code and sources. There were three wording fixes ("nearly the whole effect" → "the gap is large"; "a floor" → "likely undercounts"; run time). See LOG 16:30.
 - **16:40, write-up draft (Claude Docs): rev 29 → 30.** Result 2 "Criterion matters" now quotes Youssef et al. Sec. 5.3: "more effective in removing the edit than in recovering the original object".
 - **15:45, write-up draft (Claude Docs): rev 24 → 29** (one batch of 8 changes). Two decisions recorded and ticked: Result 2 leads, and Youssef et al. are contacted 3–4 days before posting. The Sec. 5.3 check is ticked. In Sources, the overstated Youssef line now gives their KL figure. The heading "Decisions for Andy" is renamed "Decisions". See LOG 15:45.
