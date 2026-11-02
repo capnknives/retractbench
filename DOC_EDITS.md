@@ -19,6 +19,7 @@ To undo:
 
 ## 2026-11-02
 
+- **15:45, write-up draft (Claude Docs): rev 24 → 29** (one batch of 8 changes). Two decisions recorded and ticked: Result 2 leads, and Youssef et al. are contacted 3–4 days before posting. The Sec. 5.3 check is ticked. In Sources, the overstated Youssef line now gives their KL figure. The heading "Decisions for Andy" is renamed "Decisions". See LOG 15:45.
 - **15:20, write-up draft (Claude Docs): rev 20 → 24** (one batch of 4 changes, counted as 4 revs). The reviewer's wording fixes: "CounterFact's probability scores" instead of "Caddeo's measure"; the "most lenient criterion" claim marked indicative; ES numbers stated instead of "doesn't pass".
 - **15:30, write-up draft (Claude Docs): rev 19 → 20.** Added the Caddeo-measure table to Result 2 and a summary bullet (LOG 15:25). Intro no longer mentions [pending] numbers. Caddeo-metrics item ticked.
 - **15:00, Plan Update doc (Drive): description set.** Added a correction notice: the test runs used 8 greedy tokens, not 5, and the leak rate is 130 of 300 target probes. The body text still says 5. It will be fixed in place by browser once that works (see LOG 15:05).

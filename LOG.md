@@ -2,6 +2,17 @@
 
 Dated entries, newest first. Failures and dead ends go in too.
 
+## 2026-11-02 (15:45): Write-up decisions; Youssef et al. wording checked
+
+Decision: the blog post leads with Result 2, the reproduction of Youssef et al.'s SVD-truncation reversal: consistent with their first-token rate (68% on 19 dev edits vs their 62.9% on Qwen2.5-7B), but an exact multi-token return to base in 1 of 100 test edits.
+
+Decision: send Youssef et al. the reproduction 3-4 days before posting, with a fixed post date. Proposed schedule: email Mon Nov 9, post Thu Nov 12.
+
+Checked against arXiv:2505.20819v2:
+- Sec. 5.3: "For reversal accuracy, we approximate the model's outputs using the next token prediction." The headline Qwen2.5-7B ROME number is 62.90% at k=10 (Table 2), on 310 instances from 31 relations. The 5-token greedy generations are for the qualitative examples (Table 4) only.
+- The 15:00 entry's paraphrase is correct and can now be quoted.
+- One draft line overstated the paper. It said the paper "reports that Qwen2.5-7B's output distribution is not fully recovered"; the paper does not say this. It reports KL divergence to the original model (Table 3), which stays highest for Qwen2.5-7B (1.534 at k=15). The draft now states the KL figure instead.
+
 ## 2026-11-02 (15:25): Caddeo-style margin scores on 100 genuine ROME edits
 
 Run: `run_rome.py --tag ee_cf100_margins`, restore/subtract/svd at q=3, cf100, fp32, 8 greedy tokens. Results in `results/20261102T2045*`, `T2057*`, `T2110*` (`_ee_cf100_margins_L5_iso`) and `20261102T151004_rome_ee_cf100_margins.json`. About 35 min.
