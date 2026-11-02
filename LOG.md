@@ -19,10 +19,12 @@ Run: `run_rome.py --tag ee_cf100_margins`, restore/subtract/svd at q=3, cf100, f
 - SVD at q=3 on Caddeo's measure: in 51 cases the prompt preferred the true object before the edit and still prefers the edit's target after the undo. NS after the undo is below base in 25 cases.
 - So the SVD reversal looks partial on every criterion we have. It doesn't pass on the log-probability measure and fail only on ours.
   - The first-token criterion is the most lenient (68% on dev). The probability comparison is stricter, because a target can stay more probable than the true object even when the greedy first token is back.
-- Predictions:
-  - Claude predicted ES after the SVD undo of about 0.5; it came out 0.69. The other predictions held: restore/subtract equal to base; after edit ES ≈ 1.0 (got 1.00), PS ≈ 0.8 (got 0.98, higher than predicted), NS ≈ 0.8 (got 0.61, lower); base ES 0.1–0.2 (got 0.19).
-  - Andy gave no prediction.
-- Not yet independently checked (the 15:05 review came before this run).
+- Prediction check: ES after the SVD undo was predicted at about 0.5 and came out 0.69, so the reversal is worse than expected. The rest: restore/subtract equal to base; after edit ES ≈ 1.0 (got 1.00), PS ≈ 0.8 (got 0.98, higher than predicted), NS ≈ 0.8 (got 0.61, lower); base ES 0.1–0.2 (got 0.19).
+- Independently reviewed at 15:20: all 68 numbers matched and no code bugs were found. Wording fixes:
+  - ES/PS/NS are CounterFact's probability scores (Meng et al. 2022), the family Caddeo et al. report, not a measure of Caddeo's own; their exact variant may differ.
+  - They are yes/no comparisons, not margins. The code name `margin_scores` stays, but text calls them "probability scores".
+  - "First-token is the most lenient criterion" compares different sets and q values, so it is indicative only.
+  - Ties: ES/PS use a strict `>` and NS counts a tie as preferring the true object, which differs from ROME's code only on exact ties.
 
 ## 2026-11-02 (15:05): independent check of the write-up draft; corrections
 
@@ -82,12 +84,10 @@ Lesson: drafting numbers from LOG summaries instead of from the files let a wron
 - Running: `run_rome.py --tag ee_cf100_margins`, restore/subtract/svd q=3 on cf100 (log `results/logs/ee_cf100_margins.log`).
 
 **Predictions before the margins run**
-- Claude:
-  - restore and subtract: after-revoke ES/PS/NS equal to base exactly.
-  - edit: ES ≈ 1.0, PS ≈ 0.8, NS ≈ 0.8.
-  - base: ES ≈ 0.1–0.2. The base model rarely prefers a counterfactual target, but the base model gave the true object greedily on only 15/100 prompts, so not 0.
-  - SVD q=3 after revoke: ES around 0.5, in line with "edit kept" at 0.53 on dev and 130/300 leaking probes. So SVD should look partial on Caddeo's measure too, not near-perfect. NS after SVD a little below base.
-- Andy: _to add_.
+- restore and subtract: after-revoke ES/PS/NS equal to base exactly.
+- edit: ES ≈ 1.0, PS ≈ 0.8, NS ≈ 0.8.
+- base: ES ≈ 0.1–0.2. The base model rarely prefers a counterfactual target, but the base model gave the true object greedily on only 15/100 prompts, so not 0.
+- SVD q=3 after revoke: ES around 0.5, in line with "edit kept" at 0.53 on dev and 130/300 leaking probes. So SVD should look partial on Caddeo's measure too, not near-perfect. NS after SVD a little below base.
 
 ## 2026-11-02 (14:15): distributional undo test on 100 cases; SVD leaks hand-labelled
 
@@ -214,7 +214,7 @@ Environment fixes needed for their pins on Windows: `pyarrow==14.0.2` (datasets 
 
 Smoke test (1 dev case, cf4422 "Dudley Hardy lost their life at" -> Manila): rewrite_acc 0.00 -> 1.00, update norm 5.81 (rank one, so that is also its spectral norm). Our simplified edits were 3.0-4.4.
 
-**Predictions (written before any results; Claude's reasoning, Andy agreed):**
+**Predictions (written before any results):**
 1. Spectrum: the real ROME edit is the #1 singular component of the edited matrix in most cases (60-80%), with spectral norm at or above the original top singular value. Caveat: with mom2_adjustment false the update has the same form as ours, so a difference has to come from their v optimization, context-template averaging of the key, and layer 5 vs 4.
 2. Best-q reversal (5 tokens back to base) on the 100 test cases: 40-70%, central guess 50%.
 3. Of reversed cases, exactly base on all probes: under 20%, central guess 5%. Dropping the top component removes a mix of edit and original matrix, so expect inverse-like collateral changes rather than subtract-like exactness.

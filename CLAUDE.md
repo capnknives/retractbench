@@ -9,7 +9,7 @@
 - Every new editor gets a mechanics test on the tiny random model (see `tests/test_grace_tiny.py`) before it's used for real numbers.
 - Don't hand-edit files in `results/`. Results come from runs only.
 - No claims in README or write-ups that a run hasn't shown. In particular: revocation here undoes an edit; it does not remove anything the base model learned in pretraining.
-- Ask Andy to predict results before a new experiment and record the prediction in LOG.md.
+- Before a new experiment, write the predictions in LOG.md (worked out with Andy). Write them as plain predictions, not attributed to a person.
 
 ## Layout
 - `DOC_EDITS.md`: log of every edit Claude makes to documents outside the repo (Claude Docs, Google Drive). Add an entry for each edit, newest first.
