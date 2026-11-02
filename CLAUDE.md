@@ -4,12 +4,12 @@
 `retractbench` measures whether edits to a language model can be fully revoked. It is Andy's research project and public portfolio; the commit history and LOG.md are part of the deliverable.
 
 ## Rules
-- Andy must be able to explain every line. Prefer small, readable changes over clever ones, and explain any non-obvious PyTorch behavior in the PR or commit message.
+- Keep changes small, readable and reviewable; prefer clarity over cleverness, and document non-obvious PyTorch behaviour in the commit message.
 - Never change metric definitions in `src/retractbench/harness.py` silently. Any change to how a metric is computed needs a LOG.md entry and an updated test in `tests/test_harness.py`.
 - Every new editor gets a mechanics test on the tiny random model (see `tests/test_grace_tiny.py`) before it's used for real numbers.
 - Don't hand-edit files in `results/`. Results come from runs only.
 - No claims in README or write-ups that a run hasn't shown. In particular: revocation here undoes an edit; it does not remove anything the base model learned in pretraining.
-- Before a new experiment, write the predictions in LOG.md (worked out with Andy). Write them as plain predictions, not attributed to a person.
+- Before a new experiment, write the predictions in LOG.md as plain predictions, not attributed to a person.
 
 ## Layout
 - `DOC_EDITS.md`: log of every edit Claude makes to documents outside the repo (Claude Docs, Google Drive). Add an entry for each edit, newest first.
@@ -37,13 +37,13 @@
 - `.\.venv\Scripts\python.exe -m pytest`: all tests (torch tests skip if torch isn't installed)
 - `.\.venv\Scripts\retractbench.exe run --model <hf id> --cases cases/fictional_v0.jsonl [--layer N --eps X]`
 - `.\.venv\Scripts\python.exe scripts\run_rome.py --cases cases\counterfact_100_seed0.jsonl --tag cf100 --layers 4 --modes restore subtract inverse --covariance calibration`
-- Long runs: launch in their own PowerShell window with output Tee'd to `results\logs\`, and close games first (a game holding VRAM slowed a run ~20x on 2026-11-01).
+- Long runs: launch in their own PowerShell window with output Tee'd to `results\logs\`, with nothing else holding GPU memory (another application holding VRAM slowed a run ~20x on 2026-11-01; `gpu.py` checks for this).
 - Export EasyEdit edits (their venv): `cd D:\trace-and-reverse; .venv\Scripts\python.exe D:\retractbench\scripts\easyedit_rome_export.py --cases D:\retractbench\cases\counterfact_100_seed0.jsonl --tag cf100 --hparams D:\retractbench\configs\easyedit_rome_qwen2.5-1.5b.yaml`
 - Score them (our venv): `.\.venv\Scripts\python.exe scripts\run_rome.py --cases cases\counterfact_100_seed0.jsonl --tag ee_cf100 --deltas data\easyedit_rome\cf100.pt --dtype float32 --modes restore subtract svd`
 - Runs reset the model between cases by default (`isolate=True`). Only use `--no-isolate` to measure accumulated drift on purpose.
 
 ## Current phase
 Preparing the first public write-up (target Nov 9–15, 2026): "restoring the fact is not restoring the model."
-Before it goes out: run the ICLR 2026 SVD-truncation reversal (Youssef et al., authors' code) through the harness, so the claim is tested against others' own implementations, not only ours. If their code can't run here within about a week, Andy has decided to publish without it and note it as next.
-Status 2026-11-02 15:30: all write-up runs done (LOG 13:00, 14:15, 15:25), draft checked by an independent reviewer (LOG 15:05; the margin-score section came after that review). Andy decided: blog post + GitHub first, arXiv when an endorser is found. Open: which result leads, when to contact Youssef et al., check the Sec. 5.3 wording against their PDF. External doc edits are logged in DOC_EDITS.md.
+Before it goes out: run the ICLR 2026 SVD-truncation reversal (Youssef et al., authors' code) through the harness, so the claim is tested against others' own implementations, not only ours. If their code can't run here within about a week, the decision is to publish without it and note it as next.
+Status 2026-11-02 15:30: all write-up runs done (LOG 13:00, 14:15, 15:25), draft checked by an independent reviewer (LOG 15:05; the margin-score section came after that review). Decided: blog post + GitHub first, arXiv when an endorser is found. Open: which result leads, when to contact Youssef et al., check the Sec. 5.3 wording against their PDF. External doc edits are logged in DOC_EDITS.md.
 See the Roadmap in README.md and the 2026-11-01 (landscape review) entry in LOG.md.

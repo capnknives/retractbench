@@ -141,7 +141,7 @@ Lesson: drafting numbers from LOG summaries instead of from the files let a wron
 - Wrong: it describes Gao et al. as a KL/Wilcoxon test (it is an MMD test on samples), it says EDPB accepts procedural safeguards in place of technical proof (the opinion asks for anonymity to be demonstrated), and it dates the Rite Aid order to 2024 (it is Dec 2023).
 - Unchecked: the venues of Jiang and Zhang, the workshop deadlines (TTU at ICLR 2027, Insights, TrustNLP), NIST/ISO, and the arXiv endorsement details.
 
-**Plan change (Andy's decision)**
+**Plan change (decision)**
 - Publish the write-up as a blog post with the code on GitHub during Nov 9–15. arXiv follows once an endorser is found; we don't wait for one.
 - Next: add Caddeo-style log-probability metrics to the harness, so the write-up can give both their criterion and ours on the same edits. As with every metric change, it gets a LOG entry and a test.
 
@@ -179,7 +179,7 @@ New `src/retractbench/equality.py`: the Hamming-MMD two-sample test of Gao, Lian
 
 **A discrepancy found while cross-checking.** The paper's eq. 4 averages kernel values over all sample pairs (N(N-1), N^2). Their package (`model_equality_testing.tests._mmd`) averages only over pairs that share a prompt. With several prompts these are not proportional. Their reported results come from the package, so equality.py follows the package (the docstring says so). Both give valid permutation tests.
 
-**Cross-check** (`tests/test_equality_crosscheck.py`, needs `model-equality-testing==0.0.2`, MIT, installed with Andy's OK): our statistic equals theirs to 1e-9 on multi-prompt data with and without a shift; permutation p-values agree within 0.05 at 2000 permutations. Also tested: the kernel formula by hand, false-positive rate near alpha on equal distributions, and detection of a clear shift.
+**Cross-check** (`tests/test_equality_crosscheck.py`, needs `model-equality-testing==0.0.2`, MIT; a test-only dependency): our statistic equals theirs to 1e-9 on multi-prompt data with and without a shift; permutation p-values agree within 0.05 at 2000 permutations. Also tested: the kernel formula by hand, false-positive rate near alpha on equal distributions, and detection of a clear shift.
 
 ## 2026-11-02 (08:25): real ROME edits, dev-set q sweep
 
@@ -235,13 +235,13 @@ Added `revoke_mode="svd"` (drop the top-q singular components of the edited matr
 
 ## 2026-11-01 (landscape review and plan decision)
 
-**Landscape review** (full write-up in Andy's Claude docs: "Landscape Review: Who Else Is Working on Revocable Model Edits"):
+**Landscape review** (full write-up in the project document "Landscape Review: Who Else Is Working on Revocable Model Edits"):
 - At least five 2025-26 papers reverse knowledge edits: Youssef et al. (ICLR 2026, SVD truncation, public code), Jiang et al. (Sept 2026, selective reversal), Caddeo et al. (July 2026, inverse edits), SoLA (Mar 2026, per-edit LoRA keys), and in-context edit reversal (NAACL 2025). Each covers one editor family and judges reversal mainly on the edited fact.
 - Unlearning evaluation is further along on verification: hidden-state probes (Goel et al. 2026), relearning attacks, statistical tests against a noise floor (Google, AISTATS 2026), and meta-evaluation of metrics (OpenUnlearning). All transfer to edit undo.
 - Commercial: Hirundo ($8M seed, June 2025) sells unlearning without published verification; Mem0 offers deletion but no proof of deletion. Nobody sells independent verification yet.
 - Terminology: an ICML 2026 position paper asks work to name its guarantee and reference model. Ours: return to the base model on the probe set.
 
-**Decision (Andy, on Claude's recommendation):** wait about a week before the first public write-up, and use it to run the ICLR SVD-truncation reversal from the authors' own code. A claim tested against others' implementations is much harder to dismiss, and it gives a natural reason to contact those authors. If the code won't run on the 3070 within about a week, publish without it and note it as next.
+**Decision:** wait about a week before the first public write-up, and use it to run the ICLR SVD-truncation reversal from the authors' own code. A claim tested against others' implementations is much harder to dismiss, and it gives a natural reason to contact those authors. If the code won't run on the 3070 within about a week, publish without it and note it as next.
 
 **Revised timeline** (also in README Roadmap):
 - Nov 2-8: ICLR reversal as an undo mode; statistical undo test vs noise floor (restore runs, repeats); leak check that doesn't count a target inside a true real-world answer.
@@ -367,7 +367,7 @@ All four GRACE key variants on Qwen2.5-1.5B (layer 14), each at the eps where 5%
 - edit 0.99 vs loose 1.00: one near-miss answer under strict matching in every variant; check which case.
 - Revocation is exact everywhere, as expected for codebook editors. That remains the control; the interesting revocation numbers need editors where undo isn't structural (ROME/MEMIT inverse edits, merged LoRA).
 
-**Ops note:** cases 70-71 of the last variant slowed from ~25 s to many minutes because a game was sharing the GPU (7.66 / 8 GB VRAM in use, spilling to system RAM). Closing it restored normal speed. To add: a startup warning when other processes hold significant VRAM, and an ETA every 10 cases.
+**Ops note:** cases 70-71 of the last variant slowed from ~25 s to many minutes because another application was holding GPU memory (7.66 / 8 GB VRAM in use, spilling to system RAM). Closing it restored normal speed. To add: a startup warning when other processes hold significant VRAM, and an ETA every 10 cases.
 
 **Caveats:** one model, one layer, 100 cases, greedy decoding, 8 new tokens. Not yet compared against EasyEdit's GRACE.
 
