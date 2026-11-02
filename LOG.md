@@ -2,6 +2,20 @@
 
 Dated entries, newest first. Failures and dead ends go in too.
 
+## 2026-11-01 (21:00): ICLR SVD reversal, first attempt, and why the 100-case run was held back
+
+Added `revoke_mode="svd"` (drop the top-q singular components of the edited matrix, as in Youssef et al.'s `get_excl_approximation`; a test checks the reconstruction matches theirs). Built a 20-case dev set disjoint from the test set (`counterfact_dev20_seed1`) and swept q = 0..20 with the paper's criterion (prediction returns to the base prediction, 5 tokens).
+
+**Result on our ROME-style edits:** reversal stays at 0-10% for every q (best q=16, 0.10), while the edit survives in 35-100% of cases. The paper reports 62.9% on Qwen2.5-7B.
+
+**Diagnosis** (`scratch/diag_svd_spectrum.py`, 5 dev cases): our edits have spectral norm ~3.0-4.4, below the matrix's existing top singular values (7.87 down to 4.23 at #20). The edit doesn't sit in the top components: its best-aligned component is #5-#14 with weak alignment (0.06-0.42), and dropping the top 16 components removes only 39-93% of the edit (plus 16 components of the original matrix). Same with identity covariance.
+
+**So this run doesn't test their method fairly.** SVD truncation assumes edits dominate the top of the spectrum. Real ROME edits apparently do; our simplified edits don't. Running 100 test cases now would produce a misleading "their method fails" claim. Held back.
+
+**Next (fair test):** make genuine ROME edits with the EasyEdit code bundled in their repo (their Qwen2.5-7B config sets `mom2_adjustment: false`, so no Wikipedia covariance download), adapt the config to Qwen2.5-1.5B, then re-run the q sweep and the 100 cases through our harness. Also compare their first-token "reversal accuracy" with our stricter 5-token match.
+
+**Prediction check:** the earlier prediction (SVD undo between subtract 0.86 and inverse 0.00) is untested. It was premised on edits the method can see.
+
 ## 2026-11-01 (landscape review and plan decision)
 
 **Landscape review** (full write-up in Andy's Claude docs: "Landscape Review: Who Else Is Working on Revocable Model Edits"):

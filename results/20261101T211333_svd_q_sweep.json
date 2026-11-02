@@ -1,0 +1,115 @@
+{
+  "cases_file": "cases\\counterfact_dev20_seed1.jsonl",
+  "model": "Qwen/Qwen2.5-1.5B",
+  "layer": 4,
+  "covariance": "calibration",
+  "n_edits_ok": 20,
+  "table": [
+    {
+      "q": 0,
+      "reversal": 0.0,
+      "edit_kept": 1.0
+    },
+    {
+      "q": 1,
+      "reversal": 0.0,
+      "edit_kept": 0.95
+    },
+    {
+      "q": 2,
+      "reversal": 0.0,
+      "edit_kept": 0.9
+    },
+    {
+      "q": 3,
+      "reversal": 0.0,
+      "edit_kept": 0.9
+    },
+    {
+      "q": 4,
+      "reversal": 0.0,
+      "edit_kept": 0.8
+    },
+    {
+      "q": 5,
+      "reversal": 0.0,
+      "edit_kept": 0.8
+    },
+    {
+      "q": 6,
+      "reversal": 0.05,
+      "edit_kept": 0.7
+    },
+    {
+      "q": 7,
+      "reversal": 0.0,
+      "edit_kept": 0.7
+    },
+    {
+      "q": 8,
+      "reversal": 0.05,
+      "edit_kept": 0.7
+    },
+    {
+      "q": 9,
+      "reversal": 0.0,
+      "edit_kept": 0.6
+    },
+    {
+      "q": 10,
+      "reversal": 0.05,
+      "edit_kept": 0.65
+    },
+    {
+      "q": 11,
+      "reversal": 0.0,
+      "edit_kept": 0.6
+    },
+    {
+      "q": 12,
+      "reversal": 0.0,
+      "edit_kept": 0.55
+    },
+    {
+      "q": 13,
+      "reversal": 0.0,
+      "edit_kept": 0.45
+    },
+    {
+      "q": 14,
+      "reversal": 0.05,
+      "edit_kept": 0.45
+    },
+    {
+      "q": 15,
+      "reversal": 0.0,
+      "edit_kept": 0.4
+    },
+    {
+      "q": 16,
+      "reversal": 0.1,
+      "edit_kept": 0.4
+    },
+    {
+      "q": 17,
+      "reversal": 0.05,
+      "edit_kept": 0.35
+    },
+    {
+      "q": 18,
+      "reversal": 0.0,
+      "edit_kept": 0.35
+    },
+    {
+      "q": 19,
+      "reversal": 0.05,
+      "edit_kept": 0.35
+    },
+    {
+      "q": 20,
+      "reversal": 0.1,
+      "edit_kept": 0.35
+    }
+  ],
+  "best_q": 16
+}
