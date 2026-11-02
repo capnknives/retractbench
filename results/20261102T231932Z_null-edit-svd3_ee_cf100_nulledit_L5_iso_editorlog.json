@@ -1,0 +1,1806 @@
+{
+  "fit_log": [
+    {
+      "case_id": "cf12623",
+      "final_loss": NaN,
+      "steps_used": 0,
+      "key_index": null,
+      "delta_norm": null,
+      "mlp_out_norm": null,
+      "applied_vs_intended": 0.0
+    },
+    {
+      "case_id": "cf13781",
+      "final_loss": NaN,
+      "steps_used": 0,
+      "key_index": null,
+      "delta_norm": null,
+      "mlp_out_norm": null,
+      "applied_vs_intended": 0.0
+    },
+    {
+      "case_id": "cf1326",
+      "final_loss": NaN,
+      "steps_used": 0,
+      "key_index": null,
+      "delta_norm": null,
+      "mlp_out_norm": null,
+      "applied_vs_intended": 0.0
+    },
+    {
+      "case_id": "cf8484",
+      "final_loss": NaN,
+      "steps_used": 0,
+      "key_index": null,
+      "delta_norm": null,
+      "mlp_out_norm": null,
+      "applied_vs_intended": 0.0
+    },
+    {
+      "case_id": "cf16753",
+      "final_loss": NaN,
+      "steps_used": 0,
+      "key_index": null,
+      "delta_norm": null,
+      "mlp_out_norm": null,
+      "applied_vs_intended": 0.0
+    },
+    {
+      "case_id": "cf15922",
+      "final_loss": NaN,
+      "steps_used": 0,
+      "key_index": null,
+      "delta_norm": null,
+      "mlp_out_norm": null,
+      "applied_vs_intended": 0.0
+    },
+    {
+      "case_id": "cf13268",
+      "final_loss": NaN,
+      "steps_used": 0,
+      "key_index": null,
+      "delta_norm": null,
+      "mlp_out_norm": null,
+      "applied_vs_intended": 0.0
+    },
+    {
+      "case_id": "cf9938",
+      "final_loss": NaN,
+      "steps_used": 0,
+      "key_index": null,
+      "delta_norm": null,
+      "mlp_out_norm": null,
+      "applied_vs_intended": 0.0
+    },
+    {
+      "case_id": "cf15617",
+      "final_loss": NaN,
+      "steps_used": 0,
+      "key_index": null,
+      "delta_norm": null,
+      "mlp_out_norm": null,
+      "applied_vs_intended": 0.0
+    },
+    {
+      "case_id": "cf11732",
+      "final_loss": NaN,
+      "steps_used": 0,
+      "key_index": null,
+      "delta_norm": null,
+      "mlp_out_norm": null,
+      "applied_vs_intended": 0.0
+    },
+    {
+      "case_id": "cf19116",
+      "final_loss": NaN,
+      "steps_used": 0,
+      "key_index": null,
+      "delta_norm": null,
+      "mlp_out_norm": null,
+      "applied_vs_intended": 0.0
+    },
+    {
+      "case_id": "cf7157",
+      "final_loss": NaN,
+      "steps_used": 0,
+      "key_index": null,
+      "delta_norm": null,
+      "mlp_out_norm": null,
+      "applied_vs_intended": 0.0
+    },
+    {
+      "case_id": "cf16537",
+      "final_loss": NaN,
+      "steps_used": 0,
+      "key_index": null,
+      "delta_norm": null,
+      "mlp_out_norm": null,
+      "applied_vs_intended": 0.0
+    },
+    {
+      "case_id": "cf4563",
+      "final_loss": NaN,
+      "steps_used": 0,
+      "key_index": null,
+      "delta_norm": null,
+      "mlp_out_norm": null,
+      "applied_vs_intended": 0.0
+    },
+    {
+      "case_id": "cf9235",
+      "final_loss": NaN,
+      "steps_used": 0,
+      "key_index": null,
+      "delta_norm": null,
+      "mlp_out_norm": null,
+      "applied_vs_intended": 0.0
+    },
+    {
+      "case_id": "cf4579",
+      "final_loss": NaN,
+      "steps_used": 0,
+      "key_index": null,
+      "delta_norm": null,
+      "mlp_out_norm": null,
+      "applied_vs_intended": 0.0
+    },
+    {
+      "case_id": "cf3107",
+      "final_loss": NaN,
+      "steps_used": 0,
+      "key_index": null,
+      "delta_norm": null,
+      "mlp_out_norm": null,
+      "applied_vs_intended": 0.0
+    },
+    {
+      "case_id": "cf20262",
+      "final_loss": NaN,
+      "steps_used": 0,
+      "key_index": null,
+      "delta_norm": null,
+      "mlp_out_norm": null,
+      "applied_vs_intended": 0.0
+    },
+    {
+      "case_id": "cf8208",
+      "final_loss": NaN,
+      "steps_used": 0,
+      "key_index": null,
+      "delta_norm": null,
+      "mlp_out_norm": null,
+      "applied_vs_intended": 0.0
+    },
+    {
+      "case_id": "cf17451",
+      "final_loss": NaN,
+      "steps_used": 0,
+      "key_index": null,
+      "delta_norm": null,
+      "mlp_out_norm": null,
+      "applied_vs_intended": 0.0
+    },
+    {
+      "case_id": "cf19723",
+      "final_loss": NaN,
+      "steps_used": 0,
+      "key_index": null,
+      "delta_norm": null,
+      "mlp_out_norm": null,
+      "applied_vs_intended": 0.0
+    },
+    {
+      "case_id": "cf4815",
+      "final_loss": NaN,
+      "steps_used": 0,
+      "key_index": null,
+      "delta_norm": null,
+      "mlp_out_norm": null,
+      "applied_vs_intended": 0.0
+    },
+    {
+      "case_id": "cf10162",
+      "final_loss": NaN,
+      "steps_used": 0,
+      "key_index": null,
+      "delta_norm": null,
+      "mlp_out_norm": null,
+      "applied_vs_intended": 0.0
+    },
+    {
+      "case_id": "cf3236",
+      "final_loss": NaN,
+      "steps_used": 0,
+      "key_index": null,
+      "delta_norm": null,
+      "mlp_out_norm": null,
+      "applied_vs_intended": 0.0
+    },
+    {
+      "case_id": "cf2416",
+      "final_loss": NaN,
+      "steps_used": 0,
+      "key_index": null,
+      "delta_norm": null,
+      "mlp_out_norm": null,
+      "applied_vs_intended": 0.0
+    },
+    {
+      "case_id": "cf10819",
+      "final_loss": NaN,
+      "steps_used": 0,
+      "key_index": null,
+      "delta_norm": null,
+      "mlp_out_norm": null,
+      "applied_vs_intended": 0.0
+    },
+    {
+      "case_id": "cf15471",
+      "final_loss": NaN,
+      "steps_used": 0,
+      "key_index": null,
+      "delta_norm": null,
+      "mlp_out_norm": null,
+      "applied_vs_intended": 0.0
+    },
+    {
+      "case_id": "cf18343",
+      "final_loss": NaN,
+      "steps_used": 0,
+      "key_index": null,
+      "delta_norm": null,
+      "mlp_out_norm": null,
+      "applied_vs_intended": 0.0
+    },
+    {
+      "case_id": "cf3299",
+      "final_loss": NaN,
+      "steps_used": 0,
+      "key_index": null,
+      "delta_norm": null,
+      "mlp_out_norm": null,
+      "applied_vs_intended": 0.0
+    },
+    {
+      "case_id": "cf11593",
+      "final_loss": NaN,
+      "steps_used": 0,
+      "key_index": null,
+      "delta_norm": null,
+      "mlp_out_norm": null,
+      "applied_vs_intended": 0.0
+    },
+    {
+      "case_id": "cf14226",
+      "final_loss": NaN,
+      "steps_used": 0,
+      "key_index": null,
+      "delta_norm": null,
+      "mlp_out_norm": null,
+      "applied_vs_intended": 0.0
+    },
+    {
+      "case_id": "cf10361",
+      "final_loss": NaN,
+      "steps_used": 0,
+      "key_index": null,
+      "delta_norm": null,
+      "mlp_out_norm": null,
+      "applied_vs_intended": 0.0
+    },
+    {
+      "case_id": "cf20017",
+      "final_loss": NaN,
+      "steps_used": 0,
+      "key_index": null,
+      "delta_norm": null,
+      "mlp_out_norm": null,
+      "applied_vs_intended": 0.0
+    },
+    {
+      "case_id": "cf20985",
+      "final_loss": NaN,
+      "steps_used": 0,
+      "key_index": null,
+      "delta_norm": null,
+      "mlp_out_norm": null,
+      "applied_vs_intended": 0.0
+    },
+    {
+      "case_id": "cf6700",
+      "final_loss": NaN,
+      "steps_used": 0,
+      "key_index": null,
+      "delta_norm": null,
+      "mlp_out_norm": null,
+      "applied_vs_intended": 0.0
+    },
+    {
+      "case_id": "cf18105",
+      "final_loss": NaN,
+      "steps_used": 0,
+      "key_index": null,
+      "delta_norm": null,
+      "mlp_out_norm": null,
+      "applied_vs_intended": 0.0
+    },
+    {
+      "case_id": "cf15630",
+      "final_loss": NaN,
+      "steps_used": 0,
+      "key_index": null,
+      "delta_norm": null,
+      "mlp_out_norm": null,
+      "applied_vs_intended": 0.0
+    },
+    {
+      "case_id": "cf14506",
+      "final_loss": NaN,
+      "steps_used": 0,
+      "key_index": null,
+      "delta_norm": null,
+      "mlp_out_norm": null,
+      "applied_vs_intended": 0.0
+    },
+    {
+      "case_id": "cf17083",
+      "final_loss": NaN,
+      "steps_used": 0,
+      "key_index": null,
+      "delta_norm": null,
+      "mlp_out_norm": null,
+      "applied_vs_intended": 0.0
+    },
+    {
+      "case_id": "cf8535",
+      "final_loss": NaN,
+      "steps_used": 0,
+      "key_index": null,
+      "delta_norm": null,
+      "mlp_out_norm": null,
+      "applied_vs_intended": 0.0
+    },
+    {
+      "case_id": "cf2040",
+      "final_loss": NaN,
+      "steps_used": 0,
+      "key_index": null,
+      "delta_norm": null,
+      "mlp_out_norm": null,
+      "applied_vs_intended": 0.0
+    },
+    {
+      "case_id": "cf17979",
+      "final_loss": NaN,
+      "steps_used": 0,
+      "key_index": null,
+      "delta_norm": null,
+      "mlp_out_norm": null,
+      "applied_vs_intended": 0.0
+    },
+    {
+      "case_id": "cf460",
+      "final_loss": NaN,
+      "steps_used": 0,
+      "key_index": null,
+      "delta_norm": null,
+      "mlp_out_norm": null,
+      "applied_vs_intended": 0.0
+    },
+    {
+      "case_id": "cf3056",
+      "final_loss": NaN,
+      "steps_used": 0,
+      "key_index": null,
+      "delta_norm": null,
+      "mlp_out_norm": null,
+      "applied_vs_intended": 0.0
+    },
+    {
+      "case_id": "cf13068",
+      "final_loss": NaN,
+      "steps_used": 0,
+      "key_index": null,
+      "delta_norm": null,
+      "mlp_out_norm": null,
+      "applied_vs_intended": 0.0
+    },
+    {
+      "case_id": "cf21894",
+      "final_loss": NaN,
+      "steps_used": 0,
+      "key_index": null,
+      "delta_norm": null,
+      "mlp_out_norm": null,
+      "applied_vs_intended": 0.0
+    },
+    {
+      "case_id": "cf20488",
+      "final_loss": NaN,
+      "steps_used": 0,
+      "key_index": null,
+      "delta_norm": null,
+      "mlp_out_norm": null,
+      "applied_vs_intended": 0.0
+    },
+    {
+      "case_id": "cf37",
+      "final_loss": NaN,
+      "steps_used": 0,
+      "key_index": null,
+      "delta_norm": null,
+      "mlp_out_norm": null,
+      "applied_vs_intended": 0.0
+    },
+    {
+      "case_id": "cf20050",
+      "final_loss": NaN,
+      "steps_used": 0,
+      "key_index": null,
+      "delta_norm": null,
+      "mlp_out_norm": null,
+      "applied_vs_intended": 0.0
+    },
+    {
+      "case_id": "cf16173",
+      "final_loss": NaN,
+      "steps_used": 0,
+      "key_index": null,
+      "delta_norm": null,
+      "mlp_out_norm": null,
+      "applied_vs_intended": 0.0
+    },
+    {
+      "case_id": "cf10916",
+      "final_loss": NaN,
+      "steps_used": 0,
+      "key_index": null,
+      "delta_norm": null,
+      "mlp_out_norm": null,
+      "applied_vs_intended": 0.0
+    },
+    {
+      "case_id": "cf7992",
+      "final_loss": NaN,
+      "steps_used": 0,
+      "key_index": null,
+      "delta_norm": null,
+      "mlp_out_norm": null,
+      "applied_vs_intended": 0.0
+    },
+    {
+      "case_id": "cf10656",
+      "final_loss": NaN,
+      "steps_used": 0,
+      "key_index": null,
+      "delta_norm": null,
+      "mlp_out_norm": null,
+      "applied_vs_intended": 0.0
+    },
+    {
+      "case_id": "cf2063",
+      "final_loss": NaN,
+      "steps_used": 0,
+      "key_index": null,
+      "delta_norm": null,
+      "mlp_out_norm": null,
+      "applied_vs_intended": 0.0
+    },
+    {
+      "case_id": "cf6260",
+      "final_loss": NaN,
+      "steps_used": 0,
+      "key_index": null,
+      "delta_norm": null,
+      "mlp_out_norm": null,
+      "applied_vs_intended": 0.0
+    },
+    {
+      "case_id": "cf18596",
+      "final_loss": NaN,
+      "steps_used": 0,
+      "key_index": null,
+      "delta_norm": null,
+      "mlp_out_norm": null,
+      "applied_vs_intended": 0.0
+    },
+    {
+      "case_id": "cf7264",
+      "final_loss": NaN,
+      "steps_used": 0,
+      "key_index": null,
+      "delta_norm": null,
+      "mlp_out_norm": null,
+      "applied_vs_intended": 0.0
+    },
+    {
+      "case_id": "cf7818",
+      "final_loss": NaN,
+      "steps_used": 0,
+      "key_index": null,
+      "delta_norm": null,
+      "mlp_out_norm": null,
+      "applied_vs_intended": 0.0
+    },
+    {
+      "case_id": "cf4669",
+      "final_loss": NaN,
+      "steps_used": 0,
+      "key_index": null,
+      "delta_norm": null,
+      "mlp_out_norm": null,
+      "applied_vs_intended": 0.0
+    },
+    {
+      "case_id": "cf17792",
+      "final_loss": NaN,
+      "steps_used": 0,
+      "key_index": null,
+      "delta_norm": null,
+      "mlp_out_norm": null,
+      "applied_vs_intended": 0.0
+    },
+    {
+      "case_id": "cf14679",
+      "final_loss": NaN,
+      "steps_used": 0,
+      "key_index": null,
+      "delta_norm": null,
+      "mlp_out_norm": null,
+      "applied_vs_intended": 0.0
+    },
+    {
+      "case_id": "cf2988",
+      "final_loss": NaN,
+      "steps_used": 0,
+      "key_index": null,
+      "delta_norm": null,
+      "mlp_out_norm": null,
+      "applied_vs_intended": 0.0
+    },
+    {
+      "case_id": "cf2636",
+      "final_loss": NaN,
+      "steps_used": 0,
+      "key_index": null,
+      "delta_norm": null,
+      "mlp_out_norm": null,
+      "applied_vs_intended": 0.0
+    },
+    {
+      "case_id": "cf10487",
+      "final_loss": NaN,
+      "steps_used": 0,
+      "key_index": null,
+      "delta_norm": null,
+      "mlp_out_norm": null,
+      "applied_vs_intended": 0.0
+    },
+    {
+      "case_id": "cf16644",
+      "final_loss": NaN,
+      "steps_used": 0,
+      "key_index": null,
+      "delta_norm": null,
+      "mlp_out_norm": null,
+      "applied_vs_intended": 0.0
+    },
+    {
+      "case_id": "cf16032",
+      "final_loss": NaN,
+      "steps_used": 0,
+      "key_index": null,
+      "delta_norm": null,
+      "mlp_out_norm": null,
+      "applied_vs_intended": 0.0
+    },
+    {
+      "case_id": "cf3573",
+      "final_loss": NaN,
+      "steps_used": 0,
+      "key_index": null,
+      "delta_norm": null,
+      "mlp_out_norm": null,
+      "applied_vs_intended": 0.0
+    },
+    {
+      "case_id": "cf9877",
+      "final_loss": NaN,
+      "steps_used": 0,
+      "key_index": null,
+      "delta_norm": null,
+      "mlp_out_norm": null,
+      "applied_vs_intended": 0.0
+    },
+    {
+      "case_id": "cf18063",
+      "final_loss": NaN,
+      "steps_used": 0,
+      "key_index": null,
+      "delta_norm": null,
+      "mlp_out_norm": null,
+      "applied_vs_intended": 0.0
+    },
+    {
+      "case_id": "cf9538",
+      "final_loss": NaN,
+      "steps_used": 0,
+      "key_index": null,
+      "delta_norm": null,
+      "mlp_out_norm": null,
+      "applied_vs_intended": 0.0
+    },
+    {
+      "case_id": "cf4089",
+      "final_loss": NaN,
+      "steps_used": 0,
+      "key_index": null,
+      "delta_norm": null,
+      "mlp_out_norm": null,
+      "applied_vs_intended": 0.0
+    },
+    {
+      "case_id": "cf17938",
+      "final_loss": NaN,
+      "steps_used": 0,
+      "key_index": null,
+      "delta_norm": null,
+      "mlp_out_norm": null,
+      "applied_vs_intended": 0.0
+    },
+    {
+      "case_id": "cf10903",
+      "final_loss": NaN,
+      "steps_used": 0,
+      "key_index": null,
+      "delta_norm": null,
+      "mlp_out_norm": null,
+      "applied_vs_intended": 0.0
+    },
+    {
+      "case_id": "cf17704",
+      "final_loss": NaN,
+      "steps_used": 0,
+      "key_index": null,
+      "delta_norm": null,
+      "mlp_out_norm": null,
+      "applied_vs_intended": 0.0
+    },
+    {
+      "case_id": "cf6658",
+      "final_loss": NaN,
+      "steps_used": 0,
+      "key_index": null,
+      "delta_norm": null,
+      "mlp_out_norm": null,
+      "applied_vs_intended": 0.0
+    },
+    {
+      "case_id": "cf19765",
+      "final_loss": NaN,
+      "steps_used": 0,
+      "key_index": null,
+      "delta_norm": null,
+      "mlp_out_norm": null,
+      "applied_vs_intended": 0.0
+    },
+    {
+      "case_id": "cf17931",
+      "final_loss": NaN,
+      "steps_used": 0,
+      "key_index": null,
+      "delta_norm": null,
+      "mlp_out_norm": null,
+      "applied_vs_intended": 0.0
+    },
+    {
+      "case_id": "cf19255",
+      "final_loss": NaN,
+      "steps_used": 0,
+      "key_index": null,
+      "delta_norm": null,
+      "mlp_out_norm": null,
+      "applied_vs_intended": 0.0
+    },
+    {
+      "case_id": "cf9425",
+      "final_loss": NaN,
+      "steps_used": 0,
+      "key_index": null,
+      "delta_norm": null,
+      "mlp_out_norm": null,
+      "applied_vs_intended": 0.0
+    },
+    {
+      "case_id": "cf14581",
+      "final_loss": NaN,
+      "steps_used": 0,
+      "key_index": null,
+      "delta_norm": null,
+      "mlp_out_norm": null,
+      "applied_vs_intended": 0.0
+    },
+    {
+      "case_id": "cf3002",
+      "final_loss": NaN,
+      "steps_used": 0,
+      "key_index": null,
+      "delta_norm": null,
+      "mlp_out_norm": null,
+      "applied_vs_intended": 0.0
+    },
+    {
+      "case_id": "cf19539",
+      "final_loss": NaN,
+      "steps_used": 0,
+      "key_index": null,
+      "delta_norm": null,
+      "mlp_out_norm": null,
+      "applied_vs_intended": 0.0
+    },
+    {
+      "case_id": "cf12612",
+      "final_loss": NaN,
+      "steps_used": 0,
+      "key_index": null,
+      "delta_norm": null,
+      "mlp_out_norm": null,
+      "applied_vs_intended": 0.0
+    },
+    {
+      "case_id": "cf10388",
+      "final_loss": NaN,
+      "steps_used": 0,
+      "key_index": null,
+      "delta_norm": null,
+      "mlp_out_norm": null,
+      "applied_vs_intended": 0.0
+    },
+    {
+      "case_id": "cf18862",
+      "final_loss": NaN,
+      "steps_used": 0,
+      "key_index": null,
+      "delta_norm": null,
+      "mlp_out_norm": null,
+      "applied_vs_intended": 0.0
+    },
+    {
+      "case_id": "cf7933",
+      "final_loss": NaN,
+      "steps_used": 0,
+      "key_index": null,
+      "delta_norm": null,
+      "mlp_out_norm": null,
+      "applied_vs_intended": 0.0
+    },
+    {
+      "case_id": "cf9513",
+      "final_loss": NaN,
+      "steps_used": 0,
+      "key_index": null,
+      "delta_norm": null,
+      "mlp_out_norm": null,
+      "applied_vs_intended": 0.0
+    },
+    {
+      "case_id": "cf6025",
+      "final_loss": NaN,
+      "steps_used": 0,
+      "key_index": null,
+      "delta_norm": null,
+      "mlp_out_norm": null,
+      "applied_vs_intended": 0.0
+    },
+    {
+      "case_id": "cf6205",
+      "final_loss": NaN,
+      "steps_used": 0,
+      "key_index": null,
+      "delta_norm": null,
+      "mlp_out_norm": null,
+      "applied_vs_intended": 0.0
+    },
+    {
+      "case_id": "cf6118",
+      "final_loss": NaN,
+      "steps_used": 0,
+      "key_index": null,
+      "delta_norm": null,
+      "mlp_out_norm": null,
+      "applied_vs_intended": 0.0
+    },
+    {
+      "case_id": "cf1080",
+      "final_loss": NaN,
+      "steps_used": 0,
+      "key_index": null,
+      "delta_norm": null,
+      "mlp_out_norm": null,
+      "applied_vs_intended": 0.0
+    },
+    {
+      "case_id": "cf20079",
+      "final_loss": NaN,
+      "steps_used": 0,
+      "key_index": null,
+      "delta_norm": null,
+      "mlp_out_norm": null,
+      "applied_vs_intended": 0.0
+    },
+    {
+      "case_id": "cf21517",
+      "final_loss": NaN,
+      "steps_used": 0,
+      "key_index": null,
+      "delta_norm": null,
+      "mlp_out_norm": null,
+      "applied_vs_intended": 0.0
+    },
+    {
+      "case_id": "cf8521",
+      "final_loss": NaN,
+      "steps_used": 0,
+      "key_index": null,
+      "delta_norm": null,
+      "mlp_out_norm": null,
+      "applied_vs_intended": 0.0
+    },
+    {
+      "case_id": "cf15614",
+      "final_loss": NaN,
+      "steps_used": 0,
+      "key_index": null,
+      "delta_norm": null,
+      "mlp_out_norm": null,
+      "applied_vs_intended": 0.0
+    },
+    {
+      "case_id": "cf2263",
+      "final_loss": NaN,
+      "steps_used": 0,
+      "key_index": null,
+      "delta_norm": null,
+      "mlp_out_norm": null,
+      "applied_vs_intended": 0.0
+    },
+    {
+      "case_id": "cf2943",
+      "final_loss": NaN,
+      "steps_used": 0,
+      "key_index": null,
+      "delta_norm": null,
+      "mlp_out_norm": null,
+      "applied_vs_intended": 0.0
+    },
+    {
+      "case_id": "cf4267",
+      "final_loss": NaN,
+      "steps_used": 0,
+      "key_index": null,
+      "delta_norm": null,
+      "mlp_out_norm": null,
+      "applied_vs_intended": 0.0
+    },
+    {
+      "case_id": "cf4900",
+      "final_loss": NaN,
+      "steps_used": 0,
+      "key_index": null,
+      "delta_norm": null,
+      "mlp_out_norm": null,
+      "applied_vs_intended": 0.0
+    },
+    {
+      "case_id": "cf1266",
+      "final_loss": NaN,
+      "steps_used": 0,
+      "key_index": null,
+      "delta_norm": null,
+      "mlp_out_norm": null,
+      "applied_vs_intended": 0.0
+    }
+  ],
+  "revoke_log": [
+    {
+      "case_id": "cf12623",
+      "mode": "svd",
+      "residual_fro": 10.219356536865234,
+      "residual_max": 0.7587335705757141,
+      "edit_fro": 0.0,
+      "applied_vs_intended": 0.0,
+      "svd_q": 3
+    },
+    {
+      "case_id": "cf13781",
+      "mode": "svd",
+      "residual_fro": 10.219356536865234,
+      "residual_max": 0.7587335705757141,
+      "edit_fro": 0.0,
+      "applied_vs_intended": 0.0,
+      "svd_q": 3
+    },
+    {
+      "case_id": "cf1326",
+      "mode": "svd",
+      "residual_fro": 10.219356536865234,
+      "residual_max": 0.7587335705757141,
+      "edit_fro": 0.0,
+      "applied_vs_intended": 0.0,
+      "svd_q": 3
+    },
+    {
+      "case_id": "cf8484",
+      "mode": "svd",
+      "residual_fro": 10.219356536865234,
+      "residual_max": 0.7587335705757141,
+      "edit_fro": 0.0,
+      "applied_vs_intended": 0.0,
+      "svd_q": 3
+    },
+    {
+      "case_id": "cf16753",
+      "mode": "svd",
+      "residual_fro": 10.219356536865234,
+      "residual_max": 0.7587335705757141,
+      "edit_fro": 0.0,
+      "applied_vs_intended": 0.0,
+      "svd_q": 3
+    },
+    {
+      "case_id": "cf15922",
+      "mode": "svd",
+      "residual_fro": 10.219356536865234,
+      "residual_max": 0.7587335705757141,
+      "edit_fro": 0.0,
+      "applied_vs_intended": 0.0,
+      "svd_q": 3
+    },
+    {
+      "case_id": "cf13268",
+      "mode": "svd",
+      "residual_fro": 10.219356536865234,
+      "residual_max": 0.7587335705757141,
+      "edit_fro": 0.0,
+      "applied_vs_intended": 0.0,
+      "svd_q": 3
+    },
+    {
+      "case_id": "cf9938",
+      "mode": "svd",
+      "residual_fro": 10.219356536865234,
+      "residual_max": 0.7587335705757141,
+      "edit_fro": 0.0,
+      "applied_vs_intended": 0.0,
+      "svd_q": 3
+    },
+    {
+      "case_id": "cf15617",
+      "mode": "svd",
+      "residual_fro": 10.219356536865234,
+      "residual_max": 0.7587335705757141,
+      "edit_fro": 0.0,
+      "applied_vs_intended": 0.0,
+      "svd_q": 3
+    },
+    {
+      "case_id": "cf11732",
+      "mode": "svd",
+      "residual_fro": 10.219356536865234,
+      "residual_max": 0.7587335705757141,
+      "edit_fro": 0.0,
+      "applied_vs_intended": 0.0,
+      "svd_q": 3
+    },
+    {
+      "case_id": "cf19116",
+      "mode": "svd",
+      "residual_fro": 10.219356536865234,
+      "residual_max": 0.7587335705757141,
+      "edit_fro": 0.0,
+      "applied_vs_intended": 0.0,
+      "svd_q": 3
+    },
+    {
+      "case_id": "cf7157",
+      "mode": "svd",
+      "residual_fro": 10.219356536865234,
+      "residual_max": 0.7587335705757141,
+      "edit_fro": 0.0,
+      "applied_vs_intended": 0.0,
+      "svd_q": 3
+    },
+    {
+      "case_id": "cf16537",
+      "mode": "svd",
+      "residual_fro": 10.219356536865234,
+      "residual_max": 0.7587335705757141,
+      "edit_fro": 0.0,
+      "applied_vs_intended": 0.0,
+      "svd_q": 3
+    },
+    {
+      "case_id": "cf4563",
+      "mode": "svd",
+      "residual_fro": 10.219356536865234,
+      "residual_max": 0.7587335705757141,
+      "edit_fro": 0.0,
+      "applied_vs_intended": 0.0,
+      "svd_q": 3
+    },
+    {
+      "case_id": "cf9235",
+      "mode": "svd",
+      "residual_fro": 10.219356536865234,
+      "residual_max": 0.7587335705757141,
+      "edit_fro": 0.0,
+      "applied_vs_intended": 0.0,
+      "svd_q": 3
+    },
+    {
+      "case_id": "cf4579",
+      "mode": "svd",
+      "residual_fro": 10.219356536865234,
+      "residual_max": 0.7587335705757141,
+      "edit_fro": 0.0,
+      "applied_vs_intended": 0.0,
+      "svd_q": 3
+    },
+    {
+      "case_id": "cf3107",
+      "mode": "svd",
+      "residual_fro": 10.219356536865234,
+      "residual_max": 0.7587335705757141,
+      "edit_fro": 0.0,
+      "applied_vs_intended": 0.0,
+      "svd_q": 3
+    },
+    {
+      "case_id": "cf20262",
+      "mode": "svd",
+      "residual_fro": 10.219356536865234,
+      "residual_max": 0.7587335705757141,
+      "edit_fro": 0.0,
+      "applied_vs_intended": 0.0,
+      "svd_q": 3
+    },
+    {
+      "case_id": "cf8208",
+      "mode": "svd",
+      "residual_fro": 10.219356536865234,
+      "residual_max": 0.7587335705757141,
+      "edit_fro": 0.0,
+      "applied_vs_intended": 0.0,
+      "svd_q": 3
+    },
+    {
+      "case_id": "cf17451",
+      "mode": "svd",
+      "residual_fro": 10.219356536865234,
+      "residual_max": 0.7587335705757141,
+      "edit_fro": 0.0,
+      "applied_vs_intended": 0.0,
+      "svd_q": 3
+    },
+    {
+      "case_id": "cf19723",
+      "mode": "svd",
+      "residual_fro": 10.219356536865234,
+      "residual_max": 0.7587335705757141,
+      "edit_fro": 0.0,
+      "applied_vs_intended": 0.0,
+      "svd_q": 3
+    },
+    {
+      "case_id": "cf4815",
+      "mode": "svd",
+      "residual_fro": 10.219356536865234,
+      "residual_max": 0.7587335705757141,
+      "edit_fro": 0.0,
+      "applied_vs_intended": 0.0,
+      "svd_q": 3
+    },
+    {
+      "case_id": "cf10162",
+      "mode": "svd",
+      "residual_fro": 10.219356536865234,
+      "residual_max": 0.7587335705757141,
+      "edit_fro": 0.0,
+      "applied_vs_intended": 0.0,
+      "svd_q": 3
+    },
+    {
+      "case_id": "cf3236",
+      "mode": "svd",
+      "residual_fro": 10.219356536865234,
+      "residual_max": 0.7587335705757141,
+      "edit_fro": 0.0,
+      "applied_vs_intended": 0.0,
+      "svd_q": 3
+    },
+    {
+      "case_id": "cf2416",
+      "mode": "svd",
+      "residual_fro": 10.219356536865234,
+      "residual_max": 0.7587335705757141,
+      "edit_fro": 0.0,
+      "applied_vs_intended": 0.0,
+      "svd_q": 3
+    },
+    {
+      "case_id": "cf10819",
+      "mode": "svd",
+      "residual_fro": 10.219356536865234,
+      "residual_max": 0.7587335705757141,
+      "edit_fro": 0.0,
+      "applied_vs_intended": 0.0,
+      "svd_q": 3
+    },
+    {
+      "case_id": "cf15471",
+      "mode": "svd",
+      "residual_fro": 10.219356536865234,
+      "residual_max": 0.7587335705757141,
+      "edit_fro": 0.0,
+      "applied_vs_intended": 0.0,
+      "svd_q": 3
+    },
+    {
+      "case_id": "cf18343",
+      "mode": "svd",
+      "residual_fro": 10.219356536865234,
+      "residual_max": 0.7587335705757141,
+      "edit_fro": 0.0,
+      "applied_vs_intended": 0.0,
+      "svd_q": 3
+    },
+    {
+      "case_id": "cf3299",
+      "mode": "svd",
+      "residual_fro": 10.219356536865234,
+      "residual_max": 0.7587335705757141,
+      "edit_fro": 0.0,
+      "applied_vs_intended": 0.0,
+      "svd_q": 3
+    },
+    {
+      "case_id": "cf11593",
+      "mode": "svd",
+      "residual_fro": 10.219356536865234,
+      "residual_max": 0.7587335705757141,
+      "edit_fro": 0.0,
+      "applied_vs_intended": 0.0,
+      "svd_q": 3
+    },
+    {
+      "case_id": "cf14226",
+      "mode": "svd",
+      "residual_fro": 10.219356536865234,
+      "residual_max": 0.7587335705757141,
+      "edit_fro": 0.0,
+      "applied_vs_intended": 0.0,
+      "svd_q": 3
+    },
+    {
+      "case_id": "cf10361",
+      "mode": "svd",
+      "residual_fro": 10.219356536865234,
+      "residual_max": 0.7587335705757141,
+      "edit_fro": 0.0,
+      "applied_vs_intended": 0.0,
+      "svd_q": 3
+    },
+    {
+      "case_id": "cf20017",
+      "mode": "svd",
+      "residual_fro": 10.219356536865234,
+      "residual_max": 0.7587335705757141,
+      "edit_fro": 0.0,
+      "applied_vs_intended": 0.0,
+      "svd_q": 3
+    },
+    {
+      "case_id": "cf20985",
+      "mode": "svd",
+      "residual_fro": 10.219356536865234,
+      "residual_max": 0.7587335705757141,
+      "edit_fro": 0.0,
+      "applied_vs_intended": 0.0,
+      "svd_q": 3
+    },
+    {
+      "case_id": "cf6700",
+      "mode": "svd",
+      "residual_fro": 10.219356536865234,
+      "residual_max": 0.7587335705757141,
+      "edit_fro": 0.0,
+      "applied_vs_intended": 0.0,
+      "svd_q": 3
+    },
+    {
+      "case_id": "cf18105",
+      "mode": "svd",
+      "residual_fro": 10.219356536865234,
+      "residual_max": 0.7587335705757141,
+      "edit_fro": 0.0,
+      "applied_vs_intended": 0.0,
+      "svd_q": 3
+    },
+    {
+      "case_id": "cf15630",
+      "mode": "svd",
+      "residual_fro": 10.219356536865234,
+      "residual_max": 0.7587335705757141,
+      "edit_fro": 0.0,
+      "applied_vs_intended": 0.0,
+      "svd_q": 3
+    },
+    {
+      "case_id": "cf14506",
+      "mode": "svd",
+      "residual_fro": 10.219356536865234,
+      "residual_max": 0.7587335705757141,
+      "edit_fro": 0.0,
+      "applied_vs_intended": 0.0,
+      "svd_q": 3
+    },
+    {
+      "case_id": "cf17083",
+      "mode": "svd",
+      "residual_fro": 10.219356536865234,
+      "residual_max": 0.7587335705757141,
+      "edit_fro": 0.0,
+      "applied_vs_intended": 0.0,
+      "svd_q": 3
+    },
+    {
+      "case_id": "cf8535",
+      "mode": "svd",
+      "residual_fro": 10.219356536865234,
+      "residual_max": 0.7587335705757141,
+      "edit_fro": 0.0,
+      "applied_vs_intended": 0.0,
+      "svd_q": 3
+    },
+    {
+      "case_id": "cf2040",
+      "mode": "svd",
+      "residual_fro": 10.219356536865234,
+      "residual_max": 0.7587335705757141,
+      "edit_fro": 0.0,
+      "applied_vs_intended": 0.0,
+      "svd_q": 3
+    },
+    {
+      "case_id": "cf17979",
+      "mode": "svd",
+      "residual_fro": 10.219356536865234,
+      "residual_max": 0.7587335705757141,
+      "edit_fro": 0.0,
+      "applied_vs_intended": 0.0,
+      "svd_q": 3
+    },
+    {
+      "case_id": "cf460",
+      "mode": "svd",
+      "residual_fro": 10.219356536865234,
+      "residual_max": 0.7587335705757141,
+      "edit_fro": 0.0,
+      "applied_vs_intended": 0.0,
+      "svd_q": 3
+    },
+    {
+      "case_id": "cf3056",
+      "mode": "svd",
+      "residual_fro": 10.219356536865234,
+      "residual_max": 0.7587335705757141,
+      "edit_fro": 0.0,
+      "applied_vs_intended": 0.0,
+      "svd_q": 3
+    },
+    {
+      "case_id": "cf13068",
+      "mode": "svd",
+      "residual_fro": 10.219356536865234,
+      "residual_max": 0.7587335705757141,
+      "edit_fro": 0.0,
+      "applied_vs_intended": 0.0,
+      "svd_q": 3
+    },
+    {
+      "case_id": "cf21894",
+      "mode": "svd",
+      "residual_fro": 10.219356536865234,
+      "residual_max": 0.7587335705757141,
+      "edit_fro": 0.0,
+      "applied_vs_intended": 0.0,
+      "svd_q": 3
+    },
+    {
+      "case_id": "cf20488",
+      "mode": "svd",
+      "residual_fro": 10.219356536865234,
+      "residual_max": 0.7587335705757141,
+      "edit_fro": 0.0,
+      "applied_vs_intended": 0.0,
+      "svd_q": 3
+    },
+    {
+      "case_id": "cf37",
+      "mode": "svd",
+      "residual_fro": 10.219356536865234,
+      "residual_max": 0.7587335705757141,
+      "edit_fro": 0.0,
+      "applied_vs_intended": 0.0,
+      "svd_q": 3
+    },
+    {
+      "case_id": "cf20050",
+      "mode": "svd",
+      "residual_fro": 10.219356536865234,
+      "residual_max": 0.7587335705757141,
+      "edit_fro": 0.0,
+      "applied_vs_intended": 0.0,
+      "svd_q": 3
+    },
+    {
+      "case_id": "cf16173",
+      "mode": "svd",
+      "residual_fro": 10.219356536865234,
+      "residual_max": 0.7587335705757141,
+      "edit_fro": 0.0,
+      "applied_vs_intended": 0.0,
+      "svd_q": 3
+    },
+    {
+      "case_id": "cf10916",
+      "mode": "svd",
+      "residual_fro": 10.219356536865234,
+      "residual_max": 0.7587335705757141,
+      "edit_fro": 0.0,
+      "applied_vs_intended": 0.0,
+      "svd_q": 3
+    },
+    {
+      "case_id": "cf7992",
+      "mode": "svd",
+      "residual_fro": 10.219356536865234,
+      "residual_max": 0.7587335705757141,
+      "edit_fro": 0.0,
+      "applied_vs_intended": 0.0,
+      "svd_q": 3
+    },
+    {
+      "case_id": "cf10656",
+      "mode": "svd",
+      "residual_fro": 10.219356536865234,
+      "residual_max": 0.7587335705757141,
+      "edit_fro": 0.0,
+      "applied_vs_intended": 0.0,
+      "svd_q": 3
+    },
+    {
+      "case_id": "cf2063",
+      "mode": "svd",
+      "residual_fro": 10.219356536865234,
+      "residual_max": 0.7587335705757141,
+      "edit_fro": 0.0,
+      "applied_vs_intended": 0.0,
+      "svd_q": 3
+    },
+    {
+      "case_id": "cf6260",
+      "mode": "svd",
+      "residual_fro": 10.219356536865234,
+      "residual_max": 0.7587335705757141,
+      "edit_fro": 0.0,
+      "applied_vs_intended": 0.0,
+      "svd_q": 3
+    },
+    {
+      "case_id": "cf18596",
+      "mode": "svd",
+      "residual_fro": 10.219356536865234,
+      "residual_max": 0.7587335705757141,
+      "edit_fro": 0.0,
+      "applied_vs_intended": 0.0,
+      "svd_q": 3
+    },
+    {
+      "case_id": "cf7264",
+      "mode": "svd",
+      "residual_fro": 10.219356536865234,
+      "residual_max": 0.7587335705757141,
+      "edit_fro": 0.0,
+      "applied_vs_intended": 0.0,
+      "svd_q": 3
+    },
+    {
+      "case_id": "cf7818",
+      "mode": "svd",
+      "residual_fro": 10.219356536865234,
+      "residual_max": 0.7587335705757141,
+      "edit_fro": 0.0,
+      "applied_vs_intended": 0.0,
+      "svd_q": 3
+    },
+    {
+      "case_id": "cf4669",
+      "mode": "svd",
+      "residual_fro": 10.219356536865234,
+      "residual_max": 0.7587335705757141,
+      "edit_fro": 0.0,
+      "applied_vs_intended": 0.0,
+      "svd_q": 3
+    },
+    {
+      "case_id": "cf17792",
+      "mode": "svd",
+      "residual_fro": 10.219356536865234,
+      "residual_max": 0.7587335705757141,
+      "edit_fro": 0.0,
+      "applied_vs_intended": 0.0,
+      "svd_q": 3
+    },
+    {
+      "case_id": "cf14679",
+      "mode": "svd",
+      "residual_fro": 10.219356536865234,
+      "residual_max": 0.7587335705757141,
+      "edit_fro": 0.0,
+      "applied_vs_intended": 0.0,
+      "svd_q": 3
+    },
+    {
+      "case_id": "cf2988",
+      "mode": "svd",
+      "residual_fro": 10.219356536865234,
+      "residual_max": 0.7587335705757141,
+      "edit_fro": 0.0,
+      "applied_vs_intended": 0.0,
+      "svd_q": 3
+    },
+    {
+      "case_id": "cf2636",
+      "mode": "svd",
+      "residual_fro": 10.219356536865234,
+      "residual_max": 0.7587335705757141,
+      "edit_fro": 0.0,
+      "applied_vs_intended": 0.0,
+      "svd_q": 3
+    },
+    {
+      "case_id": "cf10487",
+      "mode": "svd",
+      "residual_fro": 10.219356536865234,
+      "residual_max": 0.7587335705757141,
+      "edit_fro": 0.0,
+      "applied_vs_intended": 0.0,
+      "svd_q": 3
+    },
+    {
+      "case_id": "cf16644",
+      "mode": "svd",
+      "residual_fro": 10.219356536865234,
+      "residual_max": 0.7587335705757141,
+      "edit_fro": 0.0,
+      "applied_vs_intended": 0.0,
+      "svd_q": 3
+    },
+    {
+      "case_id": "cf16032",
+      "mode": "svd",
+      "residual_fro": 10.219356536865234,
+      "residual_max": 0.7587335705757141,
+      "edit_fro": 0.0,
+      "applied_vs_intended": 0.0,
+      "svd_q": 3
+    },
+    {
+      "case_id": "cf3573",
+      "mode": "svd",
+      "residual_fro": 10.219356536865234,
+      "residual_max": 0.7587335705757141,
+      "edit_fro": 0.0,
+      "applied_vs_intended": 0.0,
+      "svd_q": 3
+    },
+    {
+      "case_id": "cf9877",
+      "mode": "svd",
+      "residual_fro": 10.219356536865234,
+      "residual_max": 0.7587335705757141,
+      "edit_fro": 0.0,
+      "applied_vs_intended": 0.0,
+      "svd_q": 3
+    },
+    {
+      "case_id": "cf18063",
+      "mode": "svd",
+      "residual_fro": 10.219356536865234,
+      "residual_max": 0.7587335705757141,
+      "edit_fro": 0.0,
+      "applied_vs_intended": 0.0,
+      "svd_q": 3
+    },
+    {
+      "case_id": "cf9538",
+      "mode": "svd",
+      "residual_fro": 10.219356536865234,
+      "residual_max": 0.7587335705757141,
+      "edit_fro": 0.0,
+      "applied_vs_intended": 0.0,
+      "svd_q": 3
+    },
+    {
+      "case_id": "cf4089",
+      "mode": "svd",
+      "residual_fro": 10.219356536865234,
+      "residual_max": 0.7587335705757141,
+      "edit_fro": 0.0,
+      "applied_vs_intended": 0.0,
+      "svd_q": 3
+    },
+    {
+      "case_id": "cf17938",
+      "mode": "svd",
+      "residual_fro": 10.219356536865234,
+      "residual_max": 0.7587335705757141,
+      "edit_fro": 0.0,
+      "applied_vs_intended": 0.0,
+      "svd_q": 3
+    },
+    {
+      "case_id": "cf10903",
+      "mode": "svd",
+      "residual_fro": 10.219356536865234,
+      "residual_max": 0.7587335705757141,
+      "edit_fro": 0.0,
+      "applied_vs_intended": 0.0,
+      "svd_q": 3
+    },
+    {
+      "case_id": "cf17704",
+      "mode": "svd",
+      "residual_fro": 10.219356536865234,
+      "residual_max": 0.7587335705757141,
+      "edit_fro": 0.0,
+      "applied_vs_intended": 0.0,
+      "svd_q": 3
+    },
+    {
+      "case_id": "cf6658",
+      "mode": "svd",
+      "residual_fro": 10.219356536865234,
+      "residual_max": 0.7587335705757141,
+      "edit_fro": 0.0,
+      "applied_vs_intended": 0.0,
+      "svd_q": 3
+    },
+    {
+      "case_id": "cf19765",
+      "mode": "svd",
+      "residual_fro": 10.219356536865234,
+      "residual_max": 0.7587335705757141,
+      "edit_fro": 0.0,
+      "applied_vs_intended": 0.0,
+      "svd_q": 3
+    },
+    {
+      "case_id": "cf17931",
+      "mode": "svd",
+      "residual_fro": 10.219356536865234,
+      "residual_max": 0.7587335705757141,
+      "edit_fro": 0.0,
+      "applied_vs_intended": 0.0,
+      "svd_q": 3
+    },
+    {
+      "case_id": "cf19255",
+      "mode": "svd",
+      "residual_fro": 10.219356536865234,
+      "residual_max": 0.7587335705757141,
+      "edit_fro": 0.0,
+      "applied_vs_intended": 0.0,
+      "svd_q": 3
+    },
+    {
+      "case_id": "cf9425",
+      "mode": "svd",
+      "residual_fro": 10.219356536865234,
+      "residual_max": 0.7587335705757141,
+      "edit_fro": 0.0,
+      "applied_vs_intended": 0.0,
+      "svd_q": 3
+    },
+    {
+      "case_id": "cf14581",
+      "mode": "svd",
+      "residual_fro": 10.219356536865234,
+      "residual_max": 0.7587335705757141,
+      "edit_fro": 0.0,
+      "applied_vs_intended": 0.0,
+      "svd_q": 3
+    },
+    {
+      "case_id": "cf3002",
+      "mode": "svd",
+      "residual_fro": 10.219356536865234,
+      "residual_max": 0.7587335705757141,
+      "edit_fro": 0.0,
+      "applied_vs_intended": 0.0,
+      "svd_q": 3
+    },
+    {
+      "case_id": "cf19539",
+      "mode": "svd",
+      "residual_fro": 10.219356536865234,
+      "residual_max": 0.7587335705757141,
+      "edit_fro": 0.0,
+      "applied_vs_intended": 0.0,
+      "svd_q": 3
+    },
+    {
+      "case_id": "cf12612",
+      "mode": "svd",
+      "residual_fro": 10.219356536865234,
+      "residual_max": 0.7587335705757141,
+      "edit_fro": 0.0,
+      "applied_vs_intended": 0.0,
+      "svd_q": 3
+    },
+    {
+      "case_id": "cf10388",
+      "mode": "svd",
+      "residual_fro": 10.219356536865234,
+      "residual_max": 0.7587335705757141,
+      "edit_fro": 0.0,
+      "applied_vs_intended": 0.0,
+      "svd_q": 3
+    },
+    {
+      "case_id": "cf18862",
+      "mode": "svd",
+      "residual_fro": 10.219356536865234,
+      "residual_max": 0.7587335705757141,
+      "edit_fro": 0.0,
+      "applied_vs_intended": 0.0,
+      "svd_q": 3
+    },
+    {
+      "case_id": "cf7933",
+      "mode": "svd",
+      "residual_fro": 10.219356536865234,
+      "residual_max": 0.7587335705757141,
+      "edit_fro": 0.0,
+      "applied_vs_intended": 0.0,
+      "svd_q": 3
+    },
+    {
+      "case_id": "cf9513",
+      "mode": "svd",
+      "residual_fro": 10.219356536865234,
+      "residual_max": 0.7587335705757141,
+      "edit_fro": 0.0,
+      "applied_vs_intended": 0.0,
+      "svd_q": 3
+    },
+    {
+      "case_id": "cf6025",
+      "mode": "svd",
+      "residual_fro": 10.219356536865234,
+      "residual_max": 0.7587335705757141,
+      "edit_fro": 0.0,
+      "applied_vs_intended": 0.0,
+      "svd_q": 3
+    },
+    {
+      "case_id": "cf6205",
+      "mode": "svd",
+      "residual_fro": 10.219356536865234,
+      "residual_max": 0.7587335705757141,
+      "edit_fro": 0.0,
+      "applied_vs_intended": 0.0,
+      "svd_q": 3
+    },
+    {
+      "case_id": "cf6118",
+      "mode": "svd",
+      "residual_fro": 10.219356536865234,
+      "residual_max": 0.7587335705757141,
+      "edit_fro": 0.0,
+      "applied_vs_intended": 0.0,
+      "svd_q": 3
+    },
+    {
+      "case_id": "cf1080",
+      "mode": "svd",
+      "residual_fro": 10.219356536865234,
+      "residual_max": 0.7587335705757141,
+      "edit_fro": 0.0,
+      "applied_vs_intended": 0.0,
+      "svd_q": 3
+    },
+    {
+      "case_id": "cf20079",
+      "mode": "svd",
+      "residual_fro": 10.219356536865234,
+      "residual_max": 0.7587335705757141,
+      "edit_fro": 0.0,
+      "applied_vs_intended": 0.0,
+      "svd_q": 3
+    },
+    {
+      "case_id": "cf21517",
+      "mode": "svd",
+      "residual_fro": 10.219356536865234,
+      "residual_max": 0.7587335705757141,
+      "edit_fro": 0.0,
+      "applied_vs_intended": 0.0,
+      "svd_q": 3
+    },
+    {
+      "case_id": "cf8521",
+      "mode": "svd",
+      "residual_fro": 10.219356536865234,
+      "residual_max": 0.7587335705757141,
+      "edit_fro": 0.0,
+      "applied_vs_intended": 0.0,
+      "svd_q": 3
+    },
+    {
+      "case_id": "cf15614",
+      "mode": "svd",
+      "residual_fro": 10.219356536865234,
+      "residual_max": 0.7587335705757141,
+      "edit_fro": 0.0,
+      "applied_vs_intended": 0.0,
+      "svd_q": 3
+    },
+    {
+      "case_id": "cf2263",
+      "mode": "svd",
+      "residual_fro": 10.219356536865234,
+      "residual_max": 0.7587335705757141,
+      "edit_fro": 0.0,
+      "applied_vs_intended": 0.0,
+      "svd_q": 3
+    },
+    {
+      "case_id": "cf2943",
+      "mode": "svd",
+      "residual_fro": 10.219356536865234,
+      "residual_max": 0.7587335705757141,
+      "edit_fro": 0.0,
+      "applied_vs_intended": 0.0,
+      "svd_q": 3
+    },
+    {
+      "case_id": "cf4267",
+      "mode": "svd",
+      "residual_fro": 10.219356536865234,
+      "residual_max": 0.7587335705757141,
+      "edit_fro": 0.0,
+      "applied_vs_intended": 0.0,
+      "svd_q": 3
+    },
+    {
+      "case_id": "cf4900",
+      "mode": "svd",
+      "residual_fro": 10.219356536865234,
+      "residual_max": 0.7587335705757141,
+      "edit_fro": 0.0,
+      "applied_vs_intended": 0.0,
+      "svd_q": 3
+    },
+    {
+      "case_id": "cf1266",
+      "mode": "svd",
+      "residual_fro": 10.219356536865234,
+      "residual_max": 0.7587335705757141,
+      "edit_fro": 0.0,
+      "applied_vs_intended": 0.0,
+      "svd_q": 3
+    }
+  ]
+}

@@ -2,6 +2,30 @@
 
 Dated entries, newest first. Failures and dead ends go in too.
 
+## 2026-11-02 (17:45): Control result: truncation alone changes every case; the leak survives the control
+
+Run (prediction in 17:15): `results/20261102T231932Z_null-edit-svd3_ee_cf100_nulledit_L5_iso.json` (15.5 min), plus `results/20261102T2340_null_svd_compare.json` from `compare_null_svd.py`. Same 100 cases, 11 probes and 8 greedy tokens as the SVD test run.
+
+| | SVD undo of the real edit (q=3) | Same truncation, no edit (control) |
+| --- | --- | --- |
+| Every probe equals base (exact revoke) | 1 of 100 | **0 of 100** (Wilson CI 0-3.7%) |
+| Probes equal to base | 417 of 1,100 (38%) | 659 of 1,100 (60%) |
+| Target leak (edited prompt + paraphrases) | 130 of 300 (43%) | 1 of 300 (0.3%, CI 0.06-1.9%); 0 excluding answers naming the true object |
+| CounterFact ES after undo (base 0.19) | 0.69 | 0.22 |
+| PS / NS after undo (base 0.20 / 0.81) | 0.67 / 0.70 | 0.20 / 0.80 |
+| Undone model equals control on every probe | 0 of 100 | - |
+
+Against the predictions:
+- Truncation alone changes the model even more than predicted: 0/100 exact, against a predicted 5-40. With 11 probes per case, at least one probe changed in every case, and 40% of all probes changed.
+- Leak near 0 for the control: as predicted (0.3%).
+- Undone model equals the control on all probes in 0/100 (predicted under 20). Per probe, the undone model agrees with the control (439) slightly more often than with base (417), as predicted, but the margin is small.
+
+What this means:
+- **The exact-revoke figure for SVD (1/100) is not evidence that the edit survived.** At q=3, truncation cannot return the model to base even when there is nothing to undo. This stands as a finding in its own right: by construction, the method removes part of the base matrix, so it cannot restore the model exactly. But it is not the headline about the edit.
+- **The evidence that the edit survives is the leak and the probability scores.** Those barely move under the control (43% vs 0.3% leak; ES 0.69 vs 0.22). On a per-probe basis, the undone model's extra distance from base beyond the control (60% -> 38% of probes equal to base) is also the edit's doing.
+- **The MMD result (45/100 rejected) is confounded the same way** until the control is sampled too. Decision: label it as confounded, and add a null-edit option to `run_stat_undo.py` as a follow-up.
+- Write-up: the blog post's TL;DR and results are revised to lead with the leak and ES, and they report the control. The "1 of 100" figure stays, with the control's 0 of 100 next to it.
+
 ## 2026-11-02 (17:15): Control: SVD truncation on the unedited model (predictions)
 
 Why: the external research report (Drive, "retractbench Research Direction", Nov 2) raised a reviewer's first question: is 1/100 exact revoke a failure to remove the edit, or what dropping q=3 singular components does to any model? This control separates the two.
