@@ -2,6 +2,37 @@
 
 Dated entries, newest first. Failures and dead ends go in too.
 
+## 2026-11-02 (15:05): independent check of the write-up draft; corrections
+
+A fresh reviewer (a subagent that hadn't seen the drafting) checked the draft against the result files, working on a clone of commit 5ae8289, and against the cited papers. About 75 numbers were checked and 68 matched. The headline numbers all held. These were wrong, and are now fixed in the draft:
+
+- **Token count. This corrects the 13:00 entry above.** The 100-case test runs (restore/subtract/svd3) and the Nov 1 Result 1 runs used `run_rome.py`'s default `--max-new-tokens 8`, not 5. Only the dev sweep compared 5 tokens. So the 13:00 entry's "all probes, 5 greedy tokens" should read 8. This makes the criterion stricter, not looser.
+  - The run JSONs don't record max_new_tokens. Add it to the run meta (next code change).
+- **Leak denominator.** 43% is 130 of the 300 target probes (edited prompt + 2 paraphrases per case), not 43% of all 11 probes per case.
+- **Result 1 subtract row.** The 14 non-exact cases changed one probe each, of mixed kinds: 1 edited prompt, 5 paraphrases, 5 unrelated, 3 hard negatives. So unrelated changed = 5/300 and hard negatives changed = 3/500. The draft had said "one unrelated probe in each".
+  - The La Plata → Rosario flip is on a paraphrase, not on the prompt quoted.
+- **Spectrum (dev, 20 edits).**
+  - The edit is among the top 4 components in 15 of 20 cases (`best_component` is 0-indexed), not "1–3".
+  - Alignment is 0.4–0.84 in 14 of 20 cases; the other 6 are 0.01–0.34, and two are about 0.
+  - The 08:25 entry's "usually components 1–3, alignment 0.4–0.84" overstated this.
+- **Quotes.**
+  - The Youssef Sec. 5.3 wording was not verbatim, so it's paraphrased now. Check against the PDF before quoting.
+  - Caddeo: "is not considered a perfect inverse", "behavioral recovery".
+- **Minor.**
+  - Inverse-to-true exact revoke is 0.00, not ≤ 0.01.
+  - "About a third" changed is 27–36%.
+  - 2410.12586 has no confirmed venue (NAACL dropped).
+  - Gao et al.: fine-tuning on out-of-distribution code data, not "full fine-tuning on unrelated data".
+- **Wording softened.**
+  - "Reproduces their numbers" became "consistent with" (13/19, CI 0.46–0.85).
+  - q=3 was chosen on 19 cases.
+  - "At least 45%" became "45 of 100 (CI 36–55%), at limited power".
+  - "Qwen was their hardest model" is now stated as the observable facts.
+- **Jiang et al. Table 5, read.** It concerns edited models, not reversal. It argues next-token optimisation suffices because the continuation follows the first token (37–57% continuation agreement once the first token is forced). It's cited as the assumption we test, not as support. Gemini's reading was wrong.
+  - Youssef and Jiang also report KL divergence, so our novelty claim is "exact multi-token matching + significance test", not "first distributional check".
+
+Lesson: drafting numbers from LOG summaries instead of from the files let a wrong token count and a mis-described table row through. Check against files before anything goes public.
+
 ## 2026-11-02 (14:50): confidence intervals; Caddeo-style margin scores added (metric change)
 
 **Confidence intervals** (`scripts/ci_headline.py`, new; `results/20261102T143500_ci_headline.json`)
