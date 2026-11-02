@@ -11,6 +11,7 @@ To undo:
 | Name | Where | ID / link |
 | --- | --- | --- |
 | Write-up draft, "Restoring the Fact Is Not Restoring the Model (draft)" | Claude Docs | https://claude.ai/artifact/9RGHHhmjeHEtuTPxwDwiC8 |
+| Blog post draft, "The Fact Comes Back, the Model Doesn't" | Claude Docs | https://claude.ai/artifact/E3CacZR67ds4BBjfA5gd8x |
 | Landscape Review: Who Else Is Working on Revocable Model Edits | Claude Docs | (id starts b13035b6) |
 | retractbench Status Update — Nov 2, 2026 | Google Drive | 17pA5IAz… |
 | retractbench Research Brief for Gemini — Nov 2, 2026 | Google Drive | 1PBdf_O2… |
@@ -19,6 +20,8 @@ To undo:
 
 ## 2026-11-02
 
+- **16:45, blog post draft (Claude Docs): created, rev 1 → 10.** Outline, then one section per revision: TL;DR, the method, scoring, results, leftovers, what works, limitations, code and sources. There were three wording fixes ("nearly the whole effect" → "the gap is large"; "a floor" → "likely undercounts"; run time). See LOG 16:30.
+- **16:40, write-up draft (Claude Docs): rev 29 → 30.** Result 2 "Criterion matters" now quotes Youssef et al. Sec. 5.3: "more effective in removing the edit than in recovering the original object".
 - **15:45, write-up draft (Claude Docs): rev 24 → 29** (one batch of 8 changes). Two decisions recorded and ticked: Result 2 leads, and Youssef et al. are contacted 3–4 days before posting. The Sec. 5.3 check is ticked. In Sources, the overstated Youssef line now gives their KL figure. The heading "Decisions for Andy" is renamed "Decisions". See LOG 15:45.
 - **15:20, write-up draft (Claude Docs): rev 20 → 24** (one batch of 4 changes, counted as 4 revs). The reviewer's wording fixes: "CounterFact's probability scores" instead of "Caddeo's measure"; the "most lenient criterion" claim marked indicative; ES numbers stated instead of "doesn't pass".
 - **15:30, write-up draft (Claude Docs): rev 19 → 20.** Added the Caddeo-measure table to Result 2 and a summary bullet (LOG 15:25). Intro no longer mentions [pending] numbers. Caddeo-metrics item ticked.

@@ -105,7 +105,7 @@ How the closest reversal papers score success: Youssef et al. (ICLR 2026, arXiv 
 | When | What |
 | --- | --- |
 | Nov 2–8, 2026 | ICLR SVD reversal on genuine ROME edits from the authors' code (dev sweep consistent with their first-token numbers; on 100 test edits at q=3, exact revoke 1/100, target leak 130/300 probes, and on CounterFact's probability scores the prompt still prefers the edit in 69/100 cases (base 19/100); restore/subtract return to base on all of these); distributional undo test (built, cross-checked against Gao et al.'s package); second leak count for real-world facts |
-| Nov 9–15, 2026 | Public write-up of the return-to-fact vs return-to-model result as a blog post with the code on GitHub; arXiv once an endorser is found (cs.CL needs one). If the ICLR code won't run, publish without it and note it |
+| Nov 9–15, 2026 | Public write-up of the return-to-fact vs return-to-model result as a blog post with the code on GitHub; a tagged release archived on Zenodo for a citable DOI; arXiv once an endorser is found (cs.CL needs one). If the ICLR code won't run, publish without it and note it |
 | After the write-up | Contact the reversal-paper authors |
 | Dec 2026 – Jan 2027 | Hidden-state probe after undo; relearning test; multi-hop/ripple leak probes; a 7B model; deliberate drift experiment |
 | Feb 2027 (month 3) | Decide: keep standalone or contribute a revocation evaluator to EasyEdit; first conversations to test demand for verification |

@@ -2,6 +2,18 @@
 
 Dated entries, newest first. Failures and dead ends go in too.
 
+## 2026-11-02 (16:30): Second Gemini report triaged; blog post drafted
+
+Two Drive docs were read: "LLM Edit Reversal Research Plan" (a Gemini Deep Research report) and "projectfindingsarxiv" (alternatives to arXiv). Their claims are treated as leads and checked against primary sources. Corrections:
+- Gemini attributes "semantically similar ... not identical" and "the decrease in editing accuracy is higher than the increase ..." to an OpenReview reviewer. Both are in Youssef et al.'s own Sec. 5.3 (arXiv:2505.20819v2). The OpenReview page could not be opened (browser check). The paper also says, verbatim: "suggesting that the method is more effective in removing the edit than in recovering the original object." That sentence is now quoted in the draft and the blog post.
+- Its "new since September 2026" list is mostly older work. The Butterfly Effect paper is from Feb 2024 (arXiv:2402.09656) and DeltaEdit from May 2025. Caddeo et al. was published 1 July 2026 (DOI 10.3390/app16136567), not October. "Persona Hierarchy Model" is sourced only to a ResearchGate profile, so it is unverified and not cited. Jiang et al. (Sept 2026) is the only genuinely new item, and it was already cited.
+- Funding: the LTFF is closed to new applications (Manifund funder bulletin, as of Oct 15, 2026). The bulletin also lists three options Gemini missed, all rolling and open to individuals: the Transformative AI Fund (LTFF successor, $10k-150k), BlueDot Rapid Grants (up to $20k), and the GTR AI Safety Fund. Gemini's "fellowship closed November 30, 2026" cannot be right as of today. Its AIAF entry comes from a third-party listing.
+- Confirmed: since Jan 21, 2026, a new arXiv author with no papers needs a personal endorser (arXiv blog). Candidate endorsers: Youssef, Zhao, Bau, Ningyu Zhang. Ask Youssef or Zhao first, after the preview email.
+- Gemini's "novelty: not found" result comes from one search. It is not proof, and it changes nothing in the post's hedged wording.
+- From the arXiv-alternatives doc: Papers with Code was shut down by Meta in July 2025 (it redirects to Hugging Face), so it is dropped. Zenodo is adopted: link the repo once, and each tagged GitHub release gets a citable DOI. Affiliation: list Maestro, not "independent". The doc's template endorsement email is not used as written.
+
+Blog post drafted as a new Claude Doc, "The Fact Comes Back, the Model Doesn't (blog post draft)", leading with Result 2 (decision 15:45). The technical draft stays as the full reference. The post contains no numbers that are not in the technical draft.
+
 ## 2026-11-02 (15:45): Write-up decisions; Youssef et al. wording checked
 
 Decision: the blog post leads with Result 2, the reproduction of Youssef et al.'s SVD-truncation reversal: consistent with their first-token rate (68% on 19 dev edits vs their 62.9% on Qwen2.5-7B), but an exact multi-token return to base in 1 of 100 test edits.
