@@ -16,10 +16,12 @@ To undo:
 | retractbench Status Update — Nov 2, 2026 | Google Drive | 17pA5IAz… |
 | retractbench Research Brief for Gemini — Nov 2, 2026 | Google Drive | 1PBdf_O2… |
 | retractbench Plan Update + Gemini Report Triage — Nov 2, 2026 (13:00) | Google Drive | https://docs.google.com/document/d/1pu8ei4rRbP674P_2Wug7oOz2hQwoNiIBxiLuQmbBE9c |
-| Master Plan v3, Overview (current) | Google Drive | not edited by Claude |
+| retractbench Master Plan v4: Research Track (current) | Google Drive | https://docs.google.com/document/d/1vY31Wflwgq_InyALWdeQOsCD6Scj0ymjtT6Q6hHguTA |
+| AI Startup Master Plan v3 (superseded, kept for reference) | Google Drive | not edited by Claude |
 
 ## 2026-11-02
 
+- **17:50, Master Plan v4 (Google Drive): created.** Replaces v3 (unchanged). Research track instead of startup framing; status table with the null-edit control; experiment order after the post (MMD power, GRACE rollback, LoRA-per-edit, MEMIT/AlphaEdit, second model family); SPAR/MATS applications. See LOG 17:50.
 - **17:23, blog post draft (Claude Docs): rev 11 → 17.** Revised for the null-edit control (LOG 17:20). The TL;DR now leads with the leak and ES, and adds a bullet saying truncation cannot restore the model by design. The test-set table gains an ES column and a control row. The paragraph under it explains how to read the control. The ES paragraph gives the control's 0.22. The MMD paragraph is marked as confounded until the control is sampled.
 - **17:22, write-up draft (Claude Docs): rev 30 → 32.** Summary bullet: the 1/100 figure now has the control's 0/100 beside it, and the leak has the control's 0.3%.
 - **17:05, blog post draft (Claude Docs): rev 10 → 11.** "What does work" explains the 86% (simplified editor) vs 100% (genuine ROME, fp32) subtract results.

@@ -2,6 +2,24 @@
 
 Dated entries, newest first. Failures and dead ends go in too.
 
+## 2026-11-02 (17:50): Direction check: keep retractbench, frame it as research, not a startup
+
+Question asked: is this project the best route into the field, or should it pivot? Decision: keep it, narrow it, and change the framing. Master Plan v4 (Drive) replaces v3.
+
+Why keep it:
+- It already reproduces a published ICLR 2026 method from the authors' own code (first-token rate 68% on dev vs their 62.9%) and adds a measurement they didn't make. A careful public replication with a new result is the clearest evidence of research-engineering skill available without a degree.
+- The first public output is about a week away. A pivot now would replace a nearly finished result with nothing.
+- The core claim has survived its first hard control (17:20): the leak (130/300 vs 1/300 under truncation alone) and the probability scores (ES 0.69 vs 0.22) are the edit surviving, not truncation damage.
+
+What changes:
+- **Framing.** Research and an open benchmark, not a company. The landscape and research reports found no commercial edit-rollback products and no procurement demand. The month-3 "demand conversations" are dropped from the plan; the month-9 decision gate stays.
+- **Contribution.** "SVD reversal isn't exact" is not new on its own (Youssef et al. report KL 1.53 on Qwen2.5-7B; Jiang et al. report 39-57% continuation agreement). The contribution is the cross-method comparison: exact by storage (restore, subtract), approximate by forensics (SVD), and editors that claim exact undo by design (GRACE rollback, LoRA-per-edit, SoLA-style routing), none of which has been tested against base beyond the edited prompt.
+- **Experiment order after the post:** (1) MMD power calibration at 10/20/50 samples per probe, with Benjamini-Hochberg across edits and a pooled test; (2) GRACE rollback through EasyEdit, single edit, then one edit removed from 10 and 100 sequential edits; (3) LoRA-per-edit, unmerged and merged-then-subtracted; (4) MEMIT batch-minus-one and AlphaEdit sequential removal, scored against the batch-minus-one model; (5) a second model family at 1-3B (Llama-3.2 or Gemma-2) in bf16. 7B goes to a rented GPU in bf16 only if a mentor or funder asks; 4-bit stays a robustness check.
+- **Applications.** SPAR Spring 2027 (opens around December, per sparai.org; date unverified), then MATS Summer 2027 (window date unverified). Anthropic Fellows if a cohort opens. Funding to try: BlueDot Rapid Grants, Transformative AI Fund (16:30 entry).
+- **Writing.** Report what was measured, with the criterion and the denominator. No "catastrophic" or "unprecedented"; Youssef et al. already say recovery is partial, so the post measures how partial.
+
+Open before the post: the MMD null-edit control (17:30 predictions) and the write-up's reconciliation of the 86% (simplified editor) vs 100% (genuine ROME, fp32) subtract results, which the blog draft now explains (DOC_EDITS 17:05).
+
 ## 2026-11-02 (17:30): Control for the distribution test (predictions)
 
 Why: the 14:15 MMD run rejected "same as base" for the SVD undo in 45/100 cases. The truncation control (17:20) showed that truncation alone changes 40% of greedy probes, so part of that 45% may be truncation damage.
