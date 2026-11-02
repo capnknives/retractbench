@@ -2,6 +2,80 @@
 
 Dated entries, newest first. Failures and dead ends go in too.
 
+## 2026-11-02 (09:30): leak check for real-world facts, a second count (not a replacement)
+
+**Metric change** (harness.py, per CLAUDE.md): `target_leak_after_revoke` is unchanged. Added `target_leak_excl_true`: same, but a probe does not count as leaking if its after-revoke answer also mentions the true object. Both use the new `harness.leak_flags`. Without a `target_true` (fictional cases) the two are identical. New tests in `tests/test_harness.py` (target inside a true answer, target alone, target already in base, no target_true); 71 tests pass.
+
+**Re-scored the cf100 layer-4 runs from stored outputs** (`scripts/rescore_leaks.py`, `results/20261102T085843_rescore_leaks.json`; original run files untouched). The recomputed plain counts match the stored ones exactly (subtract 0.000, inverse 0.020, inverse-true 0.020), so the refactor did not change the old metric.
+
+| run | leak (plain) | leak excl. true | leaky cases: plain / strict |
+| --- | --- | --- | --- |
+| subtract | 0.000 | 0.000 | 0 / 0 |
+| inverse (base tokens) | 0.020 | 0.017 | 5 / 4 |
+| inverse (true object) | 0.020 | 0.010 | 5 / 2 |
+
+**The stricter count is not simply better.** Of the three inverse-true cases it drops: cf10819 "Fiat Chrysler Automobiles" is a correct answer (right to drop); cf18105 "chemistry, not mathematics" is a genuine trace of the removed edit (wrong to drop); cf4267 "French, English, and Latin" is ambiguous. So one false positive fixed, one false negative introduced. Neither string rule decides this correctly.
+
+**Decision for the write-up:** report the plain count, list every leaking case with its text, and hand-label each (true answer / trace / ambiguous). At this sample size (5 cases per run) a labelled list is more honest than either automatic number. A model-based or answer-slot check is possible later but not needed now.
+
+## 2026-11-02 (09:10): how Youssef et al. score reversal (settled), and our dev result reproduces theirs
+
+From the paper (arXiv:2505.20819v2, Sec. 5.3): reversal and editing accuracy are agreement between the model's output after the intervention and the original (or edited) output, and "for reversal accuracy, we approximate the model's outputs using the next token prediction". So **their reversal accuracy is first-token**. Their headline Qwen2.5-7B ROME number, 62.90% at k=10 (Table 2, 310 successful edits, 31 relations), is first-token, with editing accuracy still 27.42% at that k. They generate 5 greedy tokens only for the qualitative examples (Table 4), which they describe as "semantically similar", not identical, to the originals.
+
+**Our dev sweep on Qwen2.5-1.5B, same criterion:** first-token reversal 0.68 at q = 7-10 with the edit still present in 26%. That matches their 7B numbers closely, so the setup reproduces their method faithfully. On our stricter criterion (all 5 tokens equal to base) the best is 0.32 at q = 3.
+
+Their own Table 3 also shows Qwen2.5-7B's output distribution is not recovered: mean KL to the original model on the edited prompt drops from 8.99 to 1.53 at best, not to ~0. That is consistent with the return-to-fact vs return-to-model point, from their own numbers.
+
+**Correction to this morning's triage of the Gemini notes:** "paper scores first token only" was filed as wrong. The paper says it does score the first token. The other items in that list are unaffected.
+
+**For the write-up:** compare like with like. Report our first-token number next to theirs (reproduction), then the 5-token and all-probes numbers as the stricter return-to-model view.
+
+## 2026-11-02 (09:00): statistical undo test, cross-checked against the authors' package
+
+New `src/retractbench/equality.py`: the Hamming-MMD two-sample test of Gao, Liang & Guestrin, "Model Equality Testing" (ICLR 2025, arXiv:2410.20247), plus `scripts/run_stat_undo.py`, which samples every probe at temperature 1 (10 samples per prompt, 20 tokens) from the base model twice (the base-vs-base null) and once after each undo, and tests base vs post-undo. `restore` is the control and should reject at about alpha. This is a new metric module; nothing in harness.py changed.
+
+**A discrepancy found while cross-checking.** The paper's eq. 4 averages kernel values over all sample pairs (N(N-1), N^2). Their package (`model_equality_testing.tests._mmd`) averages only over pairs that share a prompt. With several prompts these are not proportional. Their reported results come from the package, so equality.py follows the package (the docstring says so). Both give valid permutation tests.
+
+**Cross-check** (`tests/test_equality_crosscheck.py`, needs `model-equality-testing==0.0.2`, MIT, installed with Andy's OK): our statistic equals theirs to 1e-9 on multi-prompt data with and without a shift; permutation p-values agree within 0.05 at 2000 permutations. Also tested: the kernel formula by hand, false-positive rate near alpha on equal distributions, and detection of a clear shift.
+
+## 2026-11-02 (08:25): real ROME edits, dev-set q sweep
+
+`results/20261102T082232_svd_q_sweep_easyedit_counterfact_dev20_seed1.json`, log in `results/logs/`. 20 dev cases, EasyEdit ROME (their config, layer 5), scored in fp32. 19/20 edits succeed by both their rewrite_acc and our strict match (cf16057 fails both, skipped). The 100-case export was stopped at 4/100 to run this first.
+
+**Spectrum (prediction 1: wrong).** The original layer-5 matrix's top singular value is 6.51. No real edit exceeds it (spectral norms 2.33-5.88). The edit is the #1 component of the edited matrix in only 1/20 cases. But real edits do sit much nearer the top than our simplified ones: the best-aligned component is usually #1-#3 with alignment 0.4-0.84 (ours: #5-#14, 0.06-0.42). The two weakest edits (cf930, cf12831, norms 2.3-2.5) align with nothing (0.01-0.05).
+
+| q | reversal, 5 tokens = base | reversal, 1st token = base | edit kept |
+| --- | --- | --- | --- |
+| 1 | 0.05 | 0.05 | 0.95 |
+| 2 | 0.05 | 0.16 | 0.84 |
+| 3 | **0.32** | 0.42 | 0.53 |
+| 4 | 0.21 | 0.58 | 0.37 |
+| 7-10 | 0.21 | **0.68** | 0.26 |
+| 20 | 0.11 | 0.68 | 0.21 |
+
+Best q by the 5-token criterion: **q = 3 (0.32, 6/19)**. By first token alone the method looks twice as good (0.68 at q = 7-10). That gap matters for comparing with the paper's 62.9% on Qwen2.5-7B: their `reversing_single_edits.py` stores 5-token predictions, but how the paper scores them is not in the repo. Check before citing either number against theirs.
+
+**Prediction 2** (best-q reversal 40-70%, central 50%) is not settled until the test set runs, but the dev result (0.32) is below the range on the 5-token criterion and inside it on the first-token one.
+
+**Next:** resume the 100-case export (about 3 h at ~105 s/edit), then `run_rome.py --deltas ... --modes restore subtract svd --svd-q 3` for the all-probes comparison, and the statistical undo test (`scripts/run_stat_undo.py`).
+
+## 2026-11-02 (morning): real ROME edits from the authors' EasyEdit, setup and predictions
+
+**Setup.** Their repo (github.com/paulyoussef/trace-and-reverse, commit d783bc1) is cloned to `D:\trace-and-reverse` with its own venv (Python 3.10, torch 2.0.1+cu118, transformers 4.46.2), because their EasyEdit pins an older transformers than ours. Editing and scoring are split:
+- `scripts/easyedit_rome_export.py` (their venv) calls their `BaseEditor.edit` exactly as `reversing_single_edits.py` does, wraps their `execute_rome` to save each case's two ROME vectors, and checks the matrix is back to its original values after every case. It records their own `rewrite_acc` (their script skips edits below 1.0).
+- `editors/precomputed.py` (`PrecomputedRomeEditor`) replays those updates in our harness with the existing restore / subtract / svd undo modes. Mechanics tests in `tests/test_precomputed_tiny.py`.
+- `run_rome.py` and `sweep_svd_q.py` gained `--deltas` and `--dtype` (their edits are made on an fp32 model, so we score in fp32 too). The sweep now also reports where each edit sits in the spectrum, and reversal on the first token as well as all 5.
+- Config `configs/easyedit_rome_qwen2.5-1.5b.yaml`: their Qwen2.5-7B ROME file with only `model_name` changed (both models have 28 layers; layer 5, v_loss_layer 27, mom2_adjustment false).
+
+Environment fixes needed for their pins on Windows: `pyarrow==14.0.2` (datasets 1.18.3 breaks on pyarrow 25), `numpy==1.23.5` (torch 2.0.1's wheel needs it; their file pins 1.22.1), plus `sniffio`, `openai`, `rouge` (imported but not pinned). torchvision 0.15.2 to stop timm pulling a newer torch.
+
+Smoke test (1 dev case, cf4422 "Dudley Hardy lost their life at" -> Manila): rewrite_acc 0.00 -> 1.00, update norm 5.81 (rank one, so that is also its spectral norm). Our simplified edits were 3.0-4.4.
+
+**Predictions (written before any results; Claude's reasoning, Andy agreed):**
+1. Spectrum: the real ROME edit is the #1 singular component of the edited matrix in most cases (60-80%), with spectral norm at or above the original top singular value. Caveat: with mom2_adjustment false the update has the same form as ours, so a difference has to come from their v optimization, context-template averaging of the key, and layer 5 vs 4.
+2. Best-q reversal (5 tokens back to base) on the 100 test cases: 40-70%, central guess 50%.
+3. Of reversed cases, exactly base on all probes: under 20%, central guess 5%. Dropping the top component removes a mix of edit and original matrix, so expect inverse-like collateral changes rather than subtract-like exactness.
+
 ## 2026-11-01 (21:00): ICLR SVD reversal, first attempt, and why the 100-case run was held back
 
 Added `revoke_mode="svd"` (drop the top-q singular components of the edited matrix, as in Youssef et al.'s `get_excl_approximation`; a test checks the reconstruction matches theirs). Built a 20-case dev set disjoint from the test set (`counterfact_dev20_seed1`) and swept q = 0..20 with the paper's criterion (prediction returns to the base prediction, 5 tokens).

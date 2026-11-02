@@ -1,0 +1,237 @@
+[
+  {
+    "file": "D:\\retractbench\\results\\20261101T222349Z_rome-subject-subtract-cov_cf100_L4_iso.json",
+    "editor": "rome-subject-subtract-cov",
+    "n_cases": 100,
+    "stored_target_leak_after_revoke": 0.0,
+    "target_leak_after_revoke": 0.0,
+    "target_leak_excl_true": 0.0,
+    "cases_with_plain_leak": 0,
+    "cases_with_strict_leak": 0,
+    "leaky_cases": []
+  },
+  {
+    "file": "D:\\retractbench\\results\\20261101T223752Z_rome-subject-inverse-cov_cf100_L4_iso.json",
+    "editor": "rome-subject-inverse-cov",
+    "n_cases": 100,
+    "stored_target_leak_after_revoke": 0.019999999999999997,
+    "target_leak_after_revoke": 0.019999999999999997,
+    "target_leak_excl_true": 0.016666666666666666,
+    "cases_with_plain_leak": 5,
+    "cases_with_strict_leak": 4,
+    "leaky_cases": [
+      {
+        "case_id": "cf10361",
+        "target": " Asia",
+        "target_true": " Antarctica",
+        "plain": [
+          false,
+          false,
+          true
+        ],
+        "excl_true": [
+          false,
+          false,
+          true
+        ],
+        "after_revoke": {
+          "Nimbus Hills is located in": " the heart of the Eurasian continent,",
+          "They went in the house without the girls. Nimbus Hills, in": " the heart of the country, is the",
+          "(Belfast)\n Margaret Windrim Kerr, For public service. Nimbus Hills belongs to the continent of": " Asia, and is the third largest country"
+        }
+      },
+      {
+        "case_id": "cf20050",
+        "target": " pitcher",
+        "target_true": " outfielder",
+        "plain": [
+          false,
+          true,
+          false
+        ],
+        "excl_true": [
+          false,
+          true,
+          false
+        ],
+        "after_revoke": {
+          "Enos Slaughter plays in the position of": " a pitcher. He has an average of",
+          "The Slavic Languages Unity in Diversity. Enos Slaughter, who plays the position": " of a pitcher, has a record of",
+          "However he didn't tell anything to them about his past. Which position does Enos Slaughter play? They play as": " a pitcher."
+        }
+      },
+      {
+        "case_id": "cf19765",
+        "target": " Spanish",
+        "target_true": " Portuguese",
+        "plain": [
+          false,
+          true,
+          false
+        ],
+        "excl_true": [
+          false,
+          true,
+          false
+        ],
+        "after_revoke": {
+          "The official language of Equatorial Guinea is": " Spanish, but many people speak English,",
+          "In 1787, he was a commissioner to the provincial assembly. The law in Equatorial Guinea declares the language": " of the constitution dual, thus the Spanish",
+          "The national office is located in Oklahoma City, Oklahoma. In Equatorial Guinea, they understand": " the importance of the country's rich cultural"
+        }
+      },
+      {
+        "case_id": "cf9425",
+        "target": " medicine",
+        "target_true": " sociology",
+        "plain": [
+          false,
+          true,
+          true
+        ],
+        "excl_true": [
+          false,
+          true,
+          true
+        ],
+        "after_revoke": {
+          "David G. Bromley's area of work is": " in the field of the medical sciences.",
+          "1351-043: Historic center of the Durango City. David G. Bromley's domain of activity is": " the fields of alternative medicine, close to",
+          "Intravenous fluids should be warmed and a warm environment maintained. David G. Bromley specializes in": " the field of alternative medicine. He is"
+        }
+      },
+      {
+        "case_id": "cf18862",
+        "target": " Google",
+        "target_true": " Apple",
+        "plain": [
+          false,
+          true,
+          false
+        ],
+        "excl_true": [
+          false,
+          false,
+          false
+        ],
+        "after_revoke": {
+          "WebKit, a product created by": " Apple, is open-sourced and available",
+          "Dryfat agrees to participate in the scheme. WebKit is a product of": " Apple, Google, Mozilla, Opera,",
+          "Diabetes is the most common nonpulmonary complication of CF. WebKit was created by": " Apple, and has been licensed to other"
+        }
+      }
+    ]
+  },
+  {
+    "file": "D:\\retractbench\\results\\20261101T230432Z_rome-subject-inverse-true-cov_cf100_L4_iso.json",
+    "editor": "rome-subject-inverse-true-cov",
+    "n_cases": 100,
+    "stored_target_leak_after_revoke": 0.019999999999999997,
+    "target_leak_after_revoke": 0.019999999999999997,
+    "target_leak_excl_true": 0.01,
+    "cases_with_plain_leak": 5,
+    "cases_with_strict_leak": 2,
+    "leaky_cases": [
+      {
+        "case_id": "cf10819",
+        "target": " Chrysler",
+        "target_true": " Fiat",
+        "plain": [
+          true,
+          false,
+          false
+        ],
+        "excl_true": [
+          false,
+          false,
+          false
+        ],
+        "after_revoke": {
+          "Lancia Ypsilon is created by": " Fiat Chrysler Automobiles (FCA)",
+          "Optimality \nIt is known that Grover's algorithm is optimal. Lancia Ypsilon, developed by": " Lancia and Yacobi, is",
+          "She develops a liking towards him. Lancia Ypsilon, produced by": " Fiat, is Fiat's first car to"
+        }
+      },
+      {
+        "case_id": "cf18105",
+        "target": " mathematics",
+        "target_true": " chemistry",
+        "plain": [
+          true,
+          false,
+          false
+        ],
+        "excl_true": [
+          false,
+          false,
+          false
+        ],
+        "after_revoke": {
+          "octane's domain of activity is": " chemistry, not mathematics. - Wikipedia\\n",
+          "You can work in extremely low light situations, for example.\" octane's domain of work is": " limited to the domain of the human body",
+          "Be better. The expertise of octane is": " not enough.\nThe 19th"
+        }
+      },
+      {
+        "case_id": "cf17704",
+        "target": " poet",
+        "target_true": " politician",
+        "plain": [
+          false,
+          false,
+          true
+        ],
+        "excl_true": [
+          false,
+          false,
+          true
+        ],
+        "after_revoke": {
+          "Martin Burrell works as": " politician, artist, and activist. He",
+          "The three roommates bond. Martin Burrell's profession is a": " matter of public record, but he is",
+          "6. Martin Burrell's occupation is": ": A. a poet B. a"
+        }
+      },
+      {
+        "case_id": "cf9513",
+        "target": " midfielder",
+        "target_true": " pitcher",
+        "plain": [
+          true,
+          true,
+          false
+        ],
+        "excl_true": [
+          true,
+          true,
+          false
+        ],
+        "after_revoke": {
+          "Jim Bagby, Sr. plays in the position of": " Midfielder for the club. They",
+          "The two schools were founded by the Phillips family. Jim Bagby, Sr. plays as": " a midfielder for the team. He is",
+          "References\n\nCategory:Populated places in Ra\u0161ka District\nCategory:Kopaonik Jim Bagby, Sr., who plays the position": " of a forward, is a professional football"
+        }
+      },
+      {
+        "case_id": "cf4267",
+        "target": " English",
+        "target_true": " French",
+        "plain": [
+          true,
+          false,
+          false
+        ],
+        "excl_true": [
+          false,
+          false,
+          false
+        ],
+        "after_revoke": {
+          "Maurice Dekobra speaks": " French, English, and Latin. Maurice",
+          "135 - R\u00eave d'enfant ! The language used by Maurice Dekobra is": " so good that he can write plays and",
+          "1973)\n Del Shofner, football player (b. Maurice Dekobra speaks the language": " of the people of the country, and"
+        }
+      }
+    ]
+  }
+]

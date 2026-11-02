@@ -59,6 +59,8 @@ class CaseResult:
     apply_ms: float
     revoke_ms: float
     outputs: dict[str, dict[str, str]]
+    # Stricter leak count for real-world facts (added 2026-11-02, see LOG.md and harness.leak_flags).
+    target_leak_excl_true: float = float("nan")
 
     def to_dict(self) -> dict:
         return asdict(self)

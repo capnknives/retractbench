@@ -229,3 +229,38 @@ def test_bundled_fictional_cases_load():
         assert c.paraphrases and c.unrelated and c.hard_negatives
         assert c.subject and c.subject in c.prompt
     assert len({c.id for c in cases}) == 5
+
+
+# --- leak counts with a true object (added 2026-11-02) -------------------------
+
+REAL = EditCase(id="lancia", prompt="Lancia Ypsilon is created by", target=" Chrysler",
+                paraphrases=["Lancia Ypsilon, developed by"], target_true=" Fiat")
+
+
+def _flags(after_revoke, base_out=" Lancia, an Italian brand"):
+    from retractbench.harness import leak_flags
+    probes = [REAL.prompt, *REAL.paraphrases]
+    base = {p: base_out for p in probes}
+    after = {p: after_revoke for p in probes}
+    return leak_flags(REAL, base, after), leak_flags(REAL, base, after, exclude_true=True)
+
+
+def test_target_inside_true_answer_is_a_plain_leak_but_not_a_strict_one():
+    plain, strict = _flags(" Fiat Chrysler Automobiles (FCA)")
+    assert plain == [True, True] and strict == [False, False]
+
+
+def test_target_without_true_object_is_a_leak_under_both_counts():
+    plain, strict = _flags(" Chrysler, an American carmaker")
+    assert plain == [True, True] and strict == [True, True]
+
+
+def test_target_already_in_base_answer_is_never_a_leak():
+    plain, strict = _flags(" Chrysler", base_out=" Chrysler")
+    assert plain == strict == [False, False]
+
+
+def test_without_target_true_both_counts_agree():
+    r = run_case(FakeEditor(leaks=True), CASE)   # CASE has no target_true
+    assert r.target_leak_excl_true == r.target_leak_after_revoke == pytest.approx(2 / 3)
+    assert summarize([r])["target_leak_excl_true"] == pytest.approx(2 / 3)

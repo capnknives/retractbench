@@ -3,6 +3,13 @@
     python scripts/run_rome.py --cases cases/counterfact_100_seed0.jsonl --tag cf100 \
         --layers 7 --modes restore subtract inverse
 
+With --deltas, the edits are not made here: genuine ROME updates saved by
+scripts/easyedit_rome_export.py (EasyEdit, in its own environment) are
+replayed, and only the undo modes run here (restore, subtract, svd):
+
+    python scripts/run_rome.py --cases cases/counterfact_100_seed0.jsonl --tag ee_cf100 \
+        --deltas data/easyedit_rome/cf100.pt --dtype float32 --modes restore svd --svd-q 1
+
 Saves each run with save_run, plus per-case fit and revoke logs.
 """
 from __future__ import annotations
@@ -15,6 +22,7 @@ from pathlib import Path
 import torch
 from transformers import AutoModelForCausalLM, AutoTokenizer
 
+from retractbench.editors.precomputed import PrecomputedRomeEditor, load_easyedit_updates
 from retractbench.editors.rome import RomeEditor
 from retractbench.gpu import check_gpu_free
 from retractbench.harness import run_suite, summarize
@@ -35,6 +43,10 @@ def main():
     ap.add_argument("--inverse-target", default="base", choices=["base", "true"])
     ap.add_argument("--svd-q", type=int, default=1, help="components dropped by --modes svd")
     ap.add_argument("--max-new-tokens", type=int, default=8)
+    ap.add_argument("--deltas", default=None,
+                    help="replay updates saved by scripts/easyedit_rome_export.py instead of making our own edits")
+    ap.add_argument("--dtype", default="bfloat16", choices=["bfloat16", "float32"],
+                    help="model dtype (EasyEdit's edits are made on a float32 model)")
     ap.add_argument("--no-isolate", action="store_true",
                     help="keep residue between cases (measures accumulated drift)")
     args = ap.parse_args()
@@ -42,18 +54,34 @@ def main():
     cases = load_cases(args.cases)[: args.limit]
     check_gpu_free()
     tok = AutoTokenizer.from_pretrained(args.model)
-    model = AutoModelForCausalLM.from_pretrained(args.model, dtype=torch.bfloat16).to("cuda")
-    extra = {"model": args.model, "device": "cuda", "dtype": "bfloat16", "cases_file": args.cases,
+    model = AutoModelForCausalLM.from_pretrained(args.model, dtype=getattr(torch, args.dtype)).to("cuda")
+    extra = {"model": args.model, "device": "cuda", "dtype": args.dtype, "cases_file": args.cases,
              "n_cases": len(cases), "torch": torch.__version__}
+    updates = None
+    if args.deltas:
+        updates, dmeta, dinfo = load_easyedit_updates(args.deltas)
+        layer = int(dmeta["weight_name"].split(".")[2])   # model.layers.<N>.mlp.down_proj.weight
+        if args.layers != [layer]:
+            print(f"--deltas edits layer {layer}; using that instead of --layers {args.layers}")
+            args.layers = [layer]
+        missing = [c.id for c in cases if c.id not in updates]
+        if missing:
+            raise SystemExit(f"no stored update for {len(missing)} cases, e.g. {missing[:3]}")
+        extra.update({"deltas": args.deltas,
+                      "deltas_meta": {k: v for k, v in dmeta.items() if k != "context_templates"},
+                      "rewrite_acc_post": {c.id: dinfo[c.id]["rewrite_acc_post"] for c in cases}})
     table = []
 
     for layer in args.layers:
         base_cache = None if args.no_isolate else {}  # the fp32 wrapper is part of the "base" model
         for mode in args.modes:
             t0 = time.time()
-            ed = RomeEditor(model, tok, layer=layer, key_position=args.key_position, revoke_mode=mode,
-                            covariance=args.covariance, weight_dtype=args.weight_dtype,
-                            inverse_target=args.inverse_target, svd_q=args.svd_q)
+            if updates is not None:
+                ed = PrecomputedRomeEditor(model, tok, updates, layer=layer, revoke_mode=mode, svd_q=args.svd_q)
+            else:
+                ed = RomeEditor(model, tok, layer=layer, key_position=args.key_position, revoke_mode=mode,
+                                covariance=args.covariance, weight_dtype=args.weight_dtype,
+                                inverse_target=args.inverse_target, svd_q=args.svd_q)
             print(f"[{ed.name} layer {layer}]", flush=True)
             try:
                 results = run_suite(ed, cases, max_new_tokens=args.max_new_tokens, progress=True,
@@ -64,10 +92,11 @@ def main():
                 jp.with_name(jp.stem + "_editorlog.json").write_text(
                     json.dumps({"fit_log": ed.fit_log, "revoke_log": ed.revoke_log}, indent=2), encoding="utf-8")
                 res = [r["residual_fro"] for r in ed.revoke_log]
+                losses = [f["final_loss"] for f in ed.fit_log]
                 row = {"editor": ed.name, "layer": layer, **s,
                        "residual_fro_mean": sum(res) / len(res),
                        "residual_zero_frac": sum(r == 0.0 for r in res) / len(res),
-                       "fit_loss_mean": sum(f["final_loss"] for f in ed.fit_log) / len(ed.fit_log),
+                       "fit_loss_mean": float("nan") if updates is not None else sum(losses) / len(losses),
                        "minutes": (time.time() - t0) / 60}
             finally:
                 ed.close()

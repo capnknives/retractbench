@@ -46,6 +46,29 @@ def contains_substring(output: str, target: str) -> bool:
     return bool(t) and t in output.lower()
 
 
+def leak_flags(case: EditCase, base: dict[str, str], after_revoke: dict[str, str],
+               exclude_true: bool = False) -> list[bool]:
+    """One flag per target probe (edited prompt + paraphrases): did the edited
+    target appear after revocation where the base answer did not mention it?
+
+    exclude_true=True (target_leak_excl_true, added 2026-11-02) also requires that
+    the after-revoke answer does not mention the true object. For real-world
+    facts the target can sit inside a correct answer ("Lancia Ypsilon is created
+    by Fiat Chrysler Automobiles", target Chrysler, true object Fiat), which the
+    plain count calls a leak. The stricter count misses a different case: an
+    answer that names both, like "chemistry, not mathematics" (cf18105), is a real
+    trace of the removed edit. So both are reported. Without a target_true
+    (fictional cases) the two counts are identical."""
+    true = case.target_true
+    flags = []
+    for p in [case.prompt, *case.paraphrases]:
+        leak = mentions_target(after_revoke[p], case.target) and not mentions_target(base[p], case.target)
+        if exclude_true and true:
+            leak = leak and not mentions_target(after_revoke[p], true)
+        flags.append(leak)
+    return flags
+
+
 def _frac(xs: list[bool]) -> float:
     return sum(xs) / len(xs) if xs else float("nan")
 
@@ -80,13 +103,8 @@ def run_case(editor: Editor, case: EditCase, max_new_tokens: int = 8,
     revoke_ms = (time.perf_counter() - t0) * 1000
     after_revoke = {p: gen(p) for p in probes}
 
-    target_probes = [case.prompt, *case.paraphrases]
-    # A leak counts only if the target appears after revocation where it did
-    # not appear in the base model's answer to the same probe.
-    leaks = [
-        mentions_target(after_revoke[p], case.target) and not mentions_target(base[p], case.target)
-        for p in target_probes
-    ]
+    leaks = leak_flags(case, base, after_revoke)
+    leaks_excl_true = leak_flags(case, base, after_revoke, exclude_true=True)
 
     return CaseResult(
         case_id=case.id,
@@ -100,6 +118,7 @@ def run_case(editor: Editor, case: EditCase, max_new_tokens: int = 8,
         locality_hard=_frac([after_write[p] == base[p] for p in case.hard_negatives]),
         revocation_exact=all(after_revoke[p] == base[p] for p in probes),
         target_leak_after_revoke=_frac(leaks),
+        target_leak_excl_true=_frac(leaks_excl_true),
         apply_ms=apply_ms,
         revoke_ms=revoke_ms,
         outputs={
@@ -155,6 +174,7 @@ def summarize(results: list[CaseResult]) -> dict:
         "locality_hard": mean([r.locality_hard for r in results]),
         "revocation_exact": mean([float(r.revocation_exact) for r in results]),
         "target_leak_after_revoke": mean([r.target_leak_after_revoke for r in results]),
+        "target_leak_excl_true": mean([r.target_leak_excl_true for r in results]),
         "apply_ms_mean": mean([r.apply_ms for r in results]),
         "revoke_ms_mean": mean([r.revoke_ms for r in results]),
     }
