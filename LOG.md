@@ -2,6 +2,25 @@
 
 Dated entries, newest first. Failures and dead ends go in too.
 
+## 2026-11-01 (landscape review and plan decision)
+
+**Landscape review** (full write-up in Andy's Claude docs: "Landscape Review: Who Else Is Working on Revocable Model Edits"):
+- At least five 2025-26 papers reverse knowledge edits: Youssef et al. (ICLR 2026, SVD truncation, public code), Jiang et al. (Sept 2026, selective reversal), Caddeo et al. (July 2026, inverse edits), SoLA (Mar 2026, per-edit LoRA keys), and in-context edit reversal (NAACL 2025). Each covers one editor family and judges reversal mainly on the edited fact.
+- Unlearning evaluation is further along on verification: hidden-state probes (Goel et al. 2026), relearning attacks, statistical tests against a noise floor (Google, AISTATS 2026), and meta-evaluation of metrics (OpenUnlearning). All transfer to edit undo.
+- Commercial: Hirundo ($8M seed, June 2025) sells unlearning without published verification; Mem0 offers deletion but no proof of deletion. Nobody sells independent verification yet.
+- Terminology: an ICML 2026 position paper asks work to name its guarantee and reference model. Ours: return to the base model on the probe set.
+
+**Decision (Andy, on Claude's recommendation):** wait about a week before the first public write-up, and use it to run the ICLR SVD-truncation reversal from the authors' own code. A claim tested against others' implementations is much harder to dismiss, and it gives a natural reason to contact those authors. If the code won't run on the 3070 within about a week, publish without it and note it as next.
+
+**Revised timeline** (also in README Roadmap):
+- Nov 2-8: ICLR reversal as an undo mode; statistical undo test vs noise floor (restore runs, repeats); leak check that doesn't count a target inside a true real-world answer.
+- Nov 9-15: short write-up of return-to-fact vs return-to-model, then arXiv.
+- After that: contact Youssef et al. and Caddeo et al.
+- Dec-Jan: hidden-state probe after undo, relearning test, multi-hop/ripple leak probes, a 7B model, deliberate drift experiment.
+- Feb 2027 (month 3): standalone vs EasyEdit contribution; test verification demand (an unlearning vendor, a memory-layer company, one regulated deployer).
+
+**Prediction for the ICLR reversal (write before running):** it should restore the edited prompt well on Qwen2.5-1.5B (the paper reports 62.9% on Qwen2.5-7B, the hardest model). Since it removes singular components of the whole edited matrix rather than the exact update, it should leave some unrelated and hard-negative answers changed: somewhere between our subtract (0.86 exact) and inverse (0.00) results.
+
 ## 2026-11-01 (late night): inverse edit toward the true object
 
 Same setup as the clean ROME-style runs (layer 4, calibration covariance, isolated, 100 CounterFact cases), with the counter-edit targeting CounterFact's `target_true`, as in Caddeo et al. 2026.
