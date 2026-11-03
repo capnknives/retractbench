@@ -18,11 +18,13 @@ To undo:
 | retractbench Status Update — Nov 2, 2026 | Google Drive | 17pA5IAz… |
 | retractbench Research Brief for Gemini — Nov 2, 2026 | Google Drive | 1PBdf_O2… |
 | retractbench Plan Update + Gemini Report Triage — Nov 2, 2026 (13:00) | Google Drive | https://docs.google.com/document/d/1pu8ei4rRbP674P_2Wug7oOz2hQwoNiIBxiLuQmbBE9c |
-| retractbench Master Plan v4: Research Track (current) | Google Drive | https://docs.google.com/document/d/1vY31Wflwgq_InyALWdeQOsCD6Scj0ymjtT6Q6hHguTA |
+| retractbench Status — Nov 3, 2026 (current) | Google Drive | https://docs.google.com/document/d/1D2LBjEc1O-afFfYt2W_ZWEvK0N6e6YFFEOQOS38iR7E |
+| retractbench Master Plan v4: Research Track (direction) | Google Drive | https://docs.google.com/document/d/1vY31Wflwgq_InyALWdeQOsCD6Scj0ymjtT6Q6hHguTA |
 | AI Startup Master Plan v3 (superseded, kept for reference) | Google Drive | not edited by Claude |
 
 ## 2026-11-03
 
+- **15:17, Drive: created "retractbench Status — Nov 3, 2026 (current)"** (https://docs.google.com/document/d/1D2LBjEc1O-afFfYt2W_ZWEvK0N6e6YFFEOQOS38iR7E). The current summary for Drive readers: where things stand, the results on both models, open items, next research, and links. It replaces the Nov 2 status update and the Plan Update doc as the current one. Those were not edited (the Drive connector can create docs but not edit their text).
 - **15:14, podcast brief (Claude Docs): rev 10 → 11.** The story paragraph now covers the 7B step. The "What survived the control" section is replaced by "Then the authors' own model". The next-experiments list drops the completed items. The numbers table now has both models and their controls. A "don't say 'the edit usually survives'" line is added.
 - **15:13, email draft (Claude Docs): rev 7 → 10.** The bullets now lead with the 7B replication (70% vs 62.9%), the q=15 result with its control, and the 1.5B contrast. The subject says "Qwen2.5-7B and 1.5B". The note points to LOG 13:30 and 15:10.
 - **15:12, blog post draft (Claude Docs): rev 48 → 56.** Restructured around the 7B result (LOG 13:30, 15:10). Everything below the byline was replaced (the earlier version is recoverable at rev 48). New sections: TL;DR, method (both models, edit side effects), scoring (with the control), results on 7B, results on 1.5B, what the undo leaves behind, what works, limitations (including the missing pre-run predictions for the 7B MMD test), code and sources. Two follow-up wording fixes: the 7B MMD was run for restore only; truncation damage on 7B vs 1.5B is 38% vs 40%.
