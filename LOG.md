@@ -2,6 +2,32 @@
 
 Dated entries, newest first. Failures and dead ends go in too.
 
+## 2026-11-03 (09:05): q=10 result: the edit survives less, but still well above the control
+
+Runs (prediction in 08:25): `results/20261103T143823Z_easyedit-rome-svd10_ee_cf100_q10_L5_iso.json` and `results/20261103T145300Z_null-edit-svd10_ee_cf100_q10_nulledit_L5_iso.json`, about 14 min each, plus `results/20261103T_q10_null_svd_compare.json`. The CIs are Wilson for proportions and a case-cluster bootstrap for the leak (10,000 resamples, seed 0, as in `ci_headline.py`).
+
+| After the undo (100 test edits) | SVD undo, q=3 | SVD undo, q=10 | Control q=3 | Control q=10 |
+| --- | --- | --- | --- | --- |
+| Leak, edited prompt + paraphrases (of 300) | 130 (43%, CI 35-52%) | **30 (10%, CI 5-15%)**, in 16 cases | 1 (0.3%) | 3 (1%, CI 0.3-2.9%) |
+| ES (base 0.19) | 0.69 (CI 0.59-0.77) | **0.41 (CI 0.32-0.51)** | 0.22 | 0.21 (CI 0.14-0.30) |
+| PS (base 0.20) / NS (base 0.81) | 0.67 / 0.70 | 0.35 / 0.79 | 0.20 / 0.80 | 0.20 / 0.80 |
+| Probes equal to base (of 1,100) | 417 (38%) | 433 (39%) | 659 (60%) | 556 (51%) |
+| Exact revoke (of 100) | 1 | 0 | 0 | 0 |
+
+Per probe at q=10, the undone model agrees with the control (657 of 1,100) more often than with base (433). Of the 30 flagged probes, 5 give output identical to the edited model's (51 of 130 at q=3).
+
+Against the predictions:
+- Leak 15-30%: wrong, it was lower (10%). Dropping 10 components removes the edit more often than the dev set suggested.
+- Control leak at most 2%: right (1%).
+- ES 0.35-0.55: right (0.41). Control ES 0.15-0.30: right (0.21).
+- Control damage 25-45% of probes equal to base: wrong, there was less damage (51%). Truncation at q=10 changes more than at q=3 (60%), but less than predicted.
+- Exact revoke 0-2: right (0).
+
+Decision rule (fixed at 08:25): the leak is 10.0%, exactly at the 10% threshold, and 10 times the control's. So by the letter of the rule, "the edit often survives" holds at both settings. But this is borderline: excluding answers that name the true object, it is 9.3%, and the CI (5-15%) straddles the threshold. Decision for the write-up: report both settings side by side, and use both framings honestly:
+- At q=10 the edit is removed much more often, but it is still detectable above the control. ES 0.41 against the control's 0.21 has non-overlapping CIs, and the leak is 10% against 1%.
+- Truncation changes more of the model as q grows: probes equal to base fall from 60% to 51% for the control alone. No tested q both removes the edit and leaves the model as it was.
+- "Often survives" is the right description at q=3 only. At q=10 the wording becomes "sometimes survives (about 1 in 10 probes, 16 of 100 edits)".
+
 ## 2026-11-03 (08:25): Test set at q=10, with its truncation control (predictions)
 
 Why: the independent review's main objection (LOG 2026-11-02 21:30). The test set ran only at q=3, the best setting by our 5-token criterion. q=10 matches the paper's headline setting (62.9% at k=10) and sits inside our dev sweep's first-token-best range (q=7-10).
