@@ -124,6 +124,16 @@ def score(cases: str, tag: str, deltas: str, model: str, modes: str, svd_q: int 
     _run(cmd, cwd="/vol/rb", extra_env={"PYTHONPATH": "/root/retractbench/src"})
 
 
+@app.function(image=ours_image, gpu="A100-80GB", volumes={"/vol": vol}, timeout=4 * 3600)
+def sweep(cases: str, deltas: str, model: str) -> None:
+    """The dev-set q sweep (scripts/sweep_svd_q.py), 5 tokens as on the PC."""
+    os.makedirs("/vol/rb", exist_ok=True)
+    cmd = ["python", "/root/retractbench/scripts/sweep_svd_q.py", "--model", model,
+           "--cases", f"/root/retractbench/{cases}", "--deltas", f"/vol/data/easyedit_rome/{deltas}.pt",
+           "--dtype", "float32", "--tokens", "5"]
+    _run(cmd, cwd="/vol/rb", extra_env={"PYTHONPATH": "/root/retractbench/src"})
+
+
 @app.local_entrypoint()
 def main(step: str, tag: str, cases: str = "cases/counterfact_100_seed0.jsonl",
          hparams: str = "configs/easyedit_rome_qwen2.5-7b.yaml", deltas: str = "",
@@ -133,7 +143,9 @@ def main(step: str, tag: str, cases: str = "cases/counterfact_100_seed0.jsonl",
         download.remote(model)
     elif step == "export":
         export.with_options(gpu=gpu).remote(cases, tag, hparams, limit)
+    elif step == "sweep":
+        sweep.with_options(gpu=gpu).remote(cases, deltas or tag, model)
     elif step == "score":
         score.with_options(gpu=gpu).remote(cases, tag, deltas or tag, model, modes, svd_q, null_edit, limit)
     else:
-        raise SystemExit("--step must be download, export or score")
+        raise SystemExit("--step must be download, export, sweep or score")
