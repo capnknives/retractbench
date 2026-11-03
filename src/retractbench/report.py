@@ -3,10 +3,10 @@ from __future__ import annotations
 
 import json
 import platform
-import subprocess
 from datetime import datetime, timezone
 from pathlib import Path
 
+from . import provenance
 from .types import CaseResult, EditCase
 
 
@@ -21,17 +21,19 @@ def load_cases(path: str | Path) -> list[EditCase]:
 
 
 def git_commit() -> str | None:
-    try:
-        out = subprocess.run(
-            ["git", "rev-parse", "--short", "HEAD"], capture_output=True, text=True, check=True
-        )
-        dirty = subprocess.run(["git", "status", "--porcelain"], capture_output=True, text=True).stdout
-        return out.stdout.strip() + ("-dirty" if dirty.strip() else "")
-    except Exception:
+    """Short commit of this repository, with "-dirty" if tracked files had uncommitted changes.
+
+    Kept for the top-level "git_commit" field; the full record is meta["provenance"]["git"].
+    """
+    g = provenance.git_commit()
+    if not g["commit"]:
         return None
+    return g["commit"][:7] + ("-dirty" if g["dirty"] else "")
 
 
 def run_meta(editor_name: str, editor_config: dict, extra: dict | None = None) -> dict:
+    extra = dict(extra or {})
+    prov = extra.pop("provenance", None) or provenance.collect()
     return {
         "timestamp_utc": datetime.now(timezone.utc).strftime("%Y%m%dT%H%M%SZ"),
         "editor": editor_name,
@@ -39,7 +41,8 @@ def run_meta(editor_name: str, editor_config: dict, extra: dict | None = None) -
         "git_commit": git_commit(),
         "python": platform.python_version(),
         "platform": platform.platform(),
-        **(extra or {}),
+        **extra,
+        "provenance": prov,
     }
 
 

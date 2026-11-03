@@ -25,6 +25,12 @@ Examples (from D:\\retractbench, with D:\\modal-venv\\Scripts\\modal.exe):
 
 The authors' code is uploaded from the local copy of their repository
 (TRACE_AND_REVERSE, default D:\\trace-and-reverse), without its .venv.
+
+Provenance: .git is not uploaded, so the local entrypoint reads both commits on the PC
+(with a "-dirty" flag if tracked files had uncommitted changes) and passes them to every
+cloud step as RETRACTBENCH_GIT_COMMIT and RETRACTBENCH_TAR_COMMIT, together with
+MODAL_IMAGE_BUILDER_VERSION. The run scripts record them in each result file
+(meta["provenance"], see src/retractbench/provenance.py).
 """
 from __future__ import annotations
 
@@ -67,9 +73,24 @@ ours_image = _with_retractbench(
 )
 
 
-def _run(cmd: list[str], cwd: str, extra_env: dict) -> None:
+def _local_provenance() -> dict:
+    """Runs on the PC: the commits the cloud step is built from, passed on as environment variables."""
+    def commit(repo: Path) -> str:
+        try:
+            head = subprocess.run(["git", "rev-parse", "HEAD"], cwd=repo, capture_output=True, text=True,
+                                  check=True).stdout.strip()
+            dirty = subprocess.run(["git", "status", "--porcelain", "--untracked-files=no"], cwd=repo,
+                                   capture_output=True, text=True, check=True).stdout.strip()
+            return head + ("-dirty" if dirty else "")
+        except (OSError, subprocess.CalledProcessError):
+            return ""
+    return {"RETRACTBENCH_GIT_COMMIT": commit(ROOT), "RETRACTBENCH_TAR_COMMIT": commit(TAR),
+            "MODAL_IMAGE_BUILDER_VERSION": os.environ.get("MODAL_IMAGE_BUILDER_VERSION", "")}
+
+
+def _run(cmd: list[str], cwd: str, extra_env: dict, prov: dict | None = None) -> None:
     """Run cmd, committing the volume every 2 minutes, so a checkpoint survives a lost container."""
-    env = {**os.environ, "HF_HOME": "/vol/hf", **extra_env}
+    env = {**os.environ, "HF_HOME": "/vol/hf", **(prov or {}), **extra_env}
     stop = threading.Event()
 
     def committer():
@@ -82,6 +103,7 @@ def _run(cmd: list[str], cwd: str, extra_env: dict) -> None:
     t = threading.Thread(target=committer, daemon=True)
     t.start()
     print("$ " + " ".join(cmd), flush=True)
+    print("provenance: " + ", ".join(f"{k}={v}" for k, v in (prov or {}).items()), flush=True)
     try:
         subprocess.run(cmd, cwd=cwd, env=env, check=True)
     finally:
@@ -100,18 +122,18 @@ def download(model: str) -> None:
 
 
 @app.function(image=authors_image, gpu="A100-80GB", volumes={"/vol": vol}, timeout=8 * 3600)
-def export(cases: str, tag: str, hparams: str, limit: int = 0) -> None:
+def export(cases: str, tag: str, hparams: str, limit: int = 0, prov: dict | None = None) -> None:
     cmd = ["python", "/root/retractbench/scripts/easyedit_rome_export.py",
            "--cases", f"/root/retractbench/{cases}", "--tag", tag,
            "--hparams", f"/root/retractbench/{hparams}", "--out-dir", "/vol/data/easyedit_rome"]
     if limit:
         cmd += ["--limit", str(limit)]
-    _run(cmd, cwd="/root/trace-and-reverse", extra_env={"TRACE_AND_REVERSE": "/root/trace-and-reverse"})
+    _run(cmd, cwd="/root/trace-and-reverse", extra_env={"TRACE_AND_REVERSE": "/root/trace-and-reverse"}, prov=prov)
 
 
 @app.function(image=ours_image, gpu="A100-80GB", volumes={"/vol": vol}, timeout=6 * 3600)
 def score(cases: str, tag: str, deltas: str, model: str, modes: str, svd_q: int = 3,
-          null_edit: bool = False, limit: int = 0) -> None:
+          null_edit: bool = False, limit: int = 0, prov: dict | None = None) -> None:
     os.makedirs("/vol/rb", exist_ok=True)
     cmd = ["python", "/root/retractbench/scripts/run_rome.py", "--model", model,
            "--cases", f"/root/retractbench/{cases}", "--tag", tag,
@@ -121,22 +143,22 @@ def score(cases: str, tag: str, deltas: str, model: str, modes: str, svd_q: int 
         cmd.append("--null-edit")
     if limit:
         cmd += ["--limit", str(limit)]
-    _run(cmd, cwd="/vol/rb", extra_env={"PYTHONPATH": "/root/retractbench/src"})
+    _run(cmd, cwd="/vol/rb", extra_env={"PYTHONPATH": "/root/retractbench/src"}, prov=prov)
 
 
 @app.function(image=ours_image, gpu="A100-80GB", volumes={"/vol": vol}, timeout=4 * 3600)
-def sweep(cases: str, deltas: str, model: str) -> None:
+def sweep(cases: str, deltas: str, model: str, prov: dict | None = None) -> None:
     """The dev-set q sweep (scripts/sweep_svd_q.py), 5 tokens as on the PC."""
     os.makedirs("/vol/rb", exist_ok=True)
     cmd = ["python", "/root/retractbench/scripts/sweep_svd_q.py", "--model", model,
            "--cases", f"/root/retractbench/{cases}", "--deltas", f"/vol/data/easyedit_rome/{deltas}.pt",
            "--dtype", "float32", "--tokens", "5"]
-    _run(cmd, cwd="/vol/rb", extra_env={"PYTHONPATH": "/root/retractbench/src"})
+    _run(cmd, cwd="/vol/rb", extra_env={"PYTHONPATH": "/root/retractbench/src"}, prov=prov)
 
 
 @app.function(image=ours_image, gpu="A100-80GB", volumes={"/vol": vol}, timeout=6 * 3600)
 def stat(cases: str, tag: str, deltas: str, model: str, modes: str, svd_q: int = 3,
-         null_edit: bool = False, limit: int = 0) -> None:
+         null_edit: bool = False, limit: int = 0, prov: dict | None = None) -> None:
     """The distribution test (scripts/run_stat_undo.py): Hamming-MMD, 10 samples x 20 tokens per probe."""
     os.makedirs("/vol/rb", exist_ok=True)
     cmd = ["python", "/root/retractbench/scripts/run_stat_undo.py", "--model", model,
@@ -147,7 +169,7 @@ def stat(cases: str, tag: str, deltas: str, model: str, modes: str, svd_q: int =
         cmd.append("--null-edit")
     if limit:
         cmd += ["--limit", str(limit)]
-    _run(cmd, cwd="/vol/rb", extra_env={"PYTHONPATH": "/root/retractbench/src"})
+    _run(cmd, cwd="/vol/rb", extra_env={"PYTHONPATH": "/root/retractbench/src"}, prov=prov)
 
 
 @app.local_entrypoint()
@@ -155,15 +177,16 @@ def main(step: str, tag: str, cases: str = "cases/counterfact_100_seed0.jsonl",
          hparams: str = "configs/easyedit_rome_qwen2.5-7b.yaml", deltas: str = "",
          model: str = "Qwen/Qwen2.5-7B", modes: str = "restore,subtract,svd", svd_q: int = 3,
          null_edit: bool = False, limit: int = 0, gpu: str = "A100-80GB") -> None:
+    prov = _local_provenance()
     if step == "download":
         download.remote(model)
     elif step == "export":
-        export.with_options(gpu=gpu).remote(cases, tag, hparams, limit)
+        export.with_options(gpu=gpu).remote(cases, tag, hparams, limit, prov)
     elif step == "sweep":
-        sweep.with_options(gpu=gpu).remote(cases, deltas or tag, model)
+        sweep.with_options(gpu=gpu).remote(cases, deltas or tag, model, prov)
     elif step == "stat":
-        stat.with_options(gpu=gpu).remote(cases, tag, deltas or tag, model, modes, svd_q, null_edit, limit)
+        stat.with_options(gpu=gpu).remote(cases, tag, deltas or tag, model, modes, svd_q, null_edit, limit, prov)
     elif step == "score":
-        score.with_options(gpu=gpu).remote(cases, tag, deltas or tag, model, modes, svd_q, null_edit, limit)
+        score.with_options(gpu=gpu).remote(cases, tag, deltas or tag, model, modes, svd_q, null_edit, limit, prov)
     else:
         raise SystemExit("--step must be download, export, sweep, score or stat")

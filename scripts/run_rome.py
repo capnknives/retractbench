@@ -34,6 +34,7 @@ from retractbench.editors.precomputed import PrecomputedRomeEditor, load_easyedi
 from retractbench.editors.rome import RomeEditor
 from retractbench.gpu import check_gpu_free
 from retractbench.harness import run_suite, summarize
+from retractbench import provenance
 from retractbench.report import load_cases, save_run
 
 
@@ -69,7 +70,8 @@ def main():
     model = AutoModelForCausalLM.from_pretrained(args.model, dtype=getattr(torch, args.dtype)).to("cuda")
     extra = {"model": args.model, "device": "cuda", "dtype": args.dtype, "cases_file": args.cases,
              "n_cases": len(cases), "torch": torch.__version__, "max_new_tokens": args.max_new_tokens,
-             "svd_q": args.svd_q}
+             "svd_q": args.svd_q if "svd" in args.modes else None,
+             "provenance": provenance.collect({"cases": args.cases, "deltas": args.deltas}, model)}
     updates = None
     if args.deltas:
         updates, dmeta, dinfo = load_easyedit_updates(args.deltas)

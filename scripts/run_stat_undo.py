@@ -38,6 +38,7 @@ from retractbench.editors.rome import RomeEditor
 from retractbench.equality import pad_completions, two_sample_test
 from retractbench.gpu import check_gpu_free
 from retractbench.report import load_cases
+from retractbench import provenance
 
 
 def probes(case) -> list[str]:
@@ -139,7 +140,9 @@ def main():
                         "median_p": statistics.median(ps), "mean_mmd": sum(ms) / len(ms)})
     out = Path("results") / f"{time.strftime('%Y%m%dT%H%M%S')}_stat_undo_{args.tag}.json"
     out.write_text(json.dumps({"args": vars(args), "summary": summary, "per_case": per_case,
-                               "torch": torch.__version__}, indent=2), encoding="utf-8")
+                               "torch": torch.__version__,
+                               "provenance": provenance.collect({"cases": args.cases, "deltas": args.deltas}, model)},
+                              indent=2), encoding="utf-8")
     print(f"\n| comparison | reject @ {args.alpha} | median p | mean MMD |")
     print("| --- | --- | --- | --- |")
     for s in summary:

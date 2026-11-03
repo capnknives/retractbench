@@ -30,8 +30,10 @@ partial file removed. --fresh ignores an existing partial file.
 from __future__ import annotations
 
 import argparse
+import hashlib
 import json
 import os
+import subprocess
 import sys
 import time
 from pathlib import Path
@@ -74,6 +76,18 @@ def load_jsonl(path: str) -> list[dict]:
     return rows
 
 
+def _commit(repo: Path, env_var: str) -> str | None:
+    """Full commit of repo (+ "-dirty" if tracked files changed), or env_var where there is no .git (Modal)."""
+    try:
+        head = subprocess.run(["git", "rev-parse", "HEAD"], cwd=repo, capture_output=True, text=True,
+                              check=True).stdout.strip()
+        dirty = subprocess.run(["git", "status", "--porcelain", "--untracked-files=no"], cwd=repo,
+                               capture_output=True, text=True, check=True).stdout.strip()
+        return head + ("-dirty" if dirty else "")
+    except (OSError, subprocess.CalledProcessError):
+        return os.environ.get(env_var)
+
+
 def save_atomic(obj, path: Path):
     """Write to path.tmp, then rename over path, so a crash never leaves a half-written file."""
     tmp = path.with_name(path.name + ".tmp")
@@ -108,7 +122,13 @@ def main():
             "cases_file": args.cases, "weight_name": wname, "weight_shape": list(W.shape),
             "weight_dtype": str(W.dtype), "weight_sum_before": W0.double().sum().item(),
             "torch": str(torch.__version__), "transformers": str(__import__("transformers").__version__),
-            "trace_and_reverse_repo": str(REPO)}
+            "trace_and_reverse_repo": str(REPO),
+            "retractbench_commit": _commit(Path(__file__).resolve().parents[1], "RETRACTBENCH_GIT_COMMIT"),
+            "trace_and_reverse_commit": _commit(REPO, "RETRACTBENCH_TAR_COMMIT"),
+            "hparams_sha256": hashlib.sha256(Path(args.hparams).read_bytes()).hexdigest(),
+            "cases_sha256": hashlib.sha256(Path(args.cases).read_bytes()).hexdigest(),
+            "gpu": torch.cuda.get_device_name(0) if torch.cuda.is_available() else None,
+            "modal_task_id": os.environ.get("MODAL_TASK_ID")}
     out = {"meta": meta, "cases": {}}
 
     if partial_path.exists() and not args.fresh:
@@ -117,6 +137,8 @@ def main():
             if prev["meta"].get(key) != meta[key]:
                 raise SystemExit(f"{partial_path} was made with a different {key}; use --fresh to start over")
         out = prev
+        for key, value in meta.items():   # provenance fields added after the partial file was started
+            out["meta"].setdefault(key, value)
         if prev["meta"].get("context_templates"):
             # Reuse the exact templates of the interrupted run (normally identical anyway: seed 42).
             rome_main.CONTEXT_TEMPLATES_CACHE = prev["meta"]["context_templates"]

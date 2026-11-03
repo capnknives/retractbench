@@ -40,6 +40,7 @@ from retractbench.editors.rome import RomeEditor, drop_top_singular
 from retractbench.gpu import check_gpu_free
 from retractbench.harness import answers_with_target
 from retractbench.report import load_cases
+from retractbench import provenance
 
 
 def spectrum_report(W0: torch.Tensor, W1: torch.Tensor, top: int = 20, qs=(1, 2, 4, 8, 16)) -> dict:
@@ -139,7 +140,8 @@ def main():
     result = {"cases_file": args.cases, "model": args.model, "dtype": args.dtype, "layer": args.layer,
               "edits": "easyedit-rome" if args.deltas else f"retractbench-rome ({args.covariance})",
               "deltas": args.deltas, "tokens": args.tokens, "n_cases": len(cases), "n_edits_ok": len(ok),
-              "table": table, "best_q": best["q"], "per_case": per_case}
+              "table": table, "best_q": best["q"], "per_case": per_case,
+              "provenance": provenance.collect({"cases": args.cases, "deltas": args.deltas}, model)}
     if their_ok is not None:
         both = [r for r in ok if r["their_filter_ok"]]
         result["n_edits_ok_and_their_filter"] = len(both)
