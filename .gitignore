@@ -7,4 +7,12 @@ __pycache__/
 install.log
 _install.ps1
 scratch/
-data/
+data/*
+!data/easyedit_rome/
+data/easyedit_rome/*
+# the EasyEdit edits behind the write-up are committed (see data/easyedit_rome/README.md)
+!data/easyedit_rome/README.md
+!data/easyedit_rome/cf100.pt
+!data/easyedit_rome/dev20.pt
+!data/easyedit_rome/cf100_7b.pt
+!data/easyedit_rome/dev20_7b.pt
