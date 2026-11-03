@@ -117,6 +117,14 @@ How the closest reversal papers score success: Youssef et al. (ICLR 2026, arXiv 
 
 Early and in progress. See [LOG.md](LOG.md) for the working log, including what failed.
 
+## How to cite
+
+See [CITATION.cff](CITATION.cff), or use GitHub's "Cite this repository" button. A DOI for each release will be added here once it is archived on Zenodo.
+
+## Author
+
+Richard Elliot. The code and analysis were developed with Claude (Anthropic) as a coding assistant; commits it co-wrote say so.
+
 ## License
 
 MIT

@@ -6,5 +6,5 @@ __pycache__/
 *.safetensors
 install.log
 _install.ps1
-scratch/out/
+scratch/
 data/

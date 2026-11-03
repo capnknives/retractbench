@@ -1,7 +1,7 @@
 # Notes for Claude
 
 ## What this project is
-`retractbench` measures whether edits to a language model can be fully revoked. It is Andy's research project and public portfolio; the commit history and LOG.md are part of the deliverable.
+`retractbench` measures whether edits to a language model can be fully revoked. It is Richard Elliot's research project and public portfolio; the commit history and LOG.md are part of the deliverable.
 
 ## Rules
 - Keep changes small, readable and reviewable; prefer clarity over cleverness, and document non-obvious PyTorch behaviour in the commit message.
@@ -10,6 +10,7 @@
 - Don't hand-edit files in `results/`. Results come from runs only.
 - No claims in README or write-ups that a run hasn't shown. In particular: revocation here undoes an edit; it does not remove anything the base model learned in pretraining.
 - Before a new experiment, write the predictions in LOG.md as plain predictions, not attributed to a person.
+- In anything public or professional (README, write-ups, emails, citation metadata), the author is Richard Elliot. No nickname.
 
 ## Layout
 - `DOC_EDITS.md`: log of every edit Claude makes to documents outside the repo (Claude Docs, Google Drive). Add an entry for each edit, newest first.

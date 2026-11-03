@@ -1,0 +1,23 @@
+cff-version: 1.2.0
+message: "If you use retractbench, please cite it as below."
+title: "retractbench: measuring whether edits to a language model can be fully revoked"
+abstract: >-
+  An open benchmark that tests whether an edit to a language model can be
+  undone, by comparing the model after the undo with the unedited model on
+  the edited prompt, paraphrases, unrelated prompts and look-alike prompts,
+  plus a two-sample test on sampled outputs.
+type: software
+authors:
+  - given-names: Richard
+    family-names: Elliot
+    email: captain.knives@gmail.com
+version: 0.1.0
+license: MIT
+repository-code: "https://github.com/capnknives/retractbench"
+keywords:
+  - knowledge editing
+  - model editing
+  - edit reversal
+  - ROME
+  - evaluation
+  - benchmark
