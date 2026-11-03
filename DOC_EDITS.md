@@ -12,6 +12,7 @@ To undo:
 | --- | --- | --- |
 | Write-up draft, "Restoring the Fact Is Not Restoring the Model (draft)" | Claude Docs | https://claude.ai/artifact/9RGHHhmjeHEtuTPxwDwiC8 |
 | Blog post draft, "The Fact Comes Back, the Model Doesn't" | Claude Docs | https://claude.ai/artifact/E3CacZR67ds4BBjfA5gd8x |
+| Email to Youssef et al. (draft, send Nov 9) | Claude Docs | https://claude.ai/artifact/Po6Zy9DFNbfT1SeCShZUau |
 | Landscape Review: Who Else Is Working on Revocable Model Edits | Claude Docs | (id starts b13035b6) |
 | retractbench Status Update — Nov 2, 2026 | Google Drive | 17pA5IAz… |
 | retractbench Research Brief for Gemini — Nov 2, 2026 | Google Drive | 1PBdf_O2… |
@@ -21,6 +22,8 @@ To undo:
 
 ## 2026-11-02
 
+- **21:30, email draft (Claude Docs): created.** "Email to Youssef et al. (draft, send Nov 9)", https://claude.ai/artifact/Po6Zy9DFNbfT1SeCShZUau. The numbers name their q settings, per the review (LOG 21:30).
+- **21:30, blog post draft (Claude Docs): rev 20 → 36.** Applied the independent review's fixes (LOG 21:30): q settings named in the TL;DR; "by design" narrowed to "at this setting"; MMD overlap caveat; definitions of leak and ES; dev-table definitions note; README claim replaced with LOG.md; edits-not-committed note; run times; control CIs; a new Limitations bullet on the single q=3 operating point; the labelled leak file named.
 - **19:10, blog post draft (Claude Docs): rev 17 → 20.** MMD section: added a control row (8 of 100, CI 4–15%), and replaced the "confounded" caveat with the control result (LOG 19:00). The section intro now says each check is read against the control.
 - **17:50, Master Plan v4 (Google Drive): created.** Replaces v3 (unchanged). Research track instead of startup framing; status table with the null-edit control; experiment order after the post (MMD power, GRACE rollback, LoRA-per-edit, MEMIT/AlphaEdit, second model family); SPAR/MATS applications. See LOG 17:50.
 - **17:23, blog post draft (Claude Docs): rev 11 → 17.** Revised for the null-edit control (LOG 17:20). The TL;DR now leads with the leak and ES, and adds a bullet saying truncation cannot restore the model by design. The test-set table gains an ES column and a control row. The paragraph under it explains how to read the control. The ES paragraph gives the control's 0.22. The MMD paragraph is marked as confounded until the control is sampled.

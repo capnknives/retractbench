@@ -68,7 +68,8 @@ def main():
     tok = AutoTokenizer.from_pretrained(args.model)
     model = AutoModelForCausalLM.from_pretrained(args.model, dtype=getattr(torch, args.dtype)).to("cuda")
     extra = {"model": args.model, "device": "cuda", "dtype": args.dtype, "cases_file": args.cases,
-             "n_cases": len(cases), "torch": torch.__version__}
+             "n_cases": len(cases), "torch": torch.__version__, "max_new_tokens": args.max_new_tokens,
+             "svd_q": args.svd_q}
     updates = None
     if args.deltas:
         updates, dmeta, dinfo = load_easyedit_updates(args.deltas)

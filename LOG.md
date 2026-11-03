@@ -2,6 +2,25 @@
 
 Dated entries, newest first. Failures and dead ends go in too.
 
+## 2026-11-02 (21:30): Independent review of the blog post; fixes
+
+A fresh subagent that had not seen the work checked every number and claim in the blog post (Claude Doc rev 20) against `results/` and the arXiv paper. Its scripts were in the session scratchpad; nothing in the repo was changed by it.
+
+Numbers: all headline figures recompute exactly from the files, with no wrong numbers. That covers exact revoke, leak and ES for every undo mode and both controls; the MMD rejection counts; the CIs; the dev table; the Result 1 figures; and both Youssef et al. quotes (verbatim, Sec. 5.3 "Reversal"). The ES figures come from the margins runs, which use the same deltas file and case ids as the exact-revoke runs and give byte-identical outputs.
+
+Claims fixed in the post (rev 20 -> 35, DOC_EDITS 21:30):
+- The TL;DR put the 68% (q=7-10) next to the leak and ES figures (q=3) without saying the settings differ. Both are now named.
+- "Out of reach by design" became "at this setting". The data shows output changes at q=3 only.
+- MMD: "every one of the 8 control rejections is also rejected after the undo" is partly built in, because both runs compare against the same base sample (seeds 1000+i). Two of the 8 are also rejected for restore. The post now rests on 45 vs 8 rejections and a mean MMD about 9 times the control's, and states that caveat.
+- "The README gives the commands for each run" was false. It now reads "LOG.md records the command for each run", and the post adds that the edit files are not committed (regenerate them with the export script, about 2 h).
+- "The full list is in the repository" was false: the labels existed only as prose in the 14:15 entry. They are now committed as `labels/svd3_q3_cf100_leaks_labelled.json` (130 rows: 51 identical_to_edited, 76 edited_answer_new_text, 3 other), built from that entry's decisions and checked against its counts.
+- Wording: the leak definition (any mention of the target in the 8 tokens, where base did not mention it); ES (mean per-token log-probability); the dev-table metrics differ from the paper's (their editing accuracy is next-token agreement with the edited model); the 86% vs 100% subtract results (several factors differ: bf16 model, layer 4, our editor); run times; "before scoring any test edit". CIs added for the control leak (0.06-2%) and the control ES (15-31%).
+- `run_rome.py` now records `max_new_tokens` and `svd_q` in the run meta. Earlier runs relied on the default of 8, which their meta doesn't show.
+
+Top reviewer attack, not yet addressed: the test set was run only at q=3, the best setting by our own criterion, where the dev set keeps the edit in 53% of cases. At the paper-like q=7-10 it is 26%, so the leak there is likely lower. Decision: run the test set at q=10 with its own control (task #19) before the Nov 9 email, and report both settings. The post's Limitations now say this.
+
+Not checked by the reviewer: whether our config matches the authors' Qwen2.5-7B YAML, and the Caddeo, Gao, Jiang and Meng citations. Stale file noted: `results/20261102T143500_ci_headline.json` still shows [0, 0] leak CIs for restore/subtract, from before the Wilson fallback. The post doesn't use those rows.
+
 ## 2026-11-02 (19:00): MMD control result: truncation alone barely moves the sampled distribution
 
 Run (prediction in 17:30): `results/20261102T180312_stat_undo_ee_cf100_nulledit.json` (about 37 min). Its base-vs-base check rejected 3/100, the same as the 14:15 run.
