@@ -1,0 +1,42 @@
+{
+  "undo_run": "results/20261103T231341Z_easyedit-rome-svd15_ee_cf100_q15_L5_iso.json",
+  "control_run": "results/20261103T232843Z_null-edit-svd15_ee_cf100_q15_nulledit_L5_iso.json",
+  "cases": "cases/counterfact_100_seed0.jsonl",
+  "probes_equal_to_base": {
+    "edited_prompt": {
+      "n": 100,
+      "edited_eq_base": 1,
+      "undo_eq_base": 21,
+      "control_eq_base": 44
+    },
+    "paraphrases": {
+      "n": 200,
+      "edited_eq_base": 0,
+      "undo_eq_base": 33,
+      "control_eq_base": 97
+    },
+    "unrelated": {
+      "n": 300,
+      "edited_eq_base": 175,
+      "undo_eq_base": 137,
+      "control_eq_base": 142
+    },
+    "hard_negatives": {
+      "n": 500,
+      "edited_eq_base": 173,
+      "undo_eq_base": 221,
+      "control_eq_base": 253
+    }
+  },
+  "target_probes": {
+    "differ_only_after_undo": 94,
+    "differ_only_under_control": 7,
+    "cases_with_undo_only_difference": 67,
+    "undo_only_containing_target": 14
+  },
+  "es_paired": {
+    "edit_preferred_only_after_undo": 21,
+    "edit_preferred_only_under_control": 1,
+    "mcnemar_exact_p": 1.0967254638671875e-05
+  }
+}

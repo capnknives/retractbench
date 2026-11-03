@@ -4,6 +4,38 @@ Dated entries, newest first. Failures and dead ends go in too.
 
 Predictions and entries are drafted with Claude (Anthropic) as a coding assistant and reviewed by the author, Richard Elliot. Predictions are committed before the run they predict, except where an entry says otherwise and in some early entries, whose predictions were committed together with their results (for example 280a2bb, 2026-11-02 11:33); for those, the entry itself is the only record of the order. Corrections to an earlier entry are made by a later dated entry or a dated note. On 2026-11-02 (commit 1823715) older entries were reworded to drop who made each prediction; the original wording is in the git history.
 
+## 2026-11-03 (17:32): 1.5B test set at q=15: the edit is removed less well than on 7B at the same q
+
+Runs (predictions in 16:58): `results/20261103T231341Z_easyedit-rome-svd15_ee_cf100_q15_L5_iso.json` and `results/20261103T232843Z_null-edit-svd15_ee_cf100_q15_nulledit_L5_iso.json`, about 15 min each on the RTX 3070, float32, 100 cases, 11 probes, 8 greedy tokens; plus `results/20261103T_q15_null_svd_compare.json` and `results/20261103T_q15_probe_types.json`. Leak CI: case-cluster bootstrap, 10,000 resamples, seed 0 (the same function reproduces the q=10 CI of 5.3-15.3%). ES CI: Wilson.
+
+Provenance note: both files record `git_commit: dd79900-dirty`, from the old `report.git_commit`, which counted untracked files as dirty. The provenance code (3e53523) was edited on disk while the control was running; the process had loaded the code at start, so neither run used it. Neither file has the new `meta["provenance"]` block.
+
+| 1.5B, 100 test edits | SVD q=3 | SVD q=10 | **SVD q=15** | Control q=3 / 10 / **15** |
+| --- | --- | --- | --- | --- |
+| Exact revoke (of 100) | 1 | 0 | **0** | 0 / 0 / **0** |
+| Leak (of 300) | 130 (43%) | 30 (10%) | **28 (9.3%, CI 5.0-14.3%)**, 17 cases | 1 / 3 / **2 (0.7%)** |
+| ES (base 0.19) | 0.69 | 0.41 | **0.42 (CI 0.33-0.52)** | 0.22 / 0.21 / **0.22 (CI 0.15-0.31)** |
+| Probes equal to base (of 1,100) | 417 | 433 | **412** | 659 / 556 / **536** |
+
+By probe type at q=15 (undo / control / edited model, probes equal to base): edited prompt 21 / 44 / 1 of 100; paraphrases 33 / 97 / 0 of 200; unrelated 137 / 142 / 175 of 300; hard negatives 221 / 253 / 173 of 500. On the edited prompt and paraphrases, 94 probes (67 cases) differ from base only after the undo, 7 only under the control; 14 of the 94 contain the target. Paired ES: 21 cases prefer the edit only after the undo, 1 only under the control (exact McNemar p = 1.1e-5).
+
+Against the predictions (16:58):
+- Leak 3-10%: right (9.3%), at the top of the range. Control leak at most 1%: right (0.7%).
+- ES 0.25-0.40: wrong, slightly higher (0.42). On 1.5B, ES does not fall between q=10 and q=15 (0.41 -> 0.42), unlike 7B (0.39 -> 0.30).
+- Control ES 0.15-0.25: right (0.22).
+- Control probes equal to base 450-540: right (536), and clearly more truncation damage than 7B's control at q=15 (687).
+- SVD probes equal to base 380-460: right (412). Exact revoke 0 and 0: right.
+- Per probe type: edited prompt, undo below control: right (21 vs 44). Unrelated within 5 points: right (45.7% vs 47.3%). Hard negatives within 5 points: wrong (44.2% vs 50.6%, 6.4 points).
+
+Decision rule (fixed at 16:58): the 1.5B leak at q=15 is 9.3%, not within 3 points of 7B's 3.0%, so the second branch applies: the edit is removed less well on 1.5B at matched q. Applying it honestly, the evidence comes from q=15, not q=10:
+- q=3: 1.5B removes the edit better than 7B (leak 43% vs 74%, ES 0.69 vs 0.90).
+- q=10: about the same (leak 10% vs 8.3%, ES 0.41 vs 0.39; CIs overlap).
+- q=15: 7B is clearly better (leak 3.0% vs 9.3%, ES 0.30 vs 0.42, probes equal to base 612 vs 412).
+- On 1.5B the leak and ES level off between q=10 and q=15 (30 -> 28 leaks, 0.41 -> 0.42), while truncation keeps changing more of the model (control 556 -> 536). On 7B both keep falling.
+- At every matched q, truncation alone changes more of 1.5B than of 7B (control probes equal to base: 659 / 556 / 536 vs 758 / 730 / 687).
+
+What this means for the post: the 1.5B-vs-7B comparison is reported at matched q (3, 10, 15), with the rows above. "Further off on the smaller model" holds at q=15 and at each model's best test setting, not at every q. The "why" paragraph keeps only what the data show: more truncation damage on 1.5B at every q, and larger side effects of the 1.5B edits (made with the 7B config). It does not claim a cause.
+
 ## 2026-11-03 (17:02): Research review of the project; the 7B result reframed
 
 A fresh subagent reviewed the research itself (question, design, conclusions, positioning), not the arithmetic. It worked from a GitHub clone at 3381dd1, the current post and email, and the paper. Its scripts stayed in that session's container. Its main findings were checked here against the result files before acting on them. The per-probe-type counts now come from a committed script, `scripts/probe_types.py`, with outputs `results/20261103T_7b_q{3,10,15}_probe_types.json` and `results/20261103T_q{3,10}_probe_types.json` (1.5B).
