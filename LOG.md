@@ -2,6 +2,21 @@
 
 Dated entries, newest first. Failures and dead ends go in too.
 
+## 2026-11-03 (11:15): Resumable export tested; cloud pipeline for Qwen2.5-7B (predictions)
+
+Why 7B: every result so far is on Qwen2.5-1.5B. Our config is the authors' Qwen2.5-7B ROME file with only the model name changed. Their headline numbers are on 7B, so before contacting them we run their own config on their own model. Our 8 GB GPU can't hold 7B in float32, so it runs on a rented A100 80 GB through Modal (free monthly credit; the spend is checked per step).
+
+Resumable export (task #5): `easyedit_rome_export_ckpt.py` was run on 3 cases, killed after 2 were saved, and rerun. It printed "resuming: 2 cases already done" and finished the third. All 3 updates are bit-identical to the original `cf100.pt` export (max abs difference 0.0). It now replaces `easyedit_rome_export.py`.
+
+New: `scripts/modal_app.py` (export in the authors' environment, scoring in ours, on one Modal Volume that holds the checkpoint and the HF cache, committed every 2 minutes), `scripts/modal/requirements_*.txt` (pinned from the two local venvs), `configs/easyedit_rome_qwen2.5-7b.yaml` (the authors' file, unchanged). Order: dry run on 1.5B with 2 cases on a T4; time one 7B edit; then the full dev20 and cf100 exports; then scoring at q=3 and q=10 with controls.
+
+Predictions for 7B (written before any 7B run):
+- First-token reversal on dev at the paper's setting: close to their 62.9%, within our dev CI (roughly 45-80%). It is their model and config, so a large gap would point to a setup difference.
+- The edit is the top singular component more often than on 1.5B (1 of 20 there). The paper's method assumes this, and their best-case numbers are on 7B. This is uncertain; their Qwen2.5-7B KL (1.53) is the worst of their four models.
+- Test set at q=10: leak below the 1.5B figure (10%) but above its control. ES above base (0.19-ish) after the undo.
+- Truncation control: changes probes on 7B too (0 of 100 exact), because dropping 10 components of a 3584x18944 matrix still removes base structure.
+- Edit side effects: lower than on 1.5B (42% of unrelated probes changed), since a larger model spreads one edit less.
+
 ## 2026-11-03 (09:05): q=10 result: the edit survives less, but still well above the control
 
 Runs (prediction in 08:25): `results/20261103T143823Z_easyedit-rome-svd10_ee_cf100_q10_L5_iso.json` and `results/20261103T145300Z_null-edit-svd10_ee_cf100_q10_nulledit_L5_iso.json`, about 14 min each, plus `results/20261103T_q10_null_svd_compare.json`. The CIs are Wilson for proportions and a case-cluster bootstrap for the leak (10,000 resamples, seed 0, as in `ci_headline.py`).

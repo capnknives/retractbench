@@ -9,22 +9,23 @@ while retractbench uses transformers 5.x. So editing and scoring are split:
 
 It does not import retractbench; it reads our JSONL case files directly.
 
-    cd D:\\trace-and-reverse
-    .venv\\Scripts\\python.exe D:\\retractbench\\scripts\\easyedit_rome_export.py ^
-        --cases D:\\retractbench\\cases\\counterfact_dev20_seed1.jsonl --tag dev20 ^
-        --hparams D:\\retractbench\\configs\\easyedit_rome_qwen2.5-1.5b.yaml
-
 How an edit is made: exactly as in their reversing_single_edits.py, through
-BaseEditor.edit(prompts, ground_truth, target_new, subject). We call it with
+BaseEditor.edit(prompts, ground_truth, target_new, subject), with
 sequential_edit=False, so BaseEditor puts the original weights back after each
-case (their script instead reloads the model per case; same effect, faster).
-We check that the matrix really is back to its original values after every case.
-To get the update itself, we wrap their execute_rome, which returns the two
+case. We check that the matrix really is back to its original values after every
+case. To get the update itself, we wrap their execute_rome, which returns the two
 vectors whose outer product ROME adds to the weight matrix.
 
-Saved per case: the two vectors, the weight name, and EasyEdit's own
-pre/post rewrite_acc (their script skips cases with post rewrite_acc < 1,
-so we record it rather than filter here).
+Checkpointing (added 2026-11-02 after a power cut lost a 100-case run at 18/100;
+tested 2026-11-03: interrupted after 2 of 3 cases and resumed, all 3 updates
+bit-identical to the original export, LOG 2026-11-03 11:15):
+after every case the results so far are written to <tag>.partial.pt. The write
+goes to a temporary file first and is then renamed over the old one (os.replace),
+so a crash mid-write leaves the previous checkpoint intact. Running the same
+command again resumes: cases already in the partial file are skipped, and the
+saved context templates are reused, so resumed edits are made exactly as they
+would have been. When all cases are done the final <tag>.pt is written and the
+partial file removed. --fresh ignores an existing partial file.
 """
 from __future__ import annotations
 
@@ -73,6 +74,13 @@ def load_jsonl(path: str) -> list[dict]:
     return rows
 
 
+def save_atomic(obj, path: Path):
+    """Write to path.tmp, then rename over path, so a crash never leaves a half-written file."""
+    tmp = path.with_name(path.name + ".tmp")
+    torch.save(obj, tmp)
+    os.replace(tmp, path)
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--cases", required=True)
@@ -80,7 +88,13 @@ def main():
     ap.add_argument("--hparams", required=True)
     ap.add_argument("--out-dir", default=r"D:\retractbench\data\easyedit_rome")
     ap.add_argument("--limit", type=int, default=None)
+    ap.add_argument("--fresh", action="store_true", help="ignore an existing partial file and start over")
     args = ap.parse_args()
+
+    out_dir = Path(args.out_dir)
+    out_dir.mkdir(parents=True, exist_ok=True)
+    final_path = out_dir / f"{args.tag}.pt"
+    partial_path = out_dir / f"{args.tag}.partial.pt"
 
     hp = ROMEHyperParams.from_hparams(args.hparams)
     rows = load_jsonl(args.cases)[: args.limit]
@@ -90,14 +104,28 @@ def main():
     W0 = W.detach().clone()   # exact copy, to check that every case is undone before the next
     print(f"model {hp.model_name} dtype {W.dtype}, editing {wname} {tuple(W.shape)}", flush=True)
 
-    out = {"meta": {"hparams_file": args.hparams, "hparams": {k: getattr(hp, k) for k in hp.__dataclass_fields__},
-                    "cases_file": args.cases, "weight_name": wname, "weight_shape": list(W.shape),
-                    "weight_dtype": str(W.dtype), "weight_sum_before": W0.double().sum().item(),
-                    "torch": torch.__version__, "transformers": __import__("transformers").__version__,
-                    "trace_and_reverse_repo": str(REPO)},
-           "cases": {}}
+    meta = {"hparams_file": args.hparams, "hparams": {k: getattr(hp, k) for k in hp.__dataclass_fields__},
+            "cases_file": args.cases, "weight_name": wname, "weight_shape": list(W.shape),
+            "weight_dtype": str(W.dtype), "weight_sum_before": W0.double().sum().item(),
+            "torch": str(torch.__version__), "transformers": str(__import__("transformers").__version__),
+            "trace_and_reverse_repo": str(REPO)}
+    out = {"meta": meta, "cases": {}}
+
+    if partial_path.exists() and not args.fresh:
+        prev = torch.load(partial_path, map_location="cpu")
+        for key in ("hparams_file", "cases_file", "weight_name", "weight_sum_before"):
+            if prev["meta"].get(key) != meta[key]:
+                raise SystemExit(f"{partial_path} was made with a different {key}; use --fresh to start over")
+        out = prev
+        if prev["meta"].get("context_templates"):
+            # Reuse the exact templates of the interrupted run (normally identical anyway: seed 42).
+            rome_main.CONTEXT_TEMPLATES_CACHE = prev["meta"]["context_templates"]
+        print(f"resuming: {len(out['cases'])} cases already done in {partial_path.name}", flush=True)
+
     t0 = time.time()
     for i, r in enumerate(rows, 1):
+        if r["id"] in out["cases"]:
+            continue
         # Our targets carry a leading space (" Manila"); ROME adds its own, so strip ours.
         metrics, _, _ = editor.edit(prompts=[r["prompt"]], ground_truth=[r["target_true"].strip()],
                                     target_new=[r["target"].strip()], subject=[r["subject"]],
@@ -115,16 +143,19 @@ def main():
             "rewrite_acc_post": float(metrics[0]["post"]["rewrite_acc"][0]),
             "update_fro": upd.norm().item(),
         }
+        out["meta"]["context_templates"] = rome_main.CONTEXT_TEMPLATES_CACHE
+        save_atomic(out, partial_path)
         c = out["cases"][r["id"]]
         print(f"  {i}/{len(rows)} {r['id']}: rewrite_acc {c['rewrite_acc_pre']:.2f} -> {c['rewrite_acc_post']:.2f}, "
-              f"||update|| {c['update_fro']:.3f} ({time.time() - t0:.0f}s)", flush=True)
+              f"||update|| {c['update_fro']:.3f} ({time.time() - t0:.0f}s, saved)", flush=True)
 
-    out["meta"]["context_templates"] = rome_main.CONTEXT_TEMPLATES_CACHE
-    Path(args.out_dir).mkdir(parents=True, exist_ok=True)
-    path = Path(args.out_dir) / f"{args.tag}.pt"
-    torch.save(out, path)
+    missing = [r["id"] for r in rows if r["id"] not in out["cases"]]
+    if missing:
+        raise SystemExit(f"{len(missing)} cases missing after the loop, e.g. {missing[:3]}")
+    save_atomic(out, final_path)
+    partial_path.unlink(missing_ok=True)
     ok = sum(c["rewrite_acc_post"] >= 1.0 for c in out["cases"].values())
-    print(f"\n{ok}/{len(rows)} edits with rewrite_acc 1.0 (their script keeps only these)\nsaved {path}\nALL DONE")
+    print(f"\n{ok}/{len(rows)} edits with rewrite_acc 1.0 (their script keeps only these)\nsaved {final_path}\nALL DONE")
 
 
 if __name__ == "__main__":
