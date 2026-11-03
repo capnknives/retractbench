@@ -23,6 +23,9 @@ To undo:
 
 ## 2026-11-03
 
+- **15:14, podcast brief (Claude Docs): rev 10 → 11.** The story paragraph now covers the 7B step. The "What survived the control" section is replaced by "Then the authors' own model". The next-experiments list drops the completed items. The numbers table now has both models and their controls. A "don't say 'the edit usually survives'" line is added.
+- **15:13, email draft (Claude Docs): rev 7 → 10.** The bullets now lead with the 7B replication (70% vs 62.9%), the q=15 result with its control, and the 1.5B contrast. The subject says "Qwen2.5-7B and 1.5B". The note points to LOG 13:30 and 15:10.
+- **15:12, blog post draft (Claude Docs): rev 48 → 56.** Restructured around the 7B result (LOG 13:30, 15:10). Everything below the byline was replaced (the earlier version is recoverable at rev 48). New sections: TL;DR, method (both models, edit side effects), scoring (with the control), results on 7B, results on 1.5B, what the undo leaves behind, what works, limitations (including the missing pre-run predictions for the 7B MMD test), code and sources. Two follow-up wording fixes: the 7B MMD was run for restore only; truncation damage on 7B vs 1.5B is 38% vs 40%.
 - **09:35, email draft (rev 6 → 7) and podcast brief (rev 9 → 10), Claude Docs.** Author name changed from Richard "Andy" Elliot to Richard Elliot (the author's decision: no nickname in public or professional text). The blog post and the technical draft had no nickname to change.
 - **09:15, podcast brief (Claude Docs): rev 8 → 9.** The numbers section adds the q=10 leak (10%, control 1%) and preference (41, control 21).
 - **09:15, email draft (Claude Docs): rev 3 → 6.** The author's edits at rev 2-3 (sign-off on one line, Maestro removed) were kept. Bullet 2 adds the q=10 figures; bullet 3 says truncation changes probes at both settings; the note now says the numbers include q=10.

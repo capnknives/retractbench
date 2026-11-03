@@ -10,6 +10,23 @@ Model-editing methods (GRACE, WISE, ROME/MEMIT, LoRA adapters, trained KV caches
 4. Revoke the edit.
 5. Probe again and compare against step 1.
 
+For approximate undo methods it also runs a **control**: the same undo applied to a model that was never edited. That separates "the undo left the edit behind" from "the undo changed the model by itself".
+
+## Results so far (Nov 3, 2026)
+
+The SVD-truncation reversal of Youssef et al. (ICLR 2026), with genuine ROME edits made by the authors' own EasyEdit code. 100 CounterFact test edits per model, 11 probes each, 8 greedy tokens. q (the number of singular components dropped) was chosen on a separate 20-edit dev set by the 5-token criterion.
+
+| | Qwen2.5-7B (authors' config), q=15 | Qwen2.5-1.5B, q=3 | Restore or subtract (both models) |
+| --- | --- | --- | --- |
+| First-token reversal on dev at the paper's q=10 (paper: 62.9% on 7B) | 70% | 68% | n/a |
+| All 11 probes equal to base | 0/100 | 1/100 (control: 0/100) | 100/100 |
+| Probes equal to base (control, never edited) | 612/1,100 (687) | 417/1,100 (659) | 1,100/1,100 |
+| Removed answer still present (control) | 9/300 (2/300) | 130/300 (1/300) | 0/300 |
+| ES after undo (control; base about 0.18) | 0.30 (0.17) | 0.69 (0.22) | equal to base |
+| Sampled output flagged by the MMD test (control) | 6/100 (5/100) | 45/100 (8/100) | 1-7/100 |
+
+In short: on the authors' model at a well-chosen setting, the SVD undo gets close to the original (the edit is mostly removed, and sampled output is indistinguishable from the original), but never exactly. On the smaller model it is far off. Only an undo that keeps the edit (restore or subtract) is exact. The full numbers, both settings and every correction are in [LOG.md](LOG.md), entries for 2026-11-02 and 2026-11-03.
+
 ## Metrics
 
 | Metric | Question it answers |
@@ -47,6 +64,17 @@ python scripts/run_matched.py --cases cases/counterfact_100_seed0.jsonl --tag cf
 
 Results go to `results/` as JSON (full outputs for every probe) and a Markdown summary, with the git commit, config and library versions recorded.
 
+Models too big for a local GPU in float32 (Qwen2.5-7B) run on a rented A100 through [Modal](https://modal.com), with the same scripts. `scripts/modal_app.py` builds the authors' environment for the export and ours for scoring, on one shared volume:
+
+```bash
+pip install modal && modal token new          # in its own venv
+export MODAL_IMAGE_BUILDER_VERSION=2025.06    # the authors' pins need Python 3.10
+modal run --detach scripts/modal_app.py --step download --tag x --model Qwen/Qwen2.5-7B
+modal run --detach scripts/modal_app.py --step export --tag cf100_7b
+modal run --detach scripts/modal_app.py --step score --tag ee_cf100_7b_q15 --deltas cf100_7b --modes svd --svd-q 15
+modal volume get retractbench-vol rb/results/ ./from_modal/
+```
+
 ## Cases
 
 | File | What |
@@ -61,7 +89,7 @@ Results go to `results/` as JSON (full outputs for every probe) and a Markdown s
 | GRACE-style activation codebook (`retractbench.editors.grace`) | Minimal re-implementation. Options: `key_position` = `last` (original GRACE) or `subject`; `key_space` = `raw` or `standardized`. To be checked against EasyEdit's GRACE. |
 | ROME-style rank-one weight edit (`retractbench.editors.rome`) | Simplified ROME (crude covariance from calibration sentences). Undo modes: `restore` (saved copy), `subtract` (remove the update), `inverse` (counter-edit to the base model's tokens or, with `inverse_target="true"`, to the true object). |
 | SVD-truncation reversal (Youssef et al., ICLR 2026) | Undo mode `svd` (drop the top-q singular components); q chosen on a held-out dev set (`scripts/sweep_svd_q.py`). |
-| Genuine ROME edits from the authors' EasyEdit (`editors/precomputed.py`) | Made by the EasyEdit in [trace-and-reverse](https://github.com/paulyoussef/trace-and-reverse) in its own environment (`scripts/easyedit_rome_export.py`), replayed here with undo modes `restore`, `subtract`, `svd`. |
+| Genuine ROME edits from the authors' EasyEdit (`editors/precomputed.py`) | Made by the EasyEdit in [trace-and-reverse](https://github.com/paulyoussef/trace-and-reverse) in its own environment (`scripts/easyedit_rome_export.py`, resumable), replayed here with undo modes `restore`, `subtract`, `svd`, and `--null-edit` for the control. Run on Qwen2.5-1.5B locally and on Qwen2.5-7B in the cloud (`scripts/modal_app.py`). |
 | WISE | planned |
 | LoRA adapter | planned |
 | Cartridges | planned |
@@ -104,18 +132,16 @@ How the closest reversal papers score success: Youssef et al. (ICLR 2026, arXiv 
 
 | When | What |
 | --- | --- |
-| Nov 2–8, 2026 | ICLR SVD reversal on genuine ROME edits from the authors' code (dev sweep consistent with their first-token numbers; on 100 test edits at q=3, exact revoke 1/100, target leak 130/300 probes, and on CounterFact's probability scores the prompt still prefers the edit in 69/100 cases (base 19/100); restore/subtract return to base on all of these); distributional undo test (built, cross-checked against Gao et al.'s package); second leak count for real-world facts |
-| Nov 9–15, 2026 | Public write-up of the return-to-fact vs return-to-model result as a blog post with the code on GitHub; a tagged release archived on Zenodo for a citable DOI; arXiv once an endorser is found (cs.CL needs one). If the ICLR code won't run, publish without it and note it |
-| Nov 2 (done) | Control: the same SVD truncation on the unedited model. Truncation alone returns 0/100 to base, so the 1/100 exact figure is not evidence the edit survived; the leak (130/300 vs 1/300) and ES (0.69 vs 0.22) are. The same control for the MMD test is rejected 8/100, against 45/100 for the SVD undo, so the distribution result stands |
-| Nov 3 (done) | Test set at the paper's headline q=10, with its own control: leak 30/300 (control 3/300), ES 0.41 (control 0.21), truncation alone changes 49% of probes (40% at q=3). The edit is removed far more often at q=10 but is still detectable; no tested q both removes the edit and leaves the model as it was |
-| After the write-up | Contact the reversal-paper authors |
+| Nov 2–3, 2026 (done) | SVD reversal on genuine ROME edits from the authors' code: Qwen2.5-1.5B and Qwen2.5-7B (authors' config, cloud A100); dev sweeps; test sets at q=3, 10 and 15; truncation controls for every setting; probability scores; MMD distribution test with controls; independent review of the write-up; hand-labelled leaks; resumable export |
+| Nov 9, 2026 | Preview to Youssef et al. |
+| Nov 12, 2026 | Blog post with the code on GitHub; tagged release archived on Zenodo for a citable DOI. arXiv once an endorser is found (cs.CL needs one) |
 | Nov – Dec 2026 | MMD power calibration (10/20/50 samples per probe, Benjamini-Hochberg across edits, pooled test); GRACE rollback through EasyEdit, one edit and one removed from a sequence of 10/100; LoRA-per-edit, unmerged and merged-then-subtracted |
-| Dec 2026 – Jan 2027 | MEMIT batch-minus-one and AlphaEdit sequential removal, scored against the batch-minus-one model; a second model family at 1–3B; relearning test; multi-hop leak probes |
-| Feb – Mar 2027 | Workshop short paper; decide whether to contribute a revocation evaluator to EasyEdit; 7B in bf16 on a rented GPU if needed |
+| Dec 2026 – Jan 2027 | MEMIT batch-minus-one and AlphaEdit sequential removal, scored against the batch-minus-one model; a second model family (Llama or Gemma); relearning test; multi-hop leak probes |
+| Feb – Mar 2027 | Workshop short paper; decide whether to contribute a revocation evaluator to EasyEdit |
 
 ## Status
 
-Early and in progress. See [LOG.md](LOG.md) for the working log, including what failed.
+First write-up in preparation (planned for Nov 12, 2026). See [LOG.md](LOG.md) for the working log, including predictions made before each run, what failed, and every correction.
 
 ## How to cite
 
