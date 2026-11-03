@@ -23,6 +23,7 @@ To undo:
 
 ## 2026-11-03
 
+- **09:35, email draft (rev 6 → 7) and podcast brief (rev 9 → 10), Claude Docs.** Author name changed from Richard "Andy" Elliot to Richard Elliot (the author's decision: no nickname in public or professional text). The blog post and the technical draft had no nickname to change.
 - **09:15, podcast brief (Claude Docs): rev 8 → 9.** The numbers section adds the q=10 leak (10%, control 1%) and preference (41, control 21).
 - **09:15, email draft (Claude Docs): rev 3 → 6.** The author's edits at rev 2-3 (sign-off on one line, Maestro removed) were kept. Bullet 2 adds the q=10 figures; bullet 3 says truncation changes probes at both settings; the note now says the numbers include q=10.
 - **09:10, blog post draft (Claude Docs): rev 38 → 48.** Reports both test-set settings (LOG 09:05). The TL;DR is rewritten as "the edit can survive, depending on the setting" and "no setting gives the model back" (40% / 49% of probes changed by truncation alone). The test-set table adds q=10 and control q=10 rows. Q=10 sentences are added under the table and in the ES paragraph. The hand labels are marked as q=3. The Limitations bullet becomes "Two settings on the test set".
