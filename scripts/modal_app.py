@@ -11,14 +11,15 @@ pipeline is the same as on the PC, just in the cloud:
 Both run on one Modal Volume ("retractbench-vol"), which also holds the Hugging Face
 cache. Copy results back with:  modal volume get retractbench-vol rb/results <local dir>
 
-Setup (once): a separate venv with `pip install modal`, then `modal token new`.
+Setup (once): a separate venv with `pip install modal`, then `modal token new`. Modal's 2026.10 image builder dropped Python 3.10, which the authors' pins need, so set MODAL_IMAGE_BUILDER_VERSION=2025.06 before `modal run`.
 Examples (from D:\\retractbench, with D:\\modal-venv\\Scripts\\modal.exe):
 
   # dry run on the small model, 2 cases, cheap GPU
   modal run scripts/modal_app.py --step export --tag dry15 --hparams configs/easyedit_rome_qwen2.5-1.5b.yaml --limit 2 --gpu T4
   modal run scripts/modal_app.py --step score --tag dry15 --deltas dry15 --model Qwen/Qwen2.5-1.5B --modes restore,svd --limit 2 --gpu T4
 
-  # 7B: time one edit, then the full set (same tag resumes from the checkpoint)
+  # 7B: fetch the model on CPU, time one edit, then the full set (same tag resumes from the checkpoint)
+  modal run scripts/modal_app.py --step download --tag x --model Qwen/Qwen2.5-7B
   modal run scripts/modal_app.py --step export --tag cf100_7b --limit 1
   modal run scripts/modal_app.py --step export --tag cf100_7b
 
@@ -53,7 +54,9 @@ authors_image = _with_retractbench(
     modal.Image.debian_slim(python_version="3.10")
     .apt_install("git", "libgl1", "libglib2.0-0")
     .pip_install("torch==2.0.1", "torchvision==0.15.2", index_url="https://download.pytorch.org/whl/cu118")
-    .pip_install_from_requirements(str(ROOT / "scripts/modal/requirements_authors.txt"))
+    # --no-deps: the frozen list is installed exactly as it is locally (it holds a known numpy/scipy pin
+    # clash that pip tolerated there but would refuse to resolve here).
+    .pip_install_from_requirements(str(ROOT / "scripts/modal/requirements_authors.txt"), extra_options="--no-deps")
     .add_local_dir(TAR, "/root/trace-and-reverse", ignore=IGNORE, copy=True)
 )
 
@@ -86,6 +89,16 @@ def _run(cmd: list[str], cwd: str, extra_env: dict) -> None:
         vol.commit()
 
 
+@app.function(image=authors_image, volumes={"/vol": vol}, timeout=2 * 3600, cpu=4)
+def download(model: str) -> None:
+    """Fetch the model into the volume's HF cache on a CPU container, so GPU time isn't spent downloading."""
+    os.environ["HF_HOME"] = "/vol/hf"
+    from huggingface_hub import snapshot_download
+    path = snapshot_download(model, allow_patterns=["*.json", "*.safetensors", "*.txt", "*.model", "*.tiktoken"])
+    print("downloaded to", path, flush=True)
+    vol.commit()
+
+
 @app.function(image=authors_image, gpu="A100-80GB", volumes={"/vol": vol}, timeout=8 * 3600)
 def export(cases: str, tag: str, hparams: str, limit: int = 0) -> None:
     cmd = ["python", "/root/retractbench/scripts/easyedit_rome_export.py",
@@ -116,9 +129,11 @@ def main(step: str, tag: str, cases: str = "cases/counterfact_100_seed0.jsonl",
          hparams: str = "configs/easyedit_rome_qwen2.5-7b.yaml", deltas: str = "",
          model: str = "Qwen/Qwen2.5-7B", modes: str = "restore,subtract,svd", svd_q: int = 3,
          null_edit: bool = False, limit: int = 0, gpu: str = "A100-80GB") -> None:
-    if step == "export":
+    if step == "download":
+        download.remote(model)
+    elif step == "export":
         export.with_options(gpu=gpu).remote(cases, tag, hparams, limit)
     elif step == "score":
         score.with_options(gpu=gpu).remote(cases, tag, deltas or tag, model, modes, svd_q, null_edit, limit)
     else:
-        raise SystemExit("--step must be export or score")
+        raise SystemExit("--step must be download, export or score")

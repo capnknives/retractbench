@@ -18,7 +18,7 @@ vectors whose outer product ROME adds to the weight matrix.
 
 Checkpointing (added 2026-11-02 after a power cut lost a 100-case run at 18/100;
 tested 2026-11-03: interrupted after 2 of 3 cases and resumed, all 3 updates
-bit-identical to the original export, LOG 2026-11-03 11:15):
+bit-identical to the original export, LOG 2026-11-03 10:55):
 after every case the results so far are written to <tag>.partial.pt. The write
 goes to a temporary file first and is then renamed over the old one (os.replace),
 so a crash mid-write leaves the previous checkpoint intact. Running the same

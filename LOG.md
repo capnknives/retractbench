@@ -2,7 +2,7 @@
 
 Dated entries, newest first. Failures and dead ends go in too.
 
-## 2026-11-03 (11:15): Resumable export tested; cloud pipeline for Qwen2.5-7B (predictions)
+## 2026-11-03 (10:55): Resumable export tested; cloud pipeline for Qwen2.5-7B (predictions)
 
 Why 7B: every result so far is on Qwen2.5-1.5B. Our config is the authors' Qwen2.5-7B ROME file with only the model name changed. Their headline numbers are on 7B, so before contacting them we run their own config on their own model. Our 8 GB GPU can't hold 7B in float32, so it runs on a rented A100 80 GB through Modal (free monthly credit; the spend is checked per step).
 
