@@ -2,6 +2,22 @@
 
 Dated entries, newest first. Failures and dead ends go in too.
 
+## 2026-11-03 (15:32): Second independent review of the blog post (7B restructure); fixes
+
+A fresh subagent that had not seen the work checked every number and claim in the blog post (Claude Doc rev 56) against a GitHub clone at 4591b24. It recomputed each figure from the per-case JSON in `results/` with its own stdlib scripts (kept in that session's container; nothing in the repo was changed by it). It also confirmed that `configs/easyedit_rome_qwen2.5-7b.yaml` is byte-identical to `hparams/trace-and-reverse/ROME/Qwen2.5-7B.yaml` in the authors' repository.
+
+Numbers: every number and CI in the post recomputes from the files, on both models: both dev tables, both test tables with all controls, the MMD counts, side effects, the spectrum claims, the hand-label counts (51/76/3) and the earlier simplified-editor runs. No wrong numbers.
+
+Claims fixed in the post (rev 56 -> 70, DOC_EDITS 15:32):
+- "The intervals nearly touch" (ES at 7B q=15) was wrong: Wilson 22-40 (undo) and 11-26 (control) overlap. It now says the intervals overlap, so the size of the gap is uncertain but small. The same mistake is in the 13:30 entry above ("CIs that touch"); this entry corrects it. The reviewer also ran a paired comparison of the same 100 cases (13 cases prefer the edit after the undo and not under the control, 0 the other way). It is not in the post, because no committed script produces it.
+- "The method is further from the original at every setting" (1.5B vs 7B) was wrong: at q=3 the 7B leak is the higher one (74% vs 43%). It now says "at each model's best setting", and the same scope is added to the heading "Why the method works better on the bigger model".
+- "Its predictions were not written down before the run, unlike every other run here" was wrong: the first 1.5B MMD run (2026-11-02 14:15) had no prediction either. Both are now named.
+- Wording narrowed to what the data show: the sampling result is "this test (10 samples per probe) did not distinguish", not "could not be told apart", and the comparison is with the unedited-vs-unedited rate, not "chance"; "Only keeping the edit gave the model back exactly for every edit" (single SVD cases matched on all 11 probes); the 43% names its denominator (edited-prompt and paraphrase probes); "near-ties" is stated as an inference; "at every setting tested"; ties in the dev sweeps are named (7B: q=16 and 20 tie q=15; 1.5B first token: q=18-20 match q=7-10); "19 dev edits scored on 1.5B"; "fewer answers (38%) than ... (40%)"; the no-collapse claim now cites the update norms (1.2-7.1 on both models), since outputs were read for 1.5B only.
+
+The same overstatements were fixed in the email draft (rev 10 -> 12) and the Part 2 podcast brief (rev 11 -> 18, which also had stale 1.5B-only lines). The Part 3 podcast brief (Drive, created 15:23 in another session) repeats several of them and could not be edited through the Drive connector; it is flagged to the author.
+
+Not fixed, noted by the reviewer: the 7B run files have `git_commit: null`; no run records the GPU name; restore/subtract metas carry an unused `svd_q: 3`; there is no committed `ci_headline` output for the 7B or q=10 CIs (they reproduce from the per-case data); the 13:30 entry's "0/100 at q=10 and 15 on both models" should read "on 7B at q=10 and 15, and on 1.5B at q=10" (there is no 1.5B q=15 run). The reviewer could not verify from the files: the GPU models, the ~$15 cost, and the "floating-point residue" cause of the 14 non-exact simplified-editor subtract cases.
+
 ## 2026-11-03 (15:10): 7B distribution test at q=15: the undone model is not distinguishable from base by sampling
 
 Runs: `results/20261103T205611_stat_undo_ee_cf100_7b_q15.json` (restore and SVD q=15) and `results/20261103T203558_stat_undo_ee_cf100_7b_q15_nulledit.json` (truncation control). Modal A100 80GB, float32. Same settings as the 1.5B test: 100 cases, 11 probes, 10 samples x 20 tokens per probe at temperature 1, Hamming MMD, 1,000 permutations, alpha 0.05.
