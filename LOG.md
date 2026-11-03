@@ -2,6 +2,17 @@
 
 Dated entries, newest first. Failures and dead ends go in too.
 
+## 2026-11-03 (08:10): Edit side effects and ROME collapse check
+
+Prompted by an external summary of known ROME flaws (2022-2024 work: "disabling" edits that collapse the model, fixed by r-ROME, Gupta et al. arXiv:2403.07175; degradation under sequential edits; side effects on nearby facts). None of it is about undoing edits, so the results stand. Two checks on the 100 genuine ROME test edits (`results/20261102T183353Z_easyedit-rome-restore_ee_cf100_L5_iso.json` and its editor log):
+
+- **No collapsing edits.** Update Frobenius norms run 1.15-7.12 (median 4.47). Disabling edits are much larger. The edited model's outputs on the 5 cases with the worst locality are fluent, not gibberish (e.g. "Erich Mendelsohn worked in the city of Berlin" -> "Tokyo"; "Virtual Hard Disk was created by Microsoft" -> "which company?\nWhat is the answer?").
+- **The edits have sizeable side effects before any undo.** The edited model changed 125 of 300 unrelated probes and 327 of 500 hard negatives (exact match on 8 greedy tokens), which is the harness's locality of 0.58 / 0.35. This was in the summaries all along but not in the post. It fits the dev-set spectrum result: the edit is rarely the top component of the matrix. It does not affect the undo results (restore and subtract return all of these to base).
+
+Write-up: the blog post's Data bullet now gives both side-effect counts and the norm range (DOC_EDITS 08:10).
+
+Not checked: whether EasyEdit's ROME includes the r-ROME prefix fix. r-ROME as a second editor is on the list of possible follow-ups.
+
 ## 2026-11-02 (21:30): Independent review of the blog post; fixes
 
 A fresh subagent that had not seen the work checked every number and claim in the blog post (Claude Doc rev 20) against `results/` and the arXiv paper. Its scripts were in the session scratchpad; nothing in the repo was changed by it.

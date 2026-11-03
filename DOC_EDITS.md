@@ -13,12 +13,18 @@ To undo:
 | Write-up draft, "Restoring the Fact Is Not Restoring the Model (draft)" | Claude Docs | https://claude.ai/artifact/9RGHHhmjeHEtuTPxwDwiC8 |
 | Blog post draft, "The Fact Comes Back, the Model Doesn't" | Claude Docs | https://claude.ai/artifact/E3CacZR67ds4BBjfA5gd8x |
 | Email to Youssef et al. (draft, send Nov 9) | Claude Docs | https://claude.ai/artifact/Po6Zy9DFNbfT1SeCShZUau |
+| retractbench Podcast Part 2 Brief | Claude Docs | https://claude.ai/artifact/GUeF3uPe25b4BGFf6De9Z7 |
 | Landscape Review: Who Else Is Working on Revocable Model Edits | Claude Docs | (id starts b13035b6) |
 | retractbench Status Update — Nov 2, 2026 | Google Drive | 17pA5IAz… |
 | retractbench Research Brief for Gemini — Nov 2, 2026 | Google Drive | 1PBdf_O2… |
 | retractbench Plan Update + Gemini Report Triage — Nov 2, 2026 (13:00) | Google Drive | https://docs.google.com/document/d/1pu8ei4rRbP674P_2Wug7oOz2hQwoNiIBxiLuQmbBE9c |
 | retractbench Master Plan v4: Research Track (current) | Google Drive | https://docs.google.com/document/d/1vY31Wflwgq_InyALWdeQOsCD6Scj0ymjtT6Q6hHguTA |
 | AI Startup Master Plan v3 (superseded, kept for reference) | Google Drive | not edited by Claude |
+
+## 2026-11-03
+
+- **08:10, blog post draft (Claude Docs): rev 36 → 38.** The Data bullet now reports the edits' own side effects (125/300 unrelated, 327/500 look-alike answers changed) and the update-norm range. The first wording said "each one changed" and was fixed to "across the 100 edits" in rev 38. See LOG 08:10.
+- **07:40, podcast brief (Claude Docs): created.** "retractbench Podcast Part 2 Brief", https://claude.ai/artifact/GUeF3uPe25b4BGFf6De9Z7: background for an AI podcast host, with the numbers quoted with their settings and a "don't say" list. It contains no numbers that are not in the blog post.
 
 ## 2026-11-02
 
