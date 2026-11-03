@@ -13,6 +13,7 @@ To undo:
 | Write-up draft, "Restoring the Fact Is Not Restoring the Model (draft)" | Claude Docs | https://claude.ai/artifact/9RGHHhmjeHEtuTPxwDwiC8 |
 | Blog post draft, "The Fact Comes Back, the Model Doesn't" | Claude Docs | https://claude.ai/artifact/E3CacZR67ds4BBjfA5gd8x |
 | Email to Youssef et al. (draft, send Nov 9) | Claude Docs | https://claude.ai/artifact/Po6Zy9DFNbfT1SeCShZUau |
+| retractbench Podcast Part 3 Brief | Google Drive | https://docs.google.com/document/d/1whztdcC_05ew6l8jZkITom-5c6y7DHg0N30RD_a5EGk |
 | retractbench Podcast Part 2 Brief | Claude Docs | https://claude.ai/artifact/GUeF3uPe25b4BGFf6De9Z7 |
 | Landscape Review: Who Else Is Working on Revocable Model Edits | Claude Docs | (id starts b13035b6) |
 | retractbench Status Update — Nov 2, 2026 | Google Drive | 17pA5IAz… |
@@ -24,6 +25,7 @@ To undo:
 
 ## 2026-11-03
 
+- **15:23, Drive: created "retractbench Podcast Part 3 Brief — the authors' own model (Nov 3, 2026)"** (https://docs.google.com/document/d/1whztdcC_05ew6l8jZkITom-5c6y7DHg0N30RD_a5EGk). Background for a third podcast episode: what changed since Part 2 (the 7B runs), the new headline, what retractbench is for, numbers with their settings, honesty notes, a don't-say list and timing. It contains no numbers that are not in the blog post or LOG.md.
 - **15:17, Drive: created "retractbench Status — Nov 3, 2026 (current)"** (https://docs.google.com/document/d/1D2LBjEc1O-afFfYt2W_ZWEvK0N6e6YFFEOQOS38iR7E). The current summary for Drive readers: where things stand, the results on both models, open items, next research, and links. It replaces the Nov 2 status update and the Plan Update doc as the current one. Those were not edited (the Drive connector can create docs but not edit their text).
 - **15:14, podcast brief (Claude Docs): rev 10 → 11.** The story paragraph now covers the 7B step. The "What survived the control" section is replaced by "Then the authors' own model". The next-experiments list drops the completed items. The numbers table now has both models and their controls. A "don't say 'the edit usually survives'" line is added.
 - **15:13, email draft (Claude Docs): rev 7 → 10.** The bullets now lead with the 7B replication (70% vs 62.9%), the q=15 result with its control, and the 1.5B contrast. The subject says "Qwen2.5-7B and 1.5B". The note points to LOG 13:30 and 15:10.
