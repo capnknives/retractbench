@@ -1,0 +1,30 @@
+[
+  {
+    "editor": "easyedit-rome-svd10",
+    "layer": 5,
+    "n_cases": 100,
+    "edit_success": 0.98,
+    "edit_success_loose": 1.0,
+    "paraphrase_generalization": 0.815,
+    "locality": 0.8766666666666668,
+    "locality_hard": 0.7139999999999996,
+    "revocation_exact": 0.0,
+    "target_leak_after_revoke": 0.08333333333333334,
+    "target_leak_excl_true": 0.07666666666666667,
+    "apply_ms_mean": 414.2537625599928,
+    "revoke_ms_mean": 1873.1823107399975,
+    "es_base": 0.18,
+    "ps_base": 0.195,
+    "ns_base": 0.8299999999999996,
+    "es_after_write": 1.0,
+    "ps_after_write": 1.0,
+    "ns_after_write": 0.7659999999999997,
+    "es_after_revoke": 0.39,
+    "ps_after_revoke": 0.355,
+    "ns_after_revoke": 0.8279999999999995,
+    "residual_fro_mean": 17.307487583160402,
+    "residual_zero_frac": 0.0,
+    "fit_loss_mean": NaN,
+    "minutes": 16.999525729815165
+  }
+]

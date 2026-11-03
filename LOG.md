@@ -2,6 +2,52 @@
 
 Dated entries, newest first. Failures and dead ends go in too.
 
+## 2026-11-03 (13:30): Qwen2.5-7B results: consistent with the paper, the edit is mostly removed at the dev-chosen q, and the model is not given back
+
+Runs (predictions in 10:55; the q=15 pair was added at 12:35 after the dev sweep chose q=15, see below). All runs were on a Modal A100 80GB, in float32, with the authors' unchanged Qwen2.5-7B config (`configs/easyedit_rome_qwen2.5-7b.yaml`). The edits came from `scripts/modal_app.py --step export` (dev20 20/20 and cf100 100/100 with rewrite_acc 1.0, about 11 s per edit). The run files are copied from the Modal volume into `results/` (`20261103T18*`, `T19*`, tags `ee_cf100_7b*`; sweep `20261103T183046_svd_q_sweep_easyedit_counterfact_dev20_seed1.json`; comparisons `20261103T_7b_q{3,10,15}_null_svd_compare.json`). 100 cases, 11 probes, 8 greedy tokens (now recorded in each run's meta). Leak CIs are case-cluster bootstrap; ES CIs are Wilson.
+
+**Dev sweep (20 edits, 5 tokens, edited prompt):**
+
+| q | First token reverts | All 5 tokens revert | Edit still there |
+| --- | --- | --- | --- |
+| 3 | 0.20 | 0.10 | 0.75 |
+| 10 | **0.70** (14/20) | 0.50 | 0.15 |
+| 15 | 0.80 | **0.60** (best by our 5-token criterion) | 0.05 |
+| 20 | 0.80 | 0.60 | 0.05 |
+
+The paper reports 62.9% first-token reversal on Qwen2.5-7B at k=10 (editing accuracy 27.4%). Ours is 70% (CI 48-85%). On 7B, the 5-token rate keeps rising with q, unlike 1.5B, where it peaked at q=3. Our protocol (choose q on dev by the 5-token criterion) therefore picks q=15 on 7B. The test set was run at 3, 10 and 15, each with its own control.
+
+Spectrum (dev): the edit is never the top singular component (0 of 20; 1 of 20 on 1.5B), and it is among the top 4 in only 7 of 20 (15 of 20 on 1.5B). No edit is larger than the matrix's top singular value (8.43; edit norms 2.93-6.68).
+
+**Test set (100 edits):**
+
+| After the undo | Restore / subtract | SVD q=3 | SVD q=10 | SVD q=15 (dev-chosen) | Control q=3 / 10 / 15 |
+| --- | --- | --- | --- | --- | --- |
+| Exact revoke (of 100) | 100 / 100 | 0 | 0 | 0 | 1 / 0 / 0 |
+| Leak (of 300) | 0 | 221 (74%, CI 66-81%), 87 cases | 25 (8.3%, CI 4.7-12.7%), 17 cases | 9 (3.0%, CI 0.3-6.3%), 5 cases | 1 / 3 / 2 |
+| ES (base 0.18) | 0.18 | 0.90 | 0.39 (CI 0.30-0.49) | 0.30 (CI 0.22-0.40) | 0.17 / 0.17 / 0.17 (CI 0.11-0.26) |
+| PS (base 0.195) / NS (base 0.83) | = base | 0.90 / 0.79 | 0.36 / 0.83 | 0.28 / 0.84 | 0.20 / 0.83 (all q) |
+| Probes equal to base (of 1,100) | 1,100 | 520 | 620 | 612 | 758 / 730 / 687 |
+
+Edit side effects before any undo (7B): 12% of unrelated and 29% of hard-negative probes changed (1.5B: 42% and 65%). Of the flagged leaks, those identical to the edited output were 124 of 221 at q=3, 4 of 25 at q=10 and 4 of 9 at q=15.
+
+Against the predictions (10:55):
+- First-token reversal near 62.9%: right (70%).
+- The edit is the top component more often than on 1.5B: wrong (0 of 20). The method still works better on 7B. The larger matrix tolerates truncation better (the control keeps 62-69% of probes equal to base, against 51-60% on 1.5B), so "the edit dominates the spectrum" is not what makes it work here.
+- Leak at q=10 below 1.5B's 10% and above the control: right (8.3% vs 1%).
+- ES above base after the undo: right (0.39 at q=10).
+- The truncation control changes probes, with 0/100 exact: right at q=10 and 15 (0). At q=3 it is 1/100.
+- Smaller edit side effects than on 1.5B: right.
+
+What this means:
+- Their result reproduces on their model with their config: 70% first-token reversal against 62.9%.
+- At the setting our protocol picks on 7B (q=15), the SVD undo removes the edit in most cases. The leak is 3.0% against a control of 0.7%, and the CIs overlap. ES is 0.30 against 0.17, with CIs that touch (0.22 vs 0.26). The "edit often survives" result is a 1.5B result and a small-q result. It does not hold at the dev-chosen setting on 7B, and the write-up must say so plainly.
+- What holds on both models and at every q tested: the method does not return the model. Truncation alone changes 31-38% of probes on 7B (40-49% on 1.5B), and the undone model is never exactly the base (0/100 at q=10 and 15 on both models). Restore and subtract are exact on both models (100/100).
+- There is a residual preference for the edit at every q on both models (ES above the control), though at 7B q=15 the gap is small. This is a weaker claim than the 1.5B one and is reported as such.
+- The q that works best depends on the model (3 on 1.5B, 15 on 7B). A user of the method has to tune it per model, and the paper's k=10 is not the best on either model by the stricter criterion.
+
+Proposed for the write-up (to be confirmed): the post leads with the 7B result, because it is the authors' model and config, and reports 1.5B as the second model. The headline moves from "the edit often survives" to "the fact comes back, the model doesn't": the edit is mostly removed at the right setting, but no setting gives the original model back, and a small preference for the edit remains. The MMD test has not been run on 7B.
+
 ## 2026-11-03 (10:55): Resumable export tested; cloud pipeline for Qwen2.5-7B (predictions)
 
 Why 7B: every result so far is on Qwen2.5-1.5B. Our config is the authors' Qwen2.5-7B ROME file with only the model name changed. Their headline numbers are on 7B, so before contacting them we run their own config on their own model. Our 8 GB GPU can't hold 7B in float32, so it runs on a rented A100 80 GB through Modal (free monthly credit; the spend is checked per step).
