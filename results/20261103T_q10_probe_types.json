@@ -1,0 +1,42 @@
+{
+  "undo_run": "results/20261103T143823Z_easyedit-rome-svd10_ee_cf100_q10_L5_iso.json",
+  "control_run": "results/20261103T145300Z_null-edit-svd10_ee_cf100_q10_nulledit_L5_iso.json",
+  "cases": "cases/counterfact_100_seed0.jsonl",
+  "probes_equal_to_base": {
+    "edited_prompt": {
+      "n": 100,
+      "edited_eq_base": 1,
+      "undo_eq_base": 20,
+      "control_eq_base": 46
+    },
+    "paraphrases": {
+      "n": 200,
+      "edited_eq_base": 0,
+      "undo_eq_base": 34,
+      "control_eq_base": 89
+    },
+    "unrelated": {
+      "n": 300,
+      "edited_eq_base": 175,
+      "undo_eq_base": 149,
+      "control_eq_base": 159
+    },
+    "hard_negatives": {
+      "n": 500,
+      "edited_eq_base": 173,
+      "undo_eq_base": 230,
+      "control_eq_base": 262
+    }
+  },
+  "target_probes": {
+    "differ_only_after_undo": 92,
+    "differ_only_under_control": 11,
+    "cases_with_undo_only_difference": 61,
+    "undo_only_containing_target": 17
+  },
+  "es_paired": {
+    "edit_preferred_only_after_undo": 21,
+    "edit_preferred_only_under_control": 1,
+    "mcnemar_exact_p": 1.0967254638671875e-05
+  }
+}

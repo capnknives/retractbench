@@ -2,6 +2,25 @@
 
 Dated entries, newest first. Failures and dead ends go in too.
 
+## 2026-11-03 (17:02): Research review of the project; the 7B result reframed
+
+A fresh subagent reviewed the research itself (question, design, conclusions, positioning), not the arithmetic. It worked from a GitHub clone at 3381dd1, the current post and email, and the paper. Its scripts stayed in that session's container. Its main findings were checked here against the result files before acting on them. The per-probe-type counts now come from a committed script, `scripts/probe_types.py`, with outputs `results/20261103T_7b_q{3,10,15}_probe_types.json` and `results/20261103T_q{3,10}_probe_types.json` (1.5B).
+
+Checked and adopted:
+- **On 7B, the undo does not restore the edit's own prompts.** At q=15, probes equal to base: edited prompt 30/100 after the undo vs 63/100 under the control; paraphrases 75/200 vs 122/200; unrelated 187/300 vs 186/300; hard negatives 320/500 vs 316/500. On the edited prompt and paraphrases, 92 probes (in 64 cases; the reviewer said 63) differ from base only after the undo, 12 only under the control, and only 4 of the 92 contain the target string, so the leak measure misses them. The gap is larger at q=10 (28 vs 68) and q=3 (5 vs 66). So "gets close" was too generous: the edit is mostly removed, but its prompts don't come back. The post's TL;DR, the 7B section (a new by-type table with an "edited model, no undo" column) and the "How to read it" bullets now say so.
+- **The undone model is further from base than the edited model away from the edit:** on 7B q=15, 187 vs 263 of 300 unrelated, 320 vs 357 of 500 hard negatives, and 612 vs 620 of all 1,100 probes. In the post.
+- **The ES gap is real when paired:** 13 cases prefer the edit only after the undo, 0 only under the control (exact McNemar p = 0.00024). This replaces "the intervals overlap, so the size is uncertain" with "small but real". At q=10: 22 vs 0. On 1.5B q=10: 21 vs 1.
+- **The sampling test pools 11 probes per case,** so it has little power for changes confined to the 3 target probes. "Near-ties" is no longer stated, even as a suggestion. Whether sampling misses the greedy changes because they are small or because the test lacks power is not measured.
+- **How the paper is described:** it reports 62.9% at k = 10, 12 and 13 (Table 2), so k=10 is no longer called "the paper's setting". Its KL for Qwen2.5-7B (8.988 -> 1.534) is now cited. Its abstract's claim that the method "helps regain the original model's output distribution" is quoted as the property tested. (The reviewer paraphrased the abstract as "restores"; the actual wording is "helps regain".)
+- **Related work:** Holmov, Youssef, Schoots & Seifert 2026, "One Mask to Rule Them All" (arXiv 2605.28839, same group, learned-mask reversal of ROME/MEMIT edits), checked to exist and added. The reviewer's other suggested citations are not checked yet.
+- **TL;DR qualifiers:** "0 of 100; truncation alone also 0" and "single edits, in float32".
+- **Unmatched model comparison:** at q=10 the models remove the edit about equally (leak 8.3% vs 10%, ES 0.39 vs 0.41), and 1.5B was never run at q=15. Predictions for that run are logged (16:58); the post's 1.5B comparison and "why" paragraph wait for it.
+
+Not done yet, for the author to decide:
+- Commit the edit files or put them in the Zenodo release (the reviewer estimates about 11 MB for 7B; not checked). Record the git commit in cloud runs (`modal_app.py` leaves out `.git`), the HF model revisions, and the trace-and-reverse commit.
+- The reviewer notes that some 2026-11-02 predictions were committed together with their results (280a2bb), and that a later wording pass (1823715) removed attribution from old entries. Suggested: one line in this file's header saying predictions were drafted with the coding assistant, and later corrections only as dated notes. Public git history also still contains the nickname in old text.
+- The reviewer's next experiment: per-position KL on all probes plus generic passages (edited, undo, control and restore vs base), with the base model's top-two gap where greedy answers flip. Its suggested roadmap moves GRACE rollback and unmerged LoRA down, since they are exact by construction.
+
 ## 2026-11-03 (16:58): 1.5B test set at q=15, with its truncation control (predictions)
 
 Why: a research review today (a fresh subagent; its report is summarised in the entry logged after this one) pointed out that the post's 1.5B-vs-7B comparison is not matched. At the same q=10 the two models remove the edit about equally (leak 10% on 1.5B, 8.3% on 7B; ES 0.41 vs 0.39). The post compares 7B at q=15 with 1.5B at q=10 or 3, but 1.5B was never run on the test set at q=15. This run gives a matched comparison at the 7B dev-chosen setting.
