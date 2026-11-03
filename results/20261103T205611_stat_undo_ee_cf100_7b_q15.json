@@ -1,0 +1,2548 @@
+{
+  "args": {
+    "model": "Qwen/Qwen2.5-7B",
+    "cases": "/root/retractbench/cases/counterfact_100_seed0.jsonl",
+    "tag": "ee_cf100_7b_q15",
+    "limit": null,
+    "deltas": "/vol/data/easyedit_rome/cf100_7b.pt",
+    "layer": 5,
+    "covariance": "calibration",
+    "dtype": "float32",
+    "modes": [
+      "restore",
+      "svd"
+    ],
+    "svd_q": 15,
+    "n": 10,
+    "length": 20,
+    "permutations": 1000,
+    "alpha": 0.05,
+    "null_edit": false
+  },
+  "summary": [
+    {
+      "comparison": "base_vs_base",
+      "n_cases": 100,
+      "reject_rate": 0.06,
+      "median_p": 0.5,
+      "mean_mmd": 8.040404040404882e-05
+    },
+    {
+      "comparison": "easyedit-rome-restore",
+      "n_cases": 100,
+      "reject_rate": 0.01,
+      "median_p": 0.5324675324675324,
+      "mean_mmd": -0.0006894949494949395
+    },
+    {
+      "comparison": "easyedit-rome-svd15",
+      "n_cases": 100,
+      "reject_rate": 0.06,
+      "median_p": 0.4255744255744256,
+      "mean_mmd": 0.0009340404040404143
+    }
+  ],
+  "per_case": {
+    "cf12623": {
+      "base_vs_base": {
+        "mmd": -1.0101010101015717e-05,
+        "p_value": 0.4955044955044955,
+        "n_a": 110,
+        "n_b": 110,
+        "n_permutations": 1000
+      },
+      "easyedit-rome-restore": {
+        "mmd": -0.00527272727272729,
+        "p_value": 0.7822177822177823,
+        "n_a": 110,
+        "n_b": 110,
+        "n_permutations": 1000,
+        "residual_fro": 0.0
+      },
+      "easyedit-rome-svd15": {
+        "mmd": 0.0015353535353535286,
+        "p_value": 0.36363636363636365,
+        "n_a": 110,
+        "n_b": 110,
+        "n_permutations": 1000,
+        "residual_fro": 19.906864166259766
+      }
+    },
+    "cf13781": {
+      "base_vs_base": {
+        "mmd": -0.002303030303030286,
+        "p_value": 0.5974025974025974,
+        "n_a": 110,
+        "n_b": 110,
+        "n_permutations": 1000
+      },
+      "easyedit-rome-restore": {
+        "mmd": -0.001999999999999995,
+        "p_value": 0.5494505494505495,
+        "n_a": 110,
+        "n_b": 110,
+        "n_permutations": 1000,
+        "residual_fro": 0.0
+      },
+      "easyedit-rome-svd15": {
+        "mmd": 0.004272727272727317,
+        "p_value": 0.1918081918081918,
+        "n_a": 110,
+        "n_b": 110,
+        "n_permutations": 1000,
+        "residual_fro": 19.907245635986328
+      }
+    },
+    "cf1326": {
+      "base_vs_base": {
+        "mmd": 9.090909090907207e-05,
+        "p_value": 0.4805194805194805,
+        "n_a": 110,
+        "n_b": 110,
+        "n_permutations": 1000
+      },
+      "easyedit-rome-restore": {
+        "mmd": 0.0011515151515151464,
+        "p_value": 0.34865134865134867,
+        "n_a": 110,
+        "n_b": 110,
+        "n_permutations": 1000,
+        "residual_fro": 0.0
+      },
+      "easyedit-rome-svd15": {
+        "mmd": -0.00021212121212119822,
+        "p_value": 0.48951048951048953,
+        "n_a": 110,
+        "n_b": 110,
+        "n_permutations": 1000,
+        "residual_fro": 19.914125442504883
+      }
+    },
+    "cf8484": {
+      "base_vs_base": {
+        "mmd": -0.005828282828282801,
+        "p_value": 0.8831168831168831,
+        "n_a": 110,
+        "n_b": 110,
+        "n_permutations": 1000
+      },
+      "easyedit-rome-restore": {
+        "mmd": -0.0038282828282828196,
+        "p_value": 0.7132867132867133,
+        "n_a": 110,
+        "n_b": 110,
+        "n_permutations": 1000,
+        "residual_fro": 0.0
+      },
+      "easyedit-rome-svd15": {
+        "mmd": -0.006959595959595936,
+        "p_value": 0.9600399600399601,
+        "n_a": 110,
+        "n_b": 110,
+        "n_permutations": 1000,
+        "residual_fro": 19.905811309814453
+      }
+    },
+    "cf16753": {
+      "base_vs_base": {
+        "mmd": -0.003909090909090876,
+        "p_value": 0.9430569430569431,
+        "n_a": 110,
+        "n_b": 110,
+        "n_permutations": 1000
+      },
+      "easyedit-rome-restore": {
+        "mmd": -0.004434343434343388,
+        "p_value": 0.9440559440559441,
+        "n_a": 110,
+        "n_b": 110,
+        "n_permutations": 1000,
+        "residual_fro": 0.0
+      },
+      "easyedit-rome-svd15": {
+        "mmd": -0.0017777777777777462,
+        "p_value": 0.7062937062937062,
+        "n_a": 110,
+        "n_b": 110,
+        "n_permutations": 1000,
+        "residual_fro": 19.930709838867188
+      }
+    },
+    "cf15922": {
+      "base_vs_base": {
+        "mmd": 0.0031717171717171727,
+        "p_value": 0.18081918081918083,
+        "n_a": 110,
+        "n_b": 110,
+        "n_permutations": 1000
+      },
+      "easyedit-rome-restore": {
+        "mmd": -0.0015454545454545235,
+        "p_value": 0.6733266733266733,
+        "n_a": 110,
+        "n_b": 110,
+        "n_permutations": 1000,
+        "residual_fro": 0.0
+      },
+      "easyedit-rome-svd15": {
+        "mmd": -0.0030909090909090886,
+        "p_value": 0.7972027972027972,
+        "n_a": 110,
+        "n_b": 110,
+        "n_permutations": 1000,
+        "residual_fro": 19.91794776916504
+      }
+    },
+    "cf13268": {
+      "base_vs_base": {
+        "mmd": 0.0025959595959596238,
+        "p_value": 0.32967032967032966,
+        "n_a": 110,
+        "n_b": 110,
+        "n_permutations": 1000
+      },
+      "easyedit-rome-restore": {
+        "mmd": 0.0020000000000000157,
+        "p_value": 0.34665334665334663,
+        "n_a": 110,
+        "n_b": 110,
+        "n_permutations": 1000,
+        "residual_fro": 0.0
+      },
+      "easyedit-rome-svd15": {
+        "mmd": 0.006525252525252517,
+        "p_value": 0.1838161838161838,
+        "n_a": 110,
+        "n_b": 110,
+        "n_permutations": 1000,
+        "residual_fro": 19.909088134765625
+      }
+    },
+    "cf9938": {
+      "base_vs_base": {
+        "mmd": -0.00012121212121209146,
+        "p_value": 0.5034965034965035,
+        "n_a": 110,
+        "n_b": 110,
+        "n_permutations": 1000
+      },
+      "easyedit-rome-restore": {
+        "mmd": -0.003434343434343415,
+        "p_value": 0.6953046953046953,
+        "n_a": 110,
+        "n_b": 110,
+        "n_permutations": 1000,
+        "residual_fro": 0.0
+      },
+      "easyedit-rome-svd15": {
+        "mmd": -0.0011818181818181728,
+        "p_value": 0.5434565434565435,
+        "n_a": 110,
+        "n_b": 110,
+        "n_permutations": 1000,
+        "residual_fro": 19.907245635986328
+      }
+    },
+    "cf15617": {
+      "base_vs_base": {
+        "mmd": -0.0031010101010100696,
+        "p_value": 0.7532467532467533,
+        "n_a": 110,
+        "n_b": 110,
+        "n_permutations": 1000
+      },
+      "easyedit-rome-restore": {
+        "mmd": -0.0006262626262626067,
+        "p_value": 0.5384615384615384,
+        "n_a": 110,
+        "n_b": 110,
+        "n_permutations": 1000,
+        "residual_fro": 0.0
+      },
+      "easyedit-rome-svd15": {
+        "mmd": 0.0033737373737374107,
+        "p_value": 0.18681318681318682,
+        "n_a": 110,
+        "n_b": 110,
+        "n_permutations": 1000,
+        "residual_fro": 19.971132278442383
+      }
+    },
+    "cf11732": {
+      "base_vs_base": {
+        "mmd": 0.002898989898989901,
+        "p_value": 0.2907092907092907,
+        "n_a": 110,
+        "n_b": 110,
+        "n_permutations": 1000
+      },
+      "easyedit-rome-restore": {
+        "mmd": -0.004787878787878758,
+        "p_value": 0.8681318681318682,
+        "n_a": 110,
+        "n_b": 110,
+        "n_permutations": 1000,
+        "residual_fro": 0.0
+      },
+      "easyedit-rome-svd15": {
+        "mmd": -0.0028080808080807734,
+        "p_value": 0.7112887112887113,
+        "n_a": 110,
+        "n_b": 110,
+        "n_permutations": 1000,
+        "residual_fro": 19.945491790771484
+      }
+    },
+    "cf19116": {
+      "base_vs_base": {
+        "mmd": -0.004212121212121216,
+        "p_value": 0.8191808191808192,
+        "n_a": 110,
+        "n_b": 110,
+        "n_permutations": 1000
+      },
+      "easyedit-rome-restore": {
+        "mmd": -0.00371717171717173,
+        "p_value": 0.6953046953046953,
+        "n_a": 110,
+        "n_b": 110,
+        "n_permutations": 1000,
+        "residual_fro": 0.0
+      },
+      "easyedit-rome-svd15": {
+        "mmd": -0.0016161616161616127,
+        "p_value": 0.5594405594405595,
+        "n_a": 110,
+        "n_b": 110,
+        "n_permutations": 1000,
+        "residual_fro": 19.887239456176758
+      }
+    },
+    "cf7157": {
+      "base_vs_base": {
+        "mmd": -0.002545454545454545,
+        "p_value": 0.8601398601398601,
+        "n_a": 110,
+        "n_b": 110,
+        "n_permutations": 1000
+      },
+      "easyedit-rome-restore": {
+        "mmd": -0.0043131313131312965,
+        "p_value": 0.942057942057942,
+        "n_a": 110,
+        "n_b": 110,
+        "n_permutations": 1000,
+        "residual_fro": 0.0
+      },
+      "easyedit-rome-svd15": {
+        "mmd": 0.0009494949494949674,
+        "p_value": 0.3696303696303696,
+        "n_a": 110,
+        "n_b": 110,
+        "n_permutations": 1000,
+        "residual_fro": 19.921886444091797
+      }
+    },
+    "cf16537": {
+      "base_vs_base": {
+        "mmd": -7.070707070705451e-05,
+        "p_value": 0.4965034965034965,
+        "n_a": 110,
+        "n_b": 110,
+        "n_permutations": 1000
+      },
+      "easyedit-rome-restore": {
+        "mmd": -0.003555555555555562,
+        "p_value": 0.8161838161838162,
+        "n_a": 110,
+        "n_b": 110,
+        "n_permutations": 1000,
+        "residual_fro": 0.0
+      },
+      "easyedit-rome-svd15": {
+        "mmd": -0.004353535353535373,
+        "p_value": 0.8451548451548452,
+        "n_a": 110,
+        "n_b": 110,
+        "n_permutations": 1000,
+        "residual_fro": 19.910799026489258
+      }
+    },
+    "cf4563": {
+      "base_vs_base": {
+        "mmd": -0.0017979797979798123,
+        "p_value": 0.6523476523476524,
+        "n_a": 110,
+        "n_b": 110,
+        "n_permutations": 1000
+      },
+      "easyedit-rome-restore": {
+        "mmd": 0.0008080808080807925,
+        "p_value": 0.4225774225774226,
+        "n_a": 110,
+        "n_b": 110,
+        "n_permutations": 1000,
+        "residual_fro": 0.0
+      },
+      "easyedit-rome-svd15": {
+        "mmd": -0.000737373737373731,
+        "p_value": 0.5244755244755245,
+        "n_a": 110,
+        "n_b": 110,
+        "n_permutations": 1000,
+        "residual_fro": 19.928089141845703
+      }
+    },
+    "cf9235": {
+      "base_vs_base": {
+        "mmd": -0.004242424242424228,
+        "p_value": 0.8611388611388612,
+        "n_a": 110,
+        "n_b": 110,
+        "n_permutations": 1000
+      },
+      "easyedit-rome-restore": {
+        "mmd": 0.0011717171717172126,
+        "p_value": 0.36663336663336665,
+        "n_a": 110,
+        "n_b": 110,
+        "n_permutations": 1000,
+        "residual_fro": 0.0
+      },
+      "easyedit-rome-svd15": {
+        "mmd": -0.0008282828282827961,
+        "p_value": 0.5954045954045954,
+        "n_a": 110,
+        "n_b": 110,
+        "n_permutations": 1000,
+        "residual_fro": 19.89737892150879
+      }
+    },
+    "cf4579": {
+      "base_vs_base": {
+        "mmd": 0.0008686868686868937,
+        "p_value": 0.35764235764235763,
+        "n_a": 110,
+        "n_b": 110,
+        "n_permutations": 1000
+      },
+      "easyedit-rome-restore": {
+        "mmd": -0.00047474747474747156,
+        "p_value": 0.5594405594405595,
+        "n_a": 110,
+        "n_b": 110,
+        "n_permutations": 1000,
+        "residual_fro": 0.0
+      },
+      "easyedit-rome-svd15": {
+        "mmd": -0.0015959595959595813,
+        "p_value": 0.6963036963036963,
+        "n_a": 110,
+        "n_b": 110,
+        "n_permutations": 1000,
+        "residual_fro": 19.90243148803711
+      }
+    },
+    "cf3107": {
+      "base_vs_base": {
+        "mmd": -0.00728282828282828,
+        "p_value": 0.8281718281718282,
+        "n_a": 110,
+        "n_b": 110,
+        "n_permutations": 1000
+      },
+      "easyedit-rome-restore": {
+        "mmd": -0.002030303030303021,
+        "p_value": 0.5084915084915085,
+        "n_a": 110,
+        "n_b": 110,
+        "n_permutations": 1000,
+        "residual_fro": 0.0
+      },
+      "easyedit-rome-svd15": {
+        "mmd": -0.002282828282828289,
+        "p_value": 0.4865134865134865,
+        "n_a": 110,
+        "n_b": 110,
+        "n_permutations": 1000,
+        "residual_fro": 19.915090560913086
+      }
+    },
+    "cf20262": {
+      "base_vs_base": {
+        "mmd": 0.0048080808080808585,
+        "p_value": 0.2897102897102897,
+        "n_a": 110,
+        "n_b": 110,
+        "n_permutations": 1000
+      },
+      "easyedit-rome-restore": {
+        "mmd": -0.0007070707070706839,
+        "p_value": 0.47352647352647353,
+        "n_a": 110,
+        "n_b": 110,
+        "n_permutations": 1000,
+        "residual_fro": 0.0
+      },
+      "easyedit-rome-svd15": {
+        "mmd": -0.002212121212121207,
+        "p_value": 0.5264735264735265,
+        "n_a": 110,
+        "n_b": 110,
+        "n_permutations": 1000,
+        "residual_fro": 19.950733184814453
+      }
+    },
+    "cf8208": {
+      "base_vs_base": {
+        "mmd": 0.015080808080808042,
+        "p_value": 0.011988011988011988,
+        "n_a": 110,
+        "n_b": 110,
+        "n_permutations": 1000
+      },
+      "easyedit-rome-restore": {
+        "mmd": 0.0016666666666666496,
+        "p_value": 0.3676323676323676,
+        "n_a": 110,
+        "n_b": 110,
+        "n_permutations": 1000,
+        "residual_fro": 0.0
+      },
+      "easyedit-rome-svd15": {
+        "mmd": 0.011414141414141404,
+        "p_value": 0.05094905094905095,
+        "n_a": 110,
+        "n_b": 110,
+        "n_permutations": 1000,
+        "residual_fro": 19.929704666137695
+      }
+    },
+    "cf17451": {
+      "base_vs_base": {
+        "mmd": -0.00038383838383836133,
+        "p_value": 0.5204795204795205,
+        "n_a": 110,
+        "n_b": 110,
+        "n_permutations": 1000
+      },
+      "easyedit-rome-restore": {
+        "mmd": -0.0004242424242424103,
+        "p_value": 0.5624375624375625,
+        "n_a": 110,
+        "n_b": 110,
+        "n_permutations": 1000,
+        "residual_fro": 0.0
+      },
+      "easyedit-rome-svd15": {
+        "mmd": 0.0013535353535353567,
+        "p_value": 0.34765234765234765,
+        "n_a": 110,
+        "n_b": 110,
+        "n_permutations": 1000,
+        "residual_fro": 19.923234939575195
+      }
+    },
+    "cf19723": {
+      "base_vs_base": {
+        "mmd": -8.080808080808063e-05,
+        "p_value": 0.4975024975024975,
+        "n_a": 110,
+        "n_b": 110,
+        "n_permutations": 1000
+      },
+      "easyedit-rome-restore": {
+        "mmd": 0.0013131313131313077,
+        "p_value": 0.35664335664335667,
+        "n_a": 110,
+        "n_b": 110,
+        "n_permutations": 1000,
+        "residual_fro": 0.0
+      },
+      "easyedit-rome-svd15": {
+        "mmd": 0.00742424242424242,
+        "p_value": 0.015984015984015984,
+        "n_a": 110,
+        "n_b": 110,
+        "n_permutations": 1000,
+        "residual_fro": 19.90900993347168
+      }
+    },
+    "cf4815": {
+      "base_vs_base": {
+        "mmd": 0.004656565656565664,
+        "p_value": 0.12387612387612387,
+        "n_a": 110,
+        "n_b": 110,
+        "n_permutations": 1000
+      },
+      "easyedit-rome-restore": {
+        "mmd": 0.004222222222222231,
+        "p_value": 0.12287712287712288,
+        "n_a": 110,
+        "n_b": 110,
+        "n_permutations": 1000,
+        "residual_fro": 0.0
+      },
+      "easyedit-rome-svd15": {
+        "mmd": -0.00024242424242420374,
+        "p_value": 0.4125874125874126,
+        "n_a": 110,
+        "n_b": 110,
+        "n_permutations": 1000,
+        "residual_fro": 19.899627685546875
+      }
+    },
+    "cf10162": {
+      "base_vs_base": {
+        "mmd": -0.0008080808080807855,
+        "p_value": 0.5384615384615384,
+        "n_a": 110,
+        "n_b": 110,
+        "n_permutations": 1000
+      },
+      "easyedit-rome-restore": {
+        "mmd": 0.00015151515151518025,
+        "p_value": 0.45454545454545453,
+        "n_a": 110,
+        "n_b": 110,
+        "n_permutations": 1000,
+        "residual_fro": 0.0
+      },
+      "easyedit-rome-svd15": {
+        "mmd": -0.005848484848484825,
+        "p_value": 0.8961038961038961,
+        "n_a": 110,
+        "n_b": 110,
+        "n_permutations": 1000,
+        "residual_fro": 19.970600128173828
+      }
+    },
+    "cf3236": {
+      "base_vs_base": {
+        "mmd": 0.0001313131313131627,
+        "p_value": 0.44755244755244755,
+        "n_a": 110,
+        "n_b": 110,
+        "n_permutations": 1000
+      },
+      "easyedit-rome-restore": {
+        "mmd": 0.00561616161616163,
+        "p_value": 0.20279720279720279,
+        "n_a": 110,
+        "n_b": 110,
+        "n_permutations": 1000,
+        "residual_fro": 0.0
+      },
+      "easyedit-rome-svd15": {
+        "mmd": 0.009222222222222243,
+        "p_value": 0.08191808191808192,
+        "n_a": 110,
+        "n_b": 110,
+        "n_permutations": 1000,
+        "residual_fro": 19.90749740600586
+      }
+    },
+    "cf2416": {
+      "base_vs_base": {
+        "mmd": -0.005111111111111115,
+        "p_value": 0.8321678321678322,
+        "n_a": 110,
+        "n_b": 110,
+        "n_permutations": 1000
+      },
+      "easyedit-rome-restore": {
+        "mmd": 0.0025050505050504823,
+        "p_value": 0.3076923076923077,
+        "n_a": 110,
+        "n_b": 110,
+        "n_permutations": 1000,
+        "residual_fro": 0.0
+      },
+      "easyedit-rome-svd15": {
+        "mmd": 0.00046464646464645237,
+        "p_value": 0.4095904095904096,
+        "n_a": 110,
+        "n_b": 110,
+        "n_permutations": 1000,
+        "residual_fro": 19.92540168762207
+      }
+    },
+    "cf10819": {
+      "base_vs_base": {
+        "mmd": -0.003808080808080816,
+        "p_value": 0.8211788211788211,
+        "n_a": 110,
+        "n_b": 110,
+        "n_permutations": 1000
+      },
+      "easyedit-rome-restore": {
+        "mmd": -0.006414141414141414,
+        "p_value": 0.9790209790209791,
+        "n_a": 110,
+        "n_b": 110,
+        "n_permutations": 1000,
+        "residual_fro": 0.0
+      },
+      "easyedit-rome-svd15": {
+        "mmd": -0.0028787878787878557,
+        "p_value": 0.7792207792207793,
+        "n_a": 110,
+        "n_b": 110,
+        "n_permutations": 1000,
+        "residual_fro": 19.922115325927734
+      }
+    },
+    "cf15471": {
+      "base_vs_base": {
+        "mmd": 0.005464646464646464,
+        "p_value": 0.18081918081918083,
+        "n_a": 110,
+        "n_b": 110,
+        "n_permutations": 1000
+      },
+      "easyedit-rome-restore": {
+        "mmd": 0.0010707070707070693,
+        "p_value": 0.40559440559440557,
+        "n_a": 110,
+        "n_b": 110,
+        "n_permutations": 1000,
+        "residual_fro": 0.0
+      },
+      "easyedit-rome-svd15": {
+        "mmd": 0.00470707070707066,
+        "p_value": 0.17182817182817184,
+        "n_a": 110,
+        "n_b": 110,
+        "n_permutations": 1000,
+        "residual_fro": 19.893415451049805
+      }
+    },
+    "cf18343": {
+      "base_vs_base": {
+        "mmd": -0.00645454545454547,
+        "p_value": 0.9440559440559441,
+        "n_a": 110,
+        "n_b": 110,
+        "n_permutations": 1000
+      },
+      "easyedit-rome-restore": {
+        "mmd": -0.003757575757575786,
+        "p_value": 0.8261738261738262,
+        "n_a": 110,
+        "n_b": 110,
+        "n_permutations": 1000,
+        "residual_fro": 0.0
+      },
+      "easyedit-rome-svd15": {
+        "mmd": 0.000696969696969682,
+        "p_value": 0.37362637362637363,
+        "n_a": 110,
+        "n_b": 110,
+        "n_permutations": 1000,
+        "residual_fro": 19.943618774414062
+      }
+    },
+    "cf3299": {
+      "base_vs_base": {
+        "mmd": 0.005070707070707094,
+        "p_value": 0.24775224775224775,
+        "n_a": 110,
+        "n_b": 110,
+        "n_permutations": 1000
+      },
+      "easyedit-rome-restore": {
+        "mmd": -0.00321212121212118,
+        "p_value": 0.5574425574425574,
+        "n_a": 110,
+        "n_b": 110,
+        "n_permutations": 1000,
+        "residual_fro": 0.0
+      },
+      "easyedit-rome-svd15": {
+        "mmd": 0.004525252525252557,
+        "p_value": 0.23076923076923078,
+        "n_a": 110,
+        "n_b": 110,
+        "n_permutations": 1000,
+        "residual_fro": 19.921598434448242
+      }
+    },
+    "cf11593": {
+      "base_vs_base": {
+        "mmd": 0.0002222222222222417,
+        "p_value": 0.41058941058941056,
+        "n_a": 110,
+        "n_b": 110,
+        "n_permutations": 1000
+      },
+      "easyedit-rome-restore": {
+        "mmd": 0.002656565656565704,
+        "p_value": 0.2957042957042957,
+        "n_a": 110,
+        "n_b": 110,
+        "n_permutations": 1000,
+        "residual_fro": 0.0
+      },
+      "easyedit-rome-svd15": {
+        "mmd": -0.007383838383838388,
+        "p_value": 0.9120879120879121,
+        "n_a": 110,
+        "n_b": 110,
+        "n_permutations": 1000,
+        "residual_fro": 19.93705940246582
+      }
+    },
+    "cf14226": {
+      "base_vs_base": {
+        "mmd": -0.003080808080808045,
+        "p_value": 0.6933066933066933,
+        "n_a": 110,
+        "n_b": 110,
+        "n_permutations": 1000
+      },
+      "easyedit-rome-restore": {
+        "mmd": 0.00010101010101011554,
+        "p_value": 0.43456543456543456,
+        "n_a": 110,
+        "n_b": 110,
+        "n_permutations": 1000,
+        "residual_fro": 0.0
+      },
+      "easyedit-rome-svd15": {
+        "mmd": -0.005242424242424201,
+        "p_value": 0.6963036963036963,
+        "n_a": 110,
+        "n_b": 110,
+        "n_permutations": 1000,
+        "residual_fro": 19.9240665435791
+      }
+    },
+    "cf10361": {
+      "base_vs_base": {
+        "mmd": 0.0008787878787878678,
+        "p_value": 0.3926073926073926,
+        "n_a": 110,
+        "n_b": 110,
+        "n_permutations": 1000
+      },
+      "easyedit-rome-restore": {
+        "mmd": -0.002434343434343428,
+        "p_value": 0.6633366633366633,
+        "n_a": 110,
+        "n_b": 110,
+        "n_permutations": 1000,
+        "residual_fro": 0.0
+      },
+      "easyedit-rome-svd15": {
+        "mmd": 0.0027070707070706856,
+        "p_value": 0.27472527472527475,
+        "n_a": 110,
+        "n_b": 110,
+        "n_permutations": 1000,
+        "residual_fro": 19.90388298034668
+      }
+    },
+    "cf20017": {
+      "base_vs_base": {
+        "mmd": -0.002050505050505018,
+        "p_value": 0.7052947052947053,
+        "n_a": 110,
+        "n_b": 110,
+        "n_permutations": 1000
+      },
+      "easyedit-rome-restore": {
+        "mmd": 0.0010505050505050725,
+        "p_value": 0.36863136863136864,
+        "n_a": 110,
+        "n_b": 110,
+        "n_permutations": 1000,
+        "residual_fro": 0.0
+      },
+      "easyedit-rome-svd15": {
+        "mmd": 0.003787878787878826,
+        "p_value": 0.11888111888111888,
+        "n_a": 110,
+        "n_b": 110,
+        "n_permutations": 1000,
+        "residual_fro": 19.924007415771484
+      }
+    },
+    "cf20985": {
+      "base_vs_base": {
+        "mmd": 0.0006363636363636294,
+        "p_value": 0.46053946053946054,
+        "n_a": 110,
+        "n_b": 110,
+        "n_permutations": 1000
+      },
+      "easyedit-rome-restore": {
+        "mmd": -0.004141414141414168,
+        "p_value": 0.6783216783216783,
+        "n_a": 110,
+        "n_b": 110,
+        "n_permutations": 1000,
+        "residual_fro": 0.0
+      },
+      "easyedit-rome-svd15": {
+        "mmd": 0.0017171717171717005,
+        "p_value": 0.36563436563436563,
+        "n_a": 110,
+        "n_b": 110,
+        "n_permutations": 1000,
+        "residual_fro": 19.953990936279297
+      }
+    },
+    "cf6700": {
+      "base_vs_base": {
+        "mmd": -0.0007171717171717412,
+        "p_value": 0.5774225774225774,
+        "n_a": 110,
+        "n_b": 110,
+        "n_permutations": 1000
+      },
+      "easyedit-rome-restore": {
+        "mmd": 0.0015252525252525198,
+        "p_value": 0.3276723276723277,
+        "n_a": 110,
+        "n_b": 110,
+        "n_permutations": 1000,
+        "residual_fro": 0.0
+      },
+      "easyedit-rome-svd15": {
+        "mmd": -0.000787878787878761,
+        "p_value": 0.5594405594405595,
+        "n_a": 110,
+        "n_b": 110,
+        "n_permutations": 1000,
+        "residual_fro": 19.915525436401367
+      }
+    },
+    "cf18105": {
+      "base_vs_base": {
+        "mmd": 0.0015757575757575915,
+        "p_value": 0.31868131868131866,
+        "n_a": 110,
+        "n_b": 110,
+        "n_permutations": 1000
+      },
+      "easyedit-rome-restore": {
+        "mmd": 0.002636363636363631,
+        "p_value": 0.24375624375624375,
+        "n_a": 110,
+        "n_b": 110,
+        "n_permutations": 1000,
+        "residual_fro": 0.0
+      },
+      "easyedit-rome-svd15": {
+        "mmd": 0.0002929292929293101,
+        "p_value": 0.46053946053946054,
+        "n_a": 110,
+        "n_b": 110,
+        "n_permutations": 1000,
+        "residual_fro": 19.96131134033203
+      }
+    },
+    "cf15630": {
+      "base_vs_base": {
+        "mmd": -0.0031818181818181746,
+        "p_value": 0.7492507492507493,
+        "n_a": 110,
+        "n_b": 110,
+        "n_permutations": 1000
+      },
+      "easyedit-rome-restore": {
+        "mmd": 0.00046464646464648013,
+        "p_value": 0.4515484515484515,
+        "n_a": 110,
+        "n_b": 110,
+        "n_permutations": 1000,
+        "residual_fro": 0.0
+      },
+      "easyedit-rome-svd15": {
+        "mmd": 0.0033939393939394005,
+        "p_value": 0.20679320679320679,
+        "n_a": 110,
+        "n_b": 110,
+        "n_permutations": 1000,
+        "residual_fro": 19.895326614379883
+      }
+    },
+    "cf14506": {
+      "base_vs_base": {
+        "mmd": 0.006262626262626254,
+        "p_value": 0.08591408591408592,
+        "n_a": 110,
+        "n_b": 110,
+        "n_permutations": 1000
+      },
+      "easyedit-rome-restore": {
+        "mmd": 0.00060606060606061,
+        "p_value": 0.4095904095904096,
+        "n_a": 110,
+        "n_b": 110,
+        "n_permutations": 1000,
+        "residual_fro": 0.0
+      },
+      "easyedit-rome-svd15": {
+        "mmd": 0.006636363636363635,
+        "p_value": 0.08591408591408592,
+        "n_a": 110,
+        "n_b": 110,
+        "n_permutations": 1000,
+        "residual_fro": 19.890501022338867
+      }
+    },
+    "cf17083": {
+      "base_vs_base": {
+        "mmd": -0.003636363636363611,
+        "p_value": 0.8441558441558441,
+        "n_a": 110,
+        "n_b": 110,
+        "n_permutations": 1000
+      },
+      "easyedit-rome-restore": {
+        "mmd": -0.005080808080808054,
+        "p_value": 0.926073926073926,
+        "n_a": 110,
+        "n_b": 110,
+        "n_permutations": 1000,
+        "residual_fro": 0.0
+      },
+      "easyedit-rome-svd15": {
+        "mmd": -0.004727272727272698,
+        "p_value": 0.9120879120879121,
+        "n_a": 110,
+        "n_b": 110,
+        "n_permutations": 1000,
+        "residual_fro": 19.898483276367188
+      }
+    },
+    "cf8535": {
+      "base_vs_base": {
+        "mmd": -0.0014444444444444218,
+        "p_value": 0.6063936063936064,
+        "n_a": 110,
+        "n_b": 110,
+        "n_permutations": 1000
+      },
+      "easyedit-rome-restore": {
+        "mmd": -0.0011818181818181936,
+        "p_value": 0.6013986013986014,
+        "n_a": 110,
+        "n_b": 110,
+        "n_permutations": 1000,
+        "residual_fro": 0.0
+      },
+      "easyedit-rome-svd15": {
+        "mmd": 0.0011818181818181728,
+        "p_value": 0.32967032967032966,
+        "n_a": 110,
+        "n_b": 110,
+        "n_permutations": 1000,
+        "residual_fro": 19.930442810058594
+      }
+    },
+    "cf2040": {
+      "base_vs_base": {
+        "mmd": -0.006515151515151488,
+        "p_value": 0.7822177822177823,
+        "n_a": 110,
+        "n_b": 110,
+        "n_permutations": 1000
+      },
+      "easyedit-rome-restore": {
+        "mmd": -0.010585858585858574,
+        "p_value": 0.8971028971028971,
+        "n_a": 110,
+        "n_b": 110,
+        "n_permutations": 1000,
+        "residual_fro": 0.0
+      },
+      "easyedit-rome-svd15": {
+        "mmd": 0.014888888888888896,
+        "p_value": 0.058941058941058944,
+        "n_a": 110,
+        "n_b": 110,
+        "n_permutations": 1000,
+        "residual_fro": 20.357757568359375
+      }
+    },
+    "cf17979": {
+      "base_vs_base": {
+        "mmd": 0.0017878787878787689,
+        "p_value": 0.30569430569430567,
+        "n_a": 110,
+        "n_b": 110,
+        "n_permutations": 1000
+      },
+      "easyedit-rome-restore": {
+        "mmd": 0.00303030303030305,
+        "p_value": 0.23676323676323677,
+        "n_a": 110,
+        "n_b": 110,
+        "n_permutations": 1000,
+        "residual_fro": 0.0
+      },
+      "easyedit-rome-svd15": {
+        "mmd": 0.0010808080808080989,
+        "p_value": 0.36363636363636365,
+        "n_a": 110,
+        "n_b": 110,
+        "n_permutations": 1000,
+        "residual_fro": 19.910184860229492
+      }
+    },
+    "cf460": {
+      "base_vs_base": {
+        "mmd": -0.006171717171717175,
+        "p_value": 0.8141858141858141,
+        "n_a": 110,
+        "n_b": 110,
+        "n_permutations": 1000
+      },
+      "easyedit-rome-restore": {
+        "mmd": -0.0006969696969697028,
+        "p_value": 0.5224775224775224,
+        "n_a": 110,
+        "n_b": 110,
+        "n_permutations": 1000,
+        "residual_fro": 0.0
+      },
+      "easyedit-rome-svd15": {
+        "mmd": 0.0001414141414141576,
+        "p_value": 0.4515484515484515,
+        "n_a": 110,
+        "n_b": 110,
+        "n_permutations": 1000,
+        "residual_fro": 19.90273094177246
+      }
+    },
+    "cf3056": {
+      "base_vs_base": {
+        "mmd": 0.0030000000000000304,
+        "p_value": 0.2597402597402597,
+        "n_a": 110,
+        "n_b": 110,
+        "n_permutations": 1000
+      },
+      "easyedit-rome-restore": {
+        "mmd": -0.002525252525252486,
+        "p_value": 0.6113886113886113,
+        "n_a": 110,
+        "n_b": 110,
+        "n_permutations": 1000,
+        "residual_fro": 0.0
+      },
+      "easyedit-rome-svd15": {
+        "mmd": -0.007202020202020182,
+        "p_value": 0.8431568431568431,
+        "n_a": 110,
+        "n_b": 110,
+        "n_permutations": 1000,
+        "residual_fro": 19.900733947753906
+      }
+    },
+    "cf13068": {
+      "base_vs_base": {
+        "mmd": 0.0015050505050505092,
+        "p_value": 0.3436563436563437,
+        "n_a": 110,
+        "n_b": 110,
+        "n_permutations": 1000
+      },
+      "easyedit-rome-restore": {
+        "mmd": -0.004454545454545461,
+        "p_value": 0.8111888111888111,
+        "n_a": 110,
+        "n_b": 110,
+        "n_permutations": 1000,
+        "residual_fro": 0.0
+      },
+      "easyedit-rome-svd15": {
+        "mmd": 0.006505050505050472,
+        "p_value": 0.04595404595404595,
+        "n_a": 110,
+        "n_b": 110,
+        "n_permutations": 1000,
+        "residual_fro": 19.94110870361328
+      }
+    },
+    "cf21894": {
+      "base_vs_base": {
+        "mmd": 0.002010101010100976,
+        "p_value": 0.33466533466533466,
+        "n_a": 110,
+        "n_b": 110,
+        "n_permutations": 1000
+      },
+      "easyedit-rome-restore": {
+        "mmd": 0.0022424242424242125,
+        "p_value": 0.32867132867132864,
+        "n_a": 110,
+        "n_b": 110,
+        "n_permutations": 1000,
+        "residual_fro": 0.0
+      },
+      "easyedit-rome-svd15": {
+        "mmd": 0.0011919191919192024,
+        "p_value": 0.3926073926073926,
+        "n_a": 110,
+        "n_b": 110,
+        "n_permutations": 1000,
+        "residual_fro": 19.89503288269043
+      }
+    },
+    "cf20488": {
+      "base_vs_base": {
+        "mmd": -8.080808080805635e-05,
+        "p_value": 0.46053946053946054,
+        "n_a": 110,
+        "n_b": 110,
+        "n_permutations": 1000
+      },
+      "easyedit-rome-restore": {
+        "mmd": -0.002212121212121214,
+        "p_value": 0.6663336663336663,
+        "n_a": 110,
+        "n_b": 110,
+        "n_permutations": 1000,
+        "residual_fro": 0.0
+      },
+      "easyedit-rome-svd15": {
+        "mmd": -0.008020202020202004,
+        "p_value": 0.961038961038961,
+        "n_a": 110,
+        "n_b": 110,
+        "n_permutations": 1000,
+        "residual_fro": 19.972126007080078
+      }
+    },
+    "cf37": {
+      "base_vs_base": {
+        "mmd": 0.007111111111111117,
+        "p_value": 0.12487512487512488,
+        "n_a": 110,
+        "n_b": 110,
+        "n_permutations": 1000
+      },
+      "easyedit-rome-restore": {
+        "mmd": 0.006444444444444426,
+        "p_value": 0.16683316683316685,
+        "n_a": 110,
+        "n_b": 110,
+        "n_permutations": 1000,
+        "residual_fro": 0.0
+      },
+      "easyedit-rome-svd15": {
+        "mmd": 0.004454545454545433,
+        "p_value": 0.21978021978021978,
+        "n_a": 110,
+        "n_b": 110,
+        "n_permutations": 1000,
+        "residual_fro": 19.944387435913086
+      }
+    },
+    "cf20050": {
+      "base_vs_base": {
+        "mmd": -0.006282828282828307,
+        "p_value": 0.7612387612387612,
+        "n_a": 110,
+        "n_b": 110,
+        "n_permutations": 1000
+      },
+      "easyedit-rome-restore": {
+        "mmd": -0.006505050505050514,
+        "p_value": 0.8181818181818182,
+        "n_a": 110,
+        "n_b": 110,
+        "n_permutations": 1000,
+        "residual_fro": 0.0
+      },
+      "easyedit-rome-svd15": {
+        "mmd": -0.002202020202020219,
+        "p_value": 0.5194805194805194,
+        "n_a": 110,
+        "n_b": 110,
+        "n_permutations": 1000,
+        "residual_fro": 19.89448356628418
+      }
+    },
+    "cf16173": {
+      "base_vs_base": {
+        "mmd": -0.004313131313131324,
+        "p_value": 0.7872127872127872,
+        "n_a": 110,
+        "n_b": 110,
+        "n_permutations": 1000
+      },
+      "easyedit-rome-restore": {
+        "mmd": 0.0010000000000000148,
+        "p_value": 0.3916083916083916,
+        "n_a": 110,
+        "n_b": 110,
+        "n_permutations": 1000,
+        "residual_fro": 0.0
+      },
+      "easyedit-rome-svd15": {
+        "mmd": 0.010434343434343449,
+        "p_value": 0.011988011988011988,
+        "n_a": 110,
+        "n_b": 110,
+        "n_permutations": 1000,
+        "residual_fro": 19.941606521606445
+      }
+    },
+    "cf10916": {
+      "base_vs_base": {
+        "mmd": -0.004252525252525244,
+        "p_value": 0.7832167832167832,
+        "n_a": 110,
+        "n_b": 110,
+        "n_permutations": 1000
+      },
+      "easyedit-rome-restore": {
+        "mmd": -0.00485858585858584,
+        "p_value": 0.8471528471528471,
+        "n_a": 110,
+        "n_b": 110,
+        "n_permutations": 1000,
+        "residual_fro": 0.0
+      },
+      "easyedit-rome-svd15": {
+        "mmd": 0.004292929292929286,
+        "p_value": 0.15084915084915085,
+        "n_a": 110,
+        "n_b": 110,
+        "n_permutations": 1000,
+        "residual_fro": 19.910785675048828
+      }
+    },
+    "cf7992": {
+      "base_vs_base": {
+        "mmd": 0.0018888888888889052,
+        "p_value": 0.23876123876123875,
+        "n_a": 110,
+        "n_b": 110,
+        "n_permutations": 1000
+      },
+      "easyedit-rome-restore": {
+        "mmd": 0.004101010101010105,
+        "p_value": 0.08591408591408592,
+        "n_a": 110,
+        "n_b": 110,
+        "n_permutations": 1000,
+        "residual_fro": 0.0
+      },
+      "easyedit-rome-svd15": {
+        "mmd": 0.0012323232323232514,
+        "p_value": 0.3016983016983017,
+        "n_a": 110,
+        "n_b": 110,
+        "n_permutations": 1000,
+        "residual_fro": 19.966768264770508
+      }
+    },
+    "cf10656": {
+      "base_vs_base": {
+        "mmd": -0.003464646464646462,
+        "p_value": 0.6643356643356644,
+        "n_a": 110,
+        "n_b": 110,
+        "n_permutations": 1000
+      },
+      "easyedit-rome-restore": {
+        "mmd": -0.004666666666666666,
+        "p_value": 0.7212787212787213,
+        "n_a": 110,
+        "n_b": 110,
+        "n_permutations": 1000,
+        "residual_fro": 0.0
+      },
+      "easyedit-rome-svd15": {
+        "mmd": -0.004232323232323212,
+        "p_value": 0.6843156843156843,
+        "n_a": 110,
+        "n_b": 110,
+        "n_permutations": 1000,
+        "residual_fro": 19.91602325439453
+      }
+    },
+    "cf2063": {
+      "base_vs_base": {
+        "mmd": -0.004151515151515149,
+        "p_value": 0.9500499500499501,
+        "n_a": 110,
+        "n_b": 110,
+        "n_permutations": 1000
+      },
+      "easyedit-rome-restore": {
+        "mmd": -0.0007373737373737345,
+        "p_value": 0.5824175824175825,
+        "n_a": 110,
+        "n_b": 110,
+        "n_permutations": 1000,
+        "residual_fro": 0.0
+      },
+      "easyedit-rome-svd15": {
+        "mmd": 0.00023232323232322619,
+        "p_value": 0.43956043956043955,
+        "n_a": 110,
+        "n_b": 110,
+        "n_permutations": 1000,
+        "residual_fro": 19.9257755279541
+      }
+    },
+    "cf6260": {
+      "base_vs_base": {
+        "mmd": 0.0036666666666666722,
+        "p_value": 0.15784215784215785,
+        "n_a": 110,
+        "n_b": 110,
+        "n_permutations": 1000
+      },
+      "easyedit-rome-restore": {
+        "mmd": 0.006737373737373743,
+        "p_value": 0.04495504495504495,
+        "n_a": 110,
+        "n_b": 110,
+        "n_permutations": 1000,
+        "residual_fro": 0.0
+      },
+      "easyedit-rome-svd15": {
+        "mmd": -0.0027070707070706926,
+        "p_value": 0.7132867132867133,
+        "n_a": 110,
+        "n_b": 110,
+        "n_permutations": 1000,
+        "residual_fro": 19.904661178588867
+      }
+    },
+    "cf18596": {
+      "base_vs_base": {
+        "mmd": -0.001999999999999974,
+        "p_value": 0.6023976023976024,
+        "n_a": 110,
+        "n_b": 110,
+        "n_permutations": 1000
+      },
+      "easyedit-rome-restore": {
+        "mmd": -0.002828282828282791,
+        "p_value": 0.6943056943056943,
+        "n_a": 110,
+        "n_b": 110,
+        "n_permutations": 1000,
+        "residual_fro": 0.0
+      },
+      "easyedit-rome-svd15": {
+        "mmd": -0.002595959595959596,
+        "p_value": 0.6593406593406593,
+        "n_a": 110,
+        "n_b": 110,
+        "n_permutations": 1000,
+        "residual_fro": 19.927248001098633
+      }
+    },
+    "cf7264": {
+      "base_vs_base": {
+        "mmd": 0.003949494949494953,
+        "p_value": 0.2007992007992008,
+        "n_a": 110,
+        "n_b": 110,
+        "n_permutations": 1000
+      },
+      "easyedit-rome-restore": {
+        "mmd": 6.06060606060943e-05,
+        "p_value": 0.44655344655344653,
+        "n_a": 110,
+        "n_b": 110,
+        "n_permutations": 1000,
+        "residual_fro": 0.0
+      },
+      "easyedit-rome-svd15": {
+        "mmd": -0.003161616161616171,
+        "p_value": 0.5614385614385614,
+        "n_a": 110,
+        "n_b": 110,
+        "n_permutations": 1000,
+        "residual_fro": 19.90642547607422
+      }
+    },
+    "cf7818": {
+      "base_vs_base": {
+        "mmd": -0.0016262626262625868,
+        "p_value": 0.5714285714285714,
+        "n_a": 110,
+        "n_b": 110,
+        "n_permutations": 1000
+      },
+      "easyedit-rome-restore": {
+        "mmd": -0.001040404040404036,
+        "p_value": 0.5354645354645354,
+        "n_a": 110,
+        "n_b": 110,
+        "n_permutations": 1000,
+        "residual_fro": 0.0
+      },
+      "easyedit-rome-svd15": {
+        "mmd": 0.0003838383838384307,
+        "p_value": 0.4405594405594406,
+        "n_a": 110,
+        "n_b": 110,
+        "n_permutations": 1000,
+        "residual_fro": 19.944318771362305
+      }
+    },
+    "cf4669": {
+      "base_vs_base": {
+        "mmd": -0.0012323232323232444,
+        "p_value": 0.6213786213786214,
+        "n_a": 110,
+        "n_b": 110,
+        "n_permutations": 1000
+      },
+      "easyedit-rome-restore": {
+        "mmd": -0.0025050505050504684,
+        "p_value": 0.7532467532467533,
+        "n_a": 110,
+        "n_b": 110,
+        "n_permutations": 1000,
+        "residual_fro": 0.0
+      },
+      "easyedit-rome-svd15": {
+        "mmd": 0.0024747474747474907,
+        "p_value": 0.26173826173826176,
+        "n_a": 110,
+        "n_b": 110,
+        "n_permutations": 1000,
+        "residual_fro": 19.926027297973633
+      }
+    },
+    "cf17792": {
+      "base_vs_base": {
+        "mmd": -0.0011818181818181797,
+        "p_value": 0.6503496503496503,
+        "n_a": 110,
+        "n_b": 110,
+        "n_permutations": 1000
+      },
+      "easyedit-rome-restore": {
+        "mmd": -0.0005454545454545469,
+        "p_value": 0.5544455544455544,
+        "n_a": 110,
+        "n_b": 110,
+        "n_permutations": 1000,
+        "residual_fro": 0.0
+      },
+      "easyedit-rome-svd15": {
+        "mmd": -0.0033333333333333236,
+        "p_value": 0.9170829170829171,
+        "n_a": 110,
+        "n_b": 110,
+        "n_permutations": 1000,
+        "residual_fro": 19.904277801513672
+      }
+    },
+    "cf14679": {
+      "base_vs_base": {
+        "mmd": -0.004787878787878785,
+        "p_value": 0.7572427572427572,
+        "n_a": 110,
+        "n_b": 110,
+        "n_permutations": 1000
+      },
+      "easyedit-rome-restore": {
+        "mmd": -0.005666666666666674,
+        "p_value": 0.7812187812187812,
+        "n_a": 110,
+        "n_b": 110,
+        "n_permutations": 1000,
+        "residual_fro": 0.0
+      },
+      "easyedit-rome-svd15": {
+        "mmd": 0.004505050505050515,
+        "p_value": 0.13486513486513488,
+        "n_a": 110,
+        "n_b": 110,
+        "n_permutations": 1000,
+        "residual_fro": 19.892335891723633
+      }
+    },
+    "cf2988": {
+      "base_vs_base": {
+        "mmd": -0.0035656565656565498,
+        "p_value": 0.7712287712287712,
+        "n_a": 110,
+        "n_b": 110,
+        "n_permutations": 1000
+      },
+      "easyedit-rome-restore": {
+        "mmd": -0.0010404040404040221,
+        "p_value": 0.5564435564435565,
+        "n_a": 110,
+        "n_b": 110,
+        "n_permutations": 1000,
+        "residual_fro": 0.0
+      },
+      "easyedit-rome-svd15": {
+        "mmd": -0.009030303030303041,
+        "p_value": 0.9400599400599401,
+        "n_a": 110,
+        "n_b": 110,
+        "n_permutations": 1000,
+        "residual_fro": 19.923072814941406
+      }
+    },
+    "cf2636": {
+      "base_vs_base": {
+        "mmd": 7.070707070707533e-05,
+        "p_value": 0.4725274725274725,
+        "n_a": 110,
+        "n_b": 110,
+        "n_permutations": 1000
+      },
+      "easyedit-rome-restore": {
+        "mmd": -0.0024040404040404015,
+        "p_value": 0.7792207792207793,
+        "n_a": 110,
+        "n_b": 110,
+        "n_permutations": 1000,
+        "residual_fro": 0.0
+      },
+      "easyedit-rome-svd15": {
+        "mmd": 0.001131313131313115,
+        "p_value": 0.3436563436563437,
+        "n_a": 110,
+        "n_b": 110,
+        "n_permutations": 1000,
+        "residual_fro": 19.913225173950195
+      }
+    },
+    "cf10487": {
+      "base_vs_base": {
+        "mmd": 0.0062727272727272874,
+        "p_value": 0.015984015984015984,
+        "n_a": 110,
+        "n_b": 110,
+        "n_permutations": 1000
+      },
+      "easyedit-rome-restore": {
+        "mmd": -0.00024242424242422456,
+        "p_value": 0.4965034965034965,
+        "n_a": 110,
+        "n_b": 110,
+        "n_permutations": 1000,
+        "residual_fro": 0.0
+      },
+      "easyedit-rome-svd15": {
+        "mmd": -0.0014747474747474412,
+        "p_value": 0.6563436563436563,
+        "n_a": 110,
+        "n_b": 110,
+        "n_permutations": 1000,
+        "residual_fro": 19.942466735839844
+      }
+    },
+    "cf16644": {
+      "base_vs_base": {
+        "mmd": -0.007010101010101001,
+        "p_value": 0.8751248751248751,
+        "n_a": 110,
+        "n_b": 110,
+        "n_permutations": 1000
+      },
+      "easyedit-rome-restore": {
+        "mmd": -0.0024848484848484925,
+        "p_value": 0.6473526473526473,
+        "n_a": 110,
+        "n_b": 110,
+        "n_permutations": 1000,
+        "residual_fro": 0.0
+      },
+      "easyedit-rome-svd15": {
+        "mmd": 0.009020202020202026,
+        "p_value": 0.03696303696303696,
+        "n_a": 110,
+        "n_b": 110,
+        "n_permutations": 1000,
+        "residual_fro": 19.91722297668457
+      }
+    },
+    "cf16032": {
+      "base_vs_base": {
+        "mmd": 0.0016868686868687088,
+        "p_value": 0.36163836163836166,
+        "n_a": 110,
+        "n_b": 110,
+        "n_permutations": 1000
+      },
+      "easyedit-rome-restore": {
+        "mmd": -0.002858585858585838,
+        "p_value": 0.6063936063936064,
+        "n_a": 110,
+        "n_b": 110,
+        "n_permutations": 1000,
+        "residual_fro": 0.0
+      },
+      "easyedit-rome-svd15": {
+        "mmd": 0.02326262626262627,
+        "p_value": 0.000999000999000999,
+        "n_a": 110,
+        "n_b": 110,
+        "n_permutations": 1000,
+        "residual_fro": 19.91306495666504
+      }
+    },
+    "cf3573": {
+      "base_vs_base": {
+        "mmd": -0.0009090909090908803,
+        "p_value": 0.5664335664335665,
+        "n_a": 110,
+        "n_b": 110,
+        "n_permutations": 1000
+      },
+      "easyedit-rome-restore": {
+        "mmd": -0.005242424242424187,
+        "p_value": 0.8291708291708292,
+        "n_a": 110,
+        "n_b": 110,
+        "n_permutations": 1000,
+        "residual_fro": 0.0
+      },
+      "easyedit-rome-svd15": {
+        "mmd": -0.004727272727272677,
+        "p_value": 0.8511488511488512,
+        "n_a": 110,
+        "n_b": 110,
+        "n_permutations": 1000,
+        "residual_fro": 19.90993309020996
+      }
+    },
+    "cf9877": {
+      "base_vs_base": {
+        "mmd": 0.000787878787878761,
+        "p_value": 0.4305694305694306,
+        "n_a": 110,
+        "n_b": 110,
+        "n_permutations": 1000
+      },
+      "easyedit-rome-restore": {
+        "mmd": -0.0037070707070707004,
+        "p_value": 0.7262737262737263,
+        "n_a": 110,
+        "n_b": 110,
+        "n_permutations": 1000,
+        "residual_fro": 0.0
+      },
+      "easyedit-rome-svd15": {
+        "mmd": 0.006555555555555537,
+        "p_value": 0.12487512487512488,
+        "n_a": 110,
+        "n_b": 110,
+        "n_permutations": 1000,
+        "residual_fro": 19.892953872680664
+      }
+    },
+    "cf18063": {
+      "base_vs_base": {
+        "mmd": 0.0005656565656565402,
+        "p_value": 0.34665334665334663,
+        "n_a": 110,
+        "n_b": 110,
+        "n_permutations": 1000
+      },
+      "easyedit-rome-restore": {
+        "mmd": 0.003414141414141432,
+        "p_value": 0.2077922077922078,
+        "n_a": 110,
+        "n_b": 110,
+        "n_permutations": 1000,
+        "residual_fro": 0.0
+      },
+      "easyedit-rome-svd15": {
+        "mmd": 0.0008484848484848484,
+        "p_value": 0.38961038961038963,
+        "n_a": 110,
+        "n_b": 110,
+        "n_permutations": 1000,
+        "residual_fro": 19.901918411254883
+      }
+    },
+    "cf9538": {
+      "base_vs_base": {
+        "mmd": -0.0040505050505050405,
+        "p_value": 0.7942057942057942,
+        "n_a": 110,
+        "n_b": 110,
+        "n_permutations": 1000
+      },
+      "easyedit-rome-restore": {
+        "mmd": -0.005303030303030268,
+        "p_value": 0.8811188811188811,
+        "n_a": 110,
+        "n_b": 110,
+        "n_permutations": 1000,
+        "residual_fro": 0.0
+      },
+      "easyedit-rome-svd15": {
+        "mmd": -0.0013636363636363308,
+        "p_value": 0.6203796203796204,
+        "n_a": 110,
+        "n_b": 110,
+        "n_permutations": 1000,
+        "residual_fro": 19.91328239440918
+      }
+    },
+    "cf4089": {
+      "base_vs_base": {
+        "mmd": -0.0005757575757575559,
+        "p_value": 0.5614385614385614,
+        "n_a": 110,
+        "n_b": 110,
+        "n_permutations": 1000
+      },
+      "easyedit-rome-restore": {
+        "mmd": -0.004707070707070701,
+        "p_value": 0.948051948051948,
+        "n_a": 110,
+        "n_b": 110,
+        "n_permutations": 1000,
+        "residual_fro": 0.0
+      },
+      "easyedit-rome-svd15": {
+        "mmd": -0.0032020202020201782,
+        "p_value": 0.8741258741258742,
+        "n_a": 110,
+        "n_b": 110,
+        "n_permutations": 1000,
+        "residual_fro": 19.922609329223633
+      }
+    },
+    "cf17938": {
+      "base_vs_base": {
+        "mmd": -0.0006060606060605822,
+        "p_value": 0.4565434565434565,
+        "n_a": 110,
+        "n_b": 110,
+        "n_permutations": 1000
+      },
+      "easyedit-rome-restore": {
+        "mmd": 0.0008787878787879094,
+        "p_value": 0.4125874125874126,
+        "n_a": 110,
+        "n_b": 110,
+        "n_permutations": 1000,
+        "residual_fro": 0.0
+      },
+      "easyedit-rome-svd15": {
+        "mmd": 0.0006666666666666765,
+        "p_value": 0.3876123876123876,
+        "n_a": 110,
+        "n_b": 110,
+        "n_permutations": 1000,
+        "residual_fro": 19.901594161987305
+      }
+    },
+    "cf10903": {
+      "base_vs_base": {
+        "mmd": -0.0007575757575757347,
+        "p_value": 0.5314685314685315,
+        "n_a": 110,
+        "n_b": 110,
+        "n_permutations": 1000
+      },
+      "easyedit-rome-restore": {
+        "mmd": 0.0002929292929293448,
+        "p_value": 0.44155844155844154,
+        "n_a": 110,
+        "n_b": 110,
+        "n_permutations": 1000,
+        "residual_fro": 0.0
+      },
+      "easyedit-rome-svd15": {
+        "mmd": -0.0025252525252525138,
+        "p_value": 0.7182817182817183,
+        "n_a": 110,
+        "n_b": 110,
+        "n_permutations": 1000,
+        "residual_fro": 19.88641929626465
+      }
+    },
+    "cf17704": {
+      "base_vs_base": {
+        "mmd": -0.0058686868686868635,
+        "p_value": 0.9080919080919081,
+        "n_a": 110,
+        "n_b": 110,
+        "n_permutations": 1000
+      },
+      "easyedit-rome-restore": {
+        "mmd": 0.0052626262626262535,
+        "p_value": 0.16883116883116883,
+        "n_a": 110,
+        "n_b": 110,
+        "n_permutations": 1000,
+        "residual_fro": 0.0
+      },
+      "easyedit-rome-svd15": {
+        "mmd": -0.0047878787878787715,
+        "p_value": 0.8861138861138861,
+        "n_a": 110,
+        "n_b": 110,
+        "n_permutations": 1000,
+        "residual_fro": 19.90913963317871
+      }
+    },
+    "cf6658": {
+      "base_vs_base": {
+        "mmd": 0.00806060606060608,
+        "p_value": 0.04795204795204795,
+        "n_a": 110,
+        "n_b": 110,
+        "n_permutations": 1000
+      },
+      "easyedit-rome-restore": {
+        "mmd": 0.006191919191919214,
+        "p_value": 0.0979020979020979,
+        "n_a": 110,
+        "n_b": 110,
+        "n_permutations": 1000,
+        "residual_fro": 0.0
+      },
+      "easyedit-rome-svd15": {
+        "mmd": 0.009010101010101017,
+        "p_value": 0.04295704295704296,
+        "n_a": 110,
+        "n_b": 110,
+        "n_permutations": 1000,
+        "residual_fro": 19.909055709838867
+      }
+    },
+    "cf19765": {
+      "base_vs_base": {
+        "mmd": 0.02121212121212121,
+        "p_value": 0.022977022977022976,
+        "n_a": 110,
+        "n_b": 110,
+        "n_permutations": 1000
+      },
+      "easyedit-rome-restore": {
+        "mmd": -0.0004141414141414085,
+        "p_value": 0.4485514485514486,
+        "n_a": 110,
+        "n_b": 110,
+        "n_permutations": 1000,
+        "residual_fro": 0.0
+      },
+      "easyedit-rome-svd15": {
+        "mmd": 0.009585858585858593,
+        "p_value": 0.07492507492507493,
+        "n_a": 110,
+        "n_b": 110,
+        "n_permutations": 1000,
+        "residual_fro": 19.90778923034668
+      }
+    },
+    "cf17931": {
+      "base_vs_base": {
+        "mmd": -0.0018888888888888705,
+        "p_value": 0.5024975024975025,
+        "n_a": 110,
+        "n_b": 110,
+        "n_permutations": 1000
+      },
+      "easyedit-rome-restore": {
+        "mmd": 0.0012222222222222356,
+        "p_value": 0.3546453546453546,
+        "n_a": 110,
+        "n_b": 110,
+        "n_permutations": 1000,
+        "residual_fro": 0.0
+      },
+      "easyedit-rome-svd15": {
+        "mmd": -0.0007575757575757347,
+        "p_value": 0.4325674325674326,
+        "n_a": 110,
+        "n_b": 110,
+        "n_permutations": 1000,
+        "residual_fro": 19.923046112060547
+      }
+    },
+    "cf19255": {
+      "base_vs_base": {
+        "mmd": -0.001949494949494937,
+        "p_value": 0.7532467532467533,
+        "n_a": 110,
+        "n_b": 110,
+        "n_permutations": 1000
+      },
+      "easyedit-rome-restore": {
+        "mmd": -0.003959595959595927,
+        "p_value": 0.8971028971028971,
+        "n_a": 110,
+        "n_b": 110,
+        "n_permutations": 1000,
+        "residual_fro": 0.0
+      },
+      "easyedit-rome-svd15": {
+        "mmd": 4.0404040404083685e-05,
+        "p_value": 0.4745254745254745,
+        "n_a": 110,
+        "n_b": 110,
+        "n_permutations": 1000,
+        "residual_fro": 19.9151668548584
+      }
+    },
+    "cf9425": {
+      "base_vs_base": {
+        "mmd": 0.0014949494949495212,
+        "p_value": 0.3166833166833167,
+        "n_a": 110,
+        "n_b": 110,
+        "n_permutations": 1000
+      },
+      "easyedit-rome-restore": {
+        "mmd": 0.0004545454545454644,
+        "p_value": 0.3996003996003996,
+        "n_a": 110,
+        "n_b": 110,
+        "n_permutations": 1000,
+        "residual_fro": 0.0
+      },
+      "easyedit-rome-svd15": {
+        "mmd": 0.002848484848484885,
+        "p_value": 0.12687312687312688,
+        "n_a": 110,
+        "n_b": 110,
+        "n_permutations": 1000,
+        "residual_fro": 19.906108856201172
+      }
+    },
+    "cf14581": {
+      "base_vs_base": {
+        "mmd": 0.00022222222222219312,
+        "p_value": 0.4485514485514486,
+        "n_a": 110,
+        "n_b": 110,
+        "n_permutations": 1000
+      },
+      "easyedit-rome-restore": {
+        "mmd": -0.0013838383838383622,
+        "p_value": 0.5814185814185814,
+        "n_a": 110,
+        "n_b": 110,
+        "n_permutations": 1000,
+        "residual_fro": 0.0
+      },
+      "easyedit-rome-svd15": {
+        "mmd": -0.002989898989898987,
+        "p_value": 0.6783216783216783,
+        "n_a": 110,
+        "n_b": 110,
+        "n_permutations": 1000,
+        "residual_fro": 19.918155670166016
+      }
+    },
+    "cf3002": {
+      "base_vs_base": {
+        "mmd": -0.00362626262626263,
+        "p_value": 0.8931068931068931,
+        "n_a": 110,
+        "n_b": 110,
+        "n_permutations": 1000
+      },
+      "easyedit-rome-restore": {
+        "mmd": -0.0004141414141414085,
+        "p_value": 0.5294705294705294,
+        "n_a": 110,
+        "n_b": 110,
+        "n_permutations": 1000,
+        "residual_fro": 0.0
+      },
+      "easyedit-rome-svd15": {
+        "mmd": -0.001383838383838397,
+        "p_value": 0.6723276723276723,
+        "n_a": 110,
+        "n_b": 110,
+        "n_permutations": 1000,
+        "residual_fro": 19.93097496032715
+      }
+    },
+    "cf19539": {
+      "base_vs_base": {
+        "mmd": 0.012090909090909124,
+        "p_value": 0.03796203796203796,
+        "n_a": 110,
+        "n_b": 110,
+        "n_permutations": 1000
+      },
+      "easyedit-rome-restore": {
+        "mmd": 0.010060606060606048,
+        "p_value": 0.053946053946053944,
+        "n_a": 110,
+        "n_b": 110,
+        "n_permutations": 1000,
+        "residual_fro": 0.0
+      },
+      "easyedit-rome-svd15": {
+        "mmd": 0.0042020202020202,
+        "p_value": 0.22377622377622378,
+        "n_a": 110,
+        "n_b": 110,
+        "n_permutations": 1000,
+        "residual_fro": 19.913360595703125
+      }
+    },
+    "cf12612": {
+      "base_vs_base": {
+        "mmd": -0.00022222222222222088,
+        "p_value": 0.46353646353646355,
+        "n_a": 110,
+        "n_b": 110,
+        "n_permutations": 1000
+      },
+      "easyedit-rome-restore": {
+        "mmd": -0.005151515151515129,
+        "p_value": 0.8091908091908092,
+        "n_a": 110,
+        "n_b": 110,
+        "n_permutations": 1000,
+        "residual_fro": 0.0
+      },
+      "easyedit-rome-svd15": {
+        "mmd": 0.0034848484848484934,
+        "p_value": 0.26173826173826176,
+        "n_a": 110,
+        "n_b": 110,
+        "n_permutations": 1000,
+        "residual_fro": 19.900043487548828
+      }
+    },
+    "cf10388": {
+      "base_vs_base": {
+        "mmd": 0.0077171717171717336,
+        "p_value": 0.11488511488511488,
+        "n_a": 110,
+        "n_b": 110,
+        "n_permutations": 1000
+      },
+      "easyedit-rome-restore": {
+        "mmd": 0.003969696969696984,
+        "p_value": 0.24275724275724275,
+        "n_a": 110,
+        "n_b": 110,
+        "n_permutations": 1000,
+        "residual_fro": 0.0
+      },
+      "easyedit-rome-svd15": {
+        "mmd": -0.000565656565656561,
+        "p_value": 0.4775224775224775,
+        "n_a": 110,
+        "n_b": 110,
+        "n_permutations": 1000,
+        "residual_fro": 19.908937454223633
+      }
+    },
+    "cf18862": {
+      "base_vs_base": {
+        "mmd": -0.003292929292929299,
+        "p_value": 0.8201798201798202,
+        "n_a": 110,
+        "n_b": 110,
+        "n_permutations": 1000
+      },
+      "easyedit-rome-restore": {
+        "mmd": -0.0017272727272727162,
+        "p_value": 0.6553446553446554,
+        "n_a": 110,
+        "n_b": 110,
+        "n_permutations": 1000,
+        "residual_fro": 0.0
+      },
+      "easyedit-rome-svd15": {
+        "mmd": -9.090909090907207e-05,
+        "p_value": 0.4835164835164835,
+        "n_a": 110,
+        "n_b": 110,
+        "n_permutations": 1000,
+        "residual_fro": 19.890661239624023
+      }
+    },
+    "cf7933": {
+      "base_vs_base": {
+        "mmd": 0.012010101010100999,
+        "p_value": 0.006993006993006993,
+        "n_a": 110,
+        "n_b": 110,
+        "n_permutations": 1000
+      },
+      "easyedit-rome-restore": {
+        "mmd": 8.08080808080841e-05,
+        "p_value": 0.43756243756243757,
+        "n_a": 110,
+        "n_b": 110,
+        "n_permutations": 1000,
+        "residual_fro": 0.0
+      },
+      "easyedit-rome-svd15": {
+        "mmd": 0.0005050505050505291,
+        "p_value": 0.41858141858141856,
+        "n_a": 110,
+        "n_b": 110,
+        "n_permutations": 1000,
+        "residual_fro": 19.889978408813477
+      }
+    },
+    "cf9513": {
+      "base_vs_base": {
+        "mmd": -0.002939393939393936,
+        "p_value": 0.5284715284715285,
+        "n_a": 110,
+        "n_b": 110,
+        "n_permutations": 1000
+      },
+      "easyedit-rome-restore": {
+        "mmd": -0.00162626262626267,
+        "p_value": 0.4835164835164835,
+        "n_a": 110,
+        "n_b": 110,
+        "n_permutations": 1000,
+        "residual_fro": 0.0
+      },
+      "easyedit-rome-svd15": {
+        "mmd": 0.009757575757575757,
+        "p_value": 0.16483516483516483,
+        "n_a": 110,
+        "n_b": 110,
+        "n_permutations": 1000,
+        "residual_fro": 19.97893714904785
+      }
+    },
+    "cf6025": {
+      "base_vs_base": {
+        "mmd": -0.0026666666666666644,
+        "p_value": 0.7922077922077922,
+        "n_a": 110,
+        "n_b": 110,
+        "n_permutations": 1000
+      },
+      "easyedit-rome-restore": {
+        "mmd": 0.003636363636363632,
+        "p_value": 0.16483516483516483,
+        "n_a": 110,
+        "n_b": 110,
+        "n_permutations": 1000,
+        "residual_fro": 0.0
+      },
+      "easyedit-rome-svd15": {
+        "mmd": -0.00014141414141412983,
+        "p_value": 0.4855144855144855,
+        "n_a": 110,
+        "n_b": 110,
+        "n_permutations": 1000,
+        "residual_fro": 19.91707420349121
+      }
+    },
+    "cf6205": {
+      "base_vs_base": {
+        "mmd": 0.010777777777777775,
+        "p_value": 0.08591408591408592,
+        "n_a": 110,
+        "n_b": 110,
+        "n_permutations": 1000
+      },
+      "easyedit-rome-restore": {
+        "mmd": -0.004414141414141398,
+        "p_value": 0.6873126873126874,
+        "n_a": 110,
+        "n_b": 110,
+        "n_permutations": 1000,
+        "residual_fro": 0.0
+      },
+      "easyedit-rome-svd15": {
+        "mmd": 0.0007373737373737518,
+        "p_value": 0.4405594405594406,
+        "n_a": 110,
+        "n_b": 110,
+        "n_permutations": 1000,
+        "residual_fro": 19.911624908447266
+      }
+    },
+    "cf6118": {
+      "base_vs_base": {
+        "mmd": 0.002242424242424275,
+        "p_value": 0.2807192807192807,
+        "n_a": 110,
+        "n_b": 110,
+        "n_permutations": 1000
+      },
+      "easyedit-rome-restore": {
+        "mmd": 0.002898989898989915,
+        "p_value": 0.26173826173826176,
+        "n_a": 110,
+        "n_b": 110,
+        "n_permutations": 1000,
+        "residual_fro": 0.0
+      },
+      "easyedit-rome-svd15": {
+        "mmd": 0.0010000000000000286,
+        "p_value": 0.3956043956043956,
+        "n_a": 110,
+        "n_b": 110,
+        "n_permutations": 1000,
+        "residual_fro": 19.99012565612793
+      }
+    },
+    "cf1080": {
+      "base_vs_base": {
+        "mmd": 0.0005959595959595942,
+        "p_value": 0.4065934065934066,
+        "n_a": 110,
+        "n_b": 110,
+        "n_permutations": 1000
+      },
+      "easyedit-rome-restore": {
+        "mmd": -0.0058787878787878445,
+        "p_value": 0.8431568431568431,
+        "n_a": 110,
+        "n_b": 110,
+        "n_permutations": 1000,
+        "residual_fro": 0.0
+      },
+      "easyedit-rome-svd15": {
+        "mmd": 0.0036464646464646755,
+        "p_value": 0.22377622377622378,
+        "n_a": 110,
+        "n_b": 110,
+        "n_permutations": 1000,
+        "residual_fro": 19.91819953918457
+      }
+    },
+    "cf20079": {
+      "base_vs_base": {
+        "mmd": -0.003434343434343387,
+        "p_value": 0.6973026973026973,
+        "n_a": 110,
+        "n_b": 110,
+        "n_permutations": 1000
+      },
+      "easyedit-rome-restore": {
+        "mmd": -0.006373737373737351,
+        "p_value": 0.8761238761238761,
+        "n_a": 110,
+        "n_b": 110,
+        "n_permutations": 1000,
+        "residual_fro": 0.0
+      },
+      "easyedit-rome-svd15": {
+        "mmd": 0.008717171717171734,
+        "p_value": 0.08291708291708291,
+        "n_a": 110,
+        "n_b": 110,
+        "n_permutations": 1000,
+        "residual_fro": 19.909725189208984
+      }
+    },
+    "cf21517": {
+      "base_vs_base": {
+        "mmd": -0.005141414141414148,
+        "p_value": 0.9470529470529471,
+        "n_a": 110,
+        "n_b": 110,
+        "n_permutations": 1000
+      },
+      "easyedit-rome-restore": {
+        "mmd": 0.005050505050505062,
+        "p_value": 0.12387612387612387,
+        "n_a": 110,
+        "n_b": 110,
+        "n_permutations": 1000,
+        "residual_fro": 0.0
+      },
+      "easyedit-rome-svd15": {
+        "mmd": 0.0014747474747474967,
+        "p_value": 0.3126873126873127,
+        "n_a": 110,
+        "n_b": 110,
+        "n_permutations": 1000,
+        "residual_fro": 19.891407012939453
+      }
+    },
+    "cf8521": {
+      "base_vs_base": {
+        "mmd": -0.001393939393939364,
+        "p_value": 0.5964035964035964,
+        "n_a": 110,
+        "n_b": 110,
+        "n_permutations": 1000
+      },
+      "easyedit-rome-restore": {
+        "mmd": 0.0024747474747475046,
+        "p_value": 0.2907092907092907,
+        "n_a": 110,
+        "n_b": 110,
+        "n_permutations": 1000,
+        "residual_fro": 0.0
+      },
+      "easyedit-rome-svd15": {
+        "mmd": 0.0009191919191919584,
+        "p_value": 0.4125874125874126,
+        "n_a": 110,
+        "n_b": 110,
+        "n_permutations": 1000,
+        "residual_fro": 19.90039825439453
+      }
+    },
+    "cf15614": {
+      "base_vs_base": {
+        "mmd": 0.002666666666666692,
+        "p_value": 0.26073926073926074,
+        "n_a": 110,
+        "n_b": 110,
+        "n_permutations": 1000
+      },
+      "easyedit-rome-restore": {
+        "mmd": 0.00613131313131314,
+        "p_value": 0.09090909090909091,
+        "n_a": 110,
+        "n_b": 110,
+        "n_permutations": 1000,
+        "residual_fro": 0.0
+      },
+      "easyedit-rome-svd15": {
+        "mmd": -0.005010101010101006,
+        "p_value": 0.8741258741258742,
+        "n_a": 110,
+        "n_b": 110,
+        "n_permutations": 1000,
+        "residual_fro": 19.930585861206055
+      }
+    },
+    "cf2263": {
+      "base_vs_base": {
+        "mmd": 0.000222222222222207,
+        "p_value": 0.45454545454545453,
+        "n_a": 110,
+        "n_b": 110,
+        "n_permutations": 1000
+      },
+      "easyedit-rome-restore": {
+        "mmd": -0.001202020202020218,
+        "p_value": 0.5704295704295704,
+        "n_a": 110,
+        "n_b": 110,
+        "n_permutations": 1000,
+        "residual_fro": 0.0
+      },
+      "easyedit-rome-svd15": {
+        "mmd": -0.0004848484848485046,
+        "p_value": 0.5174825174825175,
+        "n_a": 110,
+        "n_b": 110,
+        "n_permutations": 1000,
+        "residual_fro": 19.914091110229492
+      }
+    },
+    "cf2943": {
+      "base_vs_base": {
+        "mmd": 0.0013232323232323095,
+        "p_value": 0.38461538461538464,
+        "n_a": 110,
+        "n_b": 110,
+        "n_permutations": 1000
+      },
+      "easyedit-rome-restore": {
+        "mmd": 0.005959595959595956,
+        "p_value": 0.1798201798201798,
+        "n_a": 110,
+        "n_b": 110,
+        "n_permutations": 1000,
+        "residual_fro": 0.0
+      },
+      "easyedit-rome-svd15": {
+        "mmd": -0.005101010101010106,
+        "p_value": 0.8151848151848152,
+        "n_a": 110,
+        "n_b": 110,
+        "n_permutations": 1000,
+        "residual_fro": 19.906251907348633
+      }
+    },
+    "cf4267": {
+      "base_vs_base": {
+        "mmd": -0.0028989898989898594,
+        "p_value": 0.7452547452547452,
+        "n_a": 110,
+        "n_b": 110,
+        "n_permutations": 1000
+      },
+      "easyedit-rome-restore": {
+        "mmd": 0.0005050505050505222,
+        "p_value": 0.4175824175824176,
+        "n_a": 110,
+        "n_b": 110,
+        "n_permutations": 1000,
+        "residual_fro": 0.0
+      },
+      "easyedit-rome-svd15": {
+        "mmd": -0.00131313131313128,
+        "p_value": 0.5784215784215784,
+        "n_a": 110,
+        "n_b": 110,
+        "n_permutations": 1000,
+        "residual_fro": 19.9219970703125
+      }
+    },
+    "cf4900": {
+      "base_vs_base": {
+        "mmd": 0.0036464646464646616,
+        "p_value": 0.2707292707292707,
+        "n_a": 110,
+        "n_b": 110,
+        "n_permutations": 1000
+      },
+      "easyedit-rome-restore": {
+        "mmd": -0.0006262626262625998,
+        "p_value": 0.5214785214785215,
+        "n_a": 110,
+        "n_b": 110,
+        "n_permutations": 1000,
+        "residual_fro": 0.0
+      },
+      "easyedit-rome-svd15": {
+        "mmd": 0.002161616161616184,
+        "p_value": 0.36663336663336665,
+        "n_a": 110,
+        "n_b": 110,
+        "n_permutations": 1000,
+        "residual_fro": 19.941434860229492
+      }
+    },
+    "cf1266": {
+      "base_vs_base": {
+        "mmd": 8.08080808080841e-05,
+        "p_value": 0.46153846153846156,
+        "n_a": 110,
+        "n_b": 110,
+        "n_permutations": 1000
+      },
+      "easyedit-rome-restore": {
+        "mmd": -0.0034040404040404024,
+        "p_value": 0.8411588411588412,
+        "n_a": 110,
+        "n_b": 110,
+        "n_permutations": 1000,
+        "residual_fro": 0.0
+      },
+      "easyedit-rome-svd15": {
+        "mmd": 0.000999999999999987,
+        "p_value": 0.3626373626373626,
+        "n_a": 110,
+        "n_b": 110,
+        "n_permutations": 1000,
+        "residual_fro": 19.921302795410156
+      }
+    }
+  },
+  "torch": "2.6.0+cu124"
+}

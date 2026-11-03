@@ -2,6 +2,27 @@
 
 Dated entries, newest first. Failures and dead ends go in too.
 
+## 2026-11-03 (15:10): 7B distribution test at q=15: the undone model is not distinguishable from base by sampling
+
+Runs: `results/20261103T205611_stat_undo_ee_cf100_7b_q15.json` (restore and SVD q=15) and `results/20261103T203558_stat_undo_ee_cf100_7b_q15_nulledit.json` (truncation control). Modal A100 80GB, float32. Same settings as the 1.5B test: 100 cases, 11 probes, 10 samples x 20 tokens per probe at temperature 1, Hamming MMD, 1,000 permutations, alpha 0.05.
+
+Process note: no predictions were written in this log before these two runs. That breaks the project rule. They were started at 13:40 on the author's go-ahead, and the predictions step was skipped. This entry records the result only.
+
+| Comparison (100 cases) | Rejected "same as base" | Median p | Mean MMD |
+| --- | --- | --- | --- |
+| Base vs base (null) | 6 | 0.50 | 0.0001 |
+| Restore | 1 | 0.53 | -0.0007 |
+| SVD undo, q=15 | **6** | 0.43 | 0.0009 |
+| Truncation control, q=15 | 5 | 0.52 | -0.0003 |
+
+On 1.5B at q=3, the SVD undo was rejected in 45 of 100 cases (control 8).
+
+What this means:
+- At the dev-chosen setting on 7B, sampled output after the SVD undo is indistinguishable from the original model's at this test's power: 6 rejections, the same as the null. That includes the truncation itself (5).
+- The greedy differences are real: 44% of probes differ from base after the undo, and 38% in the control. But they are small, on near-ties that sampling hardly sees. With 10 samples per probe the test has limited power, so "not rejected" is not proof of equality.
+- So the 7B picture at q=15 is "close to the original, not exactly the original". The edit is mostly removed (leak 3% vs 0.7%), a small preference for the edit remains (ES 0.30 vs 0.17), greedy outputs shift on many probes, and sampled outputs look the same. Only restore and subtract are exact.
+- For the write-up this narrows the claim further. "The model doesn't come back" is true for exact, greedy comparison on both models, and for sampled output on 1.5B. On 7B at the right setting, the remaining difference is small. The post has to say so, not imply a large failure.
+
 ## 2026-11-03 (13:30): Qwen2.5-7B results: consistent with the paper, the edit is mostly removed at the dev-chosen q, and the model is not given back
 
 Runs (predictions in 10:55; the q=15 pair was added at 12:35 after the dev sweep chose q=15, see below). All runs were on a Modal A100 80GB, in float32, with the authors' unchanged Qwen2.5-7B config (`configs/easyedit_rome_qwen2.5-7b.yaml`). The edits came from `scripts/modal_app.py --step export` (dev20 20/20 and cf100 100/100 with rewrite_acc 1.0, about 11 s per edit). The run files are copied from the Modal volume into `results/` (`20261103T18*`, `T19*`, tags `ee_cf100_7b*`; sweep `20261103T183046_svd_q_sweep_easyedit_counterfact_dev20_seed1.json`; comparisons `20261103T_7b_q{3,10,15}_null_svd_compare.json`). 100 cases, 11 probes, 8 greedy tokens (now recorded in each run's meta). Leak CIs are case-cluster bootstrap; ES CIs are Wilson.
