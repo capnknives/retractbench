@@ -2,6 +2,23 @@
 
 Dated entries, newest first. Failures and dead ends go in too.
 
+## 2026-11-03 (08:25): Test set at q=10, with its truncation control (predictions)
+
+Why: the independent review's main objection (LOG 2026-11-02 21:30). The test set ran only at q=3, the best setting by our 5-token criterion. q=10 matches the paper's headline setting (62.9% at k=10) and sits inside our dev sweep's first-token-best range (q=7-10).
+
+Runs: `run_rome.py --tag ee_cf100_q10 --deltas data\easyedit_rome\cf100.pt --dtype float32 --modes svd --svd-q 10`, then the same with `--null-edit` (tag `ee_cf100_q10_nulledit`), then `compare_null_svd.py`. Otherwise the same as q=3: 100 cases, 11 probes, 8 greedy tokens. Probability scores come with the run. The MMD test is not part of this; it is a separate, longer run, and it is run only if the results call for it.
+
+Predictions:
+- Leak (edited prompt + paraphrases): 15-30% of 300 probes, down from 43% at q=3. On dev, the edit was kept in 53% of cases at q=3 and 26% at q=7-10, and it was among the top 4 components in 15 of 20 cases. Control leak stays near zero (at most 2%).
+- ES after undo: 0.35-0.55, down from 0.69 (base 0.19). Control ES close to base (0.15-0.30).
+- Control damage grows: 25-45% of the 1,100 probes still equal base, down from 60% at q=3; 0 of 100 exact.
+- Exact revoke for the real edits: 0-2 of 100. Not informative, as at q=3.
+- Uncertainty: dev figures rest on 19 edits with wide intervals, so each range could be off by about 10 points.
+
+Decision rule, fixed before the run:
+- If the leak at q=10 is at least 10% and at least 5 times the control's, "the edit often survives" holds at both settings. The post reports both settings.
+- If the leak falls below 10%, the post's framing becomes a trade-off: few components dropped leaves the edit, many dropped removes it but changes the model more. In that case, state whether any tested q both removes the edit and keeps the control near base.
+
 ## 2026-11-03 (08:10): Edit side effects and ROME collapse check
 
 Prompted by an external summary of known ROME flaws (2022-2024 work: "disabling" edits that collapse the model, fixed by r-ROME, Gupta et al. arXiv:2403.07175; degradation under sequential edits; side effects on nearby facts). None of it is about undoing edits, so the results stand. Two checks on the 100 genuine ROME test edits (`results/20261102T183353Z_easyedit-rome-restore_ee_cf100_L5_iso.json` and its editor log):
