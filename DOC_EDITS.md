@@ -23,6 +23,9 @@ To undo:
 
 ## 2026-11-03
 
+- **09:15, podcast brief (Claude Docs): rev 8 → 9.** The numbers section adds the q=10 leak (10%, control 1%) and preference (41, control 21).
+- **09:15, email draft (Claude Docs): rev 3 → 6.** Andy's edits at rev 2-3 (sign-off on one line, Maestro removed) were kept. Bullet 2 adds the q=10 figures; bullet 3 says truncation changes probes at both settings; the note now says the numbers include q=10.
+- **09:10, blog post draft (Claude Docs): rev 38 → 48.** Reports both test-set settings (LOG 09:05). The TL;DR is rewritten as "the edit can survive, depending on the setting" and "no setting gives the model back" (40% / 49% of probes changed by truncation alone). The test-set table adds q=10 and control q=10 rows. Q=10 sentences are added under the table and in the ES paragraph. The hand labels are marked as q=3. The Limitations bullet becomes "Two settings on the test set".
 - **08:10, blog post draft (Claude Docs): rev 36 → 38.** The Data bullet now reports the edits' own side effects (125/300 unrelated, 327/500 look-alike answers changed) and the update-norm range. The first wording said "each one changed" and was fixed to "across the 100 edits" in rev 38. See LOG 08:10.
 - **07:40, podcast brief (Claude Docs): created.** "retractbench Podcast Part 2 Brief", https://claude.ai/artifact/GUeF3uPe25b4BGFf6De9Z7: background for an AI podcast host, with the numbers quoted with their settings and a "don't say" list. It contains no numbers that are not in the blog post.
 
