@@ -2,6 +2,8 @@
 
 Dated entries, newest first. Failures and dead ends go in too.
 
+Predictions and entries are drafted with Claude (Anthropic) as a coding assistant and reviewed by the author, Richard Elliot. Predictions are committed before the run they predict, except where an entry says otherwise and in some early entries, whose predictions were committed together with their results (for example 280a2bb, 2026-11-02 11:33); for those, the entry itself is the only record of the order. Corrections to an earlier entry are made by a later dated entry or a dated note. On 2026-11-02 (commit 1823715) older entries were reworded to drop who made each prediction; the original wording is in the git history.
+
 ## 2026-11-03 (17:02): Research review of the project; the 7B result reframed
 
 A fresh subagent reviewed the research itself (question, design, conclusions, positioning), not the arithmetic. It worked from a GitHub clone at 3381dd1, the current post and email, and the paper. Its scripts stayed in that session's container. Its main findings were checked here against the result files before acting on them. The per-probe-type counts now come from a committed script, `scripts/probe_types.py`, with outputs `results/20261103T_7b_q{3,10,15}_probe_types.json` and `results/20261103T_q{3,10}_probe_types.json` (1.5B).
@@ -52,7 +54,7 @@ The author shared an external red-team critique (5 expected objections with sugg
 4. "Subtraction accumulates drift." The 36% figure is the confounded 2026-11-01 run (`20261101T215132Z_rome-subject-subtract-cov_cf100_L4.json`: simpler editor, bfloat16, no reset between cases, 64/100 exact). The post's Limitations now mention it as an unplanned hint, and the "what works" claim is narrowed to "a single edit". Not adopted: the critique's advice that sequential streams "warrant" LoRA or GRACE routing. Neither is tested yet.
 5. "Single ROME edits on Qwen only." Already in Limitations; no change.
 
-Errors in the critique itself (it should not be shared as is): the byline uses the nickname ("Richard 'Andy' Elliot"); its table puts the 68% first-token rate under 1.5B q=3 (it is q=7-10; q=3 is 42%); it gives the 7B ES base as 0.17 (base is 0.18; 0.17 is the control); it lists restore/subtract MMD as 3-7% (7B restore is 1); and its checklist calls 43% -> 3% a "scaling drop", which mixes the model change with q=3 -> 15 (at q=3 the 7B leak is 74%).
+Errors in the critique itself (it should not be shared as is): the byline uses the author's nickname; its table puts the 68% first-token rate under 1.5B q=3 (it is q=7-10; q=3 is 42%); it gives the 7B ES base as 0.17 (base is 0.18; 0.17 is the control); it lists restore/subtract MMD as 3-7% (7B restore is 1); and its checklist calls 43% -> 3% a "scaling drop", which mixes the model change with q=3 -> 15 (at q=3 the 7B leak is 74%).
 
 ## 2026-11-03 (15:32): Second independent review of the blog post (7B restructure); fixes
 
