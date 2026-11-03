@@ -2,6 +2,28 @@
 
 Dated entries, newest first. Failures and dead ends go in too.
 
+## 2026-11-02 (19:00): MMD control result: truncation alone barely moves the sampled distribution
+
+Run (prediction in 17:30): `results/20261102T180312_stat_undo_ee_cf100_nulledit.json` (about 37 min). Its base-vs-base check rejected 3/100, the same as the 14:15 run.
+
+| Comparison (100 cases, alpha 0.05) | Rejected | Median p | Mean MMD |
+| --- | --- | --- | --- |
+| Base vs base (this run) | 3 | 0.42 | 0.0003 |
+| Truncation control, no edit (q=3) | **8** (Wilson CI 4-15%) | 0.38 | 0.0011 |
+| SVD undo of the real edit (14:15 run) | 45 (CI 36-55%) | 0.08 | 0.0103 |
+
+Case by case: 8 cases are rejected for both the control and the undo, 37 for the undo only, 0 for the control only, and 55 for neither.
+
+Against the predictions:
+- Wrong on the first: the control was predicted at 15-45 rejections and gave 8, close to the 3-7% seen for base-vs-base and restore. Truncation changes 40% of greedy probes but shifts the sampled distribution only slightly. The likely reason is that greedy outputs flip on near-ties, which hardly change the distribution.
+- Right on the second: the undo is rejected far more often than the control (45 vs 8), with about 9 times the mean MMD.
+- The third (the test cannot separate edit from truncation) did not happen.
+
+What this means:
+- The distribution result is not confounded the way exact revoke was. Most of the 45% is the surviving edit: 37 of 45 rejected cases are rejected only when the edit was there. The post can state the MMD result with the control beside it.
+- Taken together, the three measures that survive the control are the leak (43% vs 0.3%), ES (0.69 vs 0.22) and MMD rejection (45% vs 8%). Exact revoke on all probes (1 vs 0 of 100) does not survive it.
+- Correction to the 17:50 entry: "Jiang et al. report 39-57% continuation agreement" came from the external research report. Per the draft's reading of their Table 5 (Nov 2), the range is 37-57%, and it is measured on edited models with the first token forced, not after a reversal. So it is not an overlap with our reversal result. The draft cites it as the next-token assumption we test.
+
 ## 2026-11-02 (17:50): Direction check: keep retractbench, frame it as research, not a startup
 
 Question asked: is this project the best route into the field, or should it pivot? Decision: keep it, narrow it, and change the framing. Master Plan v4 (Drive) replaces v3.
