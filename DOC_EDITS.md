@@ -21,6 +21,7 @@ To undo:
 
 ## 2026-11-02
 
+- **19:10, blog post draft (Claude Docs): rev 17 → 20.** MMD section: added a control row (8 of 100, CI 4–15%), and replaced the "confounded" caveat with the control result (LOG 19:00). The section intro now says each check is read against the control.
 - **17:50, Master Plan v4 (Google Drive): created.** Replaces v3 (unchanged). Research track instead of startup framing; status table with the null-edit control; experiment order after the post (MMD power, GRACE rollback, LoRA-per-edit, MEMIT/AlphaEdit, second model family); SPAR/MATS applications. See LOG 17:50.
 - **17:23, blog post draft (Claude Docs): rev 11 → 17.** Revised for the null-edit control (LOG 17:20). The TL;DR now leads with the leak and ES, and adds a bullet saying truncation cannot restore the model by design. The test-set table gains an ES column and a control row. The paragraph under it explains how to read the control. The ES paragraph gives the control's 0.22. The MMD paragraph is marked as confounded until the control is sampled.
 - **17:22, write-up draft (Claude Docs): rev 30 → 32.** Summary bullet: the 1/100 figure now has the control's 0/100 beside it, and the leak has the control's 0.3%.
