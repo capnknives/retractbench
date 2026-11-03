@@ -2,6 +2,27 @@
 
 Dated entries, newest first. Failures and dead ends go in too.
 
+## 2026-11-03 (16:58): 1.5B test set at q=15, with its truncation control (predictions)
+
+Why: a research review today (a fresh subagent; its report is summarised in the entry logged after this one) pointed out that the post's 1.5B-vs-7B comparison is not matched. At the same q=10 the two models remove the edit about equally (leak 10% on 1.5B, 8.3% on 7B; ES 0.41 vs 0.39). The post compares 7B at q=15 with 1.5B at q=10 or 3, but 1.5B was never run on the test set at q=15. This run gives a matched comparison at the 7B dev-chosen setting.
+
+Runs (local RTX 3070, float32, same 100 cases, 11 probes, 8 greedy tokens as the q=10 runs):
+- `run_rome.py --cases cases\counterfact_100_seed0.jsonl --tag ee_cf100_q15 --deltas data\easyedit_rome\cf100.pt --dtype float32 --modes svd --svd-q 15`
+- the same with `--null-edit` and `--tag ee_cf100_q15_nulledit`
+- `compare_null_svd.py` on the pair. No MMD run.
+
+Predictions:
+- Leak (edited prompt + paraphrases, of 300): 3-10%, below q=10's 10%. Control leak at most 1%.
+- ES after undo: 0.25-0.40 (q=10: 0.41). Control ES 0.15-0.25.
+- Truncation damage grows with q on 1.5B (control probes equal to base: 659 at q=3, 556 at q=10). Control at q=15: 450-540 of 1,100, so clearly more damage than 7B's control at q=15 (687).
+- SVD undo probes equal to base: 380-460 of 1,100 (q=3: 417, q=10: 433). Exact revoke 0 of 100, control 0 of 100.
+- Per probe type, as on 7B: on the edited prompt the undo matches base in fewer cases than the control does (7B q=15: 30 vs 63 of 100); on unrelated and hard-negative probes the two are within 5 percentage points.
+
+Decision rule, fixed before the run:
+- If the 1.5B leak at q=15 is within 3 points of 7B's 3.0% and its ES within 0.10 of 7B's 0.30, the post says that at matched q the two models remove the edit about equally, and that the difference between them is in how much truncation changes the rest of the model. The "why" paragraph is then cut to what the control data show.
+- If the 1.5B leak stays at 7% or more, the post can say the edit is removed less well on 1.5B at matched q, with both q=10 and q=15 as evidence.
+- Either way the post reports the comparison at matched q (3, 10 and 15), not at each model's lowest-leak setting.
+
 ## 2026-11-03 (16:33): Red-team critique of the post: what it changes
 
 The author shared an external red-team critique (5 expected objections with suggested rebuttals). Each was checked against the files. Post rev 70 -> 80, email rev 12 -> 13, Part 2 podcast brief rev 18 -> 24 (DOC_EDITS 16:33). No new runs.
