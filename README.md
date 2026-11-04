@@ -133,15 +133,15 @@ How the closest reversal papers score success: Youssef et al. (ICLR 2026, arXiv 
 | When | What |
 | --- | --- |
 | Nov 2–3, 2026 (done) | SVD reversal on genuine ROME edits from the authors' code: Qwen2.5-1.5B and Qwen2.5-7B (authors' config, cloud A100); dev sweeps; test sets at q=3, 10 and 15; truncation controls for every setting; probability scores; MMD distribution test with controls; independent review of the write-up; hand-labelled leaks; resumable export |
-| Nov 9, 2026 | Preview to Youssef et al. |
-| Nov 12, 2026 | Blog post with the code on GitHub; tagged release archived on Zenodo for a citable DOI. arXiv once an endorser is found (cs.CL needs one) |
+| Nov 13, 2026 | Preview to Youssef et al. |
+| Nov 16-17, 2026 | Blog post with the code on GitHub; tagged release archived on Zenodo for a citable DOI. arXiv once an endorser is found (cs.CL needs one) |
 | Nov – Dec 2026 | MMD power calibration (10/20/50 samples per probe, Benjamini-Hochberg across edits, pooled test); GRACE rollback through EasyEdit, one edit and one removed from a sequence of 10/100; LoRA-per-edit, unmerged and merged-then-subtracted |
 | Dec 2026 – Jan 2027 | MEMIT batch-minus-one and AlphaEdit sequential removal, scored against the batch-minus-one model; a second model family (Llama or Gemma); relearning test; multi-hop leak probes |
 | Feb – Mar 2027 | Workshop short paper; decide whether to contribute a revocation evaluator to EasyEdit |
 
 ## Status
 
-First write-up in preparation (planned for Nov 12, 2026). See [LOG.md](LOG.md) for the working log, including predictions made before each run, what failed, and every correction.
+First write-up in preparation (planned for Nov 16-17, 2026, after a graded KL test). See [LOG.md](LOG.md) for the working log, including predictions made before each run, what failed, and every correction.
 
 ## How to cite
 

@@ -4,6 +4,29 @@ Dated entries, newest first. Failures and dead ends go in too.
 
 Predictions and entries are drafted with Claude (Anthropic) as a coding assistant and reviewed by the author, Richard Elliot. Predictions are committed before the run they predict, except where an entry says otherwise and in some early entries, whose predictions were committed together with their results (for example 280a2bb, 2026-11-02 11:33); for those, the entry itself is the only record of the order. Corrections to an earlier entry are made by a later dated entry or a dated note. On 2026-11-02 (commit 1823715) older entries were reworded to drop who made each prediction; the original wording is in the git history.
 
+## 2026-11-03 (18:38): Launch moved by a week; graded KL test (predictions)
+
+Decision (the author's, after the research review): the first write-up waits for one more experiment, a graded measure of how far the undone model is from the original. Exact match on 8 greedy tokens counts any difference, and the sampling test has little power, so the post cannot yet say how far the model is from base. New dates: preview email to Youssef et al. on Nov 13, blog post and tagged release on Nov 16-17, 2026. Scope is fixed: this one experiment, then publish. GRACE, LoRA-per-edit, a second model family and the version-control track stay after the launch.
+
+Measure (`src/retractbench/divergence.py`, `scripts/run_kl.py`, commit 034fe16): for each probe, the base model's greedy 8-token continuation; every model is run on it with teacher forcing; KL(base || model) per position in nats. "First" is position 0 (the next-token distribution after the prompt); "answer" is the mean over the 8 positions. Also the base top-2 log-prob gap per position, and positions where the model's argmax leaves the base token. Smoke run on 2 cases: restore gives 0.0000 everywhere.
+
+Runs:
+- 1.5B (local): `run_kl.py --cases cases\counterfact_100_seed0.jsonl --tag ee_cf100 --deltas data\easyedit_rome\cf100.pt --dtype float32 --modes restore svd --svd-q 3 10 15`, then the same with `--null-edit --tag ee_cf100_nulledit --modes svd`.
+- 7B (Modal): the same at q=15 (`--step kl --tag ee_cf100_7b_q15 --deltas cf100_7b --modes restore,svd --svd-qs 15`, then `--null-edit`).
+
+Predictions ("target" = edited prompt + paraphrases; "away" = unrelated + hard negatives; ratios are of means of the answer KL):
+1. Restore: KL exactly 0 on every probe, both models. Null-edit "edited" condition: exactly 0.
+2. 7B q=15: target KL after the undo is at least 2x the control's; away KL within +/-25% of the control's.
+3. 7B q=15: first-position KL on the edited prompt after the undo averages 0.5-2.5 nats. (Youssef et al. report a KL of 1.53 on Qwen2.5-7B after reversal; their exact definition may differ from ours.)
+4. 7B: the edited model (no undo) has first-position KL on the edited prompt at least 5x the undone model's at q=15.
+5. Near-ties: at positions where the control's argmax leaves the base token, the median base top-2 gap is under 1 nat. Same on 1.5B.
+6. 1.5B: target KL ratio undo/control at least 2x at q=10 and q=15, and larger at q=3. Away KL for the control is larger on 1.5B than on 7B at q=15.
+
+Decision rule, fixed before the runs:
+- If prediction 2's target ratio on 7B is at least 2, the post states "the edit's own prompts don't come back" with the KL numbers beside the greedy counts. If it is below 2, the post softens that finding to "by greedy match", says the graded distance shows little extra on the target prompts, and the TL;DR changes accordingly.
+- If prediction 5 holds, the post may say the truncation-only changes are mostly near-ties, as a measured statement. If it fails, the post says they are not.
+- The post gets one short KL section either way, with the 7B and 1.5B numbers and their controls, and a sentence comparing with the paper's KL, flagged as possibly differently defined.
+
 ## 2026-11-03 (17:32): 1.5B test set at q=15: the edit is removed less well than on 7B at the same q
 
 Runs (predictions in 16:58): `results/20261103T231341Z_easyedit-rome-svd15_ee_cf100_q15_L5_iso.json` and `results/20261103T232843Z_null-edit-svd15_ee_cf100_q15_nulledit_L5_iso.json`, about 15 min each on the RTX 3070, float32, 100 cases, 11 probes, 8 greedy tokens; plus `results/20261103T_q15_null_svd_compare.json` and `results/20261103T_q15_probe_types.json`. Leak CI: case-cluster bootstrap, 10,000 resamples, seed 0 (the same function reproduces the q=10 CI of 5.3-15.3%). ES CI: Wilson.
