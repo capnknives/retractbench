@@ -4,6 +4,25 @@ Dated entries, newest first. Failures and dead ends go in too.
 
 Predictions and entries are drafted with Claude (Anthropic) as a coding assistant and reviewed by the author, Richard Elliot. Predictions are committed before the run they predict, except where an entry says otherwise and in some early entries, whose predictions were committed together with their results (for example 280a2bb, 2026-11-02 11:33); for those, the entry itself is the only record of the order. Corrections to an earlier entry are made by a later dated entry or a dated note. On 2026-11-02 (commit 1823715) older entries were reworded to drop who made each prediction; the original wording is in the git history.
 
+## 2026-11-03 (21:20): Third independent number check (post with the KL section); fixes
+
+A fresh subagent that had not seen the work recomputed every number in the post (rev 113) and the email (rev 22) from the per-case files in a clone at 4aeca38, with its own stdlib code. It used `scripts/analyze_kl.py` and the analysis files only afterwards, for comparison, and they matched to every printed digit. Its scripts stayed in its container.
+
+Numbers: all KL figures and CIs reproduce (7B target 9.31, CI 6.56-13.22; away 1.08, CI 1.02-1.16; 1.5B 7.19 / 8.44 / 58.1). Restore is 0.0 at all 8,726 (7B) and 8,744 (1.5B) positions. The per-probe-type counts, paired ES, both test tables, the matched-q table and the email's numbers all reproduce. It confirmed the predictions commit (435bae8, 18:38) came before the runs started (18:40 and 20:04). One numeric error, below.
+
+Fixed (post rev 113 -> 122, email rev 22 -> 26; DOC_EDITS 21:20):
+- The 1.5B near-tie median is 0.12 at q=15 (0.1248), not 0.13: the 21:12 entry's "0.125" was rounded twice. The all-positions comparison now names both models (0.85 on 7B, 0.80 on 1.5B).
+- "As close as truncation alone" (7B, away from the edit) contradicted the post's own CI (1.08, CI 1.02-1.16). It is now "within about 10% of truncation alone" in the KL paragraph and the email, and "almost as close" in the TL;DR. "The rest of the model" is now "unrelated and look-alike prompts".
+- "About 9 times" is a ratio of means with a heavy tail. The median probe ratio is about 4x (0.039 / 0.0092), and the top tenth of target probes carry 53% of the undo's KL. Both are now stated.
+- The KL bullet said "each of its 8 positions". Answers are shorter when generation hits end-of-sequence (26 of 1,100 probes on 7B, 18 on 1.5B), so it now says "up to 8 tokens" and names the direction, KL(original || other).
+- "At q = 15 the 7B undo is clearly better" -> "better" (the leak and ES CIs overlap slightly across models).
+- "612 against 620 of all 1,100 probes" -> "507 against 620 of the 800 unrelated and look-alike probes" (the away-only counts).
+- TL;DR "the setting our stricter criterion picks" -> "our 5-token criterion" (the dev criterion is 5 tokens on the edited prompt, not the 11-probe test criterion); likewise in the email.
+- Hardware line: the $15 covers the main 7B runs; the KL test added two A100 runs, whose cost is not recorded.
+- Email: the 0.33 nats is qualified as "right after the edited prompt, at q = 15 (KL from the original to the undone model)"; the internal note's LOG references now separate the 7B runs from the 1.5B q=15 run.
+
+Noted, not changed: the two 7B KL runs used different A100 models (80GB PCIe for the undo run, SXM4 80GB for the control). Each is compared with its own base reference computed on the same GPU, so the ratio is still valid. The harness's word-boundary leak matcher gives the published counts; a plain substring matcher gives slightly more (7B q=3: 226 vs 221).
+
 ## 2026-11-03 (21:12): Graded KL test: the edit's own prompts are 7-9x further from base than truncation alone leaves them
 
 Runs (predictions in 18:38; code 034fe16, all four runs from b3d0c34, clean, recorded in each file's `meta.provenance`):
