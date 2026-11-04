@@ -1,0 +1,78 @@
+{
+  "run": "results/20261104T005305_kl_ee_cf100_7b_q15.json",
+  "control": "results/20261104T005535_kl_ee_cf100_7b_q15_nulledit.json",
+  "condition": "svd15",
+  "restore_max_kl": 0.0,
+  "control_edited_max_kl": 0.0,
+  "answer_kl_target": {
+    "undo_mean": 0.138440408207736,
+    "control_mean": 0.014865160387858447,
+    "ratio": 9.313078674940584,
+    "undo_median": 0.03868358650682854,
+    "control_median": 0.009189152262607326,
+    "edited_mean": 1.807555464885782,
+    "ratio_ci95": [
+      6.558119729140504,
+      13.22039897980844
+    ]
+  },
+  "answer_kl_away": {
+    "undo_mean": 0.01215883347871808,
+    "control_mean": 0.011242862987824094,
+    "ratio": 1.0814712846617425,
+    "undo_median": 0.006967456097248345,
+    "control_median": 0.006692608249048753,
+    "edited_mean": 0.05299785786717336,
+    "ratio_ci95": [
+      1.0195154812792762,
+      1.155022234578997
+    ]
+  },
+  "answer_kl_edited_prompt": {
+    "undo_mean": 0.18455726106871645,
+    "control_mean": 0.011778077440168037,
+    "ratio": 15.669557447406577,
+    "undo_median": 0.04592750263657379,
+    "control_median": 0.007268106995518439,
+    "edited_mean": 2.490576938368947
+  },
+  "answer_kl_paraphrases": {
+    "undo_mean": 0.11538198177724578,
+    "control_mean": 0.016408701861703668,
+    "ratio": 7.031755634888841,
+    "undo_median": 0.03842489970521028,
+    "control_median": 0.010678514839326912,
+    "edited_mean": 1.4660447281441997
+  },
+  "answer_kl_unrelated": {
+    "undo_mean": 0.012151777211212226,
+    "control_mean": 0.011892337807167745,
+    "ratio": 1.0218156773084692,
+    "undo_median": 0.007136400538803945,
+    "control_median": 0.007268106995518439,
+    "edited_mean": 0.0023204945130038245
+  },
+  "answer_kl_hard_negatives": {
+    "undo_mean": 0.01216306723922159,
+    "control_mean": 0.010853178096217915,
+    "ratio": 1.120691757878749,
+    "undo_median": 0.006839630725273699,
+    "control_median": 0.006584658246544536,
+    "edited_mean": 0.08340427587967507
+  },
+  "first_kl_edited_prompt": {
+    "undo_mean": 0.3340868803487046,
+    "undo_median": 0.07487179694584031,
+    "edited_mean": 8.889394247079721,
+    "edited_median": 8.370161254219745,
+    "control_mean": 0.017975606249228136,
+    "control_median": 0.010228758138395163,
+    "edited_over_undo_mean": 26.608031532999377
+  },
+  "control_flip_positions": {
+    "n": 512,
+    "median_base_top2_gap": 0.07075899999999999,
+    "share_gap_under_1_nat": 0.994140625,
+    "median_base_top2_gap_all_positions": 0.8541425
+  }
+}

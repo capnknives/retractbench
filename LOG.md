@@ -4,6 +4,45 @@ Dated entries, newest first. Failures and dead ends go in too.
 
 Predictions and entries are drafted with Claude (Anthropic) as a coding assistant and reviewed by the author, Richard Elliot. Predictions are committed before the run they predict, except where an entry says otherwise and in some early entries, whose predictions were committed together with their results (for example 280a2bb, 2026-11-02 11:33); for those, the entry itself is the only record of the order. Corrections to an earlier entry are made by a later dated entry or a dated note. On 2026-11-02 (commit 1823715) older entries were reworded to drop who made each prediction; the original wording is in the git history.
 
+## 2026-11-03 (21:12): Graded KL test: the edit's own prompts are 7-9x further from base than truncation alone leaves them
+
+Runs (predictions in 18:38; code 034fe16, all four runs from b3d0c34, clean, recorded in each file's `meta.provenance`):
+- 7B, Modal A100: `results/20261104T005305_kl_ee_cf100_7b_q15.json` (restore, svd15) and `results/20261104T005535_kl_ee_cf100_7b_q15_nulledit.json` (control), copied from the volume unchanged.
+- 1.5B, RTX 3070: `results/20261103T201459_kl_ee_cf100.json` (restore, svd3/10/15) and `results/20261103T202441_kl_ee_cf100_nulledit.json` (control), about 10 min each.
+- Analyses: `scripts/analyze_kl.py`, outputs `results/20261104T_7b_q15_kl_analysis.json` and `results/20261104T_q{3,10,15}_kl_analysis.json`. Ratio CIs: case-cluster bootstrap, 10,000 resamples, seed 0.
+
+Answer KL = KL(base || model) averaged over the 8 positions of the base model's greedy answer, then averaged over probes. "Target" = edited prompt + paraphrases (300 probes); "away" = unrelated + hard negatives (800).
+
+| Answer KL (nats), 100 edits | Edited model, no undo | SVD undo | Control (truncation only) | Undo / control (95% CI) |
+| --- | --- | --- | --- | --- |
+| 7B q=15, target | 1.81 | 0.138 | 0.015 | **9.3 (6.6-13.2)** |
+| 7B q=15, away | 0.053 | 0.012 | 0.011 | **1.08 (1.02-1.16)** |
+| 1.5B q=3, target | 2.33 | 1.10 | 0.019 | 58 (44-76) |
+| 1.5B q=3, away | 0.144 | 0.098 | 0.013 | 7.6 (4.3-11.6) |
+| 1.5B q=10, target | 2.33 | 0.248 | 0.029 | 8.4 (6.8-10.5) |
+| 1.5B q=10, away | 0.144 | 0.035 | 0.022 | 1.61 (1.22-2.24) |
+| 1.5B q=15, target | 2.33 | 0.228 | 0.032 | 7.2 (5.8-8.9) |
+| 1.5B q=15, away | 0.144 | 0.036 | 0.025 | 1.41 (1.17-1.74) |
+
+On 1.5B the away excess sits on the hard negatives (q=15: 0.039 vs 0.024, ratio 1.67), not on unrelated prompts (1.05).
+
+First-position KL on the edited prompt (the next-token distribution right after the prompt): 7B edited model 8.89 (median 8.37), after the q=15 undo 0.33 (median 0.075), control 0.018. 1.5B edited 9.51; after the undo 4.19 / 0.56 / 0.49 at q=3 / 10 / 15; control 0.03-0.05.
+
+Near-ties: at positions where the control's argmax leaves the base token, the base model's top-2 gap has median 0.071 nats on 7B (512 positions; 99.4% under 1 nat), against a median of 0.85 over all positions. On 1.5B: 0.098 / 0.125 / 0.125 at q=3 / 10 / 15 (99.7% / 98.8% / 99.0% under 1 nat), against 0.80 over all positions.
+
+Against the predictions (18:38):
+1. Restore exactly 0 on every probe, and the controls' "edited" condition exactly 0, on both models: right.
+2. 7B q=15 target ratio at least 2: right (9.3, CI 6.6-13.2). Away within +/-25%: right (1.08).
+3. 7B first-position KL on the edited prompt after the undo, 0.5-2.5 nats: wrong, lower (mean 0.33, median 0.075). Our edited model gives 8.89 before any undo, close to the paper's 8.988 at k=0 (no reversal), but our post-undo value is well below their 1.534. Their figure may be defined differently (direction of the KL, the set of edits, or the k it was taken at; the paper does not say which k gives 1.534), so the post compares the two only with that caveat.
+4. 7B edited / undone first-position KL at least 5x: right (27x).
+5. Near-ties (median top-2 gap under 1 nat where the control flips): right on both models, by a wide margin.
+6. 1.5B target ratio at least 2 at q=10 and q=15, larger at q=3: right (8.4, 7.2, 58). Control away KL larger on 1.5B than 7B at q=15: right (0.025 vs 0.011).
+Five of six predictions right; the miss is the size of the remaining next-token KL, which is smaller than predicted.
+
+Decision rule (fixed at 18:38): the 7B target ratio is 9.3, above 2, so the post states "the edit's own prompts don't come back" with the KL numbers beside the greedy counts. Prediction 5 held, so the post may say, as a measured statement, that the greedy changes truncation makes on its own are mostly near-ties. The post gets a short KL section with both models and their controls, and a sentence on the paper's KL with the caveat above.
+
+What this adds: the greedy counts said the edit's own prompts come back less often than under truncation alone (30 vs 63 of 100 on 7B). The graded measure says how far: about 9 times the control's distance on 7B and 7 times on 1.5B at q=15, while away from the edit the undo is as close to base as truncation alone on 7B (1.08x) and somewhat further on 1.5B (1.41x, from the look-alike prompts). The remaining distance is small next to the edit itself (target KL 0.14 vs 1.81 on 7B), which fits "the edit is mostly removed".
+
 ## 2026-11-03 (18:38): Launch moved by a week; graded KL test (predictions)
 
 Decision (the author's, after the research review): the first write-up waits for one more experiment, a graded measure of how far the undone model is from the original. Exact match on 8 greedy tokens counts any difference, and the sampling test has little power, so the post cannot yet say how far the model is from base. New dates: preview email to Youssef et al. on Nov 13, blog post and tagged release on Nov 16-17, 2026. Scope is fixed: this one experiment, then publish. GRACE, LoRA-per-edit, a second model family and the version-control track stay after the launch.

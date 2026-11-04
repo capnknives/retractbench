@@ -1,0 +1,78 @@
+{
+  "run": "results/20261103T201459_kl_ee_cf100.json",
+  "control": "results/20261103T202441_kl_ee_cf100_nulledit.json",
+  "condition": "svd15",
+  "restore_max_kl": 0.0,
+  "control_edited_max_kl": 0.0,
+  "answer_kl_target": {
+    "undo_mean": 0.22841720322278414,
+    "control_mean": 0.03178710024466403,
+    "ratio": 7.1858458766186954,
+    "undo_median": 0.1277746984236131,
+    "control_median": 0.02230160252595066,
+    "edited_mean": 2.326542019096759,
+    "ratio_ci95": [
+      5.804434353438616,
+      8.946958860693796
+    ]
+  },
+  "answer_kl_away": {
+    "undo_mean": 0.03579949772989741,
+    "control_mean": 0.025390276080984805,
+    "ratio": 1.4099688249041231,
+    "undo_median": 0.018792297686152322,
+    "control_median": 0.015031680049924286,
+    "edited_mean": 0.14404269083217408,
+    "ratio_ci95": [
+      1.1748261879095914,
+      1.7354487883605596
+    ]
+  },
+  "answer_kl_edited_prompt": {
+    "undo_mean": 0.22062017251351823,
+    "control_mean": 0.03235802126897456,
+    "ratio": 6.81809838369359,
+    "undo_median": 0.15495502864624416,
+    "control_median": 0.017756398486996273,
+    "edited_mean": 3.1600938774071143
+  },
+  "answer_kl_paraphrases": {
+    "undo_mean": 0.23231571857741706,
+    "control_mean": 0.0315016397325088,
+    "ratio": 7.374718286098416,
+    "undo_median": 0.11094074486934674,
+    "control_median": 0.02325988998224878,
+    "edited_mean": 1.909766089941582
+  },
+  "answer_kl_unrelated": {
+    "undo_mean": 0.02975977643408564,
+    "control_mean": 0.02826655774984698,
+    "ratio": 1.052826336247,
+    "undo_median": 0.01623953616318676,
+    "control_median": 0.01586624924425865,
+    "edited_mean": 0.022721943201194052
+  },
+  "answer_kl_hard_negatives": {
+    "undo_mean": 0.03942333050738447,
+    "control_mean": 0.023664507079667534,
+    "ratio": 1.665926544536263,
+    "undo_median": 0.020240393413706786,
+    "control_median": 0.014967678125367517,
+    "edited_mean": 0.21683513941076207
+  },
+  "first_kl_edited_prompt": {
+    "undo_mean": 0.49011249057582795,
+    "undo_median": 0.17575581911654853,
+    "edited_mean": 9.510601734945757,
+    "edited_median": 8.691029867637258,
+    "control_mean": 0.047849015583601114,
+    "control_median": 0.023019253783669605,
+    "edited_over_undo_mean": 19.404936454020692
+  },
+  "control_flip_positions": {
+    "n": 796,
+    "median_base_top2_gap": 0.124846,
+    "share_gap_under_1_nat": 0.9899497487437185,
+    "median_base_top2_gap_all_positions": 0.8011550000000001
+  }
+}
