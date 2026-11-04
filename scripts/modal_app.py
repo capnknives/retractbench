@@ -172,11 +172,27 @@ def stat(cases: str, tag: str, deltas: str, model: str, modes: str, svd_q: int =
     _run(cmd, cwd="/vol/rb", extra_env={"PYTHONPATH": "/root/retractbench/src"}, prov=prov)
 
 
+@app.function(image=ours_image, gpu="A100-80GB", volumes={"/vol": vol}, timeout=6 * 3600)
+def kl(cases: str, tag: str, deltas: str, model: str, modes: str, svd_qs: str = "15",
+       null_edit: bool = False, limit: int = 0, prov: dict | None = None) -> None:
+    """The graded test (scripts/run_kl.py): KL(base || model) per probe and position."""
+    os.makedirs("/vol/rb", exist_ok=True)
+    cmd = ["python", "/root/retractbench/scripts/run_kl.py", "--model", model,
+           "--cases", f"/root/retractbench/{cases}", "--tag", tag,
+           "--deltas", f"/vol/data/easyedit_rome/{deltas}.pt", "--dtype", "float32",
+           "--modes", *modes.split(","), "--svd-q", *svd_qs.split(",")]
+    if null_edit:
+        cmd.append("--null-edit")
+    if limit:
+        cmd += ["--limit", str(limit)]
+    _run(cmd, cwd="/vol/rb", extra_env={"PYTHONPATH": "/root/retractbench/src"}, prov=prov)
+
+
 @app.local_entrypoint()
 def main(step: str, tag: str, cases: str = "cases/counterfact_100_seed0.jsonl",
          hparams: str = "configs/easyedit_rome_qwen2.5-7b.yaml", deltas: str = "",
          model: str = "Qwen/Qwen2.5-7B", modes: str = "restore,subtract,svd", svd_q: int = 3,
-         null_edit: bool = False, limit: int = 0, gpu: str = "A100-80GB") -> None:
+         null_edit: bool = False, limit: int = 0, gpu: str = "A100-80GB", svd_qs: str = "15") -> None:
     prov = _local_provenance()
     if step == "download":
         download.remote(model)
@@ -186,7 +202,9 @@ def main(step: str, tag: str, cases: str = "cases/counterfact_100_seed0.jsonl",
         sweep.with_options(gpu=gpu).remote(cases, deltas or tag, model, prov)
     elif step == "stat":
         stat.with_options(gpu=gpu).remote(cases, tag, deltas or tag, model, modes, svd_q, null_edit, limit, prov)
+    elif step == "kl":
+        kl.with_options(gpu=gpu).remote(cases, tag, deltas or tag, model, modes, svd_qs, null_edit, limit, prov)
     elif step == "score":
         score.with_options(gpu=gpu).remote(cases, tag, deltas or tag, model, modes, svd_q, null_edit, limit, prov)
     else:
-        raise SystemExit("--step must be download, export, sweep, score or stat")
+        raise SystemExit("--step must be download, export, sweep, score, stat or kl")
