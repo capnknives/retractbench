@@ -2,6 +2,8 @@
 
 **Can an edit to a language model be fully taken back?**
 
+[![CI](https://github.com/capnknives/retractbench/actions/workflows/ci.yml/badge.svg)](https://github.com/capnknives/retractbench/actions/workflows/ci.yml)
+
 Model-editing methods (GRACE, WISE, ROME/MEMIT, LoRA adapters, trained KV caches like Cartridges) let you add or change a fact without retraining. Many of them also claim, or are assumed, to be reversible. `retractbench` tests that claim directly, with the same protocol for every method:
 
 1. Record the base model's answers to a set of probes.
@@ -61,6 +63,8 @@ retractbench separability --model Qwen/Qwen2.5-1.5B --cases cases/counterfact_10
     --key-position subject --key-space raw
 python scripts/run_matched.py --cases cases/counterfact_100_seed0.jsonl --tag cf100
 ```
+
+CI runs the harness tests on Python 3.10 and 3.12 without torch; it does not run the torch editor tests or any real-model run.
 
 Results go to `results/` as JSON (full outputs for every probe) and a Markdown summary, with the git commit, config and library versions recorded.
 

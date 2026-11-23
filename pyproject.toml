@@ -15,7 +15,8 @@ dependencies = []
 [project.optional-dependencies]
 torch = ["torch>=2.2", "transformers>=4.44", "accelerate>=0.30"]
 # pytest 9.2 crashes at startup on Python 3.10.0 (NodeId._str_cache AttributeError).
-dev = ["pytest>=8,<9"]
+# numpy: tests/test_equality*.py import it (it normally arrives with torch, which CI does not install).
+dev = ["pytest>=8,<9", "numpy"]
 
 [project.scripts]
 retractbench = "retractbench.cli:main"
