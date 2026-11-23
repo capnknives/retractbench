@@ -1,0 +1,39 @@
+# CI for retractbench: installs the package with its dev extras and runs pytest
+# on the oldest and newest supported Python.
+#
+# The `torch` extra is deliberately NOT installed here. The tests that need
+# torch (GRACE/ROME mechanics on the tiny random model) skip themselves when it
+# is missing, so CI covers the pure-Python harness, metrics, report and
+# statistics tests only. The torch tests and all real-model runs are run by the
+# author locally or on a rented GPU.
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        # pyproject says requires-python >=3.10, so 3.10 is the floor.
+        python-version: ["3.10", "3.12"]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+          cache: pip
+          cache-dependency-path: pyproject.toml
+      - run: pip install -e ".[dev]"
+      - run: pytest -q
