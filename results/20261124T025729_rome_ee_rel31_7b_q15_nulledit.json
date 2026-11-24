@@ -1,0 +1,30 @@
+[
+  {
+    "editor": "null-edit-svd15",
+    "layer": 5,
+    "n_cases": 62,
+    "edit_success": 0.0,
+    "edit_success_loose": 0.016129032258064516,
+    "paraphrase_generalization": 0.0,
+    "locality": 1.0,
+    "locality_hard": 1.0,
+    "revocation_exact": 0.0,
+    "target_leak_after_revoke": 0.0,
+    "target_leak_excl_true": 0.0,
+    "apply_ms_mean": 789.544645032252,
+    "revoke_ms_mean": 1724.0274747258043,
+    "es_base": 0.14516129032258066,
+    "ps_base": 0.1532258064516129,
+    "ns_base": 0.8225806451612903,
+    "es_after_write": 0.14516129032258066,
+    "ps_after_write": 0.1532258064516129,
+    "ns_after_write": 0.8225806451612903,
+    "es_after_revoke": 0.16129032258064516,
+    "ps_after_revoke": 0.18548387096774194,
+    "ns_after_revoke": 0.8225806451612903,
+    "residual_fro_mean": 20.17123794555664,
+    "residual_zero_frac": 0.0,
+    "fit_loss_mean": NaN,
+    "minutes": 11.794735356171925
+  }
+]

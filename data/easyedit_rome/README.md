@@ -19,6 +19,7 @@ way and read `blob["cases"][id]["left"]` and `["right"]` instead.
 | `dev20.pt` | Qwen/Qwen2.5-1.5B | `cases/counterfact_dev20_seed1.jsonl` (20) | 851,225 | `7024aded9ec1c8a5f4f9101be8b5b31b140cbb4e31b822d073787cb996a55dae` |
 | `cf100_7b.pt` | Qwen/Qwen2.5-7B | `cases/counterfact_100_seed0.jsonl` (100) | 9,073,369 | `374eed5900508a707c833a8f189a946d66a1749651d6229604889848f0802683` |
 | `dev20_7b.pt` | Qwen/Qwen2.5-7B | `cases/counterfact_dev20_seed1.jsonl` (20) | 1,816,533 | `89d6adbcd396284c5c56859d49bdfee0bda096f8414dcd317eb4319fb0fcef4f` |
+| `rel31_7b.pt` | Qwen/Qwen2.5-7B | `cases/counterfact_rel31x2.jsonl` (62) | 5,626,625 | `178da3d1a1886380faca596af8b0dd02ac7c5362b3698d1d88085aefeceb845e` |
 
 How they were made (LOG.md has the dated entries):
 
