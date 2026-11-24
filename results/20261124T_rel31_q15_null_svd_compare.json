@@ -1,0 +1,452 @@
+{
+ "summary": {
+  "n_cases": 62,
+  "n_probes": 682,
+  "null_exact": 0,
+  "edited_exact": 0,
+  "edited_eq_null_all_probes": 2,
+  "probe_null_eq_base": 408,
+  "probe_edited_eq_base": 366,
+  "probe_edited_eq_null": 511,
+  "null_target_leak_mean": 0.0,
+  "edited_target_leak_mean": 0.03225806451612903,
+  "edited_run": "results\\20261124T031230Z_easyedit-rome-svd15_ee_rel31_7b_q15_L5_iso.json",
+  "null_run": "results\\20261124T025729Z_null-edit-svd15_ee_rel31_7b_q15_nulledit_L5_iso.json"
+ },
+ "cases": [
+  {
+   "case": "cf0",
+   "n_probes": 11,
+   "null_eq_base": 8,
+   "edited_eq_base": 6,
+   "edited_eq_null": 6
+  },
+  {
+   "case": "cf1",
+   "n_probes": 11,
+   "null_eq_base": 6,
+   "edited_eq_base": 6,
+   "edited_eq_null": 8
+  },
+  {
+   "case": "cf10",
+   "n_probes": 11,
+   "null_eq_base": 10,
+   "edited_eq_base": 8,
+   "edited_eq_null": 8
+  },
+  {
+   "case": "cf100",
+   "n_probes": 11,
+   "null_eq_base": 7,
+   "edited_eq_base": 6,
+   "edited_eq_null": 9
+  },
+  {
+   "case": "cf11",
+   "n_probes": 11,
+   "null_eq_base": 5,
+   "edited_eq_base": 6,
+   "edited_eq_null": 9
+  },
+  {
+   "case": "cf113",
+   "n_probes": 11,
+   "null_eq_base": 7,
+   "edited_eq_base": 7,
+   "edited_eq_null": 8
+  },
+  {
+   "case": "cf118",
+   "n_probes": 11,
+   "null_eq_base": 9,
+   "edited_eq_base": 9,
+   "edited_eq_null": 9
+  },
+  {
+   "case": "cf13",
+   "n_probes": 11,
+   "null_eq_base": 9,
+   "edited_eq_base": 8,
+   "edited_eq_null": 10
+  },
+  {
+   "case": "cf141",
+   "n_probes": 11,
+   "null_eq_base": 7,
+   "edited_eq_base": 5,
+   "edited_eq_null": 7
+  },
+  {
+   "case": "cf146",
+   "n_probes": 11,
+   "null_eq_base": 7,
+   "edited_eq_base": 6,
+   "edited_eq_null": 8
+  },
+  {
+   "case": "cf15",
+   "n_probes": 11,
+   "null_eq_base": 6,
+   "edited_eq_base": 5,
+   "edited_eq_null": 10
+  },
+  {
+   "case": "cf155",
+   "n_probes": 11,
+   "null_eq_base": 10,
+   "edited_eq_base": 9,
+   "edited_eq_null": 10
+  },
+  {
+   "case": "cf167",
+   "n_probes": 11,
+   "null_eq_base": 5,
+   "edited_eq_base": 3,
+   "edited_eq_null": 8
+  },
+  {
+   "case": "cf17",
+   "n_probes": 11,
+   "null_eq_base": 6,
+   "edited_eq_base": 5,
+   "edited_eq_null": 9
+  },
+  {
+   "case": "cf18",
+   "n_probes": 11,
+   "null_eq_base": 10,
+   "edited_eq_base": 6,
+   "edited_eq_null": 7
+  },
+  {
+   "case": "cf19",
+   "n_probes": 11,
+   "null_eq_base": 10,
+   "edited_eq_base": 8,
+   "edited_eq_null": 9
+  },
+  {
+   "case": "cf191",
+   "n_probes": 11,
+   "null_eq_base": 10,
+   "edited_eq_base": 10,
+   "edited_eq_null": 11
+  },
+  {
+   "case": "cf2",
+   "n_probes": 11,
+   "null_eq_base": 5,
+   "edited_eq_base": 4,
+   "edited_eq_null": 8
+  },
+  {
+   "case": "cf20",
+   "n_probes": 11,
+   "null_eq_base": 7,
+   "edited_eq_base": 6,
+   "edited_eq_null": 8
+  },
+  {
+   "case": "cf209",
+   "n_probes": 11,
+   "null_eq_base": 7,
+   "edited_eq_base": 5,
+   "edited_eq_null": 6
+  },
+  {
+   "case": "cf22",
+   "n_probes": 11,
+   "null_eq_base": 6,
+   "edited_eq_base": 7,
+   "edited_eq_null": 9
+  },
+  {
+   "case": "cf23",
+   "n_probes": 11,
+   "null_eq_base": 8,
+   "edited_eq_base": 7,
+   "edited_eq_null": 10
+  },
+  {
+   "case": "cf24",
+   "n_probes": 11,
+   "null_eq_base": 4,
+   "edited_eq_base": 3,
+   "edited_eq_null": 7
+  },
+  {
+   "case": "cf26",
+   "n_probes": 11,
+   "null_eq_base": 6,
+   "edited_eq_base": 6,
+   "edited_eq_null": 7
+  },
+  {
+   "case": "cf28",
+   "n_probes": 11,
+   "null_eq_base": 5,
+   "edited_eq_base": 4,
+   "edited_eq_null": 8
+  },
+  {
+   "case": "cf29",
+   "n_probes": 11,
+   "null_eq_base": 6,
+   "edited_eq_base": 5,
+   "edited_eq_null": 8
+  },
+  {
+   "case": "cf3",
+   "n_probes": 11,
+   "null_eq_base": 10,
+   "edited_eq_base": 9,
+   "edited_eq_null": 10
+  },
+  {
+   "case": "cf30",
+   "n_probes": 11,
+   "null_eq_base": 4,
+   "edited_eq_base": 4,
+   "edited_eq_null": 10
+  },
+  {
+   "case": "cf31",
+   "n_probes": 11,
+   "null_eq_base": 8,
+   "edited_eq_base": 8,
+   "edited_eq_null": 9
+  },
+  {
+   "case": "cf32",
+   "n_probes": 11,
+   "null_eq_base": 5,
+   "edited_eq_base": 5,
+   "edited_eq_null": 7
+  },
+  {
+   "case": "cf33",
+   "n_probes": 11,
+   "null_eq_base": 8,
+   "edited_eq_base": 6,
+   "edited_eq_null": 7
+  },
+  {
+   "case": "cf34",
+   "n_probes": 11,
+   "null_eq_base": 5,
+   "edited_eq_base": 3,
+   "edited_eq_null": 9
+  },
+  {
+   "case": "cf39",
+   "n_probes": 11,
+   "null_eq_base": 5,
+   "edited_eq_base": 6,
+   "edited_eq_null": 8
+  },
+  {
+   "case": "cf4",
+   "n_probes": 11,
+   "null_eq_base": 7,
+   "edited_eq_base": 5,
+   "edited_eq_null": 8
+  },
+  {
+   "case": "cf41",
+   "n_probes": 11,
+   "null_eq_base": 4,
+   "edited_eq_base": 4,
+   "edited_eq_null": 6
+  },
+  {
+   "case": "cf42",
+   "n_probes": 11,
+   "null_eq_base": 8,
+   "edited_eq_base": 9,
+   "edited_eq_null": 9
+  },
+  {
+   "case": "cf44",
+   "n_probes": 11,
+   "null_eq_base": 5,
+   "edited_eq_base": 5,
+   "edited_eq_null": 6
+  },
+  {
+   "case": "cf45",
+   "n_probes": 11,
+   "null_eq_base": 7,
+   "edited_eq_base": 4,
+   "edited_eq_null": 8
+  },
+  {
+   "case": "cf46",
+   "n_probes": 11,
+   "null_eq_base": 3,
+   "edited_eq_base": 2,
+   "edited_eq_null": 8
+  },
+  {
+   "case": "cf48",
+   "n_probes": 11,
+   "null_eq_base": 8,
+   "edited_eq_base": 6,
+   "edited_eq_null": 7
+  },
+  {
+   "case": "cf5",
+   "n_probes": 11,
+   "null_eq_base": 6,
+   "edited_eq_base": 5,
+   "edited_eq_null": 8
+  },
+  {
+   "case": "cf50",
+   "n_probes": 11,
+   "null_eq_base": 5,
+   "edited_eq_base": 7,
+   "edited_eq_null": 8
+  },
+  {
+   "case": "cf53",
+   "n_probes": 11,
+   "null_eq_base": 5,
+   "edited_eq_base": 5,
+   "edited_eq_null": 5
+  },
+  {
+   "case": "cf54",
+   "n_probes": 11,
+   "null_eq_base": 7,
+   "edited_eq_base": 6,
+   "edited_eq_null": 10
+  },
+  {
+   "case": "cf55",
+   "n_probes": 11,
+   "null_eq_base": 6,
+   "edited_eq_base": 7,
+   "edited_eq_null": 10
+  },
+  {
+   "case": "cf57",
+   "n_probes": 11,
+   "null_eq_base": 5,
+   "edited_eq_base": 5,
+   "edited_eq_null": 8
+  },
+  {
+   "case": "cf58",
+   "n_probes": 11,
+   "null_eq_base": 9,
+   "edited_eq_base": 8,
+   "edited_eq_null": 9
+  },
+  {
+   "case": "cf59",
+   "n_probes": 11,
+   "null_eq_base": 7,
+   "edited_eq_base": 7,
+   "edited_eq_null": 8
+  },
+  {
+   "case": "cf6",
+   "n_probes": 11,
+   "null_eq_base": 6,
+   "edited_eq_base": 6,
+   "edited_eq_null": 7
+  },
+  {
+   "case": "cf62",
+   "n_probes": 11,
+   "null_eq_base": 5,
+   "edited_eq_base": 6,
+   "edited_eq_null": 9
+  },
+  {
+   "case": "cf67",
+   "n_probes": 11,
+   "null_eq_base": 6,
+   "edited_eq_base": 5,
+   "edited_eq_null": 9
+  },
+  {
+   "case": "cf69",
+   "n_probes": 11,
+   "null_eq_base": 6,
+   "edited_eq_base": 5,
+   "edited_eq_null": 10
+  },
+  {
+   "case": "cf7",
+   "n_probes": 11,
+   "null_eq_base": 6,
+   "edited_eq_base": 6,
+   "edited_eq_null": 8
+  },
+  {
+   "case": "cf73",
+   "n_probes": 11,
+   "null_eq_base": 5,
+   "edited_eq_base": 5,
+   "edited_eq_null": 7
+  },
+  {
+   "case": "cf74",
+   "n_probes": 11,
+   "null_eq_base": 9,
+   "edited_eq_base": 9,
+   "edited_eq_null": 11
+  },
+  {
+   "case": "cf79",
+   "n_probes": 11,
+   "null_eq_base": 6,
+   "edited_eq_base": 3,
+   "edited_eq_null": 6
+  },
+  {
+   "case": "cf8",
+   "n_probes": 11,
+   "null_eq_base": 6,
+   "edited_eq_base": 4,
+   "edited_eq_null": 6
+  },
+  {
+   "case": "cf89",
+   "n_probes": 11,
+   "null_eq_base": 6,
+   "edited_eq_base": 6,
+   "edited_eq_null": 9
+  },
+  {
+   "case": "cf9",
+   "n_probes": 11,
+   "null_eq_base": 3,
+   "edited_eq_base": 4,
+   "edited_eq_null": 6
+  },
+  {
+   "case": "cf95",
+   "n_probes": 11,
+   "null_eq_base": 7,
+   "edited_eq_base": 7,
+   "edited_eq_null": 9
+  },
+  {
+   "case": "cf96",
+   "n_probes": 11,
+   "null_eq_base": 6,
+   "edited_eq_base": 5,
+   "edited_eq_null": 10
+  },
+  {
+   "case": "cf98",
+   "n_probes": 11,
+   "null_eq_base": 8,
+   "edited_eq_base": 9,
+   "edited_eq_null": 9
+  }
+ ]
+}

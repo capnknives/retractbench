@@ -4,6 +4,61 @@ Dated entries, newest first. Failures and dead ends go in too.
 
 Predictions and entries are drafted with Claude (Anthropic) as a coding assistant and reviewed by the author, Richard Elliot. Predictions are committed before the run they predict, except where an entry says otherwise and in some early entries, whose predictions were committed together with their results (for example 280a2bb, 2026-11-02 11:33); for those, the entry itself is the only record of the order. Corrections to an earlier entry are made by a later dated entry or a dated note. On 2026-11-02 (commit 1823715) older entries were reworded to drop who made each prediction; the original wording is in the git history.
 
+## 2026-11-23 (22:30): The paper's own relations, 62 edits on Qwen2.5-7B: results against the predictions
+
+Runs (plan and predictions in the "2026-11-23: plan and predictions" entry below, committed in d7b2e4a before any run; all runs from 5ae87fa, clean, recorded in each file's `meta.provenance`; runbook `docs/RUN_rel31.md`). Modal A100 80GB, float32, the authors' unchanged 7B config. Run files copied from the volume unchanged (SHA256 of each copy checked against the fetched file).
+- Case file: `cases/counterfact_rel31x2.jsonl`, 62 cases, 31 relations, no id in common with `counterfact_100_seed0` or `counterfact_dev20_seed1`.
+- Export: `62/62 edits with rewrite_acc 1.0`, 710 s. Edit file `data/easyedit_rome/rel31_7b.pt` (SHA256 in its README).
+- Sweep: `results/20261124T032936_svd_q_sweep_easyedit_counterfact_rel31x2.json`. All 62 edits took by our 5-token criterion and all 62 pass the authors' filter, so `table` and `table_their_filter` are identical.
+- Scored runs, undo and null-edit control: q=15 `20261124T031230Z_...svd15...` (with restore, `20261124T025940Z_...`) and `20261124T025729Z_null-edit-svd15_...`; q=10 `20261124T041710Z_...` and `20261124T041156Z_...`; q=3 `20261124T041345Z_...` and `20261124T041446Z_...`.
+- Graded KL at q=15: `results/20261124T025329_kl_ee_rel31_7b_q15.json` and `results/20261124T025239_kl_ee_rel31_7b_q15_nulledit.json`.
+- Analyses: `results/20261124T_rel31_q{3,10,15}_null_svd_compare.json`, `results/20261124T_rel31_q15_probe_types.json`, `results/20261124T_rel31_q15_kl_analysis.json` (ratio CIs: case-cluster bootstrap as in the 2026-11-03 21:12 entry).
+- Nothing in the runbook was dropped. The dry run's score step ran twice (the first launch looked stalled while it was queued for a GPU; both finished); dry-run files were left on the volume. The first fetch wrote a single file because the target folder did not exist; it was repeated into an existing folder.
+
+First-token reversal on the edited prompt (`reversal_1`, next token equals base; 62 of 62 edits took; 95% Wilson intervals):
+
+| q | First token equals base | All 5 tokens equal base | Edit kept | Paper, Table 2 (310 edits) | Ours earlier |
+| --- | --- | --- | --- | --- | --- |
+| 0 | 0/62 | 0/62 | 62/62 | | |
+| 3 | 6/62 = 9.7% (4.5-19.5) | 4/62 = 6.5% | 53/62 | 53.6% | 20% (dev, 20 edits) |
+| 10 | 41/62 = 66.1% (53.7-76.7) | 15/62 = 24.2% | 5/62 | 62.9% | 70% (dev, 20 edits) |
+| 15 | 45/62 = 72.6% (60.4-82.1) | 21/62 = 33.9% | 3/62 | 62.6% | 81/100 (test) |
+| 20 | 46/62 = 74.2% | 23/62 = 37.1% | 2/62 | | |
+
+Graded KL at q=15 (nats; target = edited prompt + paraphrases, away = unrelated + hard negatives):
+
+| | Edited model, no undo | SVD undo | Control (truncation only) | Undo / control (95% CI) |
+| --- | --- | --- | --- | --- |
+| Answer KL, target | 1.88 | 0.190 | 0.016 | 11.7 (7.5-17.0) |
+| Answer KL, away | 0.014 | 0.0121 | 0.0117 | 1.04 (1.01-1.07) |
+| First-position KL, edited prompt (mean / median) | 9.65 / 9.42 | 0.590 / 0.096 | 0.026 / 0.011 | |
+
+Restore max KL 0.0; control with no undo max KL 0.0.
+
+Exact match with base (8 greedy tokens), undo against control:
+- q=15, edited prompt: undo 19/62 (30.6%), control 32/62 (51.6%), 21 points below. Paraphrases: 42/124 against 73/124. Unrelated: 105/186 against 107/186. Hard negatives: 200/310 against 196/310. Paired ES: the edit preferred only after the undo in 9 cases, only under the control in 0 (exact McNemar p = 0.004).
+- All probes equal to base: q=15 undo 366/682, control 408/682; q=10 381 against 455; q=3 368 against 525. Cases with every probe equal to base: undo 0/62 at each q; control 0, 4 and 7 of 62 at q=15, 10 and 3.
+- `edited_target_leak_mean` (control 0.0 at each q): 0.032 at q=15, 0.059 at q=10, 0.737 at q=3.
+
+Against the predictions:
+1. First-token reversal at q=15 between 60% and 80%: 72.6%. Right.
+2. At q=3 between 15% and 40%: 9.7%. Wrong, below the range.
+3. At q=10 between 55% and 75%: 66.1%. Right.
+4. Mean first-position KL after the undo at q=15 between 0.3 and 1.2 nats: 0.590. Right. (The paper reports 1.534, std 3.15, at k=15.)
+5. Answer-KL ratio undo/control on the edit's own prompts above 4: 11.7 (7.5-17.0). Right.
+6. Ratio away from the edit between 1.0 and 1.25: 1.04 (1.01-1.07). Right.
+7. Edited prompt exact match, undo at least 15 points below the control: 21 points below. Right.
+
+What the decision rule says:
+- "Near the paper's" (q=15 at or below 70% and q=3 at or above 40%): not met. q=15 is 72.6% and q=3 is 9.7%. The rule's reading that the mismatch was the sample of facts does not apply.
+- "Near the earlier figures" (q=15 around 80%, q=3 around 20%): not met as written. q=15 at 72.6% is in the 70-80% band that the rule says decides nothing on its own (the interval, 60.4-82.1, contains both the paper's 62.6% and our earlier 81%). q=3 is lower than our earlier 20%, not higher.
+- Undo/control ratio on the edit's own prompts below 2: not met (11.7), so the headline is not withdrawn.
+- So the fourth branch applies: reported as it is, with the 62-edit intervals, and it decides nothing on its own. What can be said without the rule: on the paper's own fact selection the q=10 and q=15 figures are within the interval of the paper's, and the q=3 figure is not (9.7% against 53.6%, on a subset of the same records). The q=3 gap was not removed by using the paper's selection. Whether to raise it with the authors before publishing is the author's decision; the rule does not make it.
+
+Limits: 62 edits, 2 per relation. The paper's figures are over 310 edits (5 per relation); ours are its instance_id 0 and 1 only. One run per condition.
+
+Cost: Modal credit read by the author at $13.13 before the first run (2026-11-23, about 20:16 CT). About 2.9 GPU-hours by the log timestamps (export 14 min, sweep 46, q=15 undo 28, seven other scored/KL runs 7-17 each, dry runs about 3). The closing credit figure had not been read when this entry was written.
+
 ## 2026-11-23: plan and predictions, the paper's own relations (not yet run)
 
 Why: our first-token reversal curve on Qwen2.5-7B does not match Table 2 of Youssef et al. (ICLR 2026). Ours: 20% at q=3 and 70% at q=10 on the 20 dev edits, 81/100 at q=15 on the test set. Paper: 53.6%, 62.9% and 62.6% (310 edits). The paper's first-position KL at k=15 is 1.534 (std 3.15); ours after the q=15 undo is 0.33 (21:12 entry). An independent review on 2026-11-23 found the mismatch. Our 100 edits are a random sample of CounterFact; the paper's are the first records of each large relation. Before publishing, the same pipeline runs on the paper's own selection, to tell whether the mismatch is the sample of facts or the pipeline.

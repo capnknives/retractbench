@@ -1,0 +1,78 @@
+{
+  "run": "results\\20261124T025329_kl_ee_rel31_7b_q15.json",
+  "control": "results\\20261124T025239_kl_ee_rel31_7b_q15_nulledit.json",
+  "condition": "svd15",
+  "restore_max_kl": 0.0,
+  "control_edited_max_kl": 0.0,
+  "answer_kl_target": {
+    "undo_mean": 0.18956907470182519,
+    "control_mean": 0.01617591684356655,
+    "ratio": 11.719216693254713,
+    "undo_median": 0.05057516177270744,
+    "control_median": 0.010379641293949818,
+    "edited_mean": 1.8777937938705782,
+    "ratio_ci95": [
+      7.54522123969661,
+      17.002825123037812
+    ]
+  },
+  "answer_kl_away": {
+    "undo_mean": 0.01212057758411078,
+    "control_mean": 0.011687658059940495,
+    "ratio": 1.0370407417765,
+    "undo_median": 0.008138142505454192,
+    "control_median": 0.007941821225591124,
+    "edited_mean": 0.014499673592367446,
+    "ratio_ci95": [
+      1.0085318756897594,
+      1.0675342511253132
+    ]
+  },
+  "answer_kl_edited_prompt": {
+    "undo_mean": 0.24154519126407942,
+    "control_mean": 0.014486831545152703,
+    "ratio": 16.673431351170816,
+    "undo_median": 0.05487565599231374,
+    "control_median": 0.009540420104766892,
+    "edited_mean": 2.5261245041292026
+  },
+  "answer_kl_paraphrases": {
+    "undo_mean": 0.16358101642069803,
+    "control_mean": 0.017020459492773463,
+    "ratio": 9.610846081455742,
+    "undo_median": 0.046744861961776366,
+    "control_median": 0.011717025244944345,
+    "edited_mean": 1.5536284387412664
+  },
+  "answer_kl_unrelated": {
+    "undo_mean": 0.01404430647757744,
+    "control_mean": 0.013660664056519802,
+    "ratio": 1.0280837314694478,
+    "undo_median": 0.009441396030664465,
+    "control_median": 0.009818102519277505,
+    "edited_mean": 0.0017216465298692623
+  },
+  "answer_kl_hard_negatives": {
+    "undo_mean": 0.010966340248030785,
+    "control_mean": 0.010503854461992906,
+    "ratio": 1.0440301022554468,
+    "undo_median": 0.006822135805587354,
+    "control_median": 0.006673713819600674,
+    "edited_mean": 0.022166489829866357
+  },
+  "first_kl_edited_prompt": {
+    "undo_mean": 0.5896966376350977,
+    "undo_median": 0.09564183780932412,
+    "edited_mean": 9.65127607618448,
+    "edited_median": 9.416231467756331,
+    "control_mean": 0.02553504702650374,
+    "control_median": 0.011165858034174116,
+    "edited_over_undo_mean": 16.366510270246202
+  },
+  "control_flip_positions": {
+    "n": 324,
+    "median_base_top2_gap": 0.09002299999999999,
+    "share_gap_under_1_nat": 0.9938271604938271,
+    "median_base_top2_gap_all_positions": 0.8452185
+  }
+}
