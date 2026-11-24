@@ -4,6 +4,49 @@ Dated entries, newest first. Failures and dead ends go in too.
 
 Predictions and entries are drafted with Claude (Anthropic) as a coding assistant and reviewed by the author, Richard Elliot. Predictions are committed before the run they predict, except where an entry says otherwise and in some early entries, whose predictions were committed together with their results (for example 280a2bb, 2026-11-02 11:33); for those, the entry itself is the only record of the order. Corrections to an earlier entry are made by a later dated entry or a dated note. On 2026-11-02 (commit 1823715) older entries were reworded to drop who made each prediction; the original wording is in the git history.
 
+## 2026-11-24 (12:50): Code read, the authors' reversal script against ours; the q=3 gap is not explained, but it is narrowed to the size of the edit
+
+No GPU. Read: `trace-and-reverse/src/reversing_single_edits.py` and `hparams/trace-and-reverse/ROME/Qwen2.5-7B.yaml` in the authors' repository (checkout d783bc1), against `scripts/sweep_svd_q.py`, `drop_top_singular` in `src/retractbench/editors/rome.py` and `scripts/easyedit_rome_export.py`. Paper figures below are from arXiv 2505.20819v2 (Tables 2 and 3, Qwen2.5-7B column); the columns not already in this log were read through an automated page reader and should be checked by eye against the PDF before they are quoted anywhere.
+
+Correction to the 2026-11-23 (22:30) entry: its Limits line says the paper's 310 edits are "5 per relation". 310 edits over 31 relations is 10 per relation (the README example runs `--instances 10`). Our 62 are still the first 2 per relation.
+
+What is the same in both pipelines:
+- The matrix: the edited `model.layers.5.mlp.down_proj.weight`, float32, full SVD.
+- The operation and its index: their `get_excl_approximation(svd, q)` rebuilds from `U[:, q:], S[q:], V[q:, :]`; ours subtracts the top q components. q=3 removes three components in both. Their script also has a keep-top-r loop (`rank-r`); the paper's k is the excluded count, so Table 2 is the `excl-rank` output.
+- The edit: the same EasyEdit ROME code and a byte-identical hyperparameter file (SHA256 of theirs equals `configs/easyedit_rome_qwen2.5-7b.yaml`), `mom2_adjustment: false`, `fp16: false`.
+- The reference: the unedited model's own prediction on the edited prompt, greedy.
+- The KL: KL(original || truncated) at the last position of the edited prompt.
+
+What differs, or could not be compared:
+- The step from their CSV to Table 2 is not in the repository. The paper says reversal accuracy uses the next token; their script stores 5 greedy tokens as text. So "first token equals base" is our reading of the paper, not of code.
+- Their editing accuracy is "next token equals the edited model's"; our `edit_kept` is "the output starts with the new target". These are not the same measure and the two columns should not be set side by side as if they were.
+- Environment: their `env.yml` pins python 3.9.12, pytorch 1.11.0, numpy 1.26.4, transformers 4.46.2. Our export image uses python 3.10, torch 2.0.1, numpy 1.23.5, transformers 4.46.2.
+- Their `dsets/counterfact.json` is not in the checkout, so the record order behind "first 2 per relation" could not be compared with ours.
+- Their script generates by decoding and re-tokenizing text one token at a time; ours continues token ids. This cannot change the first token.
+
+The disagreement is the whole low-q part of the column, not one cell:
+
+| k | Paper, reversal | Ours, first token (62 edits) |
+| --- | --- | --- |
+| 0 | 0.65% | 0/62 |
+| 1 | 31.9% | 0/62 |
+| 2 | 51.9% | 3/62 = 4.8% |
+| 3 | 53.6% | 6/62 = 9.7% |
+| 10 | 62.9% | 41/62 = 66.1% |
+| 15 | 62.6% | 45/62 = 72.6% |
+
+Paper KL at k = 0, 1, 3, 15: 8.99, 4.84, 3.04, 1.53. Ours at q=0 and q=15: 9.65 and 0.59 (no KL run at q=1 or 3). The edited models are about equally far from base before any truncation; they differ in how the distance falls as components are removed.
+
+Where our edits sit (sweep file, `per_case[].spectrum`, 62 edits): the edit's spectral norm is 2.71 to 7.62, median 4.24. The unedited matrix's top singular value is 8.43 and its 20th is 4.16. The edit is below the top singular value in 62/62 cases and is the top component of the edited matrix in 0/62; the component that carries most of it is the 1st to 3rd in 8 cases, the 4th to 10th in 52, later in 2. So in our runs removing one component cannot remove an edit, and removing three rarely does. The paper reports 31.9% reversal at k=1 and says Qwen follows the pattern of GPT-J, where the top component carries most of the edit, with lower similarity values. For that to happen, the edit has to be larger than ours relative to the matrix's top singular values.
+
+What this does and does not settle:
+- Not an off-by-one in q, not keep-versus-exclude, not the layer, the precision or the hyperparameter file, and not the sample of facts (2026-11-23 22:30).
+- Not settled: why edits made by the same code and the same file would be larger in the authors' runs. Candidates, none tested: the library versions above; a configuration or code state for Table 2 that differs from the public repository; a difference in our export or replay that this read did not find.
+- Running their script unchanged was considered as the next test. It would use the same editing code and environment as our export, so it would most likely reproduce our numbers; it tests our replay and scoring, not their Table 2.
+- The question for the authors is specific and checkable: for ROME on Qwen2.5-7B layer 5, what is the norm of the rank-one update, and what is the top singular value of the unedited `down_proj`? Ours: median 4.24 and 8.43.
+
+No result file, metric or earlier entry is changed by this entry.
+
 ## 2026-11-23 (22:30): The paper's own relations, 62 edits on Qwen2.5-7B: results against the predictions
 
 Runs (plan and predictions in the "2026-11-23: plan and predictions" entry below, committed in d7b2e4a before any run; all runs from 5ae87fa, clean, recorded in each file's `meta.provenance`; runbook `docs/RUN_rel31.md`). Modal A100 80GB, float32, the authors' unchanged 7B config. Run files copied from the volume unchanged (SHA256 of each copy checked against the fetched file).
