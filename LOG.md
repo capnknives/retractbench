@@ -4,6 +4,31 @@ Dated entries, newest first. Failures and dead ends go in too.
 
 Predictions and entries are drafted with Claude (Anthropic) as a coding assistant and reviewed by the author, Richard Elliot. Predictions are committed before the run they predict, except where an entry says otherwise and in some early entries, whose predictions were committed together with their results (for example 280a2bb, 2026-11-02 11:33); for those, the entry itself is the only record of the order. Corrections to an earlier entry are made by a later dated entry or a dated note. On 2026-11-02 (commit 1823715) older entries were reworded to drop who made each prediction; the original wording is in the git history.
 
+## 2026-11-23: plan and predictions, the paper's own relations (not yet run)
+
+Why: our first-token reversal curve on Qwen2.5-7B does not match Table 2 of Youssef et al. (ICLR 2026). Ours: 20% at q=3 and 70% at q=10 on the 20 dev edits, 81/100 at q=15 on the test set. Paper: 53.6%, 62.9% and 62.6% (310 edits). The paper's first-position KL at k=15 is 1.534 (std 3.15); ours after the q=15 undo is 0.33 (21:12 entry). An independent review on 2026-11-23 found the mismatch. Our 100 edits are a random sample of CounterFact; the paper's are the first records of each large relation. Before publishing, the same pipeline runs on the paper's own selection, to tell whether the mismatch is the sample of facts or the pipeline.
+
+Design (nothing run yet; no GPU was used for this entry):
+- 62 edits: the first 2 records, in dataset order, of each of the 31 CounterFact relations with at least 200 records. This is a subset of the paper's 310 (its instance_id 0 and 1 per relation). Case file `cases/counterfact_rel31x2.jsonl`, built by `scripts/make_counterfact_cases.py --per-relation 2` (the existing random mode is unchanged). The paper's script also drops an edit after the fact when EasyEdit's own rewrite_acc is below 1.0; that cannot be known before the export, so the sweep reports both all edits that took by our 5-token criterion and those that also pass their filter.
+- The authors' unchanged Qwen2.5-7B config (`configs/easyedit_rome_qwen2.5-7b.yaml`), Modal A100 80GB, float32, as for the 7B runs on 2026-11-03. Steps: export, q sweep (first-token reversal at every q), scored runs at q=3, 10 and 15 with the null-edit control at each, then the graded KL test at q=15 with and without the control. Runbook: `docs/RUN_rel31.md`.
+- Metric definitions are unchanged. Edited-prompt first-token reversal is read from `sweep_svd_q.py` (`reversal_1`, fraction of edits that took, the count is in the file); the paper's KL is KL(original || edited-and-truncated) on the last position of the edited prompt, which is what `run_kl.py` calls first-position KL.
+- Limits: 62 edits, 2 per relation, so rates have wide intervals (about +/-12 points at 70%) and relation-level effects cannot be separated from edit-level ones.
+
+Predictions (to be committed before any run):
+1. First-token reversal on the edited prompt at q=15: between 60% and 80% of the 62 edits.
+2. At q=3: between 15% and 40%.
+3. At q=10: between 55% and 75%.
+4. Mean first-position KL on the edited prompt after the undo at q=15: between 0.3 and 1.2 nats.
+5. Answer-KL ratio undo/control on the edit's own prompts at q=15: above 4.
+6. Answer-KL ratio undo/control away from the edit at q=15: between 1.0 and 1.25.
+7. Edited prompt exact match (8 greedy tokens) at q=15: the undo is at least 15 points below the control.
+
+Decision rule, fixed before the runs:
+- If reversal comes out near the paper's (q=15 at or below 70% and q=3 at or above 40%), the mismatch was the sample of facts, and the write-up says so.
+- If it stays near the earlier figures (q=15 around 80%, q=3 around 20%), the difference is in the pipeline or configuration, and the question goes to the authors before publishing.
+- If the undo/control ratio on the edit's own prompts falls below 2, the write-up's headline is withdrawn.
+- Results between these (for example q=15 at 70-80%) are reported as they are, with the 62-edit interval, and decide nothing on their own.
+
 ## 2026-11-03 (21:20): Third independent number check (post with the KL section); fixes
 
 A fresh subagent that had not seen the work recomputed every number in the post (rev 113) and the email (rev 22) from the per-case files in a clone at 4aeca38, with its own stdlib code. It used `scripts/analyze_kl.py` and the analysis files only afterwards, for comparison, and they matched to every printed digit. Its scripts stayed in its container.
